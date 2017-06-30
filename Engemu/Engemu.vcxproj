@@ -150,6 +150,9 @@
     <ClCompile Include="CPU\Decoder\Decoder_Thumb.cpp" />
     <ClCompile Include="CPU\Disassembler\Disassembler.cpp" />
     <ClCompile Include="Engemu.cpp" />
+    <ClCompile Include="Loader\E32ImageLoader.cpp" />
+    <ClCompile Include="Loader\TRomImageLoader.cpp" />
+    <ClCompile Include="Loader\Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h" />
@@ -159,6 +162,12 @@
     <ClInclude Include="CPU\Disassembler\Disassembler.h" />
     <ClInclude Include="CPU\Memory.h" />
     <ClInclude Include="CPU\Utils.h" />
+    <ClInclude Include="E32Image.h" />
+    <ClInclude Include="E32Std.h" />
+    <ClInclude Include="Loader\E32ImageLoader.h" />
+    <ClInclude Include="Loader\TRomImageLoader.h" />
+    <ClInclude Include="TRomImage.h" />
+    <ClInclude Include="Loader\Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
