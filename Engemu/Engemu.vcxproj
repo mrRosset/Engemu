@@ -145,7 +145,20 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CPU\CPU.cpp" />
+    <ClCompile Include="CPU\Decoder\Decoder_ARM.cpp" />
+    <ClCompile Include="CPU\Decoder\Decoder_Thumb.cpp" />
+    <ClCompile Include="CPU\Disassembler\Disassembler.cpp" />
     <ClCompile Include="Engemu.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CPU\Common.h" />
+    <ClInclude Include="CPU\CPU.h" />
+    <ClInclude Include="CPU\Decoder\Decoder.h" />
+    <ClInclude Include="CPU\Decoder\IR.h" />
+    <ClInclude Include="CPU\Disassembler\Disassembler.h" />
+    <ClInclude Include="CPU\Memory.h" />
+    <ClInclude Include="CPU\Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

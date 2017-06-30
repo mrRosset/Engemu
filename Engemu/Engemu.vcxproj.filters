@@ -5,5 +5,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engemu.cpp" />
+    <ClCompile Include="CPU\Decoder\Decoder_ARM.cpp" />
+    <ClCompile Include="CPU\Decoder\Decoder_Thumb.cpp" />
+    <ClCompile Include="CPU\Disassembler\Disassembler.cpp" />
+    <ClCompile Include="CPU\CPU.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CPU\Decoder\Decoder.h" />
+    <ClInclude Include="CPU\Decoder\IR.h" />
+    <ClInclude Include="CPU\Disassembler\Disassembler.h" />
+    <ClInclude Include="CPU\Common.h" />
+    <ClInclude Include="CPU\CPU.h" />
+    <ClInclude Include="CPU\Memory.h" />
+    <ClInclude Include="CPU\Utils.h" />
   </ItemGroup>
 </Project>
