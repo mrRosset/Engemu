@@ -4,15 +4,15 @@
 
 #include "Utils.h"
 
-uint16_t utils::crc16_ccitt(uint8_t(&values)[6])
+u16 utils::crc16_ccitt(u8(&values)[6])
 {
-	uint32_t result = 0;
+	u32 result = 0;
 
-	for (uint8_t b : values)
+	for (u8 b : values)
 	{
 		result ^= (b << 8);
 
-		for (uint8_t d = 0; d < 8; d++)
+		for (u8 d = 0; d < 8; d++)
 		{
 			result = result << 1;
 
@@ -28,7 +28,7 @@ uint16_t utils::crc16_ccitt(uint8_t(&values)[6])
 	return result;
 }
 
-bool utils::loadData(std::string path, std::vector<uint8_t>& data) {
+bool utils::loadData(std::string path, std::vector<u8>& data) {
 
 	std::ifstream stream(path, std::ios::binary);
 
@@ -39,12 +39,12 @@ bool utils::loadData(std::string path, std::vector<uint8_t>& data) {
 	}
 
 	stream.seekg(0, std::ios::end);
-	uint64_t length = stream.tellg();
+	u64 length = stream.tellg();
 	stream.seekg(0, std::ios::beg);
 
 	data.resize(length);
 
-	for (uint64_t i = 0; i < length; i++)
+	for (u64 i = 0; i < length; i++)
 	{
 		data[i] = stream.get();
 	}
@@ -53,10 +53,10 @@ bool utils::loadData(std::string path, std::vector<uint8_t>& data) {
 	return true;
 }
 
-void utils::u8_from_32(uint8_t output[4], uint32_t value)
+void utils::u8_from_32(u8 output[4], u32 value)
 {
-	output[0] = (uint8_t)value;
-	output[1] = (uint8_t)(value >>= 8);
-	output[2] = (uint8_t)(value >>= 8);
-	output[3] = (uint8_t)(value >>= 8);
+	output[0] = (u8)value;
+	output[1] = (u8)(value >>= 8);
+	output[2] = (u8)(value >>= 8);
+	output[3] = (u8)(value >>= 8);
 }

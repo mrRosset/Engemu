@@ -51,26 +51,26 @@ void E32ImageLoader::checkHeaderValidity(E32Image& image) {
 	image.valid_signature = header->signature == 'COPE'; // 'EPOC' backwards for little-endian
 
 														 // Check the UID checksum validity
-	uint8_t uids[12] = {};
+	u8 uids[12] = {};
 	utils::u8_from_32(uids, image.header->uid1);
 	utils::u8_from_32(uids + 4, image.header->uid2);
 	utils::u8_from_32(uids + 8, image.header->uid3);
 
-	uint8_t even_bytes[] = { uids[0], uids[2], uids[4], uids[6], uids[8], uids[10] };
-	uint8_t odd_bytes[] = { uids[1], uids[3], uids[5], uids[7], uids[9], uids[11] };
+	u8 even_bytes[] = { uids[0], uids[2], uids[4], uids[6], uids[8], uids[10] };
+	u8 odd_bytes[] = { uids[1], uids[3], uids[5], uids[7], uids[9], uids[11] };
 
-	uint32_t uid_crc = ((uint32_t)utils::crc16_ccitt(odd_bytes) << 16) | utils::crc16_ccitt(even_bytes);
+	u32 uid_crc = ((u32)utils::crc16_ccitt(odd_bytes) << 16) | utils::crc16_ccitt(even_bytes);
 
 	image.valid_uid_checksum = uid_crc == image.header->uid_checksum;
 }
 
 void E32ImageLoader::parseHeader(E32Image& image)
 {
-	uint32_t* data32 = reinterpret_cast<uint32_t*>(image.data.data());
+	u32* data32 = reinterpret_cast<u32*>(image.data.data());
 
 	//Check what header format we are using
-	uint32_t flags_raw = data32[11];
-	uint8_t header_format = (flags_raw >> 24) & 0xF;
+	u32 flags_raw = data32[11];
+	u8 header_format = (flags_raw >> 24) & 0xF;
 
 	switch (header_format) {
 	case 0: image.header = std::make_unique<E32ImageHeader>(); //Basic format
@@ -96,7 +96,7 @@ void E32ImageLoader::parseHeader(E32Image& image)
 	header->major = data32[8] & 0xFF;
 	header->minor = data32[8] & 0xFF00;
 	header->build = data32[8] >> 16;
-	header->timestamp = ((uint64_t)data32[9] << 32) | data32[10];
+	header->timestamp = ((u64)data32[9] << 32) | data32[10];
 	header->flags_raw = data32[11];
 	header->code_size = data32[12];
 	header->data_size = data32[13];
@@ -145,11 +145,11 @@ void E32ImageLoader::parseHeader(E32Image& image)
 }
 
 void E32ImageLoader::parseIAT(E32Image& image) {
-	uint32_t* data32 = reinterpret_cast<uint32_t*>(image.data.data());
-	uint32_t iat_offset = image.header->code_offset + image.header->text_size;
-	uint32_t i = 0;
+	u32* data32 = reinterpret_cast<u32*>(image.data.data());
+	u32 iat_offset = image.header->code_offset + image.header->text_size;
+	u32 i = 0;
 
-	uint32_t line = data32[iat_offset / 4]; //divided by 4 we because we use uin32t (= 4 bytes)
+	u32 line = data32[iat_offset / 4]; //divided by 4 we because we use uin32t (= 4 bytes)
 
 	while (line != 0) {
 		image.code_section.import_address_table.push_back(line);
@@ -159,20 +159,20 @@ void E32ImageLoader::parseIAT(E32Image& image) {
 }
 
 void E32ImageLoader::parseExportDir(E32Image& image) {
-	uint32_t* data32 = reinterpret_cast<uint32_t*>(image.data.data());
+	u32* data32 = reinterpret_cast<u32*>(image.data.data());
 
-	for (int32_t i = 0; i < image.header->export_count; i++) {
+	for (s32 i = 0; i < image.header->export_count; i++) {
 		image.code_section.export_directory.push_back(data32[(image.header->export_offset / 4) + i]);
 	}
 }
 
 void E32ImageLoader::parseImportSection(E32Image& image) {
-	uint32_t* data32 = reinterpret_cast<uint32_t*>(image.data.data());
+	u32* data32 = reinterpret_cast<u32*>(image.data.data());
 
-	uint32_t offset = image.header->import_offset / 4;
+	u32 offset = image.header->import_offset / 4;
 	image.import_section.size = data32[offset++];
 
-	for (int32_t i = 0; i < image.header->dll_count; i++) {
+	for (s32 i = 0; i < image.header->dll_count; i++) {
 		std::unique_ptr<E32ImportBlock> block(new E32ImportBlock);
 
 		block->dll_name_offset = data32[offset++];
@@ -180,7 +180,7 @@ void E32ImageLoader::parseImportSection(E32Image& image) {
 
 		//only standard PE import format has redundancy
 		if (image.header->flags.import_format == 0) {
-			for (int32_t j = 0; j < block->number_of_imports; j++) {
+			for (s32 j = 0; j < block->number_of_imports; j++) {
 				block->ordinals.push_back(data32[offset++]);
 			}
 		}
@@ -190,7 +190,7 @@ void E32ImageLoader::parseImportSection(E32Image& image) {
 }
 
 void E32ImageLoader::parseRelocSections(E32Image& image) {
-	uint32_t* data32 = reinterpret_cast<uint32_t*>(image.data.data());
+	u32* data32 = reinterpret_cast<u32*>(image.data.data());
 
 	//we divide by 4 since we are using a uint32 (= 4 bytes) array, so we need to adapt the offset
 	if (image.header->code_relocation_offset) {
@@ -226,7 +226,7 @@ void E32ImageLoader::checkImportValidity(E32Image& image) {
 	int iat_index = 0;
 
 	for (std::unique_ptr<E32ImportBlock>& block : image.import_section.imports) {
-		for (uint32_t ordinal : block->ordinals) {
+		for (u32 ordinal : block->ordinals) {
 			if (image.code_section.import_address_table[iat_index++] != ordinal) {
 				image.valid_imports = false;
 			}

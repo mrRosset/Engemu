@@ -1,8 +1,8 @@
 #pragma once
 
-#include <stdint.h>
+#include "Common.h"
 
-enum class CPUType : uint32_t {
+enum class CPUType : u32 {
 	x86 = 0x1000,
 	Arm = 0x2000,
 	Mcore = 0x4000

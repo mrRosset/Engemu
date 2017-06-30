@@ -1,18 +1,18 @@
 #pragma once
-#include <stdint.h>
 #include <vector>
+#include "..\Common.h"
 
 namespace utils {
-	uint16_t crc16_ccitt(uint8_t(&values)[6]);
-	bool loadData(std::string path, std::vector<uint8_t>& data);
-	void u8_from_32(uint8_t output[4], uint32_t value);
+	u16 crc16_ccitt(u8(&values)[6]);
+	bool loadData(std::string path, std::vector<u8>& data);
+	void u8_from_32(u8 output[4], u32 value);
 
 	template <class T>
 	inline bool getBit(T v, unsigned bit_number) {
 		return ((v >> bit_number) & 0b1);
 	}
 	template <class T>
-	inline bool getBit(T v, uint64_t bit_number) {
+	inline bool getBit(T v, u64 bit_number) {
 		return ((v >> bit_number) & 0b1);
 	}
 	template <class T>

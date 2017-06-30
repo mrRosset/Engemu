@@ -1,6 +1,5 @@
 #pragma once
 
-#include <stdint.h>
 #include <vector>
 #include <memory>
 #include "E32Std.h"
@@ -17,21 +16,21 @@ struct E32CodeSection
 	//Text section
 	//Should the data be copied here ? Or just let the offset from the header.
 
-	std::vector<uint32_t> import_address_table;
-	std::vector<uint32_t> export_directory;
+	std::vector<u32> import_address_table;
+	std::vector<u32> export_directory;
 };
 
 struct E32ImportBlock
 {
 	//This is only for EKA1 targeted import block from PE
-	uint32_t dll_name_offset; //relative to the import section
-	int32_t number_of_imports; // number of imports from this dll
-	std::vector<uint32_t> ordinals;	// TUint32 iImport[iNumberOfImports];
+	u32 dll_name_offset; //relative to the import section
+	s32 number_of_imports; // number of imports from this dll
+	std::vector<u32> ordinals;	// TUint32 iImport[iNumberOfImports];
 };
 
 struct E32ImportSection
 {
-	int32_t size; // size of this section
+	s32 size; // size of this section
 	std::vector<std::unique_ptr<E32ImportBlock>> imports; // E32ImportBlock[iDllRefTableCount];
 };
 
@@ -39,8 +38,8 @@ struct E32ImportSection
 //For a good schema on the PE version of this: http://stackoverflow.com/questions/17436668/how-are-pe-base-relocations-build-up
 struct E32RelocationBlock
 {
-	uint32_t offset;
-	uint32_t block_size;
+	u32 offset;
+	u32 block_size;
 	//2 byte sub-block entry.
 	//The top 4 bits specify the type of relocation :
 	//	0 – Not a valid relocation.
@@ -49,13 +48,13 @@ struct E32RelocationBlock
 	//	3 – Try to work it out at load time(legacy algorithm).
 	//	The bottom 12 bits specify the offset within the 4 K page of the item
 	//	to be relocated.
-	std::vector<uint16_t> sub_block_entry;
+	std::vector<u16> sub_block_entry;
 };
 
 struct E32RelocSection
 {
-	int32_t size;
-	int32_t number_of_relocs;
+	s32 size;
+	s32 number_of_relocs;
 };
 
 
@@ -66,45 +65,45 @@ struct E32Flags
 	bool executable_type;  // false = executable, true = DLL
 	bool call_entry_point; // false = call, true = don't call
 	bool fixed_address;    // 0 = not fixed address, 1 = fixed address
-	uint8_t abi;                // 0 = GCC98r2, 1 = EABI
-	uint8_t entry_point_type;   // 0 = EKA1, 1 = EKA2
-	uint8_t header_format;      // 0 = Basic, 1 = J-format, 2 = V-format
-	uint8_t import_format;      // 0 = Standard PE format, 1 = ELF format, 2 = PE format without redundancy in the import section
+	u8 abi;                // 0 = GCC98r2, 1 = EABI
+	u8 entry_point_type;   // 0 = EKA1, 1 = EKA2
+	u8 header_format;      // 0 = Basic, 1 = J-format, 2 = V-format
+	u8 import_format;      // 0 = Standard PE format, 1 = ELF format, 2 = PE format without redundancy in the import section
 };
 
 struct E32ImageHeader {
-	uint32_t uid1;
-	uint32_t uid2;
-	uint32_t uid3;
-	uint32_t uid_checksum;
-	uint32_t signature;
+	u32 uid1;
+	u32 uid2;
+	u32 uid3;
+	u32 uid_checksum;
+	u32 signature;
 	CPUType cpu;
-	uint32_t code_checksum;
-	uint32_t data_checksum;
-	uint8_t major;
-	uint8_t minor;
-	uint16_t build;
-	int64_t timestamp;
-	uint32_t flags_raw;
+	u32 code_checksum;
+	u32 data_checksum;
+	u8 major;
+	u8 minor;
+	u16 build;
+	s64 timestamp;
+	u32 flags_raw;
 	E32Flags flags;
-	int32_t code_size;
-	int32_t data_size;
-	int32_t heap_minimum_size;
-	int32_t heap_maximum_size;
-	int32_t stack_size;
-	int32_t BSS_size;
-	uint32_t entry_point_offset;
-	uint32_t code_base_address;
-	uint32_t data_base_address;
-	int32_t dll_count;
-	uint32_t export_offset;
-	int32_t export_count;
-	int32_t text_size;
-	uint32_t code_offset;
-	uint32_t data_offset;
-	uint32_t import_offset;
-	uint32_t code_relocation_offset;
-	uint32_t data_relocation_offset;
+	s32 code_size;
+	s32 data_size;
+	s32 heap_minimum_size;
+	s32 heap_maximum_size;
+	s32 stack_size;
+	s32 BSS_size;
+	u32 entry_point_offset;
+	u32 code_base_address;
+	u32 data_base_address;
+	s32 dll_count;
+	u32 export_offset;
+	s32 export_count;
+	s32 text_size;
+	u32 code_offset;
+	u32 data_offset;
+	u32 import_offset;
+	u32 code_relocation_offset;
+	u32 data_relocation_offset;
 	ProcessPriority priority;
 };
 
@@ -120,8 +119,8 @@ struct E32ImageHeaderJ : public E32ImageHeader {
 		was never used."
 	*/
 
-	uint32_t compression_type; // 0 = no compression
-	uint32_t uncompressed_size;	// Only if compression_type != 0
+	u32 compression_type; // 0 = no compression
+	u32 uncompressed_size;	// Only if compression_type != 0
 								// Comment from f32image.h in SDKv3:
 								// "Uncompressed size of file
 								// For J format this is file size - sizeof(E32ImageHeader)
@@ -130,7 +129,7 @@ struct E32ImageHeaderJ : public E32ImageHeader {
 };
 
 struct E32Image {
-	std::vector<uint8_t> data;
+	std::vector<u8> data;
 	bool valid_uid_checksum = false;
 	bool valid_signature = false;
 	bool valid_imports = false;

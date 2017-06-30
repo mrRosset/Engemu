@@ -1,5 +1,4 @@
 #pragma once
-#include <stdint.h>
 #include <vector>
 #include "E32Std.h"
 
@@ -13,8 +12,8 @@
 
 struct TDllRefTable
 {
-	uint16_t flags;
-	uint16_t number_of_entries;// iNumberOfEntries;
+	u16 flags;
+	u16 number_of_entries;// iNumberOfEntries;
 	//probably has a vector of ref block, but it's never noted, I need to check
 	//TRomImageHeader *	iEntry <- it's an array
 };
@@ -25,8 +24,8 @@ struct TRomImageFlags
 {
 	bool executable_type; // false = executable, true = DLL
 	bool fixed_address; // 0 = not fixed address, 1 = fixed address
-	uint8_t abi; // 0 = GCC98r2, 1 = EABI
-	uint8_t entry_point_type; // 0 = EKA1, 1 = EKA2
+	u8 abi; // 0 = GCC98r2, 1 = EABI
+	u8 entry_point_type; // 0 = EKA1, 1 = EKA2
 	bool exe_in_tree_flag; // 1 = links directly/indirectly to an exe (if yes it's first id dll ref table)
 	bool data_present_flag; // 1 = it/it's dependencies (with linked dll) has .bss/.data 
 	bool data_init_flag; // 1 = it/it's dependencies (not linked dll) has .bss/.data 
@@ -41,34 +40,34 @@ struct TRomImageFlags
 
 struct TRomImageHeader {
 
-	uint32_t uid1;
-	uint32_t uid2;
-	uint32_t uid3;
-	uint32_t uid_checksum;
-	uint32_t entry_point;
-	uint32_t code_address;
-	uint32_t data_address;
-	int32_t code_size;
-	int32_t text_size;
-	int32_t data_size;
-	int32_t bss_size;
-	int32_t heap_minimum_size;
-	int32_t heap_maximum_size;
-	int32_t stack_size;
-	uint32_t dll_ref_table_address;
-	int32_t export_dir_count;
-	uint32_t export_dir_address;
-	uint32_t code_checksum;
-	uint32_t data_checksum;
-	uint8_t major;
-	uint8_t minor;
-	uint16_t build;
-	uint32_t flags_raw;
+	u32 uid1;
+	u32 uid2;
+	u32 uid3;
+	u32 uid_checksum;
+	u32 entry_point;
+	u32 code_address;
+	u32 data_address;
+	s32 code_size;
+	s32 text_size;
+	s32 data_size;
+	s32 bss_size;
+	s32 heap_minimum_size;
+	s32 heap_maximum_size;
+	s32 stack_size;
+	u32 dll_ref_table_address;
+	s32 export_dir_count;
+	u32 export_dir_address;
+	u32 code_checksum;
+	u32 data_checksum;
+	u8 major;
+	u8 minor;
+	u16 build;
+	u32 flags_raw;
 	TRomImageFlags flags;
 	ProcessPriority priority;
-	uint32_t data_bss_linear_base_address;
-	uint32_t next_extension_linear_address;
-	uint32_t harware_variant; //I have no idea what this is exactly
+	u32 data_bss_linear_base_address;
+	u32 next_extension_linear_address;
+	u32 harware_variant; //I have no idea what this is exactly
 
 	//Note, EKA2+ variants have additionnal fields after harware variants.
 	//Since they are not in the e32rom.h from s60 SDK v1.2, I'm assuming they
@@ -91,7 +90,7 @@ used by the executable.
 */
 
 struct TRomImage {
-	std::vector<uint8_t> data;
+	std::vector<u8> data;
 	bool valid_uid_checksum = false;
 
 	TRomImageHeader header;
