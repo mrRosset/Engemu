@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include "Common.h"
+#include "../Common.h"
 
 class Memory {
 public:
