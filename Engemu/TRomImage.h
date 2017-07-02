@@ -94,5 +94,5 @@ struct TRomImage {
 	bool valid_uid_checksum = false;
 
 	TRomImageHeader header;
-
+	std::vector<uint32_t> export_directory;
 };
