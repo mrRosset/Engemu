@@ -3,10 +3,12 @@
 #include <string>
 
 struct TRomImage;
+class Memory;
 
 namespace TRomImageLoader
 {
-	bool load(std::string path, TRomImage& image);
+	void load(TRomImage& image, Memory& mem, std::string lib_folder_path);
+	bool parse(std::string path, TRomImage& image);
 	void parseHeader(TRomImage& image);
 	void checkHeaderValidity(TRomImage& image);
 };
