@@ -1,9 +1,23 @@
 #include <iostream>
+#include <string>
 
 #include "E32ImageLoader.h"
+#include "TRomImageLoader.h"
+#include "../TRomImage.h"
 #include "Utils.h"
 #include "../E32Image.h"
 #include "../CPU/Memory.h"
+
+
+std::string locateLibrary(std::string lib_entry, std::string lib_folder_path) {
+	if (lib_folder_path.back() != '\\' && lib_folder_path.back() != '/') {
+		lib_folder_path += "/";
+	}
+	if (lib_entry.find("[") != std::string::npos) {
+		lib_entry = lib_entry.substr(0, lib_entry.find("[")) + ".dll";
+	}
+	return lib_folder_path + lib_entry;
+}
 
 void E32ImageLoader::load(E32Image& image, Memory& mem, std::string lib_folder_path) {
 	
@@ -27,9 +41,15 @@ void E32ImageLoader::load(E32Image& image, Memory& mem, std::string lib_folder_p
 
 	//TODO: Do the relocation if needed.
 
-	//TODO: Take care of the imports and the IAT
+	//TODO: Take care of the non-rom imports and the IAT
 	for (auto& block : image.import_section.imports) {
-		std::cout << "TODO import: " << (char*)&image.data[(image.header->import_offset + block->dll_name_offset)] << std::endl;
+		std::string lib_name = (char*)&image.data[(image.header->import_offset + block->dll_name_offset)];
+		std::string lib_path = locateLibrary(lib_name, lib_folder_path);
+		//std::cout << "TODO import: " << lib_name << std::endl;
+		
+		TRomImage lib;
+		TRomImageLoader::parse(lib_path, lib);
+		TRomImageLoader::load(lib, mem, lib_folder_path);
 	}
 
 }

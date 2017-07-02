@@ -8,17 +8,18 @@
 
 int main(int argc, char* argv[])
 {
-	if (argc < 3) {
-		std::cout << "Error missing E32Image and library folder path" << std::endl;
+	if (argc < 4) {
+		std::cout << "Error missing E32Image or library folder path or rom file" << std::endl;
 		return -1;
 	}
 	E32Image image;
 	E32ImageLoader::parse(argv[1], image);
 	
 	CPU cpu;
+	cpu.mem.loadRom(argv[3]);
 	E32ImageLoader::load(image, cpu.mem, argv[2]);
 
-	cpu.gprs[Regs::PC] = image.header->code_base_address + image.header->entry_point_offset;
+	cpu.gprs[Regs::PC] = 0x50392D54;//image.header->code_base_address + image.header->entry_point_offset;
 	//TODO: find the correct place where the SP is initialized
 	cpu.gprs[Regs::SP] = 0x7FFF'FFFF; //start of the ram section
 
