@@ -6,6 +6,33 @@
 #include "../CPU/Memory.h"
 
 void E32ImageLoader::load(E32Image & image, Memory & mem) {
+
+	//Load the E32Image in memory
+	
+	//Load code to it's prefered location
+	u32& code_base_address = image.header->code_base_address;
+	if (code_base_address != 0) {
+		//TODO: Look if the space is already taken before hand.
+		for (u32 i = 0; i < image.header->code_size; i++) {
+			mem.write8(code_base_address + i, image.data[image.header->code_offset + i]);
+		}
+	}
+
+	//Load data to it's prefered location
+	u32& data_base_address = image.header->data_base_address;
+	if (data_base_address != 0) {
+		//TODO: Look if the space is already taken before hand.
+		for (u32 i = 0; i < image.header->data_size; i++) {
+			mem.write8(data_base_address + i, image.data[image.header->data_offset + i]);
+		}
+	}
+
+	//TODO: Do the relocation if needed.
+
+	//TODO: Take care of the imports and the IAT
+
+
+
 }
 
 bool E32ImageLoader::parse(std::string path, E32Image& image)
