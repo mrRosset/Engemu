@@ -3,10 +3,12 @@
 #include <string>
 
 struct E32Image;
+class Memory;
 
 namespace E32ImageLoader
 {
-	bool load(std::string path, E32Image& image);
+	void load(E32Image& image, Memory& mem);
+	bool parse(std::string path, E32Image& image);
 	void parseHeader(E32Image& image);
 	void parseIAT(E32Image& image);
 	void parseExportDir(E32Image& image);

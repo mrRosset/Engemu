@@ -2,9 +2,13 @@
 
 #include "E32ImageLoader.h"
 #include "Utils.h"
-#include "..\E32Image.h"
+#include "../E32Image.h"
+#include "../CPU/Memory.h"
 
-bool E32ImageLoader::load(std::string path, E32Image& image)
+void E32ImageLoader::load(E32Image & image, Memory & mem) {
+}
+
+bool E32ImageLoader::parse(std::string path, E32Image& image)
 {
 	auto err = utils::loadData(path, image.data);
 	if (!err) {

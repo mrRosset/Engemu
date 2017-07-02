@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include "..\Common.h"
+#include "../Common.h"
 
 namespace utils {
 	u16 crc16_ccitt(u8(&values)[6]);

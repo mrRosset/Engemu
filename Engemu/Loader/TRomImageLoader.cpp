@@ -2,7 +2,7 @@
 
 #include "TRomImageLoader.h"
 #include "Utils.h"
-#include "..\TRomImage.h"
+#include "../TRomImage.h"
 
 
 bool TRomImageLoader::load(std::string path, TRomImage& image) {
