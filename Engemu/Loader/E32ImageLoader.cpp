@@ -5,15 +5,13 @@
 #include "../E32Image.h"
 #include "../CPU/Memory.h"
 
-void E32ImageLoader::load(E32Image & image, Memory & mem) {
-
-	//Load the E32Image in memory
+void E32ImageLoader::load(E32Image& image, Memory& mem, std::string lib_folder_path) {
 	
 	//Load code to it's prefered location
 	u32& code_base_address = image.header->code_base_address;
 	if (code_base_address != 0) {
 		//TODO: Look if the space is already taken before hand.
-		for (u32 i = 0; i < image.header->code_size; i++) {
+		for (s32 i = 0; i < image.header->code_size; i++) {
 			mem.write8(code_base_address + i, image.data[image.header->code_offset + i]);
 		}
 	}
@@ -22,7 +20,7 @@ void E32ImageLoader::load(E32Image & image, Memory & mem) {
 	u32& data_base_address = image.header->data_base_address;
 	if (data_base_address != 0) {
 		//TODO: Look if the space is already taken before hand.
-		for (u32 i = 0; i < image.header->data_size; i++) {
+		for (s32 i = 0; i < image.header->data_size; i++) {
 			mem.write8(data_base_address + i, image.data[image.header->data_offset + i]);
 		}
 	}
@@ -30,8 +28,9 @@ void E32ImageLoader::load(E32Image & image, Memory & mem) {
 	//TODO: Do the relocation if needed.
 
 	//TODO: Take care of the imports and the IAT
-
-
+	for (auto& block : image.import_section.imports) {
+		std::cout << "TODO import: " << (char*)&image.data[(image.header->import_offset + block->dll_name_offset)] << std::endl;
+	}
 
 }
 

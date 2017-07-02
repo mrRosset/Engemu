@@ -7,7 +7,7 @@ class Memory;
 
 namespace E32ImageLoader
 {
-	void load(E32Image& image, Memory& mem);
+	void load(E32Image& image, Memory& mem, std::string lib_folder_path);
 	bool parse(std::string path, E32Image& image);
 	void parseHeader(E32Image& image);
 	void parseIAT(E32Image& image);
