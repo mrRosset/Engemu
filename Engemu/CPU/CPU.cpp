@@ -55,7 +55,7 @@ bool CPU::Check_Condition(IR_ARM& ir) {
 	case Conditions::AL: return true;
 	case Conditions::NV: throw "Unpredictable instructions are not emulated";
 	}
-	throw "Invlid condition";
+	throw "Invalid condition";
 }
 
 void CPU::ARM_Execute(IR_ARM& ir) {
@@ -98,10 +98,10 @@ inline void CPU::Load_Store_Multiple(IR_ARM& ir) {
 	case AInstructions::STMIA:
 	case AInstructions::LDMFD:
 	case AInstructions::LDMIA:
-		start_address = Rn;
-		end_address = Rn + (number_regs_modified * 4) - 4;
+		start_address = gprs[Rn];
+		end_address = gprs[Rn] + (number_regs_modified * 4) - 4;
 		if (W == 1) {
-			Rn = Rn + (number_regs_modified * 4);
+			gprs[Rn] = gprs[Rn] + (number_regs_modified * 4);
 		}
 		break;
 
@@ -109,10 +109,10 @@ inline void CPU::Load_Store_Multiple(IR_ARM& ir) {
 	case AInstructions::STMIB:
 	case AInstructions::LDMED:
 	case AInstructions::LDMIB:
-		start_address = Rn + 4;
-		end_address = Rn + (number_regs_modified * 4);
+		start_address = gprs[Rn] + 4;
+		end_address = gprs[Rn] + (number_regs_modified * 4);
 		if (W == 1) {
-			Rn = Rn + (number_regs_modified * 4);
+			gprs[Rn] = gprs[Rn] + (number_regs_modified * 4);
 		}
 		break;
 
@@ -120,10 +120,10 @@ inline void CPU::Load_Store_Multiple(IR_ARM& ir) {
 	case AInstructions::STMDA:
 	case AInstructions::LDMFA:
 	case AInstructions::LDMDA:
-		start_address = Rn - (number_regs_modified * 4) + 4;
-		end_address = Rn;
+		start_address = gprs[Rn] - (number_regs_modified * 4) + 4;
+		end_address = gprs[Rn];
 		if (W == 1) {
-			Rn = Rn - (number_regs_modified * 4);
+			gprs[Rn] = gprs[Rn] - (number_regs_modified * 4);
 		}
 		break;
 
@@ -131,10 +131,10 @@ inline void CPU::Load_Store_Multiple(IR_ARM& ir) {
 	case AInstructions::STMDB:
 	case AInstructions::LDMEA:
 	case AInstructions::LDMDB:
-		start_address = Rn - (number_regs_modified * 4);
-		end_address = Rn - 4;
+		start_address = gprs[Rn] - (number_regs_modified * 4);
+		end_address = gprs[Rn] - 4;
 		if (W == 1) {
-			Rn = Rn - (number_regs_modified * 4);
+			gprs[Rn] = gprs[Rn] - (number_regs_modified * 4);
 		}
 		break;
 	}
