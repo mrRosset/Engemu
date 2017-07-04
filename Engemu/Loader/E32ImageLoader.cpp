@@ -8,7 +8,6 @@
 #include "../E32Image.h"
 #include "../CPU/Memory.h"
 
-
 std::string locateLibrary(std::string lib_entry, std::string lib_folder_path) {
 	if (lib_folder_path.back() != '\\' && lib_folder_path.back() != '/') {
 		lib_folder_path += "/";
@@ -42,14 +41,22 @@ void E32ImageLoader::load(E32Image& image, Memory& mem, std::string lib_folder_p
 	//TODO: Do the relocation if needed.
 
 	//TODO: Take care of the non-rom imports and the IAT
+	u32 iat_index = 0;
+
 	for (auto& block : image.import_section.imports) {
 		std::string lib_name = (char*)&image.data[(image.header->import_offset + block->dll_name_offset)];
 		std::string lib_path = locateLibrary(lib_name, lib_folder_path);
-		//std::cout << "TODO import: " << lib_name << std::endl;
 		
 		TRomImage lib;
 		TRomImageLoader::parse(lib_path, lib);
 		TRomImageLoader::load(lib, mem, lib_folder_path);
+
+		//replace the ordinal of the import with it'saddress in the IAT
+		for (u32 ordinal : block->ordinals) {
+			u32 iat_offset = image.header->code_base_address + image.header->text_size;
+			mem.write32(iat_offset + iat_index, lib.export_directory[ordinal - 1]);
+			iat_index += 4;
+		}
 	}
 
 }
