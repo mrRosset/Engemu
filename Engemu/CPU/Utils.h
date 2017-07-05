@@ -38,9 +38,9 @@ inline u64 ror64(const u64 x, const u64 n) {
 }
 #elif defined(_MSC_VER)
 inline u8 ror8(const u8 x, const u8 n) { return _rotr8(x, n); }
-inline u16 ror16(const u16 x, const u16 n) { return _rotr16(x, n); }
+inline u16 ror16(const u16 x, const u16 n) { return _rotr16(x, n % 16); }
 inline u32 ror32(const u32 x, const u32 n) { return _rotr(x, n); }
-inline u64 ror64(const u64 x, const u64 n) { return _rotr64(x, n); }
+inline u64 ror64(const u64 x, const u64 n) { return _rotr64(x, n % 64); }
 #endif
 
 template <class T>
