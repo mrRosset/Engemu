@@ -148,7 +148,8 @@
     <ClCompile Include="CPU\CPU.cpp" />
     <ClCompile Include="CPU\Decoder\Decoder_ARM.cpp" />
     <ClCompile Include="CPU\Decoder\Decoder_Thumb.cpp" />
-    <ClCompile Include="CPU\Disassembler\Disassembler.cpp" />
+    <ClCompile Include="CPU\Disassembler\Disassembler_ARM.cpp" />
+    <ClCompile Include="CPU\Disassembler\Disassembler_Thumb.cpp" />
     <ClCompile Include="Engemu.cpp" />
     <ClCompile Include="Loader\E32ImageLoader.cpp" />
     <ClCompile Include="Loader\TRomImageLoader.cpp" />

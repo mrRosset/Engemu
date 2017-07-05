@@ -168,9 +168,13 @@ enum class TInstructions {
 	AND,
 	ASR_imm,
 	ASR_reg,
-	B,
+	B_cond,
+	B_imm,
 	BIC,
 	BL,
+	BL_high,
+	BLX_imm,
+	BLX_reg,
 	BX,
 	CMN,
 	CMP_imm,
@@ -213,6 +217,7 @@ enum class TInstructions {
 struct IR_Thumb {
 	InstructionType type;
 	TInstructions instr;
+	Conditions cond;
 	u16 operand1;
 	u16 operand2;
 	u16 operand3;
