@@ -28,7 +28,6 @@ bool TRomImageLoader::parse(std::string path, TRomImage& image) {
 }
 
 void TRomImageLoader::checkHeaderValidity(TRomImage& image) {
-	TRomImageHeader& header = image.header;
 	u8 uids[12] = {};
 	utils::u8_from_32(uids, image.header.uid1);
 	utils::u8_from_32(uids + 4, image.header.uid2);
