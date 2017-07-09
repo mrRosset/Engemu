@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <string>
 #include <iostream>
 #include <fstream>
 #include "../Common.h"
@@ -66,7 +67,7 @@ public:
 		if (address >= 0x0040'0000 && address <= 0x2FFF'FFFF) return user_data[address - 0x0040'0000];
 		else if (address >= 0x5000'0000 && address <= 0x57FF'FFFF) return rom[address - 0x5000'0000];
 		else if (address >= 0x6000'0000 && address <= 0x7FFF'FFFF) return ram[address - 0x6000'0000];
-		else throw std::string("read to unmapped memory:" + address);
+		else throw (std::string("read to unmapped memory:") + std::to_string(address));
 	}
 
 	inline u16 read16(u32 address)
@@ -84,7 +85,7 @@ public:
 		if (address >= 0x0040'0000 && address <= 0x2FFF'FFFF) user_data[address - 0x0040'0000] = value;
 		else if (address >= 0x5000'0000 && address <= 0x57FF'FFFF) rom[address - 0x5000'0000] = value;
 		else if (address >= 0x6000'0000 && address <= 0x7FFF'FFFF) ram[address - 0x6000'0000] = value;
-		else throw std::string("write to unmapped memory:" + address);
+		else throw (std::string("write to unmapped memory:") + std::to_string(address));
 	}
 
 	inline void write16(u32 address, u16 value)
