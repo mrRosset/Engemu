@@ -21,5 +21,6 @@ namespace Disassembler {
 
 	//THUMB
 	std::string Disassemble(IR_Thumb& ir);
-	std::string Disassemble_Signed_Offset(s16 offset);
+	std::string Disassemble_Branch_Signed_Offset(s32 offset);
+	std::string Disassemble_Small_Reg_List(u16 list, bool lr, bool pc);
 }

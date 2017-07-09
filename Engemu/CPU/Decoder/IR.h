@@ -20,7 +20,7 @@ namespace Regs {
 	};
 }
 
-enum class InstructionType {
+enum class AInstructionType {
 	Data_Processing,
 	Branch,
 	Multiply,
@@ -145,7 +145,7 @@ struct Shifter_op {
 };
 
 struct IR_ARM {
-	InstructionType type;
+	AInstructionType type;
 	AInstructions instr;
 	Conditions cond;
 	bool s;
@@ -154,6 +154,21 @@ struct IR_ARM {
 	u32 operand3;
 	u32 operand4;
 	Shifter_op shifter_operand;
+};
+
+enum class TInstructionType {
+	Data_Processing_1,
+	Data_Processing_2,
+	Data_Processing_3,
+	Data_Processing_4,
+	Data_Processing_5,
+	Data_Processing_6,
+	Data_Processing_7,
+	Data_Processing_8,
+	Branch,
+	Load_Store,
+	Load_Store_Multiple,
+	Exception_Generating,
 };
 
 enum class TInstructions {
@@ -173,8 +188,6 @@ enum class TInstructions {
 	BIC,
 	BL,
 	BL_high,
-	BLX_imm,
-	BLX_reg,
 	BX,
 	CMN,
 	CMP_imm,
@@ -182,9 +195,14 @@ enum class TInstructions {
 	CMP_hig_reg,
 	EOR,
 	LDMIA,
-	LDR,
-	LDRB,
-	LDRH,
+	LDR_imm,
+	LDR_reg,
+	LDR_pc,
+	LDR_sp,
+	LDRB_imm,
+	LDRB_reg,
+	LDRH_imm,
+	LDRH_reg,
 	LDRSB,
 	LDRSH,
 	LSL_imm,
@@ -192,7 +210,7 @@ enum class TInstructions {
 	LSR_imm,
 	LSR_reg,
 	MOV_imm,
-	MOV_reg,
+	//MOV_reg, encoded as an Add with 0 immediate
 	MOV_hig_reg,
 	MUL,
 	MVN,
@@ -203,9 +221,13 @@ enum class TInstructions {
 	ROR,
 	SBC,
 	STMIA,
-	STR,
-	STRB,
-	STRH,
+	STR_imm,
+	STR_reg,
+	STR_sp,
+	STRB_imm,
+	STRB_reg,
+	STRH_imm,
+	STRH_reg,
 	SUB_imm,
 	SUB_lar_imm,
 	SUB_reg,
@@ -215,7 +237,7 @@ enum class TInstructions {
 };
 
 struct IR_Thumb {
-	InstructionType type;
+	TInstructionType type;
 	TInstructions instr;
 	Conditions cond;
 	u16 operand1;

@@ -80,7 +80,7 @@ void Decoder::Decode(IR_ARM & ir, u32 instr) {
 
 
 void Decoder::Decode_Data_Processing(IR_ARM & ir, u32 instr) {
-	ir.type = InstructionType::Data_Processing;
+	ir.type = AInstructionType::Data_Processing;
 	Decode_Shifter_operand(ir, instr);
 	
 	switch ((instr >> 21) & 0xF) {
@@ -134,7 +134,7 @@ void Decoder::Decode_Shifter_operand(IR_ARM& ir, u32 instr) {
 }
 
 void Decoder::Decode_Branch(IR_ARM& ir, u32 instr) {
-	ir.type = InstructionType::Branch;
+	ir.type = AInstructionType::Branch;
 	switch ((instr >> 24) & 0xF) {
 	case 0b1010: ir.instr = AInstructions::B; ir.operand1 = instr & 0xFFFFFF; break;
 	case 0b1011: ir.instr = AInstructions::BL; ir.operand1 = instr & 0xFFFFFF; break;
@@ -143,7 +143,7 @@ void Decoder::Decode_Branch(IR_ARM& ir, u32 instr) {
 }
 
 void Decoder::Decode_Multiply(IR_ARM& ir, u32 instr) {
-	ir.type = InstructionType::Multiply;
+	ir.type = AInstructionType::Multiply;
 
 	switch ((instr >> 21) & 0xF) {
 	case 0b0000: ir.instr = AInstructions::MUL; break;
@@ -162,7 +162,7 @@ void Decoder::Decode_Multiply(IR_ARM& ir, u32 instr) {
 }
 
 void Decoder::Decode_Status_Register(IR_ARM& ir, u32 instr) {
-	ir.type = InstructionType::Status_Regsiter_Access;
+	ir.type = AInstructionType::Status_Regsiter_Access;
 	switch ((instr >> 20) & 0b11111011) {
 	case 0b00010000: ir.instr = AInstructions::MRS; ir.operand2 = (instr >> 12) & 0xF; break;
 	case 0b00110010: ir.instr = AInstructions::MSR; ir.operand2 = (instr >> 16) & 0xF; ir.shifter_operand = { Shifter_type::Immediate, ror32(instr & 0xFF, ((instr >> 8) & 0xF) * 2), (instr >> 8) & 0xF}; break;
@@ -173,7 +173,7 @@ void Decoder::Decode_Status_Register(IR_ARM& ir, u32 instr) {
 }
 
 void Decoder::Decode_Load_Store_W_UB(IR_ARM& ir, u32 instr) {
-	ir.type = InstructionType::Load_Store;
+	ir.type = AInstructionType::Load_Store;
 	switch ((instr >> 20) & 0b10111) {
 	case 0b00000: ir.instr = AInstructions::STR; break;
 	case 0b00001: ir.instr = AInstructions::LDR; break;
@@ -221,7 +221,7 @@ void Decoder::Decode_Load_Store_W_UB(IR_ARM& ir, u32 instr) {
 
 
 void Decoder::Decode_Load_Store_H_SB(IR_ARM& ir, u32 instr) {
-	ir.type = InstructionType::Load_Store;
+	ir.type = AInstructionType::Load_Store;
 	//LSH
 	switch ((getBit(instr, 20) << 2) | ((instr >> 5) & 0b11)) {
 	case 0b000: throw std::string("Not a valid str instruction should be SWP or multiply");;
@@ -248,7 +248,7 @@ void Decoder::Decode_Load_Store_H_SB(IR_ARM& ir, u32 instr) {
 }
 
 void Decoder::Decode_Load_Store_Multiple(IR_ARM& ir, u32 instr) {
-	ir.type = InstructionType::Load_Store_Multiple;
+	ir.type = AInstructionType::Load_Store_Multiple;
 
 	ir.operand1 = instr & 0xFFFF; //Regs list
 	ir.operand2 = (instr >> 16) & 0xF; //Rn
@@ -278,7 +278,7 @@ void Decoder::Decode_Load_Store_Multiple(IR_ARM& ir, u32 instr) {
 }
 
 void Decoder::Decode_Semaphore(IR_ARM& ir, u32 instr) {
-	ir.type = InstructionType::Semaphore;
+	ir.type = AInstructionType::Semaphore;
 	
 	if (getBit(instr, 22) == 0) ir.instr = AInstructions::SWP;
 	else ir.instr = AInstructions::SWPB;
@@ -289,13 +289,13 @@ void Decoder::Decode_Semaphore(IR_ARM& ir, u32 instr) {
 }
 
 void Decoder::Decode_Exception_Generating(IR_ARM& ir, u32 instr) {
-	ir.type = InstructionType::Exception_Generating;
+	ir.type = AInstructionType::Exception_Generating;
 	ir.instr = AInstructions::SWI;
 	ir.operand1 = instr & 0xFFFFFF;
 }
 
 void Decoder::Decode_Coprocessor(IR_ARM& ir, u32 instr) {
-	ir.type = InstructionType::Coprocessor;
+	ir.type = AInstructionType::Coprocessor;
 	
 	if (getBit(instr, 25) == 1) {
 		if (getBit(instr, 4) == 0) {

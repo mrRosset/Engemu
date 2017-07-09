@@ -43,7 +43,7 @@ public:
 	void loadRom(std::string rom_path) {
 		std::ifstream stream(rom_path, std::ios::binary);
 
-		if (!stream){
+		if (!stream) {
 			std::cerr << "Failed to open image file." << std::endl;
 			return;
 		}

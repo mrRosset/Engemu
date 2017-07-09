@@ -19,6 +19,7 @@ namespace Decoder {
 
 	//THUMB
 	void Decode(IR_Thumb& ir, u16 instr);
+	void Decode_Conditional_Branch(IR_Thumb& ir, u16 instr);
 	void Decode_Unconditionnal_Branch(IR_Thumb& ir, u16 instr);
 	void Decode_Branch_With_Exchange(IR_Thumb& ir, u16 instr);
 	void Decode_Add_Sub_reg_imm(IR_Thumb& ir, u16 instr);
@@ -28,4 +29,10 @@ namespace Decoder {
 	void Decode_Add_To_PC_SP(IR_Thumb& ir, u16 instr);
 	void Decode_Adjust_SP(IR_Thumb& ir, u16 instr);
 	void Decode_Special_Data_Processing(IR_Thumb& ir, u16 instr);
+	void Decoder_Load_Store_W_B_H_imm(IR_Thumb& ir, u16 instr);
+	void Decode_Load_Store_Reg_offset(IR_Thumb& ir, u16 instr);
+	void Decode_Load_PC(IR_Thumb& ir, u16 instr);
+	void Decode_Load_Store_SP(IR_Thumb& ir, u16 instr);
+	void Decode_Load_Store_Multiple(IR_Thumb& ir, u16 instr);
+	void Decode_Push_Pop(IR_Thumb& ir, u16 instr);
 }

@@ -94,7 +94,8 @@ std::string Disassembler::Disassemble(IR_ARM & ir) {
 	case AInstructions::STC: return "stc" + Disassemble_Cond(ir.cond);
 	case AInstructions::LDC: return "ldc" + Disassemble_Cond(ir.cond);
 	}
-	return std::string();
+
+	throw std::string("Could not disassemble ARM instruction");
 }
 
 std::string Disassembler::Disassemble_Reg(u32 reg) {

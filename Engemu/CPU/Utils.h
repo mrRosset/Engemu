@@ -98,6 +98,9 @@ inline bool OverflowFromSub(s32 a, s32 b, s32 c) {
 	return (a > 0 && b < 0 && r < 0) || (a < 0 && b > 0 && r > 0);
 }
 
+inline bool BorrowFromAdd(s32 a, s32 b) {
+	return a + b < 0;
+}
 inline bool BorrowFromSub(u32 a, u32 b) {
 	//To check
 	return b > a;
