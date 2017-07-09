@@ -146,6 +146,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CPU\CPU.cpp" />
+    <ClCompile Include="CPU\CPU_ARM.cpp" />
+    <ClCompile Include="CPU\CPU_Thumb.cpp" />
     <ClCompile Include="CPU\Decoder\Decoder_ARM.cpp" />
     <ClCompile Include="CPU\Decoder\Decoder_Thumb.cpp" />
     <ClCompile Include="CPU\Disassembler\Disassembler_ARM.cpp" />
