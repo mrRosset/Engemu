@@ -15,6 +15,11 @@
     <ClCompile Include="CPU\Disassembler\Disassembler_Thumb.cpp" />
     <ClCompile Include="CPU\CPU_Thumb.cpp" />
     <ClCompile Include="CPU\CPU_ARM.cpp" />
+    <ClCompile Include="imgui\imgui.cpp" />
+    <ClCompile Include="imgui\imgui_demo.cpp" />
+    <ClCompile Include="imgui\imgui_draw.cpp" />
+    <ClCompile Include="imgui\imgui_impl_glfw_gl3.cpp" />
+    <ClCompile Include="deps\gl3w.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CPU\Decoder\Decoder.h" />
@@ -30,5 +35,12 @@
     <ClInclude Include="E32Std.h" />
     <ClInclude Include="TRomImage.h" />
     <ClInclude Include="Loader\Utils.h" />
+    <ClInclude Include="imgui\imconfig.h" />
+    <ClInclude Include="imgui\imgui.h" />
+    <ClInclude Include="imgui\imgui_impl_glfw_gl3.h" />
+    <ClInclude Include="imgui\imgui_internal.h" />
+    <ClInclude Include="imgui\stb_rect_pack.h" />
+    <ClInclude Include="imgui\stb_textedit.h" />
+    <ClInclude Include="imgui\stb_truetype.h" />
   </ItemGroup>
 </Project>
