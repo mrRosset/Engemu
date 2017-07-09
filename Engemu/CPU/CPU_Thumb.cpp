@@ -208,7 +208,9 @@ void CPU::Load_Store(IR_Thumb& ir) {
 	//from here the Rd, Rn, ... don't correspond anymore
 
 	case TInstructions::LDR_pc: {
-		u32 address = (gprs[Regs::PC] & 0xFFFFFFFC) + (ir.operand1 * 4);
+		//While it's not specified, it seems from debugging that it should
+		//use pc+4 and not just pc
+		u32 address = (gprs[Regs::PC] & 0xFFFFFFFC) + 4 + (ir.operand1 * 4);
 		gprs[ir.operand2] = mem.read32(address);
 		break;
 	}
