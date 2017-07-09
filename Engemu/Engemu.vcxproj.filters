@@ -20,6 +20,8 @@
     <ClCompile Include="imgui\imgui_draw.cpp" />
     <ClCompile Include="imgui\imgui_impl_glfw_gl3.cpp" />
     <ClCompile Include="deps\gl3w.c" />
+    <ClCompile Include="Gui\Gui.cpp" />
+    <ClCompile Include="Gui\GuiMain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CPU\Decoder\Decoder.h" />
@@ -42,5 +44,8 @@
     <ClInclude Include="imgui\stb_rect_pack.h" />
     <ClInclude Include="imgui\stb_textedit.h" />
     <ClInclude Include="imgui\stb_truetype.h" />
+    <ClInclude Include="Gui\Gui.h" />
+    <ClInclude Include="Gui\MemoryEditor.h" />
+    <ClInclude Include="Gui\GuiMain.h" />
   </ItemGroup>
 </Project>

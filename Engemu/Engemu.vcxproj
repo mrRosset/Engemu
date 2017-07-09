@@ -157,6 +157,8 @@
     <ClCompile Include="CPU\Disassembler\Disassembler_Thumb.cpp" />
     <ClCompile Include="deps\gl3w.c" />
     <ClCompile Include="Engemu.cpp" />
+    <ClCompile Include="Gui\Gui.cpp" />
+    <ClCompile Include="Gui\GuiMain.cpp" />
     <ClCompile Include="imgui\imgui.cpp" />
     <ClCompile Include="imgui\imgui_demo.cpp" />
     <ClCompile Include="imgui\imgui_draw.cpp" />
@@ -175,6 +177,9 @@
     <ClInclude Include="CPU\Utils.h" />
     <ClInclude Include="E32Image.h" />
     <ClInclude Include="E32Std.h" />
+    <ClInclude Include="Gui\Gui.h" />
+    <ClInclude Include="Gui\GuiMain.h" />
+    <ClInclude Include="Gui\MemoryEditor.h" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui.h" />
     <ClInclude Include="imgui\imgui_impl_glfw_gl3.h" />

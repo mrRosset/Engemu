@@ -1,10 +1,22 @@
 #include <iostream>
+#include <chrono>
+#include <thread>
 #include "Common.h"
 #include "CPU/CPU.h"
 #include "E32Image.h"
 #include "Loader/E32ImageLoader.h"
 #include "CPU/Decoder/Decoder.h"
 #include "CPU/Disassembler/Disassembler.h"
+#include "Gui/Gui.h"
+#include "Gui/GuiMain.h"
+
+std::string extract_filename(const std::string& filepath)
+{
+	auto pos = filepath.rfind("\\");
+	if (pos == std::string::npos)
+		pos = -1;
+	return std::string(filepath.begin() + pos + 1, filepath.end());
+}
 
 int main(int argc, char* argv[])
 {
@@ -23,7 +35,32 @@ int main(int argc, char* argv[])
 	//TODO: find the correct place where the SP is initialized
 	cpu.gprs[Regs::SP] = 0x7FFF'FFFF; //start of the ram section
 
-	while (true) {
+
+	Gui* gui = new GuiMain(cpu, extract_filename(std::string(argv[1])));
+
+	const int FRAMES_PER_SECOND = 25;
+	const uint64_t SKIP_TICKS = 1000 / FRAMES_PER_SECOND;
+	auto clock = std::chrono::high_resolution_clock::now().time_since_epoch();
+	auto next_game_tick = std::chrono::duration_cast<std::chrono::milliseconds>(clock).count();
+	uint64_t sleep_time = 0;
+	bool running = true;
+
+	while (running) {
+		running = gui->render();
+
+		next_game_tick += SKIP_TICKS;
+
+		clock = std::chrono::high_resolution_clock::now().time_since_epoch();
+		auto tickCount = std::chrono::duration_cast<std::chrono::milliseconds>(clock).count();
+		sleep_time = next_game_tick - tickCount;
+
+		if (sleep_time > 0) {
+			std::this_thread::sleep_for(std::chrono::milliseconds(sleep_time));
+		}
+	}
+
+
+	/*while (true) {
 		for (int i = 0; i < 5; i++) {
 			if (cpu.cpsr.flag_T) {
 				u16 instr = cpu.mem.read16(cpu.gprs[Regs::PC] + i * 2);
@@ -62,7 +99,7 @@ int main(int argc, char* argv[])
 		std::cin.get();
 		system("cls");
 		cpu.Step();
-	}
+	}*/
 	
 	return 0;
 }
