@@ -6,6 +6,10 @@
 void Decoder::Decode(IR_ARM & ir, u32 instr) {
 	ir.cond = static_cast<Conditions>((instr >> 28) & 0b1111);
 	
+	if (ir.cond == Conditions::NV) {
+		throw std::string("undefined or unpredictable instrutions are not emulated");
+	}
+
 	unsigned bits28_25 = (instr >> 25) & 0b111;
 	switch (bits28_25) {
 	case 0b000:  // Data processing + Miscellaneous
