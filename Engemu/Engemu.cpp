@@ -53,7 +53,7 @@ int main(int argc, char* argv[])
 
 		std::cout << "\n\n";
 
-		for (int i = 0; i < 15; i++) {
+		for (int i = 0; i <= 15; i++) {
 			std::cout << Disassembler::Disassemble_Reg(i) << ": " << std::hex << cpu.gprs[i] << std::dec << std::endl;
 		}
 
