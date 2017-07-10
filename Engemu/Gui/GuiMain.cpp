@@ -196,7 +196,7 @@ void GuiMain::render_cpu() {
 	ImGui::BeginGroup();
 	ImGui::BeginChild("Registers", ImVec2(200, 300), true);
 
-	for (u8 i = 0; i < 0xF; i++)
+	for (u8 i = 0; i <= 0xF; i++)
 	{
 		ImGui::Text("%s: ", Disassembler::Disassemble_Reg(i).c_str());
 		ImGui::SameLine(38);
