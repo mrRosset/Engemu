@@ -97,7 +97,7 @@ void GuiMain::render_cpu() {
 	ImGui::Checkbox("Track PC", &track_pc);
 
 	ImGui::EndChild();
-	ImGui::BeginChild("Disassembly", ImVec2(592, 760), true);
+	ImGui::BeginChild("Disassembly", ImVec2(592, 600), true);
 
 	ImGui::Columns(4, "Disassembly");
 	ImGui::SetColumnOffset(1, 26);
@@ -145,11 +145,17 @@ void GuiMain::render_cpu() {
 
 		if (thumb)
 		{
-			ImGui::Text("%02X %02X", cpu.mem.read8(i + 1), cpu.mem.read8(i));
+			try {
+				ImGui::Text("%02X %02X", cpu.mem.read8(i + 1), cpu.mem.read8(i));
+			}
+			catch (...) {} // when in invalid memory space
 		}
 		else
 		{
-			ImGui::Text("%02X %02X %02X %02X", cpu.mem.read8(i + 3), cpu.mem.read8(i + 2), cpu.mem.read8(i + 1), cpu.mem.read8(i));
+			try {
+				ImGui::Text("%02X %02X %02X %02X", cpu.mem.read8(i + 3), cpu.mem.read8(i + 2), cpu.mem.read8(i + 1), cpu.mem.read8(i));
+			}
+			catch (...) {} // when in invalid memory space
 		}
 
 		ImGui::NextColumn();
