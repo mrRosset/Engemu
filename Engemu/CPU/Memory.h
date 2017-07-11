@@ -55,20 +55,12 @@ public:
 			std::cerr << "Rom dump is too big";
 		}
 
-		std::cout << length << std::endl;
 		stream.seekg(0, std::ios::beg);
 		
 		if (!stream.read((char*)rom.data(), length))
 		{
 			throw std::string("Error reading bytes from file");
 		}
-
-
-		/*for (u64 i = 0; i < length; i++)
-		{
-			rom[i] = stream.get();
-		}*/
-
 		stream.close();
 	}
 
