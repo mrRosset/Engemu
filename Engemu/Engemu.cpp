@@ -28,7 +28,7 @@ int main(int argc, char* argv[])
 	E32ImageLoader::parse(argv[1], image);
 	
 	CPU cpu;
-	//cpu.mem.loadRom(argv[3]);
+	cpu.mem.loadRom(argv[3]);
 	E32ImageLoader::load(image, cpu.mem, argv[2]);
 
 	cpu.gprs[Regs::PC] = image.header->code_base_address + image.header->entry_point_offset; // 0x50392D54 <- entry of Euser.dll;

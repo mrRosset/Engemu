@@ -42,21 +42,32 @@ public:
 	Memory() : user_data(0x2FFF'FFFF - 0x0040'0000), rom(0x57FF'FFFF - 0x5000'0000), ram(0x7FFF'FFFF - 0x6000'0000) {}
 
 	void loadRom(std::string rom_path) {
-		std::ifstream stream(rom_path, std::ios::binary);
+		std::ifstream stream(rom_path, std::ios::binary | std::ios::ate);
 
 		if (!stream) {
 			std::cerr << "Failed to open image file." << std::endl;
 			return;
 		}
 
-		stream.seekg(0, std::ios::end);
 		u64 length = stream.tellg();
-		stream.seekg(0, std::ios::beg);
 
-		for (u64 i = 0; i < length; i++)
+		if (length > rom.size()) {
+			std::cerr << "Rom dump is too big";
+		}
+
+		std::cout << length << std::endl;
+		stream.seekg(0, std::ios::beg);
+		
+		if (!stream.read((char*)rom.data(), length))
+		{
+			throw std::string("Error reading bytes from file");
+		}
+
+
+		/*for (u64 i = 0; i < length; i++)
 		{
 			rom[i] = stream.get();
-		}
+		}*/
 
 		stream.close();
 	}
