@@ -19,9 +19,11 @@ bool GuiMain::render() {
 		style.WindowTitleAlign.x = 0.5;
 
 		if (show_cpu_window) {
-			ImGui::SetNextWindowPos(ImVec2(10, 10), ImGuiSetCond_FirstUseEver);
-			//ImGui::SetNextWindowSize(ImVec2(390, 510), ImGuiSetCond_FirstUseEver);
-			ImGui::Begin("CPU", &show_cpu_window, ImGuiWindowFlags_AlwaysAutoResize);
+			ImGui::SetNextWindowPos(ImVec2(0, 0), ImGuiSetCond_Always);
+			ImGui::SetNextWindowSize(ImVec2(window_width, window_height), ImGuiSetCond_Always);
+			ImGui::Begin("CPU", &show_cpu_window, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize
+			);
+			ImGui::GetWindowHeight();
 			render_cpu();
 			ImGui::End();
 		}
@@ -97,7 +99,7 @@ void GuiMain::render_cpu() {
 	ImGui::Checkbox("Track PC", &track_pc);
 
 	ImGui::EndChild();
-	ImGui::BeginChild("Disassembly", ImVec2(592, 600), true);
+	ImGui::BeginChild("Disassembly", ImVec2(592, 720), true);
 
 	ImGui::Columns(4, "Disassembly");
 	ImGui::SetColumnOffset(1, 26);
@@ -165,7 +167,7 @@ void GuiMain::render_cpu() {
 
 			IR_Thumb ir;
 			ir.instr = TInstructions::SWI;
-			std::string text = "Unknow Instruction";
+			std::string text = "";
 			try {
 				Decoder::Decode(ir, cpu.mem.read16(i));
 				text = Disassembler::Disassemble(ir);
@@ -176,7 +178,7 @@ void GuiMain::render_cpu() {
 		{
 			IR_ARM ir;
 			ir.instr = AInstructions::SWI;
-			std::string text = "Unknow Instruction";
+			std::string text = "";
 			try {
 				Decoder::Decode(ir, cpu.mem.read32(i));
 				text = Disassembler::Disassemble(ir);

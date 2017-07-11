@@ -21,7 +21,11 @@ Gui::Gui(std::string additional_title) {
 #if __APPLE__
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
-	window = glfwCreateWindow(1280, 780, ("Engemu - " + additional_title).c_str(), NULL, NULL);
+
+	window_width = 815;
+	window_height = 780;
+
+	window = glfwCreateWindow(window_width, window_height, ("Engemu - " + additional_title).c_str(), NULL, NULL);
 	//center windows
 	const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 	int window_width, window_height;

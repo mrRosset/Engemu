@@ -11,16 +11,11 @@
 class Gui {
 protected:
 	GLFWwindow* window;
+	int window_width, window_height;
 	ImVec4 clear_color = ImColor(114, 144, 154);
 
 public:
 	Gui(std::string additional_title);
 	~Gui();
 	virtual bool render() = 0;
-	void imgui_print_hex(uint8_t u);
-	void imgui_print_hex(uint16_t u);
-	void imgui_print_hex(uint32_t u);
-	void imgui_print_hex(int32_t i);
-	void imgui_print_hex(int64_t i);
-
 };
