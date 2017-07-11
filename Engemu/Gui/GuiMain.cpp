@@ -17,12 +17,12 @@ bool GuiMain::render() {
 
 		ImGuiStyle& style = ImGui::GetStyle();
 		style.WindowTitleAlign.x = 0.5;
+		style.WindowRounding = 0.0;
 
 		if (show_cpu_window) {
 			ImGui::SetNextWindowPos(ImVec2(0, 0), ImGuiSetCond_Always);
 			ImGui::SetNextWindowSize(ImVec2(window_width, window_height), ImGuiSetCond_Always);
-			ImGui::Begin("CPU", &show_cpu_window, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize
-			);
+			ImGui::Begin("CPU", &show_cpu_window, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize);
 			ImGui::GetWindowHeight();
 			render_cpu();
 			ImGui::End();
