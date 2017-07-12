@@ -153,18 +153,16 @@ void GuiMain::render_cpu() {
 
 	for (s32 i = clipper.DisplayStart; i < clipper.DisplayEnd; i++)
 	{
-		s32 clipper_i = i;
-		i *= instruction_bytes;
-		i += offset;
+		u32 cur_address = i * instruction_bytes + offset;
 
 		screen_cursor = ImGui::GetCursorScreenPos();
 
-		if (ImGui::Selectable("", cpu.gprs[Regs::PC] == i, ImGuiSelectableFlags_SpanAllColumns | ImGuiSelectableFlags_AllowDoubleClick))
+		if (ImGui::Selectable("", cpu.gprs[Regs::PC] == cur_address, ImGuiSelectableFlags_SpanAllColumns | ImGuiSelectableFlags_AllowDoubleClick))
 		{
-			//emulator.cpu->breakpoint = i;
+			//emulator.cpu->breakpoint = cur_address;
 		}
 
-		/*if (emulator.cpu->breakpoint == i)
+		/*if (emulator.cpu->breakpoint == cur_address)
 		{
 			// We use custom rendering for drawing the breakpoint
 			draw_list->AddCircleFilled(ImVec2(screen_cursor.x + 6, screen_cursor.y + 7), 7, breakpoint_fill);
@@ -172,19 +170,19 @@ void GuiMain::render_cpu() {
 		}*/
 
 		ImGui::NextColumn();
-		ImGui::Text("0x%X", i); ImGui::NextColumn();
+		ImGui::Text("0x%X", cur_address); ImGui::NextColumn();
 
 		if (thumb)
 		{
 			try {
-				ImGui::Text("%02X %02X", cpu.mem.read8(i + 1), cpu.mem.read8(i));
+				ImGui::Text("%02X %02X", cpu.mem.read8(cur_address + 1), cpu.mem.read8(cur_address));
 			}
 			catch (...) {} // when in invalid memory space
 		}
 		else
 		{
 			try {
-				ImGui::Text("%02X %02X %02X %02X", cpu.mem.read8(i + 3), cpu.mem.read8(i + 2), cpu.mem.read8(i + 1), cpu.mem.read8(i));
+				ImGui::Text("%02X %02X %02X %02X", cpu.mem.read8(cur_address + 3), cpu.mem.read8(cur_address + 2), cpu.mem.read8(cur_address + 1), cpu.mem.read8(cur_address));
 			}
 			catch (...) {} // when in invalid memory space
 		}
@@ -198,7 +196,7 @@ void GuiMain::render_cpu() {
 			ir.instr = TInstructions::SWI;
 			std::string text = "";
 			try {
-				Decoder::Decode(ir, cpu.mem.read16(i));
+				Decoder::Decode(ir, cpu.mem.read16(cur_address));
 				text = Disassembler::Disassemble(ir);
 			} catch(...){}
 			ImGui::Text("%s", text.c_str());
@@ -209,7 +207,7 @@ void GuiMain::render_cpu() {
 			ir.instr = AInstructions::SWI;
 			std::string text = "";
 			try {
-				Decoder::Decode(ir, cpu.mem.read32(i));
+				Decoder::Decode(ir, cpu.mem.read32(cur_address));
 				text = Disassembler::Disassemble(ir);
 			}
 			catch (...) {}
@@ -218,7 +216,6 @@ void GuiMain::render_cpu() {
 
 		ImGui::NextColumn();
 
-		i = clipper_i;
 	}
 
 	clipper.End();
