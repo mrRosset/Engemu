@@ -60,7 +60,7 @@ void Decoder::Decode(IR_Thumb& ir, u16 instr){
 	case 0b1101: 
 		switch ((instr >> 8) & 0xF) {
 		case 0b1110: throw std::string("Undefined instruction"); break;
-		case 0b1111: throw std::string("Could not decode Thumb instruction"); break; //Software interrupts
+		case 0b1111: Decode_Exception_Generating(ir, instr); break;
 		default: Decode_Conditional_Branch(ir, instr); break;
 		}
 		return;
@@ -267,4 +267,10 @@ void Decoder::Decode_Push_Pop(IR_Thumb& ir, u16 instr) {
 	ir.instr = getBit(instr, 11) == 1 ? TInstructions::POP : TInstructions::PUSH;
 	ir.operand1 = instr & 0xFF; //reg_list
 	ir.operand2 = getBit(instr, 8); //R
+}
+
+void Decoder::Decode_Exception_Generating(IR_Thumb& ir, u16 instr) {
+	ir.type = TInstructionType::Exception_Generating;
+	ir.instr = TInstructions::SWI;
+	ir.operand1 = instr & 0xFF;
 }

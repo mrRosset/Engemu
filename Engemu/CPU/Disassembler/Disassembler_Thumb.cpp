@@ -82,6 +82,9 @@ std::string Disassembler::Disassemble(IR_Thumb& ir) {
 
 	case TInstructions::POP:  return "pop "  + Disassemble_Small_Reg_List(ir.operand1, false, !!ir.operand2);
 	case TInstructions::PUSH: return "push " + Disassemble_Small_Reg_List(ir.operand1, !!ir.operand2, false);
+
+	//Exception Generating Instructions
+	case TInstructions::SWI: return "swi #" + std::to_string(ir.operand1);
 	}
 
 	throw std::string("Could not disassemble Thumb instruction");
