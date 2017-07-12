@@ -23,7 +23,7 @@ Gui::Gui(std::string additional_title) {
 #endif
 
 	window_width = 815;
-	window_height = 835;
+	window_height = 830;
 
 	window = glfwCreateWindow(window_width, window_height, ("Engemu - " + additional_title).c_str(), NULL, NULL);
 	//center windows
