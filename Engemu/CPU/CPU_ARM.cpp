@@ -23,6 +23,11 @@ inline void CPU::Exception_Generating(IR_ARM& ir) {
 	case AInstructions::SWI:
 		if (swi_callback) {
 			swi_callback(ir.operand1);
+
+			//return after swi is done
+			//same as BX LR
+			cpsr.flag_T = !!(gprs[Regs::LR] & 0b1);
+			gprs[Regs::PC] = gprs[Regs::LR] & 0xFFFFFFFE;
 		}
 		else {
 			throw std::string("callback not set for swi");
