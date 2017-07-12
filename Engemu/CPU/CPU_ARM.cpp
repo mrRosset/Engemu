@@ -12,9 +12,22 @@ void CPU::Execute(IR_ARM& ir) {
 	case AInstructionType::Load_Store: Load_Store(ir); break;
 	case AInstructionType::Load_Store_Multiple: Load_Store_Multiple(ir); break;
 	case AInstructionType::Semaphore: throw std::string("Unimplemented opcode"); break;
-	case AInstructionType::Exception_Generating: throw std::string("Unimplemented opcode"); break;
+	case AInstructionType::Exception_Generating: Exception_Generating(ir); break;
 	case AInstructionType::Coprocessor: throw std::string("Unimplemented opcode"); break;
 	case AInstructionType::Extensions: throw std::string("Unimplemented opcode"); break;
+	}
+}
+
+inline void CPU::Exception_Generating(IR_ARM& ir) {
+	switch (ir.instr) {
+	case AInstructions::SWI:
+		if (swi_callback) {
+			swi_callback(ir.operand1);
+		}
+		else {
+			throw std::string("callback not set for swi");
+		}
+		break;
 	}
 }
 

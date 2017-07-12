@@ -56,6 +56,7 @@ public:
 
 	//ARM
 	void Execute(IR_ARM& ir);
+	void Exception_Generating(IR_ARM& ir);
 	void Load_Store_Multiple(IR_ARM& ir);
 	void Load_Store(IR_ARM& ir);
 	void Status_Register_Access(IR_ARM& ir);
@@ -90,4 +91,7 @@ public:
 	std::function<bool(u32)> fun_r_0 = [&](u32 r)->bool {return r == 0; };
 	std::function<bool(u32)> fun_r_C = [&](u32 r)->bool {return cpsr.flag_C; };
 	std::function<bool(u32)> fun_r_V = [&](u32 r)->bool {return cpsr.flag_V; };
+
+	//Callbacks
+	std::function<void(u32 number)> swi_callback = nullptr;
 };
