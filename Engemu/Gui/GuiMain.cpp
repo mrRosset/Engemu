@@ -136,7 +136,10 @@ void GuiMain::render_cpu() {
 	ImGui::Text("Instruction"); ImGui::NextColumn();
 	ImGui::Separator();
 
-	ImGuiListClipper clipper(0x1000000 / instruction_bytes, ImGui::GetTextLineHeight()); // Bytes are grouped by four (the alignment for instructions)
+	u32 number_instructions_displayed = 0x1000000;
+	u32 offset = (s32(cpu.gprs[Regs::PC]) - s32(number_instructions_displayed / 2)) < 0 ? 0 : cpu.gprs[Regs::PC] - (number_instructions_displayed / 2);
+
+	ImGuiListClipper clipper(number_instructions_displayed / instruction_bytes, ImGui::GetTextLineHeight()); // Bytes are grouped by four (the alignment for instructions)
 	//ImDrawList* draw_list = ImGui::GetWindowDrawList();
 	ImColor breakpoint_fill = ImColor(ImVec4(1.0f, 0.0f, 0.0f, 1.0f));
 	ImColor breakpoint_border = ImColor(ImVec4(1.0f, 1.0f, 1.0f, 1.0f));
@@ -145,13 +148,14 @@ void GuiMain::render_cpu() {
 	// Perform scrolling, if necessary
 	if (track_pc || scroll_to_pc)
 	{
-		ImGui::SetScrollFromPosY(((cpu.gprs[Regs::PC] / instruction_bytes) * ImGui::GetTextLineHeight()) - ImGui::GetScrollY(), 0.35f);
+		ImGui::SetScrollFromPosY((( (cpu.gprs[Regs::PC] - offset) / instruction_bytes) * ImGui::GetTextLineHeight()) - ImGui::GetScrollY(), 0.35f);
 	}
 
 	for (s32 i = clipper.DisplayStart; i < clipper.DisplayEnd; i++)
 	{
 		s32 clipper_i = i;
 		i *= instruction_bytes;
+		i += offset;
 
 		screen_cursor = ImGui::GetCursorScreenPos();
 
