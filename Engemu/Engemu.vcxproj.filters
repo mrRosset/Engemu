@@ -22,6 +22,7 @@
     <ClCompile Include="deps\gl3w.c" />
     <ClCompile Include="Gui\Gui.cpp" />
     <ClCompile Include="Gui\GuiMain.cpp" />
+    <ClCompile Include="HLE\Kernel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CPU\Decoder\Decoder.h" />
@@ -47,5 +48,6 @@
     <ClInclude Include="Gui\Gui.h" />
     <ClInclude Include="Gui\MemoryEditor.h" />
     <ClInclude Include="Gui\GuiMain.h" />
+    <ClInclude Include="HLE\Kernel.h" />
   </ItemGroup>
 </Project>

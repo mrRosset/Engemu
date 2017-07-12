@@ -9,6 +9,7 @@
 #include "CPU/Disassembler/Disassembler.h"
 #include "Gui/Gui.h"
 #include "Gui/GuiMain.h"
+#include "HLE/Kernel.h"
 
 std::string extract_filename(const std::string& filepath)
 {
@@ -30,6 +31,7 @@ int main(int argc, char* argv[])
 	CPU cpu;
 	cpu.mem.loadRom(argv[3]);
 	E32ImageLoader::load(image, cpu.mem, argv[2]);
+	cpu.swi_callback = [&](u32 number) {Kernel::Executive_Call(cpu, number); };
 
 	cpu.gprs[Regs::PC] = image.header->code_base_address + image.header->entry_point_offset; // 0x50392D54 <- entry of Euser.dll;
 	//TODO: find the correct place where the SP is initialized
