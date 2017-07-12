@@ -62,6 +62,31 @@ void GuiMain::render_cpu() {
 
 	bool display_disassembly = true;
 
+	ImGui::BeginChild("MemoryNav", ImVec2(800, 50), false);
+	ImDrawList* draw_list = ImGui::GetWindowDrawList();
+	ImGuiStyle& style = ImGui::GetStyle();
+	ImColor col = style.Colors[ImGuiCol_Border];
+	const ImVec2 p = ImGui::GetCursorScreenPos();
+	
+	draw_list->AddLine(ImVec2(p.x, p.y + 17), ImVec2(p.x + 800, p.y + 17), col, 1);
+	draw_list->AddLine(ImVec2(p.x, p.y + 10), ImVec2(p.x, p.y + 24), col, 1);
+	draw_list->AddLine(ImVec2(p.x + 799, p.y + 10), ImVec2(p.x + 799, p.y + 24), col, 1);
+
+	draw_list->AddText(ImVec2(p.x, p.y + 30), ImColor(255, 255, 255, 255), "0x0");
+	draw_list->AddText(ImVec2(p.x + 720, p.y + 30), ImColor(255, 255, 255, 255), "0xFFFF'FFFF");
+	
+	
+	//draw_list->AddLine(ImVec2(p.x + 150, p.y + 10), ImVec2(p.x + 150, p.y + 24), col, 1);
+	draw_list->AddLine(ImVec2(p.x + 250, p.y + 10), ImVec2(p.x + 250, p.y + 24), col, 1);
+	draw_list->AddLine(ImVec2(p.x + 275, p.y + 10), ImVec2(p.x + 275, p.y + 24), col, 1);
+	draw_list->AddText(ImVec2(p.x + 252, p.y - 3), ImColor(255, 255, 255, 255), "Rom");
+
+	float cursor_x = p.x + u64(cpu.gprs[Regs::PC]) / double(0xFFFF'FFFF) * 800.0;
+	float cursor_y = p.y + 19;
+	draw_list->AddTriangleFilled(ImVec2(cursor_x, cursor_y), ImVec2(cursor_x - 4, cursor_y + 7), ImVec2(cursor_x + 4, cursor_y + 7), ImColor(255, 255, 255, 255));
+
+	ImGui::EndChild();
+
 	ImGui::BeginChild("Controls", ImVec2(800, 35), true);
 
 	// Controls
@@ -112,7 +137,7 @@ void GuiMain::render_cpu() {
 	ImGui::Separator();
 
 	ImGuiListClipper clipper(0x1000000 / instruction_bytes, ImGui::GetTextLineHeight()); // Bytes are grouped by four (the alignment for instructions)
-	ImDrawList* draw_list = ImGui::GetWindowDrawList();
+	//ImDrawList* draw_list = ImGui::GetWindowDrawList();
 	ImColor breakpoint_fill = ImColor(ImVec4(1.0f, 0.0f, 0.0f, 1.0f));
 	ImColor breakpoint_border = ImColor(ImVec4(1.0f, 1.0f, 1.0f, 1.0f));
 	ImVec2 screen_cursor = ImGui::GetCursorScreenPos();
