@@ -4,7 +4,7 @@
 
 namespace utils {
 	u16 crc16_ccitt(u8(&values)[6]);
-	bool loadData(std::string path, std::vector<u8>& data);
+	bool loadData(std::string& path, std::vector<u8>& data);
 	void u8_from_32(u8 output[4], u32 value);
 
 	template <class T>

@@ -13,6 +13,6 @@ private:
 	void render_cpu();
 public:
 	CPU& cpu;
-	GuiMain(CPU& cpu, std::string additional_title);
+	GuiMain(CPU& cpu, std::string& additional_title);
 	bool render();
 };

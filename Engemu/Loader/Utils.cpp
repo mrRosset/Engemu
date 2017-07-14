@@ -28,7 +28,7 @@ u16 utils::crc16_ccitt(u8(&values)[6])
 	return result;
 }
 
-bool utils::loadData(std::string path, std::vector<u8>& data) {
+bool utils::loadData(std::string& path, std::vector<u8>& data) {
 
 	std::ifstream stream(path, std::ios::binary);
 

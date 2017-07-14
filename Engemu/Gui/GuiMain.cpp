@@ -7,7 +7,7 @@
 #include "../CPU/Decoder/IR.h"
 
 
-GuiMain::GuiMain(CPU & cpu_, std::string additional_title): Gui(additional_title), cpu(cpu_) {}
+GuiMain::GuiMain(CPU & cpu_, std::string& additional_title): Gui(additional_title), cpu(cpu_) {}
 
 bool GuiMain::render() {
 	if (!glfwWindowShouldClose(window))

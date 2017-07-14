@@ -41,7 +41,7 @@ public:
 
 	Memory() : user_data(0x2FFF'FFFF - 0x0040'0000), rom(0x57FF'FFFF - 0x5000'0000), ram(0x7FFF'FFFF - 0x6000'0000) {}
 
-	void loadRom(std::string rom_path) {
+	void loadRom(std::string& rom_path) {
 		std::ifstream stream(rom_path, std::ios::binary | std::ios::ate);
 
 		if (!stream) {

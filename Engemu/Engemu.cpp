@@ -26,11 +26,11 @@ int main(int argc, char* argv[])
 		return -1;
 	}
 	E32Image image;
-	E32ImageLoader::parse(argv[1], image);
+	E32ImageLoader::parse(std::string(argv[1]), image);
 	
 	CPU cpu;
-	cpu.mem.loadRom(argv[3]);
-	E32ImageLoader::load(image, cpu.mem, argv[2]);
+	cpu.mem.loadRom(std::string(argv[3]));
+	E32ImageLoader::load(image, cpu.mem, std::string(argv[2]));
 	cpu.swi_callback = [&](u32 number) {Kernel::Executive_Call(cpu, number); };
 
 	cpu.gprs[Regs::PC] = image.header->code_base_address + image.header->entry_point_offset; // 0x50392D54 <- entry of Euser.dll;

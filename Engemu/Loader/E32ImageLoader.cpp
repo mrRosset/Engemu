@@ -8,7 +8,7 @@
 #include "../E32Image.h"
 #include "../CPU/Memory.h"
 
-std::string locateLibrary(std::string lib_entry, std::string lib_folder_path) {
+std::string locateLibrary(std::string& lib_entry, std::string& lib_folder_path) {
 	if (lib_folder_path.back() != '\\' && lib_folder_path.back() != '/') {
 		lib_folder_path += "/";
 	}
@@ -18,7 +18,7 @@ std::string locateLibrary(std::string lib_entry, std::string lib_folder_path) {
 	return lib_folder_path + lib_entry;
 }
 
-void E32ImageLoader::load(E32Image& image, Memory& mem, std::string lib_folder_path) {
+void E32ImageLoader::load(E32Image& image, Memory& mem, std::string& lib_folder_path) {
 	
 	//Load code to it's prefered location
 	u32& code_base_address = image.header->code_base_address;
@@ -61,7 +61,7 @@ void E32ImageLoader::load(E32Image& image, Memory& mem, std::string lib_folder_p
 
 }
 
-bool E32ImageLoader::parse(std::string path, E32Image& image)
+bool E32ImageLoader::parse(std::string& path, E32Image& image)
 {
 	auto err = utils::loadData(path, image.data);
 	if (!err) {

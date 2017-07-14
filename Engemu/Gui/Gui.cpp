@@ -10,7 +10,7 @@ static void error_callback(int error, const char* description)
 	fprintf(stderr, "Error %d: %s\n", error, description);
 }
 
-Gui::Gui(std::string additional_title) {
+Gui::Gui(std::string& additional_title) {
 	// Setup window
 	glfwSetErrorCallback(error_callback);
 	if (!glfwInit()) {
