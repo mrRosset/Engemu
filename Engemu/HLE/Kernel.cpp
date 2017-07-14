@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "Kernel.h"
+#include "E32std.h"
 #include "../CPU/CPU.h"
 #include "../CPU/Decoder/IR.h"
 

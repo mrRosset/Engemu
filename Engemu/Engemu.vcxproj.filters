@@ -49,5 +49,6 @@
     <ClInclude Include="Gui\MemoryEditor.h" />
     <ClInclude Include="Gui\GuiMain.h" />
     <ClInclude Include="HLE\Kernel.h" />
+    <ClInclude Include="HLE\E32std.h" />
   </ItemGroup>
 </Project>

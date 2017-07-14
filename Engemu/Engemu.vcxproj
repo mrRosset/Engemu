@@ -181,6 +181,7 @@
     <ClInclude Include="Gui\Gui.h" />
     <ClInclude Include="Gui\GuiMain.h" />
     <ClInclude Include="Gui\MemoryEditor.h" />
+    <ClInclude Include="HLE\E32std.h" />
     <ClInclude Include="HLE\Kernel.h" />
     <ClInclude Include="imgui\imconfig.h" />
     <ClInclude Include="imgui\imgui.h" />
