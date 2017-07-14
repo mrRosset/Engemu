@@ -21,7 +21,7 @@ bool GuiMain::render() {
 
 		if (show_cpu_window) {
 			ImGui::SetNextWindowPos(ImVec2(0, 0), ImGuiSetCond_Always);
-			ImGui::SetNextWindowSize(ImVec2(window_width, window_height), ImGuiSetCond_Always);
+			ImGui::SetNextWindowSize(ImVec2((float)window_width, (float)window_height), ImGuiSetCond_Always);
 			ImGui::Begin("CPU", &show_cpu_window, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize);
 			ImGui::GetWindowHeight();
 			render_cpu();
@@ -81,7 +81,7 @@ void GuiMain::render_cpu() {
 	draw_list->AddLine(ImVec2(p.x + 275, p.y + 10), ImVec2(p.x + 275, p.y + 24), col, 1);
 	draw_list->AddText(ImVec2(p.x + 252, p.y - 3), ImColor(255, 255, 255, 255), "Rom");
 
-	float cursor_x = p.x + u64(cpu.gprs[Regs::PC]) / double(0xFFFF'FFFF) * 800.0;
+	float cursor_x = p.x + u64(cpu.gprs[Regs::PC]) / float(0xFFFF'FFFF) * 800.0f;
 	float cursor_y = p.y + 19;
 	draw_list->AddTriangleFilled(ImVec2(cursor_x, cursor_y), ImVec2(cursor_x - 4, cursor_y + 7), ImVec2(cursor_x + 4, cursor_y + 7), ImColor(255, 255, 255, 255));
 
