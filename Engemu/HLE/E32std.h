@@ -2,6 +2,8 @@
 
 #include "..\Common.h"
 
+
+//sizeof(RHeap) = 116
 struct RHeap {
 	/*00*/ u32 unknow_0;
 	/*01*/ u32 unknow_1;
@@ -17,25 +19,19 @@ struct RHeap {
 	/*11*/ u32 unknow_11;
 	/*12*/ u32 unknow_12;
 	/*13*/ u32 unknow_13;
-	/*14*/ u32 iTestCodeRunning; //test it's actual size seems weird
+	/*14*/ u32 iTestCodeRunning; //it's supposed to be a bool. does it take the whole 4 bytes or only 1 ?
 	/*15*/ s32 iTestNestingLevel;
 	/*16*/ s32 iTestNumAllocCells;
 	/*17*/ u32 iTestAddress;
-	/*18*/ u32 unknow_18;
-	/*19*/ u32 unknow_19;
-	/*20*/ u32 unknow_20;
-	/*21*/ u32 unknow_21;
-	/*22*/ u32 unknow_22;
-	/*23*/ u32 unknow_23;
-	/*24*/ u32 unknow_24;
-	/*25*/ u32 unknow_25;
-	/*26*/ u32 unknow_26;
-	/*27*/ u32 unknow_27;
-	/*28*/ u32 unknow_28;
-	/*29*/ u32 unknow_29;
-	/*30*/ u32 unknow_30;
-	/*31*/ u32 unknow_31;
-	/*32*/ u32 unknow_32;
-	/*33*/ u32 unknow_33;
-	//actual size unknow yet
+	/*18*/ u32 iTestSize;
+	/*19*/ u32 iTestAllocCount;
+	/*20*/ u32 unknow_20; //iNestingLevel
+	/*21*/ u32 unknow_21; //iAllocCount
+	/*22*/ u32 unknow_22; //iLevelNumAllocCells
+	/*23*/ u32 unknow_23; //iPtrDebugCell
+	/*24*/ u32 unknow_24; //iFailType
+	/*25*/ u32 unknow_25; //iFailRate
+	/*26*/ u32 unknow_26; //iFailed
+	/*27*/ u32 unknow_27; //iFailAllocCount
+	/*28*/ u32 unknow_28; //iRand
 };
