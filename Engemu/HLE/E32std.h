@@ -2,36 +2,45 @@
 
 #include "..\Common.h"
 
+/*
+TODO: Get a better grip of how vptr are layed down in memory
+Documentation:
+	https://stackoverflow.com/questions/1632600/memory-layout-c-objects#answer-27682344
+	https://www.openrce.org/articles/full_view/23
+*/
 
 //sizeof(RHeap) = 116
 struct RHeap {
-	/*00*/ u32 unknow_0;
-	/*01*/ u32 unknow_1;
-	/*02*/ u32 unknow_2;
-	/*03*/ u32 unknow_3;
-	/*04*/ u32 unknow_4;
-	/*05*/ u32 unknow_5;
-	/*06*/ u32 unknow_6;
-	/*07*/ u32 unknow_7;
-	/*08*/ u32 unknow_8;
-	/*09*/ u32 unknow_9;
-	/*10*/ u32 unknow_10;
-	/*11*/ u32 unknow_11;
-	/*12*/ u32 unknow_12;
-	/*13*/ u32 unknow_13;
-	/*14*/ u32 iTestCodeRunning; //it's supposed to be a bool. does it take the whole 4 bytes or only 1 ?
-	/*15*/ s32 iTestNestingLevel;
-	/*16*/ s32 iTestNumAllocCells;
-	/*17*/ u32 iTestAddress;
-	/*18*/ u32 iTestSize;
-	/*19*/ u32 iTestAllocCount;
-	/*20*/ u32 unknow_20; //iNestingLevel
-	/*21*/ u32 unknow_21; //iAllocCount
-	/*22*/ u32 unknow_22; //iLevelNumAllocCells
-	/*23*/ u32 unknow_23; //iPtrDebugCell
-	/*24*/ u32 unknow_24; //iFailType
-	/*25*/ u32 unknow_25; //iFailRate
-	/*26*/ u32 unknow_26; //iFailed
-	/*27*/ u32 unknow_27; //iFailAllocCount
-	/*28*/ u32 unknow_28; //iRand
+
+	//RHeapBase
+	/*00*/ u32 iMinLength;
+	/*04*/ u32 iMaxLength;
+	/*08*/ u32 iOffset;
+	/*12*/ u32 iGrowBy;
+	/*16*/ u32 iAccessCount;
+	/*20*/ u32 iType;
+	/*24*/ u32 iChunk;
+	/*28*/ u64 iLock;
+	/*36*/ u32 iBase;
+	/*40*/ u32 iTop;
+	/*44*/ u32 iFree_len;
+	/*48*/ u32 iFree_next;
+
+	/*52*/ u32 unknow; // <- ? vptr ? part of base or not ?
+
+	/*56*/ u32 iTestCodeRunning; //it's supposed to be a bool. does it take the whole 4 bytes or only 1 ?
+	/*60*/ s32 iTestNestingLevel;
+	/*64*/ s32 iTestNumAllocCells;
+	/*68*/ u32 iTestAddress;
+	/*72*/ u32 iTestSize;
+	/*76*/ u32 iTestAllocCount;
+	/*80*/ u32 iNestingLevel;
+	/*84*/ u32 iAllocCount;
+	/*88*/ u32 iLevelNumAllocCells;
+	/*92*/ u32 iPtrDebugCell;
+	/*96*/ u32 iFailType;
+	/*100*/ u32 iFailRate;
+	/*104*/ u32 iFailed;
+	/*108*/ u32 iFailAllocCount;
+	/*112*/ u32 iRand;
 };
