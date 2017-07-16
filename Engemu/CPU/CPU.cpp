@@ -14,6 +14,7 @@ CPU::CPU() : gprs{}, spsr{} {
 	cpsr.flag_N = cpsr.flag_Z = cpsr.flag_C = cpsr.flag_V = cpsr.flag_inter_I = cpsr.flag_inter_F = cpsr.flag_T = false;
 	cpsr.reserved = 0;
 	cpsr.mode = CpuMode::User;
+	step = false;
 }
 
 void CPU::Step() {

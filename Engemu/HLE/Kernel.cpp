@@ -1,10 +1,13 @@
 #include <string>
 #include <iostream>
+#include <chrono>
+#include <thread>
 
 #include "Kernel.h"
 #include "E32std.h"
 #include "../CPU/CPU.h"
 #include "../CPU/Decoder/IR.h"
+
 
 typedef u32 vir_add;
 
@@ -33,14 +36,17 @@ void Kernel::Executive_Call(u32 number, CPU& cpu, Gui* gui) {
 		cpu.gprs[Regs::LR] = 0;
 
 		while (cpu.gprs[Regs::PC] != 0) {
-			//gui->render();
 			cpu.Step();
+			gui->render();
+			std::this_thread::sleep_for(std::chrono::milliseconds(40));
 		}
 
-		//restore all registers
-		for (int i = 0; i < 16; i++) {
+		//restore all registers except return value in r0
+		for (int i = 1; i < 16; i++) {
 			cpu.gprs[i] = saved_gprs[i];
 		}
+
+		gui->render();
 
 		break;
 	default:

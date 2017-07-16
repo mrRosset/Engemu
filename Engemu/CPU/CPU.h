@@ -50,6 +50,8 @@ public:
 	PSR spsr;
 	Memory mem;
 
+	bool step;
+
 	CPU();
 	void Step();
 	bool Check_Condition(Conditions& cond);

@@ -49,6 +49,11 @@ int main(int argc, char* argv[])
 
 	while (running) {
 		running = gui->render();
+		
+		if(cpu.step) {
+			cpu.Step();
+			cpu.step = false;
+		}
 
 		next_game_tick += SKIP_TICKS;
 

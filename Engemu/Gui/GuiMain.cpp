@@ -106,7 +106,7 @@ void GuiMain::render_cpu() {
 
 	if (ImGui::Button("Step"))
 	{
-		cpu.Step();
+		cpu.step = true;
 	}
 
 	ImGui::SameLine();
