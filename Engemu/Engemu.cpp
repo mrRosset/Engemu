@@ -31,14 +31,14 @@ int main(int argc, char* argv[])
 	CPU cpu;
 	cpu.mem.loadRom(std::string(argv[3]));
 	E32ImageLoader::load(image, cpu.mem, std::string(argv[2]));
-	cpu.swi_callback = [&](u32 number) {Kernel::Executive_Call(cpu, number); };
 
 	cpu.gprs[Regs::PC] = image.header->code_base_address + image.header->entry_point_offset; // 0x50392D54 <- entry of Euser.dll;
 	//TODO: find the correct place where the SP is initialized
 	cpu.gprs[Regs::SP] = 0x7FFF'FFFF; //start of the ram section
-
-
+	
 	Gui* gui = new GuiMain(cpu, extract_filename(std::string(argv[1])));
+
+	cpu.swi_callback = [&](u32 number) {Kernel::Executive_Call(number, cpu, gui); };
 
 	const int FRAMES_PER_SECOND = 25;
 	const uint64_t SKIP_TICKS = 1000 / FRAMES_PER_SECOND;

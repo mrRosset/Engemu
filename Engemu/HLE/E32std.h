@@ -10,6 +10,7 @@ Documentation:
 */
 
 //sizeof(RHeap) = 116
+#pragma pack(1)
 struct RHeap {
 
 	//RHeapBase
@@ -44,3 +45,4 @@ struct RHeap {
 	/*108*/ u32 iFailAllocCount;
 	/*112*/ u32 iRand;
 };
+#pragma pack(pop)

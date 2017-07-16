@@ -38,8 +38,11 @@ public:
 	std::vector<u8> user_data;
 	std::vector<u8> rom;
 	std::vector<u8> ram;
+	u32 ram_cursor;
 
-	Memory() : user_data(0x2FFF'FFFF - 0x0040'0000), rom(0x57FF'FFFF - 0x5000'0000), ram(0x7FFF'FFFF - 0x6000'0000) {}
+	Memory() : user_data(0x2FFF'FFFF - 0x0040'0000), rom(0x57FF'FFFF - 0x5000'0000), ram(0x7FFF'FFFF - 0x6000'0000) {
+		ram_cursor = 0;
+	}
 
 	void loadRom(std::string& rom_path) {
 		std::ifstream stream(rom_path, std::ios::binary | std::ios::ate);
@@ -64,6 +67,11 @@ public:
 		stream.close();
 	}
 
+	u32 allocateRam(u32 size) {
+		//TODO: is it an increasing or decreasing heap ?
+		ram_cursor += size;
+		return 0x6000'0000 + ram_cursor;
+	}
 
 	inline u8 read8(u32 address)
 	{
