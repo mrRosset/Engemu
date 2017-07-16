@@ -93,6 +93,14 @@ def demangle_name(mangled):
 	if len(mangled) == 0:
 		return mangled
 	elif mangled[0] == '.':
+		#destructors
+		const = ""
+		rest = mangled[2:len(mangled)]
+		if(rest[0] == "C"):
+			rest = rest[1:len(rest)]
+			const = "const"
+		namespace, args = number_extract(rest)
+		return namespace + "::~" +  namespace + "(void)" + const
 		return mangled #todo undertand this case
 	elif mangled[0] == '_':
 		#constructors
@@ -105,8 +113,7 @@ def demangle_name(mangled):
 		return namespace + "::" +  namespace + demangle_args(args) + const
 	else:
 		if "__" not in mangled:
-			print("unknow mangled symbol format:", mangled)
-			sys.exit(-1)
+			return mangled
 		else:
 			const = ""
 			fname, rest = mangled.split("__")
@@ -168,3 +175,5 @@ print(demangle_name("Pow10__4MathRdi"))
 print(demangle_name("Pow__4MathRdRCdT2"))
 print(demangle_name("_5RHeapRC6RChunkiiii"))
 print(demangle_name("_5RHeapi"))
+print(demangle_name("._5RHeap"))
+print(demangle_name("._10CCirBuffer"))
