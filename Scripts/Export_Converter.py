@@ -57,7 +57,7 @@ def demangle_arg(buf):
 			print("unknow template format for demangling")
 			sys.exit(-1)
 
-	return ("unsigned " if isUnsigned else "") + arg + (("<" + demangle_arg(buf) + ">") if hasTemplate else "" ) + (" *" if isPointer else "") + (" &" if isReference else "") + (" const" if isConst else "")
+	return ("unsigned " if isUnsigned else "") + arg + (("<" + demangle_arg(buf) + ">") if hasTemplate else "" ) + (" *" if isPointer else "") + (" const" if isConst else "") + (" &" if isReference else "") 
 
 def demangle_args(mangled_args):
 	buf = Buffer(mangled_args)
@@ -95,7 +95,14 @@ def demangle_name(mangled):
 	elif mangled[0] == '.':
 		return mangled #todo undertand this case
 	elif mangled[0] == '_':
-		return mangled #todo constructor
+		#constructors
+		const = ""
+		rest = mangled[1:len(mangled)]
+		if(rest[0] == "C"):
+			rest = rest[1:len(rest)]
+			const = "const"
+		namespace, args = number_extract(rest)
+		return namespace + "::" +  namespace + demangle_args(args) + const
 	else:
 		if "__" not in mangled:
 			print("unknow mangled symbol format:", mangled)
@@ -159,3 +166,5 @@ print(demangle_name("Print__6RDebugGt11TRefByValue1ZC7TDesC16e"))
 print(demangle_name("AppendFormat__6TDes16Gt11TRefByValue1ZC7TDesC16P14TDes16Overflowe"))
 print(demangle_name("Pow10__4MathRdi"))
 print(demangle_name("Pow__4MathRdRCdT2"))
+print(demangle_name("_5RHeapRC6RChunkiiii"))
+print(demangle_name("_5RHeapi"))
