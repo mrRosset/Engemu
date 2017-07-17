@@ -144,12 +144,15 @@ def demangle_name(mangled):
 		if rest[0] == "C":
 			rest = rest[1:len(rest)]
 			const = "const"
-		elif rest[0] == 't':
+		
+		if rest[0] == 't':
+			#constructor
 			rest = rest[1:len(rest)]
 			namespace, args = number_extract(rest)
 			args = args[2:len(args)]
 			return namespace + "::" +  namespace + demangle_args(args) + const
 		else:
+			#destructor
 			namespace, args = number_extract(rest)
 			return namespace + "::~" +  namespace + "()" + const
 	elif mangled[0] == '_' and mangled[1].isnumeric():
