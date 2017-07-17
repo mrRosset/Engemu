@@ -106,13 +106,23 @@ def demangle_args(mangled_args):
 	args = []
 	while len(buf) > 0:
 		args.append(demangle_arg(buf))
-		if len(buf) > 1 and buf.peek(1) == 'T':
+		if len(buf) >= 3 and (buf.peek(3) == "N22" or buf.peek(3) == "N21"):
+			buf.get(3)
+			args.append(args[-1])
+			args.append(args[-1])
+
+		elif len(buf) > 1 and buf.peek(1) == 'T':
 			buf.get(1)
-			repetition_num = get_num(buf)
-			repetition_num -= 1
-			while repetition_num > 0:
-				args.append(args[-1])
-				repetition_num -= 1
+			repetition_num = buf.get(1)
+			if repetition_num != '1' and repetition_num != '2':
+				print("Unkonw T repetition number:", repetition_num)
+				sys.exit(-1)
+			args.append(args[-1])
+			# repetition_num = get_num(buf)
+			# repetition_num -= 1
+			# while repetition_num > 0:
+			# 	args.append(args[-1])
+			# 	repetition_num -= 1
 
 		elif len(buf) == 1 and buf.peek(1) == 'e':
 			buf.get(1)
@@ -246,3 +256,7 @@ for ordinal in exports:
 # print(demangle_name("IsPresent__C8TUidTypeG4TUid"))
 # print(demangle_name("._t13CArrayFixFlat1Zi"))
 # print(demangle_name("._t13CArrayFixFlat1Z4TUidi"))
+# print(demangle_name("Create__8RProcessRC7TDesC16T110TOwnerType"))
+# print(demangle_name("LoadLibrary__7RLoaderRiRC7TDesC16N22RC8TUidType"))
+# print(demangle_name("_8TUidTypeG4TUidN21"))
+
