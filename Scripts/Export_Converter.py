@@ -18,26 +18,29 @@ def get_num(buf):
 
 def demangle_arg(buf):
 	#print("debug", buf)
-	isPointer = False
-	isReference = False
-	isUnsigned = False
-	isConst = False
 	isFunction = False
 	hasTemplate = False
 	hasNamespace = False
 	arg = ""
+	pointers = []
+	references = []
+	unsigneds = []
+	signeds = []
+	consts = []
 	template = ""
 
 	while arg == "":
 		letter = buf.get(1)
 		if letter == 'P':
-			isPointer = True
+			pointers.append('*')
 		elif letter == 'R':
-			isReference = True
+			references.append('&')
+		elif letter == 'S':
+			unsigneds.append("signed")
 		elif letter == 'U':
-			isUnsigned = True
+			unsigneds.append("unsigned")
 		elif letter == 'C':
-			isConst = True
+			consts.append("const")
 		elif letter == "F":
 			isFunction = True
 			arg = "(*)"
@@ -90,7 +93,7 @@ def demangle_arg(buf):
 		arg = buf.get(get_num(buf)) + "::" + buf.get(get_num(buf))
 
 	if isFunction and '_' in buf.peek(len(buf)):
-		isPointer = False
+		pointers = []
 		function_args = []
 		m_function_args, rest = buf.peek(len(buf)).split('_')
 		m_function_args = Buffer(m_function_args)
@@ -99,7 +102,13 @@ def demangle_arg(buf):
 			function_args.append(demangle_arg(m_function_args))
 		arg = demangle_arg(buf) + ' (*)(' + ', '.join(function_args) + ')'
 
-	return ("unsigned " if isUnsigned else "") + arg + (("<" + template  + ">") if hasTemplate else "" ) + (" const" if isConst else "") + (" *" if isPointer else "") + (" &" if isReference else "") 
+	return \
+	' '.join(signeds) + (' ' if len(signeds) > 0 else '') + \
+	' '.join(unsigneds) + (' ' if len(unsigneds) > 0 else '') + \
+	arg + (("<" + template  + ">") if hasTemplate else "" ) + \
+	(' ' if len(consts) > 0 else '')  + ' '.join(consts) + \
+	(' ' if len(pointers) > 0 else '') + ''.join(pointers) + \
+	(' ' if len(references) > 0 else '') + ''.join(references)  
 
 def demangle_args(mangled_args):
 	buf = Buffer(mangled_args)
@@ -228,35 +237,35 @@ for ordinal in exports:
 		sys.exit(-1)
 	address = exports[ordinal]
 	name = idt[ordinal]
-	print(name)
-	print(address + ": " + demangle_name(name))
+	# print(name)
+	# print(address + ": " + demangle_name(name))
 
 
 #tests
-# print(demangle_name("PageSizeInBytes__7UserHalRi"))
-# print(demangle_name("newL__5CBaseUi"))
-# print(demangle_name("BinarySearchUnsigned__C17RPointerArrayBasePUiRi"))
-# print(demangle_name("CalibrationPoints__7UserHalR21TDigitizerCalibration"))
-# print(demangle_name("BuildVarArrayL__13CArrayPakBaseRPt13CArrayVarFlat1Zv"))
-# print(demangle_name("Print__6RDebugGt11TRefByValue1ZC7TDesC16e"))
-# print(demangle_name("AppendFormat__6TDes16Gt11TRefByValue1ZC7TDesC16P14TDes16Overflowe"))
-# print(demangle_name("Pow10__4MathRdi"))
-# print(demangle_name("Pow__4MathRdRCdT2"))
-# print(demangle_name("_5RHeapRC6RChunkiiii"))
-# print(demangle_name("_5RHeapi"))
-# print(demangle_name("._5RHeap"))
-# print(demangle_name("._10CCirBuffer"))
-# print(demangle_name("_DbgMarkEnd__4UserQ25RHeap12TDbgHeapTypei"))
-# print(demangle_name("PanicTFixedArray__Fv"))
-# print(demangle_name("DummyEuser_1659__Fv"))
-# print(demangle_name("Next__10TFindMutexRt4TBuf1i256"))
-# print(demangle_name("StringLength__4UserPCUs"))
-# print(demangle_name("SetExceptionHandler__7RThreadPF8TExcType_vUl"))
-# print(demangle_name("Find__C10RArrayBasePCvPFPCvPCv_i"))
-# print(demangle_name("IsPresent__C8TUidTypeG4TUid"))
-# print(demangle_name("._t13CArrayFixFlat1Zi"))
-# print(demangle_name("._t13CArrayFixFlat1Z4TUidi"))
-# print(demangle_name("Create__8RProcessRC7TDesC16T110TOwnerType"))
-# print(demangle_name("LoadLibrary__7RLoaderRiRC7TDesC16N22RC8TUidType"))
-# print(demangle_name("_8TUidTypeG4TUidN21"))
-
+print(demangle_name("PageSizeInBytes__7UserHalRi"))
+print(demangle_name("newL__5CBaseUi"))
+print(demangle_name("BinarySearchUnsigned__C17RPointerArrayBasePUiRi"))
+print(demangle_name("CalibrationPoints__7UserHalR21TDigitizerCalibration"))
+print(demangle_name("BuildVarArrayL__13CArrayPakBaseRPt13CArrayVarFlat1Zv"))
+print(demangle_name("Print__6RDebugGt11TRefByValue1ZC7TDesC16e"))
+print(demangle_name("AppendFormat__6TDes16Gt11TRefByValue1ZC7TDesC16P14TDes16Overflowe"))
+print(demangle_name("Pow10__4MathRdi"))
+print(demangle_name("Pow__4MathRdRCdT2"))
+print(demangle_name("_5RHeapRC6RChunkiiii"))
+print(demangle_name("_5RHeapi"))
+print(demangle_name("._5RHeap"))
+print(demangle_name("._10CCirBuffer"))
+print(demangle_name("_DbgMarkEnd__4UserQ25RHeap12TDbgHeapTypei"))
+print(demangle_name("PanicTFixedArray__Fv"))
+print(demangle_name("DummyEuser_1659__Fv"))
+print(demangle_name("Next__10TFindMutexRt4TBuf1i256"))
+print(demangle_name("StringLength__4UserPCUs"))
+print(demangle_name("SetExceptionHandler__7RThreadPF8TExcType_vUl"))
+print(demangle_name("Find__C10RArrayBasePCvPFPCvPCv_i"))
+print(demangle_name("IsPresent__C8TUidTypeG4TUid"))
+print(demangle_name("._t13CArrayFixFlat1Zi"))
+print(demangle_name("._t13CArrayFixFlat1Z4TUidi"))
+print(demangle_name("Create__8RProcessRC7TDesC16T110TOwnerType"))
+print(demangle_name("LoadLibrary__7RLoaderRiRC7TDesC16N22RC8TUidType"))
+print(demangle_name("_8TUidTypeG4TUidN21"))
+print(demangle_name("FormatList__6TDes16RC7TDesC16PPSc"))
