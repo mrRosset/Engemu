@@ -148,7 +148,7 @@ def demangle_name(mangled):
 			rest = rest[1:len(rest)]
 			namespace, args = number_extract(rest)
 			args = args[2:len(args)]
-			return namespace + "::~" +  namespace + demangle_args(args) + const
+			return namespace + "::" +  namespace + demangle_args(args) + const
 		else:
 			namespace, args = number_extract(rest)
 			return namespace + "::~" +  namespace + "()" + const
