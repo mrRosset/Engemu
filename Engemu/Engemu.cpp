@@ -19,25 +19,19 @@ std::string extract_filename(const std::string& filepath)
 	return std::string(filepath.begin() + pos + 1, filepath.end());
 }
 
-int main(int argc, char* argv[])
-{
-	if (argc < 4) {
-		std::cout << "Error missing E32Image or library folder path or rom file" << std::endl;
-		return -1;
-	}
+void emulate(std::string& app_path, std::string& lib_folder_path, std::string& rom_path) {
 	E32Image image;
-	E32ImageLoader::parse(std::string(argv[1]), image);
-	
+	E32ImageLoader::parse(app_path, image);
+
 	CPU cpu;
-	cpu.mem.loadRom(std::string(argv[3]));
-	E32ImageLoader::load(image, cpu.mem, std::string(argv[2]));
+	cpu.mem.loadRom(rom_path);
+	E32ImageLoader::load(image, cpu.mem, lib_folder_path);
 
 	cpu.gprs[Regs::PC] = image.header->code_base_address + image.header->entry_point_offset; // 0x50392D54 <- entry of Euser.dll;
-	//TODO: find the correct place where the SP is initialized
+																							 //TODO: find the correct place where the SP is initialized
 	cpu.gprs[Regs::SP] = 0x7FFF'FFFF; //start of the ram section
-	
-	Gui* gui = new GuiMain(cpu, extract_filename(std::string(argv[1])));
 
+	Gui* gui = new GuiMain(cpu, extract_filename(app_path));
 	cpu.swi_callback = [&](u32 number) {Kernel::Executive_Call(number, cpu, gui); };
 
 	const int FRAMES_PER_SECOND = 25;
@@ -49,7 +43,7 @@ int main(int argc, char* argv[])
 
 	while (running) {
 		running = gui->render();
-		
+
 		switch (cpu.state) {
 
 		case CPU::State::Step:
@@ -72,7 +66,24 @@ int main(int argc, char* argv[])
 			std::this_thread::sleep_for(std::chrono::milliseconds(sleep_time));
 		}
 	}
-	
+
+}
+
+int main(int argc, char* argv[])
+{
+	if (argc < 4) {
+		std::cout << "Error missing E32Image or library folder path or rom file" << std::endl;
+		return -1;
+	}
+
+	try {
+		emulate(std::string(argv[1]), std::string(argv[2]), std::string(argv[3]));
+	}
+	catch (std::string error_message){
+		std::cout << "Uncatched exception:\n" << error_message << std::endl;
+		std::cin.get();
+	}
+
 	return 0;
 }
 
