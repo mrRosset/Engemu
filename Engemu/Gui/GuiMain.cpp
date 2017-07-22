@@ -92,14 +92,14 @@ void GuiMain::render_cpu() {
 	// Controls
 	if (ImGui::Button("Run"))
 	{
-		//emulator.emulating = true;
+		cpu.state = CPU::State::Running;
 	}
 
 	ImGui::SameLine();
 
 	if (ImGui::Button("Pause"))
 	{
-		//emulator.emulating = false;
+		cpu.state = CPU::State::Stopped;
 	}
 
 	ImGui::SameLine();
