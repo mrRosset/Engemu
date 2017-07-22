@@ -50,9 +50,16 @@ int main(int argc, char* argv[])
 	while (running) {
 		running = gui->render();
 		
-		if(cpu.step) {
+		switch (cpu.state) {
+
+		case CPU::State::Step:
 			cpu.Step();
-			cpu.step = false;
+			cpu.state = CPU::State::Stopped;
+			break;
+
+		case CPU::State::Running:
+			cpu.Step();
+			break;
 		}
 
 		next_game_tick += SKIP_TICKS;

@@ -35,6 +35,9 @@ enum class Conditions : u8;
 
 class CPU {
 public:
+
+	enum class State { Stopped, Running, Step };
+	
 	//TODO: Take care of registers when in mode switch.
 
 	/*
@@ -50,7 +53,7 @@ public:
 	PSR spsr;
 	Memory mem;
 
-	bool step;
+	State state;
 
 	CPU();
 	void Step();
