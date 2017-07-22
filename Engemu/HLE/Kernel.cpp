@@ -8,6 +8,10 @@
 #include "../CPU/CPU.h"
 #include "../CPU/Decoder/IR.h"
 
+namespace Kernel {
+	vir_add RHeap_ptr = 0;
+}
+
 void Kernel::Executive_Call(u32 number, CPU& cpu, Gui* gui) {
 
 	switch (number) {	
