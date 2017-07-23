@@ -71,22 +71,48 @@ void GuiMain::render_cpu() {
 	bool thumb = cpu.cpsr.flag_T;
 	u8 instruction_bytes = thumb ? 2 : 4;
 
-	bool display_disassembly = true;
-
 	ImGui::BeginChild("MemoryNav", ImVec2(800, 50), false);
+	render_memoryNav();
+	ImGui::EndChild();
+
+	ImGui::BeginChild("Controls", ImVec2(800, 35), true);
+	bool scroll_to_pc = render_controls();
+	ImGui::EndChild();
+
+	ImGui::BeginChild("Disassembly", ImVec2(592, 720), true);
+	render_disassembly(scroll_to_pc);
+	ImGui::EndChild();
+
+	ImGui::SameLine();
+
+	ImGui::BeginGroup();
+	
+	ImGui::BeginChild("Registers", ImVec2(200, 300), true);
+	render_registers();
+	ImGui::EndChild();
+
+	ImGui::BeginChild("Stack", ImVec2(200, 200), true);
+	render_stack();
+	ImGui::EndChild();
+
+	ImGui::EndGroup();
+}
+
+void GuiMain::render_memoryNav() {
+
 	ImDrawList* draw_list = ImGui::GetWindowDrawList();
 	ImGuiStyle& style = ImGui::GetStyle();
 	ImColor col = style.Colors[ImGuiCol_Border];
 	const ImVec2 p = ImGui::GetCursorScreenPos();
-	
+
 	draw_list->AddLine(ImVec2(p.x, p.y + 17), ImVec2(p.x + 800, p.y + 17), col, 1);
 	draw_list->AddLine(ImVec2(p.x, p.y + 10), ImVec2(p.x, p.y + 24), col, 1);
 	draw_list->AddLine(ImVec2(p.x + 799, p.y + 10), ImVec2(p.x + 799, p.y + 24), col, 1);
 
 	draw_list->AddText(ImVec2(p.x, p.y + 30), ImColor(255, 255, 255, 255), "0x0");
 	draw_list->AddText(ImVec2(p.x + 720, p.y + 30), ImColor(255, 255, 255, 255), "0xFFFF'FFFF");
-	
-	
+
+
 	//draw_list->AddLine(ImVec2(p.x + 150, p.y + 10), ImVec2(p.x + 150, p.y + 24), col, 1);
 	draw_list->AddLine(ImVec2(p.x + 250, p.y + 10), ImVec2(p.x + 250, p.y + 24), col, 1);
 	draw_list->AddLine(ImVec2(p.x + 275, p.y + 10), ImVec2(p.x + 275, p.y + 24), col, 1);
@@ -95,12 +121,9 @@ void GuiMain::render_cpu() {
 	float cursor_x = p.x + u64(cpu.gprs[Regs::PC]) / float(0xFFFF'FFFF) * 800.0f;
 	float cursor_y = p.y + 19;
 	draw_list->AddTriangleFilled(ImVec2(cursor_x, cursor_y), ImVec2(cursor_x - 4, cursor_y + 7), ImVec2(cursor_x + 4, cursor_y + 7), ImColor(255, 255, 255, 255));
+}
 
-	ImGui::EndChild();
-
-	ImGui::BeginChild("Controls", ImVec2(800, 35), true);
-
-	// Controls
+bool GuiMain::render_controls() {
 	if (ImGui::Button("Run"))
 	{
 		cpu.state = CPU::State::Running;
@@ -133,9 +156,12 @@ void GuiMain::render_cpu() {
 	ImGui::SameLine();
 
 	ImGui::Checkbox("Track PC", &track_pc);
+	return scroll_to_pc;
+}
 
-	ImGui::EndChild();
-	ImGui::BeginChild("Disassembly", ImVec2(592, 720), true);
+void GuiMain::render_disassembly(bool scroll_to_pc) {
+	bool thumb = cpu.cpsr.flag_T;
+	u8 instruction_bytes = thumb ? 2 : 4;
 
 	ImGui::Columns(4, "Disassembly");
 	ImGui::SetColumnOffset(1, 26);
@@ -151,7 +177,7 @@ void GuiMain::render_cpu() {
 	u32 offset = (s32(cpu.gprs[Regs::PC]) - s32(number_instructions_displayed / 2)) < 0 ? 0 : cpu.gprs[Regs::PC] - (number_instructions_displayed / 2);
 
 	ImGuiListClipper clipper(number_instructions_displayed / instruction_bytes, ImGui::GetTextLineHeight()); // Bytes are grouped by four (the alignment for instructions)
-	//ImDrawList* draw_list = ImGui::GetWindowDrawList();
+																											 //ImDrawList* draw_list = ImGui::GetWindowDrawList();
 	ImColor breakpoint_fill = ImColor(ImVec4(1.0f, 0.0f, 0.0f, 1.0f));
 	ImColor breakpoint_border = ImColor(ImVec4(1.0f, 1.0f, 1.0f, 1.0f));
 	ImVec2 screen_cursor = ImGui::GetCursorScreenPos();
@@ -159,7 +185,7 @@ void GuiMain::render_cpu() {
 	// Perform scrolling, if necessary
 	if (track_pc || scroll_to_pc)
 	{
-		ImGui::SetScrollFromPosY((( (cpu.gprs[Regs::PC] - offset) / instruction_bytes) * ImGui::GetTextLineHeight()) - ImGui::GetScrollY(), 0.35f);
+		ImGui::SetScrollFromPosY((((cpu.gprs[Regs::PC] - offset) / instruction_bytes) * ImGui::GetTextLineHeight()) - ImGui::GetScrollY(), 0.35f);
 	}
 
 	for (s32 i = clipper.DisplayStart; i < clipper.DisplayEnd; i++)
@@ -175,9 +201,9 @@ void GuiMain::render_cpu() {
 
 		/*if (emulator.cpu->breakpoint == cur_address)
 		{
-			// We use custom rendering for drawing the breakpoint
-			draw_list->AddCircleFilled(ImVec2(screen_cursor.x + 6, screen_cursor.y + 7), 7, breakpoint_fill);
-			draw_list->AddCircle(ImVec2(screen_cursor.x + 6, screen_cursor.y + 7), 7, breakpoint_border);
+		// We use custom rendering for drawing the breakpoint
+		draw_list->AddCircleFilled(ImVec2(screen_cursor.x + 6, screen_cursor.y + 7), 7, breakpoint_fill);
+		draw_list->AddCircle(ImVec2(screen_cursor.x + 6, screen_cursor.y + 7), 7, breakpoint_border);
 		}*/
 
 		ImGui::NextColumn();
@@ -209,7 +235,8 @@ void GuiMain::render_cpu() {
 			try {
 				Decoder::Decode(ir, cpu.mem.read16(cur_address));
 				text = Disassembler::Disassemble(ir);
-			} catch(...){}
+			}
+			catch (...) {}
 			ImGui::Text("%s", text.c_str());
 		}
 		else
@@ -230,11 +257,10 @@ void GuiMain::render_cpu() {
 	}
 
 	clipper.End();
-	ImGui::EndChild();
-	ImGui::SameLine();
-	ImGui::BeginGroup();
-	ImGui::BeginChild("Registers", ImVec2(200, 300), true);
 
+}
+
+void GuiMain::render_registers() {
 	for (u8 i = 0; i <= 0xF; i++)
 	{
 		ImGui::Text("%s: ", Disassembler::Disassemble_Reg(i).c_str());
@@ -243,9 +269,11 @@ void GuiMain::render_cpu() {
 	}
 
 	ImGui::Text("CPSR: 0x%X", cpu.cpsr);
+}
 
-	ImGui::EndChild();
-	ImGui::BeginChild("Stack", ImVec2(200, 200), true);
+void GuiMain::render_stack() {
+	bool thumb = cpu.cpsr.flag_T;
+	u8 instruction_bytes = thumb ? 2 : 4;
 
 	ImGui::Columns(2, "Stack");
 	ImGui::SetColumnOffset(1, 72);
@@ -269,6 +297,5 @@ void GuiMain::render_cpu() {
 	}
 
 	stack_clipper.End();
-	ImGui::EndChild();
-	ImGui::EndGroup();
+
 }

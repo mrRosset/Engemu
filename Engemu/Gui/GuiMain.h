@@ -12,6 +12,11 @@ private:
 	bool show_cpu_window = true;
 	bool track_pc = true;
 	void render_cpu();
+	void render_memoryNav();
+	bool render_controls();
+	void render_disassembly(bool scroll_to_pc);
+	void render_registers();
+	void render_stack();
 	std::unordered_map<u32, std::string> symbols;
 
 public:
