@@ -80,7 +80,7 @@ int main(int argc, char* argv[])
 		emulate(std::string(argv[1]), std::string(argv[2]), std::string(argv[3]));
 	}
 	catch (std::string error_message){
-		std::cout << "Uncatched exception:\n" << error_message << std::endl;
+		std::cout << "Uncaught exception:\n" << error_message << std::endl;
 		std::cin.get();
 	}
 
