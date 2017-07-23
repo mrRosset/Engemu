@@ -46,6 +46,7 @@ void E32ImageLoader::load(E32Image& image, std::string& file_name,  Memory& mem,
 	std::string symbol_file = symbols_folder_path + '/' + file_name + ".symbols";
 	std::cout << "Testing symbols: " << symbol_file << std::endl;
 	if (std::experimental::filesystem::exists(symbol_file)) {
+		std::cout << "Exist!" << std::endl;
 		gui->loadSymbols(symbol_file);
 	}
 
@@ -64,6 +65,7 @@ void E32ImageLoader::load(E32Image& image, std::string& file_name,  Memory& mem,
 		std::string symbol_file = symbols_folder_path + '/' + lib_name + ".symbols";
 		std::cout << "Testing symbols: " << symbol_file << std::endl;
 		if (std::experimental::filesystem::exists(symbol_file)) {
+			std::cout << "Exist!" << std::endl;
 			gui->loadSymbols(symbol_file);
 		}
 

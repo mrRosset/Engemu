@@ -12,12 +12,20 @@
 GuiMain::GuiMain(CPU & cpu_, std::string& additional_title) : Gui(additional_title), cpu(cpu_), symbols() {}
 
 void GuiMain::loadSymbols(std::string& symbol_file) {
-	std::ifstream infile("thefile.txt");
-	std::string addr, symbol;
-	while (infile >> addr >> symbol)
+	std::ifstream infile(symbol_file);
+	std::string line;
+	while (std::getline(infile, line))
 	{
-		// process pair (a,b)
-		std::cout << addr << " " << symbol << std::endl;
+		size_t found = line.find(": ");
+		if (found != std::string::npos)
+		{
+			std::string addr_s = line.substr(0, found);
+			std::string symbol = line.substr(found + 2, std::string::npos);
+			u32 addr;
+			sscanf(addr_s.c_str(), "%x", &addr);
+			symbols[addr] = symbol;
+		}
+		
 	}
 }
 
