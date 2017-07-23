@@ -115,23 +115,23 @@ def demangle_args(mangled_args):
 	args = []
 	while len(buf) > 0:
 		args.append(demangle_arg(buf))
-		if len(buf) >= 3 and (buf.peek(3) == "N22" or buf.peek(3) == "N21"):
+
+		if len(buf) >= 3 and buf.peek(3) == "N31":
 			buf.get(3)
 			args.append(args[-1])
 			args.append(args[-1])
-
+			args.append(args[-1])
+		elif len(buf) >= 3 and (buf.peek(3) == "N22" or buf.peek(3) == "N21"):
+			buf.get(3)
+			args.append(args[-1])
+			args.append(args[-1])
 		elif len(buf) > 1 and buf.peek(1) == 'T':
 			buf.get(1)
 			repetition_num = buf.get(1)
-			if repetition_num != '1' and repetition_num != '2':
+			if repetition_num != '1' and repetition_num != '2' and repetition_num != '3':
 				print("Unkonw T repetition number:", repetition_num)
 				sys.exit(-1)
 			args.append(args[-1])
-			# repetition_num = get_num(buf)
-			# repetition_num -= 1
-			# while repetition_num > 0:
-			# 	args.append(args[-1])
-			# 	repetition_num -= 1
 
 		elif len(buf) == 1 and buf.peek(1) == 'e':
 			buf.get(1)
@@ -238,7 +238,7 @@ for ordinal in exports:
 	address = exports[ordinal]
 	name = idt[ordinal]
 	# print(name)
-	# print(address + ": " + demangle_name(name))
+	print(address + ": " + demangle_name(name))
 
 
 #tests
@@ -269,3 +269,5 @@ print(demangle_name("Create__8RProcessRC7TDesC16T110TOwnerType"))
 print(demangle_name("LoadLibrary__7RLoaderRiRC7TDesC16N22RC8TUidType"))
 print(demangle_name("_8TUidTypeG4TUidN21"))
 print(demangle_name("FormatList__6TDes16RC7TDesC16PPSc"))
+print(demangle_name("GetRamSizes__8RProcessRiN31"))
+print(demangle_name("DoRequest__18RBusLogicsalChanneliR14TRequestStatusPvT3"))
