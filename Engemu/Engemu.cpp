@@ -1,7 +1,6 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
-#include <experimental/filesystem>
 #include "Common.h"
 #include "CPU/CPU.h"
 #include "E32Image.h"
@@ -21,24 +20,22 @@ std::string extract_filename(const std::string& filepath)
 }
 
 void emulate(std::string& app_path, std::string& lib_folder_path, std::string& rom_path, std::string& symbols_folder_path) {
+	CPU cpu;
+	
 	E32Image image;
 	E32ImageLoader::parse(app_path, image);
 
-	CPU cpu;
+	std::string file_name = extract_filename(app_path);
+	GuiMain* gui = new GuiMain(cpu, extract_filename(app_path));
+
 	cpu.mem.loadRom(rom_path);
-	E32ImageLoader::load(image, cpu.mem, lib_folder_path);
+	E32ImageLoader::load(image, file_name, cpu.mem, lib_folder_path, gui, symbols_folder_path);
 
 	//TODO: find the correct place where the SP is initialized
 	cpu.gprs[Regs::PC] = image.header->code_base_address + image.header->entry_point_offset; // 0x50392D54 <- entry of Euser.dll;
 	cpu.gprs[Regs::SP] = 0x7FFF'FFFF; //start of the ram section
 
-	std::string file_name = extract_filename(app_path);
-	std::string symbol_file = symbols_folder_path + '/' + file_name + ".symbols";
 	
-	GuiMain* gui = new GuiMain(cpu, extract_filename(app_path));
-	if (std::experimental::filesystem::exists(symbol_file)) {
-		gui->loadSymbols(symbol_file);
-	}
 
 	cpu.swi_callback = [&](u32 number) {Kernel::Executive_Call(number, cpu, gui); };
 	
