@@ -28,15 +28,6 @@ bool GuiMain::render() {
 			ImGui::End();
 		}
 
-		if (show_memory_window) {
-			ImGui::SetNextWindowPos(ImVec2(10, 530), ImGuiSetCond_FirstUseEver);
-			ImGui::SetNextWindowSize(ImVec2(240, 240), ImGuiSetCond_FirstUseEver);
-			ImGui::Begin("Memory", &show_memory_window);
-			//render_flags_window(image.header);
-			ImGui::End();
-		}
-
-
 		//ImGui::SetNextWindowPos(ImVec2(650, 20), ImGuiSetCond_FirstUseEver);
 		//ImGui::ShowTestWindow(&show_test_window);
 
