@@ -1,6 +1,7 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
+#include <experimental/filesystem>
 #include "Common.h"
 #include "CPU/CPU.h"
 #include "E32Image.h"
@@ -19,7 +20,7 @@ std::string extract_filename(const std::string& filepath)
 	return std::string(filepath.begin() + pos + 1, filepath.end());
 }
 
-void emulate(std::string& app_path, std::string& lib_folder_path, std::string& rom_path) {
+void emulate(std::string& app_path, std::string& lib_folder_path, std::string& rom_path, std::string& symbols_folder_path) {
 	E32Image image;
 	E32ImageLoader::parse(app_path, image);
 
@@ -27,12 +28,21 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 	cpu.mem.loadRom(rom_path);
 	E32ImageLoader::load(image, cpu.mem, lib_folder_path);
 
+	//TODO: find the correct place where the SP is initialized
 	cpu.gprs[Regs::PC] = image.header->code_base_address + image.header->entry_point_offset; // 0x50392D54 <- entry of Euser.dll;
-																							 //TODO: find the correct place where the SP is initialized
 	cpu.gprs[Regs::SP] = 0x7FFF'FFFF; //start of the ram section
 
-	Gui* gui = new GuiMain(cpu, extract_filename(app_path));
+	std::string file_name = extract_filename(app_path);
+	std::string symbol_file = symbols_folder_path + '/' + file_name + ".symbols";
+	
+	GuiMain* gui = new GuiMain(cpu, extract_filename(app_path));
+	if (std::experimental::filesystem::exists(symbol_file)) {
+		gui->loadSymbols(symbol_file);
+	}
+
 	cpu.swi_callback = [&](u32 number) {Kernel::Executive_Call(number, cpu, gui); };
+	
+	//emulation loop
 
 	const int FRAMES_PER_SECOND = 25;
 	const uint64_t SKIP_TICKS = 1000 / FRAMES_PER_SECOND;
@@ -71,13 +81,13 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 
 int main(int argc, char* argv[])
 {
-	if (argc < 4) {
-		std::cout << "Error missing E32Image or library folder path or rom file" << std::endl;
+	if (argc < 5) {
+		std::cout << "Error missing E32Image or library folder path or rom file or symbols folder" << std::endl;
 		return -1;
 	}
 
 	try {
-		emulate(std::string(argv[1]), std::string(argv[2]), std::string(argv[3]));
+		emulate(std::string(argv[1]), std::string(argv[2]), std::string(argv[3]), std::string(argv[4]));
 	}
 	catch (std::string error_message){
 		std::cout << "Uncaught exception:\n" << error_message << std::endl;

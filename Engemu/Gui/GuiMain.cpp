@@ -1,3 +1,5 @@
+#include <fstream>
+#include <iostream>
 #include "GuiMain.h"
 
 #include "MemoryEditor.h"
@@ -7,7 +9,17 @@
 #include "../CPU/Decoder/IR.h"
 
 
-GuiMain::GuiMain(CPU & cpu_, std::string& additional_title): Gui(additional_title), cpu(cpu_) {}
+GuiMain::GuiMain(CPU & cpu_, std::string& additional_title) : Gui(additional_title), cpu(cpu_), symbols() {}
+
+void GuiMain::loadSymbols(std::string& symbol_file) {
+	std::ifstream infile("thefile.txt");
+	std::string addr, symbol;
+	while (infile >> addr >> symbol)
+	{
+		// process pair (a,b)
+		std::cout << addr << " " << symbol << std::endl;
+	}
+}
 
 bool GuiMain::render() {
 	if (!glfwWindowShouldClose(window))
