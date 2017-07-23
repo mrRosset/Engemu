@@ -176,10 +176,11 @@ void GuiMain::render_disassembly(bool scroll_to_pc) {
 	u32 number_instructions_displayed = 0x1000000;
 	u32 offset = (s32(cpu.gprs[Regs::PC]) - s32(number_instructions_displayed / 2)) < 0 ? 0 : cpu.gprs[Regs::PC] - (number_instructions_displayed / 2);
 
-	ImGuiListClipper clipper(number_instructions_displayed / instruction_bytes, ImGui::GetTextLineHeight()); // Bytes are grouped by four (the alignment for instructions)
-																											 //ImDrawList* draw_list = ImGui::GetWindowDrawList();
+	ImGuiListClipper clipper(number_instructions_displayed / instruction_bytes, ImGui::GetTextLineHeight()); // Bytes are grouped by four (the alignment for instructions
+	
+	/*ImDrawList* draw_list = ImGui::GetWindowDrawList();
 	ImColor breakpoint_fill = ImColor(ImVec4(1.0f, 0.0f, 0.0f, 1.0f));
-	ImColor breakpoint_border = ImColor(ImVec4(1.0f, 1.0f, 1.0f, 1.0f));
+	ImColor breakpoint_border = ImColor(ImVec4(1.0f, 1.0f, 1.0f, 1.0f));*/
 	ImVec2 screen_cursor = ImGui::GetCursorScreenPos();
 
 	// Perform scrolling, if necessary
@@ -188,11 +189,31 @@ void GuiMain::render_disassembly(bool scroll_to_pc) {
 		ImGui::SetScrollFromPosY((((cpu.gprs[Regs::PC] - offset) / instruction_bytes) * ImGui::GetTextLineHeight()) - ImGui::GetScrollY(), 0.35f);
 	}
 
+	int label_lines = 0;
+
 	for (s32 i = clipper.DisplayStart; i < clipper.DisplayEnd; i++)
 	{
-		u32 cur_address = i * instruction_bytes + offset;
+		u32 cur_address = (i - label_lines) * instruction_bytes + offset ;
 
 		screen_cursor = ImGui::GetCursorScreenPos();
+
+		if (symbols.find(cur_address) != symbols.end()) {
+			//empty line
+			ImGui::Selectable("", false, ImGuiSelectableFlags_SpanAllColumns | ImGuiSelectableFlags_AllowDoubleClick);
+			ImGui::NextColumn();
+			ImGui::Text("0x%X", cur_address); ImGui::NextColumn();
+			ImGui::Text(""); ImGui::NextColumn();
+			ImGui::Text(""); ImGui::NextColumn();
+
+			//line with function name
+			ImGui::Selectable("", false, ImGuiSelectableFlags_SpanAllColumns | ImGuiSelectableFlags_AllowDoubleClick);
+			ImGui::NextColumn();
+			ImGui::Text("0x%X", cur_address); ImGui::NextColumn();
+			ImGui::Text(""); ImGui::NextColumn();
+			ImGui::Text(symbols[cur_address].c_str());  ImGui::NextColumn();
+			label_lines+=2;
+			i+=2;
+		}
 
 		if (ImGui::Selectable("", cpu.gprs[Regs::PC] == cur_address, ImGuiSelectableFlags_SpanAllColumns | ImGuiSelectableFlags_AllowDoubleClick))
 		{
