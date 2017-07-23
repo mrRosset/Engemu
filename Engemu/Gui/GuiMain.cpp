@@ -173,7 +173,7 @@ void GuiMain::render_disassembly(bool scroll_to_pc) {
 	ImGui::Text("Instruction"); ImGui::NextColumn();
 	ImGui::Separator();
 
-	u32 number_instructions_displayed = 0x1000000;
+	u32 number_instructions_displayed = 0x2000;
 	u32 offset = (s32(cpu.gprs[Regs::PC]) - s32(number_instructions_displayed / 2)) < 0 ? 0 : cpu.gprs[Regs::PC] - (number_instructions_displayed / 2);
 
 	ImGuiListClipper clipper(number_instructions_displayed / instruction_bytes, ImGui::GetTextLineHeight()); // Bytes are grouped by four (the alignment for instructions
