@@ -165,8 +165,8 @@ void GuiMain::render_disassembly(bool scroll_to_pc) {
 
 	ImGui::Columns(4, "Disassembly");
 	ImGui::SetColumnOffset(1, 26);
-	ImGui::SetColumnOffset(2, 98);
-	ImGui::SetColumnOffset(3, thumb ? 148.f : 190.f);
+	ImGui::SetColumnOffset(2, 108);
+	ImGui::SetColumnOffset(3, thumb ? 158.f : 200.f);
 	ImGui::Text(""); ImGui::NextColumn(); // To indicate a breakpoint
 	ImGui::Text("Address"); ImGui::NextColumn();
 	ImGui::Text("Bytes"); ImGui::NextColumn();
