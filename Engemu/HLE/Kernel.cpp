@@ -15,10 +15,12 @@ namespace Kernel {
 void Kernel::Executive_Call(u32 number, CPU& cpu, Gui* gui) {
 
 	switch (number) {	
-	
+
 	case 0x6C: User_Heap(cpu, gui); break;
+	case 0x8E: LockedDec(cpu); break;
+
 	default:
-		throw std::string("non-implemented executive call");
+		throw std::string("non-implemented executive call ");
 	}
 
 }
@@ -55,3 +57,7 @@ void Kernel::User_Heap(CPU& cpu, Gui* gui) {
 	gui->render();
 }
 
+void Kernel::LockedDec(CPU& cpu) {
+	//TODO: Change if multithreading is implemented
+	cpu.mem.write32(cpu.gprs[0]+1, cpu.mem.read32(cpu.gprs[0]));
+}
