@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <experimental/filesystem>
 
 #include "E32ImageLoader.h"
 #include "TRomImageLoader.h"
@@ -20,7 +19,7 @@ std::string locateLibrary(std::string& lib_entry, std::string& lib_folder_path) 
 	return lib_folder_path + lib_entry;
 }
 
-void E32ImageLoader::load(E32Image& image, std::string& file_name,  Memory& mem, std::string& lib_folder_path, GuiMain* gui, std::string& symbols_folder_path) {
+void E32ImageLoader::load(E32Image& image, std::string& file_name,  Memory& mem, std::string& lib_folder_path) {
 	
 	//Load code to it's prefered location
 	u32& code_base_address = image.header->code_base_address;
@@ -42,11 +41,6 @@ void E32ImageLoader::load(E32Image& image, std::string& file_name,  Memory& mem,
 
 	//TODO: Do the relocation if needed.
 
-	//Load Symbols if exists
-	std::string symbol_file = symbols_folder_path + '/' + file_name + ".symbols";
-	if (std::experimental::filesystem::exists(symbol_file)) {
-		gui->loadSymbols(symbol_file);
-	}
 
 	//TODO: Take care of the non-rom imports
 	u32 iat_index = 0;
@@ -58,12 +52,6 @@ void E32ImageLoader::load(E32Image& image, std::string& file_name,  Memory& mem,
 		TRomImage lib;
 		TRomImageLoader::parse(lib_path, lib);
 		TRomImageLoader::load(lib, mem, lib_folder_path);
-
-		//Load Symbols if exists
-		std::string symbol_file = symbols_folder_path + '/' + lib_name + ".symbols";
-		if (std::experimental::filesystem::exists(symbol_file)) {
-			gui->loadSymbols(symbol_file);
-		}
 
 		//replace the ordinal of the import with it'saddress in the IAT
 		for (u32 ordinal : block->ordinals) {

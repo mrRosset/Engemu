@@ -1,6 +1,7 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
+#include <experimental/filesystem>
 #include "Common.h"
 #include "CPU/CPU.h"
 #include "E32Image.h"
@@ -29,7 +30,13 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 	GuiMain* gui = new GuiMain(cpu, extract_filename(app_path));
 
 	cpu.mem.loadRom(rom_path);
-	E32ImageLoader::load(image, file_name, cpu.mem, lib_folder_path, gui, symbols_folder_path);
+	E32ImageLoader::load(image, file_name, cpu.mem, lib_folder_path);
+
+	//Load Symbols if exists
+	for (auto & p : std::experimental::filesystem::directory_iterator(symbols_folder_path)) {
+		gui->loadSymbols(p.path().string());
+	}
+
 
 	//TODO: find the correct place where the SP is initialized
 	cpu.gprs[Regs::PC] = image.header->code_base_address + image.header->entry_point_offset; // 0x50392D54 <- entry of Euser.dll;
