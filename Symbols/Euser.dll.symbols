@@ -1,1657 +1,1668 @@
-503953cc: CActiveScheduler::OnStarting()
-503adf48: RProcess::CommandLineLength()const
-503ac0ac: TDes8::Trim()
-503afcac: TVersion::TVersion()
-503b6ef0: TRegion::Intersect(TRegion const &)
-5039fdb0: TRealX::DivEq(TRealX const &)
-503aa5ec: TDes16::CopyC(TDesC16 const &)
-503974f8: CBitMapAllocator::AllocAligned(int)
-503b11cc: RHeap::Compress()
-50395644: TKeyArrayFix::Set(CBufBase *, int)
-503b2920: RTimer::CreateLocal()
-503af430: Mem::CompareC(unsigned short const *, int, int, int)
-503a7d40: User::StartThread(int (*)(void *), void *)
-503b0f30: RHeap::Open()
-503ae41c: RThread::WriteL(void const *, TDesC16 const &, int)const
-503b144c: RHeap::Type()const
-503b9774: TTime::WeekNoInYear(TFirstWeekRule)const
-503b4e20: TLex8::MarkedToken(TLexMark8)const
-503b2a74: RProcess::Panic(TDesC16 const &, int)
-5039d600: TDes16::FillZ()
-503b0b64: TRect::Center()const
-503981e4: CBufFlat::Delete(int, int)
-5039e6b0: TInt64::_adv(TInt64 const &)
-5039d4a4: TDes16::ZeroTerminate()
-503b07d0: TRect::_eq(TRect const &)const
-5039ac18: CSecurityBase::CSecurityBase()
-503b3e00: RUndertaker::LogonCancel()const
-503aba60: TDes8::Copy(TDesC16 const &)
-5039bcc0: CTimer::Lock(TTimerLockSpec)
-5039f2bc: TRealX::_opUi()
-503b7db8: TTime::TTime(TDesC16 const &)
-503a3114: CObjectCon::_vc(int)
-5039c06c: CBase::CBase()
-503a029c: TRealX::_apl(TRealX const &)
-5039b968: CSession::WriteL(void const *, TDesC8 const &, int)const
-503ad674: User::Adjust(void *, int, int)
-503ad6e8: User::Alloc(int)
-503b1268: RHeap::FreeAll()
-503972c0: CBitMapAllocator::Alloc(int, int &)
-503b1294: RHeap::ReAlloc(void *, int)
-503b94c0: TTime::_ami(TTimeIntervalMicroSeconds32)
-503a033c: TRealX::_amd(TRealX const &)
-503b5510: TLex8::Val(long &)
-503b6fe4: TRegion::SubRegion(TRegion const &, TRegion *)
-503adee4: RProcess::Resume()
-50396344: CArrayVarBase::ExpandL(int, int)
-503a1178: _ltsf2
-503ab1bc: TDes16::AppendNum(TInt64)
-503af13c: Password::IsValid(TBuf<16> const &)
-503969ec: CArrayPakBase::ExpandL(int, int)
-503b5a18: RMessage::Kill(int)const
-503a3340: CServer::RunL()
-5039e9a4: TInt64::_ars(int)
-5039d2ac: TDesC16::LocateReverse(TChar)const
-5039ee3c: TRealX::_as(int)
-5039ed98: TInt64::_ge(TInt64 const &)const
-503a8314: RPointerArrayBase::InsertIsqUnsigned(unsigned int, int)
-503ac99c: TDes8::AppendNumUC(TInt64, TRadix)
-503ab8b4: HBufC8::New(int)
-503b0ecc: RHeap::Close()
-503b00d4: TCheckedUid::TCheckedUid()
-503ae62c: User::SetTrapHandler(TTrapHandler *)
-503b0730: TRect::SetRect(int, int, int, int)
-503a632c: TRealFormat::TRealFormat()
-503b67c8: TDblQueLink::Deque()
-503b1790: UserHeap::ChunkHeap(TDesC16 const *, int, int, int)
-503b40fc: TLex16::Inc(int)
-5039937c: CCleanup::DoPopAll(int)
-5039d8fc: TBufBase8::TBufBase8(unsigned char const *, int)
-503b59dc: RMessage::ReadL(void const *, TDes16 &)const
-503ad858: TDayName::Set(TDay)
-503ae16c: TFindThread::Next(TBuf<256> &)
-503b3428: User::_DbgMarkEnd(RHeap::TDbgHeapType, int)
-503aec90: RDebug::SetBreakPoint(TThreadId, unsigned int)
-503aaedc: TDes16::Num(TInt64)
-5039d6c4: TDesC8::Ptr()const
-503a7858: UserSvr::LockRamDrive()
-5039ceac: TPtr16::TPtr16(unsigned short *, int, int)
-503a307c: CObjectIx::At(int, int)
-503ae524: RTimer::At(TRequestStatus &, TTime const &)
-503b3d10: UserSvr::DllFreeData(int)
-503b2860: RSemaphore::CreateGlobal(TDesC16 const &, int, TOwnerType)
-503b4f3c: TLex8::RemainderFromMark()const
-50399c58: CObject::Name()const
-503ad994: TLocale::FormatCurrency(TDes16 &, TInt64)
-503955f4: TKeyArrayFix::TKeyArrayFix(int, TKeyCmpText, int)
-5039c4ac: RPointerArrayBase::HeapSortSigned()
-503b5ab8: RSessionBase::SendReceive(int, void *)const
-50396104: CArrayVarBase::Length(int)const
-503ae330: RThread::ExitReason()const
-5039c5fc: RPointerArrayBase::HeapSort(int (*)(void const *, void const *))
-5039dc34: TDesC8::Left(int)const
-50398548: CBufSeg::CBufSeg(int)
-5039f054: TRealX::IsNaN()const
-503b1a34: RNotifier::UnloadNotifiers(TUid)
-503a11e8: _mulsf3
-503b4cf8: TLex8::SkipSpace()
-503a0990: Math::SetNaN(double &)
-503adedc: RProcess::Id()const
-5039ea38: TInt64::_mi()const
-503acfc4: TChar::GetCombiningClass()const
-503b27a0: RMutex::OpenGlobal(TDesC16 const &, TOwnerType)
-503aedf0: RDebug::SingleStep(TThreadId)
-503990f8: CCleanup::CCleanup()
-503b7c74: TDateTime::SetYear(int)
-503ad3f8: RBusLogicalChannel::DoControl(int, void *, void *)
-503b2a48: RProcess::Terminate(int)
-503aa384: TDes16::AppendFill(TChar, int)
-5039df34: _builtin_delete
-503b4d90: TLex8::SkipSpaceAndMark(TLexMark8 &)
-503ae0cc: RSemaphore::Signal()
-50399688: CConsoleBase::Getch()
-50399170: CCleanup::NextLevel()
-503a4140: TLex16::Val(float &)
-5039d93c: TBufBase8::TBufBase8(TDesC8 const &, int)
-503b80d0: TTime::HomeTime()
-503a658c: TDes8::Num(double, TRealFormat const &)
-50396190: CArrayVarBase::Reset()
-503affec: TUidType::MostDerived()const
-503b7990: RTest::Panic(int, TRefByValue<TDesC16 const>, ...)
-503b6e74: TRegion::Union(TRegion const &)
-503b3e4c: User::SetMachineConfiguration(TDesC8 const &)
-503a8824: RArrayBase::InsertIsqSigned(void const *, int)
-503a115c: _gedf2
-503956b4: TKeyArrayVar::TKeyArrayVar(int, TKeyCmpText)
-50399230: CCleanup::PushL(CBase *)
-503ae4b0: User::At(TTime const &)
-503ac448: TDes8::Justify(TDesC8 const &, int, TAlign, TChar)
-503ad4fc: RLibrary::DllRefTable()const
-503b03d8: TPoint::_pl(TPoint const &)const
-50397fc4: CBufBase::ExpandL(int, int)
-503b7d20: TDateTime::SetDay(int)
-5039ed60: TInt64::_ne(TInt64 const &)const
-503acb6c: TRawEvent::ScanCode()const
-503b9268: TTime::_apl(TTimeIntervalMicroSeconds)
-503b5788: TMonthName::TMonthName()
-503b1968: RHeap::_DbgMarkEnd(int)
-503b3054: TBusLocalDrive::Connect(int, int &)
-503a9dc0: TDesC16::FindF(TDesC16 const &)const
-503a7b0c: User::LockedInc(int &)
-503b15b8: THeapWalk::Walk()
-503ae588: RChangeNotifier::LogonCancel()const
-503b88f8: TTime::MonthsFrom(TTime)const
-503a7f94: DummyEuser_1655((*), void)
-503b4870: TLex16::Val(TInt64 &, TInt64 const &)
-503b8898: TTime::DaysFrom(TTime)const
-503a4214: TLex16::Val(double &, TChar)
-503abce4: TDes8::Collate()
-503a045c: TRealX::_mi(TRealX const &)const
-503aad28: TDes16::AppendJustify(unsigned short const *, int, TAlign, TChar)
-50396c90: CArrayPakBase::GetOffset(int)const
-5039d0e4: TDes16::SetMax()
-503b6c10: TSglQueIterBase::DoPostInc()
-503ae2b8: RThread::SetSystem(int)const
-503b69bc: TDblQueBase::DoAddFirst(void *)
-5039da34: TDes8::Copy(unsigned char const *, int)
-50397018: CBitMapAllocator::AllocFrom(int)
-5039df28: _builtin_vec_new
-5039bc48: CTimer::At(TTime const &)
-503b5a84: RServer::Receive()
-50396058: CArrayFixBase::CountR(CBase const *)
-503b1964: RHeap::_DbgSetAllocFail(RHeap::TAllocFail, int)
-503a0240: TRealX::Mod(TRealX &, TRealX const &)const
-503ad4b8: TFindLibrary::Next(TBuf<256> &)
-503b7b7c: RTest::Getch()
-503ad888: TMonthNameAbb::Set(TMonth)
-503ae468: RThread::GetCpuTime(TTimeIntervalMicroSeconds &)const
-503a3df0: TLex8::Val(float &, TChar)
-5039c8d0: RArrayBase::BinarySearchUnsigned(void const *, int &)const
-503b3c14: UserSvr::LibraryCreateExact(TLoaderInfo &)
-503ba26c: Time::NullTTime()
-5039edfc: TRealX::TRealX()
-50394b9c: CActive::Deque()
-503a27cc: TRegion::Copy(TRegion const &)
-503a8a20: TDes8::AppendFormatList(TDesC8 const &, signed char **, TDes8Overflow *)
-503aec5c: UserHal::SaveXYInputCalibration()
-503aa510: TDes16::Capitalize()
-503b4960: TLex16::Val(signed char &)
-503b0b24: TRect::Height()const
-503a23c8: TDes8::AppendNum(unsigned int, TRadix)
-503ab238: TDes16::AppendNum(TInt64, TRadix)
-5039d988: TDes8::SetLength(int)
-503ba3f4: TTrapHandler::TTrapHandler()
-503aebfc: UserHal::FaultReason(int &)
-503aef7c: RDebug::SuspendThread(TThreadId)
-50397c70: CBufBase::CBufBase(int)
-503b36fc: User::LoadPhysicalDevice(TDesC16 const &)
-503b8dc0: TTime::_pl(TTimeIntervalMicroSeconds32)const
-5039dcfc: TDesC8::Mid(int, int)const
-50396c68: CArrayPakBase::SetKey(TKeyArrayPak &)const
-503ad4f4: RLibrary::EntryPoint()const
-50395b6c: CArrayFixBase::Delete(int)
-503b2f38: RThread::Kill(int)
-503ad50c: RLibrary::FileName()const
-503ad5b0: User::TickCount()
-503a7864: UserSvr::DebugMask()
-503ac0c8: TDes8::TrimAll()
-503b6788: TSglQueLink::Enque(TSglQueLink *)
-503aa578: TDes16::CopyF(TDesC16 const &)
-503b1a00: RNotifier::StartNotifierAndGetResponse(TRequestStatus &, TUid, TDesC8 const &, TDes8 &)
-503abb3c: TDes8::Swap(TDes8 &)
-503ab48c: TDes16::FormatList(TDesC16 const &, signed char **)
-503ad294: RBusLogicalChannel::DoRequest(int, TRequestStatus &, void *)
-503adf50: RProcess::ExitType()const
-503ae55c: RTimer::Inactivity(TRequestStatus &, TTimeIntervalSeconds)
-503ab888: TDesC8::AllocLC()const
-50399678: CConsoleBase::~CConsoleBase()
-503ad174: TFindPhysicalDevice::Next(TBuf<256> &)
-503b70b8: TRegion::Sort(TPoint const &)
-503b7ca8: TDateTime::SetYearLeapCheck(int)
-503ae5b8: UserSvr::DllGlobalWrite(int, int, TDesC8 const &)
-50397d4c: CBufBase::Read(int, void *, int)const
-503aee94: RDebug::ReadMemory(TThreadId, unsigned int, TDes8 &, int)
-503979ec: CBitMapAllocator::IsFree(int)
-503ae110: RCriticalSection::Close()
-503ab6ec: TDesC8::FindC(TDesC8 const &)const
-503adf38: RProcess::CommandLine(TDes16 &)const
-503aac44: TDes16::Justify(TDesC16 const &, int, TAlign, TChar)
-503b07a0: TRect::Shrink(TSize const &)
-503a0764: Math::Int(double &, double const &)
-5039d00c: TBufBase16::TBufBase16(int, int)
-503aa7d4: TDes16::Repeat(unsigned short const *, int)
-503ad7d4: User::ReAllocL(void *, int)
-503a3948: Math::ATan(double &, double const &, double const &)
-503a7860: UserSvr::RomHeaderAddress()
-503a78f0: RLibrary::Load(TDesC16 const &, TDesC16 const &)
-503978f4: CBitMapAllocator::ExtractRamPages(int, int &)
-503b0664: TSize::_mi()const
-503b9090: TTime::_apl(TTimeIntervalYears)
-5039ec10: TInt64::Lsr(int)
-503b4438: TLex16::MarkedOffset(TLexMark16)const
-5039ef7c: TRealX::TRealX(unsigned int)
-503b6d5c: RRefBase::DoAlloc(void const *, int)
-5039d30c: TDesC16::CompareC(TDesC16 const &)const
-503aadf8: TDes16::Num(int)
-503b2eb8: RThread::Process(RProcess &)const
-5039eb44: TInt64::_md(TInt64 const &)const
-503adeec: RProcess::FileName()const
-503996e0: CConsoleBase::Printf(TRefByValue<TDesC16 const>, ...)
-503b4990: TLex16::Val(short &)
-503aea84: TBusLocalDrive::Format(TInt64, int)
-503b8c30: TTime::_pl(TTimeIntervalHours)const
-5039c790: RArrayBase::Find(void const *)const
-503b07b4: TRect::Resize(int, int)
-503acd24: TChar::IsTitle()const
-503aa840: TDes16::Repeat(TDesC16 const &)
-503968dc: CArrayPakBase::Delete(int)
-503b4b58: TLex16::Val(TInt64 &, TRadix)
-503b0dac: RHeap::RHeap(int)
-503ace68: TChar::IsGraph()const
-503ace44: TChar::IsPunctuation()const
-503ae2a0: RThread::System()const
-5039d750: TPtrC8::TPtrC8(unsigned char const *, int)
-503ad224: RBusLogicalChannel::DoRequest(int, TRequestStatus &)
-503ad1a8: RDevice::IsAvailable(int, TDesC16 const *, TDesC16 const *)const
-503b4c4c: TLex8::UnGetToMark(TLexMark8)
-503959d4: CArrayFixBase::Sort(TKeyArrayFix &)
-503b8128: TTime::RoundUpToNextMinute()
-5039ee3c: TRealX::TRealX(int)
-503b10e4: CalcChunkHeapCompression((*), RHeap *, int)
-50396604: CArrayPakBase::CArrayPakBase(CBufBase * (*)(int), int)
-503a65c0: TDes8::AppendNum(double, TRealFormat const &)
-503a68e0: Math::Cos(double &, double const &)
-503a65f8: TDes16::AppendNum(double, TRealFormat const &)
-503b6e08: TRegion::TRegion(int)
-503aaaf0: TDes16::Delete(int, int)
-503b40b4: TLex16::UnGet()
-5039ea78: TInt64::_mm()
-503b5944: TTimeFormatSpec::TTimeFormatSpec()
-503ad720: User::AllocLC(int)
-5039f040: TRealX::IsZero()const
-503ac824: TDes8::AppendNum(TInt64, TRadix)
-503a1348: _floatsisf
-50398d7c: CCirBufBase::DoRemove(unsigned char *)
-50399af8: CObject::CObject()
-5039f078: TRealX::IsInfinite()const
-503b2018: RDevice::Open(TDesC16 const &, TOwnerType)
-50398f38: CCirBuffer::Put(int)
-503b2354: RHandleBase::Duplicate(RThread const &, TOwnerType)
-503aef1c: RDebug::SetXtalError(int)
-503b079c: TRect::Shrink(int, int)
-503ab72c: TDesC8::MatchC(TDesC8 const &)const
-503ae250: RThread::Context(TDes8 &)const
-503ad918: TLocale::TLocale()
-503a1a7c: Mem::FillZ(void *, int)
-5039cef8: TBufCBase16::TBufCBase16()
-503aa6d4: TDes16::CopyUC(TDesC16 const &)
-503a4fe0: Math::Rand(TInt64 &)
-50398008: CBufBase::ResizeL(int)
 503ae0a8: TFindSemaphore::Next(TBuf<256> &)
-503acad8: TDes8::AppendFormat(TRefByValue<TDesC8 const>, ...)
-503b0120: TCheckedUid::TCheckedUid(TDesC8 const &)
-503b06c0: TRect::TRect(TPoint const &, TPoint const &)
-503ac498: TDes8::AppendJustify(TDesC8 const &, int, TAlign, TChar)
-5039a188: CObjectCon::CObjectCon(int)
-503adf58: RProcess::ExitReason()const
-503ae268: RThread::Suspend()const
-503a0900: Math::IsZero(double const &)
-503a4a80: Math::Pow(double &, double const &, double const &)
-503aa078: HBufC16::NewLC(int)
-503b6bd8: TSglQueIterBase::TSglQueIterBase(TSglQueBase &)
-503ad788: User::FreeZ(void * &)
-503ae2f8: RThread::SetProtected(int)const
-503a7f84: DummyEuser_1651((*), void)
-5039f180: TRealX::Set(double)
-503ae5bc: UserSvr::DllTls(int)
-50395704: TKeyArrayVar::TKeyArrayVar(int, TKeyCmpNumeric)
-503b0930: TRect::BoundingRect(TRect const &)
-503ad878: TMonthName::Set(TMonth)
-503a09a0: Math::SetInfinite(double &, int)
-503ae198: RThread::SetExceptionHandler(void (*)(TExcType), unsigned long)
-503990dc: CCleanup::NewL()
-503a12d4: _divdf3
-503b6800: TSglQueBase::TSglQueBase(int)
-50394d7c: CIdle::RunL()
-503b67f0: TSglQueBase::TSglQueBase()
-50394f28: CAsyncCallBack::CallBack()
-503a35d8: Math::ASin(double &, double const &)
-503a7b10: User::LockedDec(int &)
-503abd24: TDes8::LowerCase()
-503a878c: RArrayBase::GranularCompress()
-5039ce94: TPtr16::TPtr16(unsigned short *, int)
-503aa14c: HBufC16::ReAlloc(int)
-50394c60: CIdle::New(int)
-503ae180: RThread::Id()const
-503b5628: TLex8::Val(unsigned short &, TRadix)
-503a16b0: TTrap::Trap(int &)
-503a78a8: RLibrary::Load(TDesC16 const &, TUidType const &)
-5039deb0: TDes8::FillZ()
-503960a8: CArrayVarBase::~CArrayVarBase()
-503b41a8: TLex16::SkipSpace()
-503ac1ec: TDes8::TrimRight()
-503b7684: RTest::RTest(TDesC16 const &)
-5039c0e0: CBase::_nw(unsigned int, unsigned int)
-503a1194: _ltdf2
-503aebbc: User::SetDebugMask(unsigned long)
-503a7b54: UserSvr::FsRegisterThread(int (*)(void *))
-503975fc: CBitMapAllocator::AllocAlignedBlock(int)
-503ab530: TPtr16::_DbgTestInvariant()const
-5039c2f8: RPointerArrayBase::BinarySearchUnsigned(unsigned int, int &)const
-5039abc8: CSecurityEncryptBase::CSecurityEncryptBase()
-50395734: TKeyArrayVar::At(int)const
-50394d40: CIdle::Start(TCallBack)
-503b7350: RRegion::RRegion(int, TRect *, int)
-5039ed44: TInt64::_eq(TInt64 const &)const
-503b084c: TRect::Move(TPoint const &)
-503afcc0: TVersion::TVersion(int, int, int)
-5039df2c: _nw((*), unsigned int, unsigned int)
-503ad954: TLocale::Refresh()
-503b58fc: TShortDateFormatSpec::TShortDateFormatSpec()
-503a06b4: Math::Poly(double, SPoly const *)
-503b080c: TRect::_ne(TRect const &)const
-503b3f98: UserSvr::ChangeLocale(RLibrary)
-503a87fc: RArrayBase::Reset()
-503ad158: RChunk::MaxSize()const
-503ae628: User::TrapHandler()
-503b0a64: TRect::Normalize()
-5039804c: CBufFlat::NewL(int)
-503966a4: CArrayPakBase::Length(int)const
-503b4e00: TLex8::TokenLength(TLexMark8)const
-503b3ed4: RDebug::KillThread(TThreadId)
-50395650: TKeyArrayFix::At(int)const
-503b3ca4: UserSvr::DllSetTls(int, void *)
-503b55f8: TLex8::Val(unsigned char &, TRadix)
-503accb0: TChar::GetTitleCase()const
-503aff44: TUidType::TUidType(TUid, TUid)
-503aa3d4: TDes16::FillZ(int)
-503b7ad4: RTest::Printf(TRefByValue<TDesC16 const>, ...)
-503b94f0: TTime::DaysInMonth()const
-503acd04: TChar::IsUpper()const
-50396420: CArrayVarBase::Find(void const *, TKeyArrayVar &, int &)const
-503af5c0: Mem::Crc(unsigned short &, void const *, int)
-50399618: CleanupStack::PopAndDestroy(int)
-503ad8e8: User::SetCurrencySymbol(TDesC16 const &)
-503b77a0: RTest::Start(TDesC16 const &)
-503b05b0: TSize::_mi(TPoint const &)const
-503ae5c0: UserSvr::DllFileName(int, TDes16 &)
-5039f3b4: TRealX::_opf()
-503a02c4: TRealX::_ami(TRealX const &)
-503ae390: RThread::GetDesLength(void const *)const
-503af094: RDebug::SupervisorMode(int)
-503a0fd8: _cmpdf3
-5039f8e8: TRealX::AddEq(TRealX const &)
-503ad6cc: User::AllocLen(void const *)
-503a41d0: TLex16::Val(double &)
-503ab524: TPtrC16::_DbgTestInvariant()const
-5039ba80: CServer::Start(TDesC16 const &)
-503a7fd8: RPointerArrayBase::RPointerArrayBase()
-503b4f9c: TLex8::Val(unsigned long &, TRadix, unsigned int)
-5039c488: RPointerArrayBase::FindIsq(void const *, int (*)(void const *, void const *))const
-503b6974: TDblQueBase::IsEmpty()const
-5039bc0c: CTimer::~CTimer()
-503ad188: RDevice::GetCaps(TDes8 &)const
-503b6878: TSglQueBase::DoAddFirst(void *)
-503a8974: RArrayBase::InsertIsq(void const *, int (*)(void const *, void const *), int)
-503b6758: TTime::Parse(TDesC16 const &, int)
-5039a988: CObjectConIx::CreateContainerL(CObjectCon * &)
-503aecc4: RDebug::ClrBreakPoint(TThreadId, unsigned int)
-503ac574: TDes8::AppendJustify(unsigned char const *, int, int, TAlign, TChar)
-503b4334: TLex16::NextToken()
-5039befc: CHeartbeat::New(int)
-503b7be4: TDateTime::Set(int, TMonth, int, int, int, int, int)
-503b6a40: TDeltaQueBase::TDeltaQueBase(int)
-5039d72c: TPtrC8::TPtrC8(unsigned char const *)
-503b1b9c: RChunk::CreateLocal(int, int, TOwnerType)
-503afe68: TUid::_eq(TUid const &)const
-503b69d0: TDblQueBase::DoAddLast(void *)
-50395d20: CArrayFixBase::FindIsq(void const *, TKeyArrayFix &, int &)const
-50396750: CArrayPakBase::SortL(TKeyArrayVar &)
-503b7ba0: TDateTime::TDateTime(int, TMonth, int, int, int, int, int)
-5039a0b8: CObjectIx::At(CObject const *)const
-503ada08: TLocale::FormatCurrency(TDes16 &, TDes16Overflow &, TInt64)
-503b1d9c: RChunk::CreateDoubleEndedLocal(int, int, int, TOwnerType)
-503b31b8: TBusLocalDrive::ReduceSize(int, int)
-503b10bc: RHeap::AllocLC(int)
-503b19b8: RNotifier::CancelNotifier(TUid)
-503aeec0: RDebug::WriteMemory(TThreadId, unsigned int, TDesC8 &, int)
-503b0e4c: RHeap::RHeap(RChunk const &, int, int, int, int)
-503b8e44: TTime::_mi(TTimeIntervalDays)const
-503a01b0: TRealX::Add(TRealX &, TRealX const &)const
-5039d300: TDesC16::CompareF(TDesC16 const &)const
-503a0dfc: _addsf3
-50397b5c: CBitMapAllocator::Free(int, int)
-503a7b14: User::IsRomAddress(int &, void *)
-50397aec: CBitMapAllocator::Free(int)
-503b7e08: TTime::Set(TDesC16 const &)
-503b2d18: RThread::Create(TDesC16 const &, int (*)(void *), int, RHeap *, void *, TOwnerType)
-503ae5a8: UserSvr::AddEvent(TRawEvent const &)
-503b4be8: TLex8::Assign(TDesC8 const &)
-5039dda0: TDes8::PtrZ()
-503a0918: Math::IsNaN(double const &)
-503ad65c: RHandleBase::HandleInfo(THandleInfo *)
-503b0508: TSize::_ami(TPoint const &)
-503ae114: RCriticalSection::Wait()
-50399608: CleanupStack::PopAndDestroy()
-503b0468: TPoint::SetXY(int, int)
-5039c264: RPointerArrayBase::BinarySearchSigned(int, int &)const
-503b6f50: TRegion::AddRect(TRect const &)
-5039b99c: CServer::CServer(int, CServer::TServerType)
-503ad7b0: User::ReAlloc(void *, int)
-5039d168: TDes16::Copy(unsigned short const *, int)
-50395b74: CArrayFixBase::Delete(int, int)
-5039e5c4: _negdi2
-503ba2b4: Time::MinTTime()
-50398ef8: CCirBuffer::Get()
-503a3640: Math::ACos(double &, double const &)
-503b6db8: RRefBase::DoAllocL(void const *, int)
-503a04ac: TRealX::_dv(TRealX const &)const
-503ae5ac: UserSvr::ScreenInfo(TDes8 &)
-5039bd60: CPeriodic::New(int)
-503ac70c: TDes8::Num(TInt64, TRadix)
-503b6e44: TRegion::_vc(int)const
-503ac250: TDes8::Insert(int, TDesC8 const &)
-503b4a00: TLex16::Val(TInt64 &)
-503ad854: User::SwitchHeap(RHeap *)
-503ae2e0: RThread::Protected()const
-5039f16c: TRealX::_as(double)
-503acca8: TChar::GetLowerCase()const
-503adfb8: RProcess::Priority()const
-5039bfb8: CHeartbeat::Start(TTimerLockSpec, MBeating *)
-503ab960: HBufC8::_as(unsigned char const *)
-5039ecdc: TInt64::DivMod(TInt64 const &, TInt64 &)
-5039b994: CSession::Panic(TDesC16 const &, int)const
-5039f0ac: TRealX::TRealX(float)
-503ae5b4: UserSvr::DllGlobalRead(int, int, int, TDes8 &)
-5039d0b8: TDes16::SetLength(int)
-503a10d0: _nesf2
-503ad124: TFindChunk::Next(TBuf<256> &)
-503b7d58: TDateTime::SetHour(int)
-503b0f74: RHeap::Initialise()
-5039d374: TDesC16::Left(int)const
-503ab004: TDes16::AppendNumUC(unsigned int, TRadix)
-503aec2c: UserHal::SwitchOff()
-503a18e4: Mem::Swap(void *, void *, int)
-5039b970: CSession::WriteL(void const *, TDesC16 const &)const
-50397cac: CBufBase::~CBufBase()
-5039a6b0: CObjectCon::FindByName(int &, TDesC16 const &, TBuf<128> &)const
-50395bf4: CArrayFixBase::ExpandL(int)
-503b3fe0: UserSvr::ExeAddDependency(void *, void *)
-5039d318: TDesC16::Compare(TDesC16 const &)const
-503a2a88: TRegion::SubRect(TRect const &, TRegion *)
-503a277c: TRegion::IsContainedBy(TRect const &)const
-503a11b0: _lesf2
-503b5804: TMonthNameAbb::TMonthNameAbb(TMonth)
-503aedbc: RDebug::Continue(TThreadId)
-503ae328: RThread::ExitType()const
-503b4304: TLex16::MarkedToken()const
-50398524: CBufSeg::NewL(int)
-503964f4: CArrayVarBase::InsertL(int, void const *, int)
-503b08d8: TRect::Grow(int, int)
-503b29f0: RProcess::Rename(TDesC16 const &)
-503af498: Mem::CompareC(unsigned short const *, int, int, int, int, TCollationMethod const *)
-503a86e4: RArrayBase::Remove(int)
-503a0400: TRealX::_mm(int)
-50394fbc: CActiveScheduler::CActiveScheduler()
-5039df84: _modsi3
-503b3f1c: Password::Set(TBuf<16> const &, TBuf<16> const &)
-5039cffc: TBufBase16::TBufBase16(int)
-503abc3c: TDes8::AppendFill(TChar, int)
-503a2db8: TRegion::Tidy()
-5039a11c: CObjectIx::AtL(int, int)
-503b04b4: TSize::_ne(TSize const &)const
-503b3c60: UserSvr::LibraryLoaded(TLoaderInfo &)
-5039711c: CBitMapAllocator::AllocFromTop()
-50396bb4: CArrayPakBase::InsertIsqL(void const *, int, TKeyArrayPak &)
-503a093c: Math::IsInfinite(double const &)
-503aeeec: RDebug::ReadXtalError()
-503ad03c: TChar::GetCjkWidth()const
-503982a4: CBufFlat::BackPtr(int)
-503ae3f8: RThread::WriteL(void const *, TDesC8 const &, int)const
-5039df3c: _divsi3
-503b9518: TTime::DayNoInWeek()const
-5039ab44: CObjectConIx::Lookup(int)const
-503aa9d8: TDes16::TrimRight()
-503ad060: TChar::Compose(unsigned int &, TDesC16 const &)
-503aa748: TDes16::CopyCP(TDesC16 const &)
-50399d04: CObject::SetName(TDesC16 const *)
-503b6dd4: RRefBase::Copy(RRefBase const &)
-503a9344: TDes16::AppendFormatList(TDesC16 const &, signed char **, TDes16Overflow *)
-503b6adc: TDeltaQueBase::DoAddDelta(void *, int)
-503ad304: RBusLogicalChannel::DoRequest(int, TRequestStatus &, void *, void *)
-503a6e00: TUnicode::GetCategory(TUnicodeDataSet const *)const
-503ae540: RTimer::Lock(TRequestStatus &, TTimerLockSpec)
-503b3cec: UserSvr::DllInitialiseData(int)
-503ad828: User::CountAllocCells()
-503b34cc: User::_DbgSetAllocFail(RHeap::TDbgHeapType, RHeap::TAllocFail, int)
-503adecc: RProcess::SetType(TUidType const &)
-503abdfc: TDes8::CopyF(TDesC8 const &)
-503ad5ac: User::SetHomeTime(TTime const &)
-5039bdfc: CPeriodic::NewL(int)
-503a0800: Math::Int(short &, double const &)
-503b7288: RRegion::RRegion(int)
-503aebc0: UserHal::MachineInfo(TDes8 &)
-5039d8cc: TBufBase8::TBufBase8(int)
-503b02a0: TPoint::_ne(TPoint const &)const
-503b7a44: RTest::Panic(TRefByValue<TDesC16 const>, ...)
-503ad66c: RHandleBase::Attributes()const
-503b5a10: RMessage::WriteL(void const *, TDesC16 const &, int)const
-50394c58: CActive::RunError(int)
-5039c46c: RPointerArrayBase::FindIsqUnsigned(unsigned int)const
-5039edd8: TInt64::_gt(TInt64 const &)const
-503a0e40: _adddf3
-5039cf3c: TBufCBase16::TBufCBase16(TDesC16 const &, int)
-503ae5b0: UserSvr::DllGlobalAllocated(int)
-503b00a4: TUidType::IsValid()const
-503ae454: RThread::GetRamSizes(int &, int &)
-503aed5c: RDebug::GetRegister(TThreadId, int, unsigned int &)
-503b2288: RBusLogicalChannel::DoSvControl(int)
-503ae288: RThread::ProcessPriority()const
-503aa0c0: HBufC16::NewMaxL(int)
-503ab8e0: HBufC8::NewL(int)
-503a1338: _negsf2
-503a0edc: _subdf3
-50398b50: CCirBufBase::CCirBufBase(int)
-50396d48: CArrayPakBase::BuildVarArrayL(CArrayVarFlat<void> * &)
-503aa3f0: TDes16::Fold()
-5039a240: CObjectCon::AddL(CObject *)
-503ad964: TLocale::FormatCurrency(TDes16 &, int)
-503a7b58: UserSvr::ServerStarted()
-503acc2c: User::Fold(unsigned int, int)
-50398578: CBufSeg::~CBufSeg()
-503af698: User::Exit(int)
-503acb74: TRawEvent::Modifiers()const
-503aec20: UserHal::PageSizeInBytes(int &)
-503ad5b8: User::ResetInactivityTime()
-50397e60: CBufBase::Write(int, void const *, int)
-503a7ff4: RPointerArrayBase::RPointerArrayBase(int)
-50399868: CDeltaTimer::NewL(int)
-5039dbd8: TDesC8::Compare(TDesC8 const &)const
-50399d4c: CObject::SetNameL(TDesC16 const *)
-503b6a20: TDeltaQueBase::TDeltaQueBase()
-503b90c8: TTime::_apl(TTimeIntervalMonths)
-503b02d0: TPoint::_ami(TPoint const &)
-503a7f8c: DummyEuser_1653((*), void)
-503a81f0: RPointerArrayBase::GranularCompress()
-503ae270: RThread::Priority()const
-503b6798: TDblQueLinkBase::Enque(TDblQueLinkBase *)
-503af0fc: RDebug::ProfileReset(int, int)
-503aebcc: UserHal::MemoryInfo(TDes8 &)
-503aeb74: TBusLocalDrive::PasswordStoreLengthInBytes()
-5039ea60: TInt64::_pp(int)
-503a81a8: RPointerArrayBase::Compress()
-503ab528: TDes16::_DbgTestInvariant()const
-503b0710: TRect::TRect(TSize const &)
-503a9e94: TDesC16::Match(TDesC16 const &)const
-503acc24: User::SetJustInTime(int)
-503b6aa0: TDeltaQueBase::CountDown()
-503b464c: TLex16::Val(TInt64 &, TRadix, TInt64 const &)
-5039be0c: CPeriodic::CPeriodic(int)
-503965f8: CArrayVarBase::CountR(CBase const *)
-503acb0c: TDesC8::_DbgTestInvariant()const
-503af01c: RDebug::Print(TRefByValue<TDesC16 const>, ...)
-503acb18: HBufC8::_DbgTestInvariant()const
-503b0628: TSize::_pl(TPoint const &)const
-503aeb70: TBusLocalDrive::ReadPasswordData(TDes8 &)
-503a3e3c: TLex8::Val(double &)
-503aff20: TUidType::TUidType(TUid)
-5039eed0: TRealX::_as(TInt64 const &)
-503b8aec: TTime::_pl(TTimeIntervalMonths)const
-503b4ce0: TLex8::Peek()const
-5039c094: CBase::_nw(unsigned int)
-5039f7f0: TRealX::_mi()const
-503a177c: Mem::Compare(unsigned char const *, int, int, int)
-503ad138: RChunk::Base()const
-503acc68: User::LowerCase(unsigned int)
-503ab064: TDes16::AppendNumFixedWidth(unsigned int, TRadix, int)
-503ad148: RChunk::Bottom()const
-503ae5c8: UserSvr::TestBootSequence()
-503b1754: UserHeap::FixedHeap(void *, int)
-50396278: CArrayVarBase::Delete(int, int)
-503b9330: TTime::_ami(TTimeIntervalDays)
-503aa200: TDes16::Copy(TDesC8 const &)
-503b07ac: TRect::Resize(TSize const &)
-503ae880: TBusLocalDrive::Caps(TDes8 &)
-503b1f88: RChunk::Adjust(int)const
-503b22cc: RBusLogicalChannel::DoSvControl(int, void *)
-503a9c68: TDesC16::CompareC(TDesC16 const &, int, TCollationMethod const *)const
-50399930: CDeltaTimer::Queue(TTimeIntervalMicroSeconds32, TDeltaTimerEntry &)
-50395990: CArrayFixBase::Compress()
-503af144: User::IMB_Range(void *, void *)
-503af818: User::Version()
-503b56e0: TDayName::TDayName()
-503a1124: _gtdf2
-503b27ec: RSemaphore::CreateLocal(int, TOwnerType)
-50398134: CBufFlat::DoInsertL(int, void const *, int)
-50399f4c: CObjectIx::Remove(int)
-503b6840: TSglQueBase::SetOffset(int)
-503a9fb0: TDesC16::Alloc()const
-503a1430: _fixsfsi
-5039aa70: CObjectConIx::Remove(CObjectCon *)
-5039db1c: TDesC8::Locate(TChar)const
-503ad598: RLibrary::GetRamSizes(int &, int &)
-503b915c: TTime::_apl(TTimeIntervalHours)
-5039bfa8: CHeartbeat::~CHeartbeat()
-503b016c: TCheckedUid::Set(TDesC8 const &)
-50397a34: CBitMapAllocator::IsFree(int, int)
-50398b8c: CCirBufBase::~CCirBufBase()
-503b4db0: TLex8::SkipCharacters()
-503b1960: RHeap::_DbgMarkStart()
-503af904: TKey::TKey(int, TKeyCmpNumeric)
-503b976c: TTime::WeekNoInYear(TTime)const
-503a09bc: TInt64::_as(double)
-503a7b50: UserSvr::WsRegisterThread(int (*)(void *))
-503aa4c8: TDes16::UpperCase()
-503b3588: RProcess::Create(TDesC16 const &, TDesC16 const &, TUidType const &, TOwnerType)
-5039bfc4: CHeartbeat::RunL()
-503b59f0: RMessage::WriteL(void const *, TDesC8 const &)const
-503a24f0: TDes8::AppendNumFixedWidthUC(unsigned int, TRadix, int)
-503b146c: RHeap::Available(int &)const
-503b00f8: TCheckedUid::TCheckedUid(TUidType const &)
-503ac07c: TDes8::Repeat(TDesC8 const &)
-5039efec: TRealX::SetZero(int)
-50399410: CCleanup::PopAndDestroy()
-503aec14: UserHal::ExceptionInfo(TExcInfo &)
-5039580c: TKeyArrayPak::Set(CBufBase *)
-503af358: Mem::Compare(unsigned short const *, int, int, int)
-503abf9c: TDes8::CopyCP(TDesC8 const &)
-50399e4c: CObjectIx::AddL(CObject *)
-503950cc: CActiveScheduler::Start()
-503ba2d8: Time::DaysInMonth(int, TMonth)
-503ade60: RMutex::Count()
-50396c0c: CArrayPakBase::InsertIsqAllowDuplicatesL(void const *, int, TKeyArrayPak &)
-503ae578: RChangeNotifier::Logon(TRequestStatus &)const
-503b54a0: TLex8::Val(signed char &)
-50399650: CConsoleBase::CConsoleBase()
-5039b8f4: CSession::CSession(RThread)
-503a9f38: TDesC16::LocateReverseF(TChar)const
-5039c7d4: RArrayBase::Find(void const *, int (*)(void const *, void const *))const
-503a0368: TRealX::_pp()
-503b052c: TSize::_apl(TSize const &)
-503aca48: TDes8::Format(TRefByValue<TDesC8 const>, ...)
-5039d1b0: TDes16::Copy(TDesC16 const &)
-503abc7c: TDes8::FillZ(int)
-5039bab4: CServer::StartL(TDesC16 const &)
-503b0fc8: RHeap::AllocLen(void const *)const
-503b5668: TLex8::Val(unsigned long &, TRadix)
-5039c734: RArrayBase::Append(void const *)
-503993f4: CCleanup::Pop()
-5039a8d8: CObjectConIx::CObjectConIx()
-50398098: CBufFlat::~CBufFlat()
-5039d80c: TBufCBase8::TBufCBase8(TDesC8 const &, int)
-503aa88c: TDes16::TrimAll()
-503b6988: TDblQueBase::SetOffset(int)
-503a0e98: _subsf3
-503ad8e4: UserExec::FatUtilityFunctions()
-5039cf04: TBufCBase16::TBufCBase16(unsigned short const *, int)
-503b4e50: TLex8::MarkedToken()const
-503b8720: TTime::MinutesFrom(TTime, TTimeIntervalMinutes &)const
-5039eaa4: TInt64::_pl(TInt64 const &)const
-503b159c: THeapWalk::THeapWalk(RHeap const &)
-503ba304: Time::IsLeapYear(int)
-503b06b4: TRect::TRect(int, int, int, int)
-503ad384: RBusLogicalChannel::DoControl(int)
-503b3e28: UserSvr::DllGlobalAlloc(int, int)
-503ade70: RMutex::Signal()
-503ab934: HBufC8::NewMaxL(int)
-503a7264: TUnicode::Fold(int, TUnicodeDataSet const *)const
-503995dc: CleanupStack::Pop()
-503acb58: TRawEvent::Pos()const
-5039ebd0: TInt64::_ls(int)const
-503b19dc: RNotifier::UpdateNotifier(TUid, TDesC8 const &, TDes8 &)
-50395fd0: CArrayFixBase::SetReserveFlatL(int)
-503b2e6c: RThread::Open(TThreadId, TOwnerType)
-50394eb8: CAsyncCallBack::CAsyncCallBack(int)
-503ab640: TDesC8::FindF(unsigned char const *, int)const
-50396b8c: CArrayPakBase::InsertL(int, void const *, int)
-503b4ae8: TLex16::Val(unsigned short &, TRadix)
-503a8288: RPointerArrayBase::InsertIsqSigned(int, int)
-5039e578: _lshrdi3
-503b76f0: RTest::Title()
-5039dd64: TDes8::ZeroTerminate()
-503b8e28: TTime::_mi(TTimeIntervalMonths)const
-503b2df4: RThread::SetInitialParameter(void *)
-503abf34: TDes8::CopyUC(TDesC8 const &)
-503b37dc: User::FreePhysicalDevice(TDesC16 const &)
-503ae630: User::Beep(int, TTimeIntervalMicroSeconds32)
-5039bed4: CHeartbeat::CHeartbeat(int)
-5039be4c: CPeriodic::Start(TTimeIntervalMicroSeconds32, TTimeIntervalMicroSeconds32, TCallBack)
-5039a5f8: CObjectCon::CheckUniqueFullName(CObject const *)const
-50397f04: CBufBase::InsertL(int, TDesC8 const &)
-503b445c: TLex16::Val(unsigned long &, TRadix, unsigned int)
-503b2f90: RThread::Panic(TDesC16 const &, int)
-50399758: CConsoleBase::SetPos(int)
-503ade8c: RProcess::Type()const
-5039f008: TRealX::SetNaN()
-503ba434: User::LeaveNoMemory()
-503acce4: TChar::IsLower()const
-503b3dc4: RUndertaker::Logon(TRequestStatus &, int &)const
-503ae730: TBusLocalDrive::Read(TInt64, int, TDes8 &)
-503a693c: Math::Tan(double &, double const &)
-5039d43c: TDesC16::Mid(int, int)const
-503a65c4: TDes16::Num(double, TRealFormat const &)
-503ab56c: TDesC8::Find(unsigned char const *, int)const
-503977f8: CBitMapAllocator::AllocAt(int, int)
-503a7f90: DummyEuser_1654((*), void)
-503ae240: RThread::IsExceptionHandled(TExcType)
-503ae0d4: RSemaphore::Signal(int)
-5039e5d0: _udivmoddi4
-5039f474: TRealX::_opd()
-50394dc4: CIdle::DoCancel()
-503a8080: RPointerArrayBase::Count()const
-50396210: CArrayVarBase::At(int)const
-503a6e5c: TUnicode::GetUpperCase(TUnicodeDataSet const *)const
-503b407c: TLex16::Assign(TDesC16 const &)
-5039572c: TKeyArrayVar::Set(CBufBase *)
-503a7a5c: RLibrary::Close()
-503acc28: User::Fold(unsigned int)
-503b49d0: TLex16::Val(long &)
-5039f264: TRealX::_opi()
-503b42b0: TLex16::TokenLength(TLexMark16)const
-503a8a18: RArrayBase::GetCount(CBase const *)
-503b01f0: TCheckedUid::Check()const
-503b145c: RHeap::Size()const
-5039bbb8: CServer::ReStart()
-503aefec: RDebug::RegisterInfo(SRegisterInfo &)
-5039b884: CSharableSession::ResourceCountMarkStart()
-503aa960: TDes16::TrimLeft()
-503af138: Password::IsEnabled()
-503ae768: TBusLocalDrive::Write(TInt64, int, void const *, int, int)
-50399d84: CObjectIx::NewL()
-503a9ea4: TDesC16::MatchC(TDesC16 const &)const
-5039e5f0: _pure_virtual
-503b900c: TTime::_mi(TTimeIntervalMicroSeconds)const
-503acb1c: TPtr8::_DbgTestInvariant()const
-503ad474: User::WaitForRequest(TRequestStatus &, TRequestStatus &)
-503b0c64: RHandleBase::SetHandleNC(int)
-5039dee8: TDes8::Fill(TChar)
-503b0484: TSize::_eq(TSize const &)const
-503b8d84: TTime::_pl(TTimeIntervalMicroSeconds)const
-503aebb8: UserSvr::SetMemoryThresholds(int, int)
-503aac94: TDes16::AppendJustify(TDesC16 const &, int, TAlign, TChar)
-50396f48: CBitMapAllocator::NewL(int)
-503b1a7c: RNotifier::RNotifier()
-503acc6c: User::UpperCase(unsigned int)
-503b143c: RHeap::ReAllocL(void *, int)
-503b0450: TPoint::_mi()const
-503a11cc: _ledf2
-503ab3b0: TDes16::AppendNumUC(TInt64, TRadix)
-5039b95c: CSession::WriteL(void const *, TDesC8 const &)const
-5039f574: TRealX::GetTReal(float &)const
-503995b8: CleanupStack::PushL(TCleanupItem)
-5039cbd8: RArrayBase::HeapSortUnsigned()
-503b59e8: RMessage::ReadL(void const *, TDes16 &, int)const
-503a7854: UserSvr::UnlockRamDrive()
-503ad704: User::AllocL(int)
-5039de20: TDes8::Append(TDesC8 const &)
-503b8104: TTime::UniversalTime()
-503aef4c: RDebug::Fault(int)
-50397cfc: CBufBase::Read(int, TDes8 &)const
-503aed8c: RDebug::SetRegister(TThreadId, int, unsigned int)
-50398c14: CCirBufBase::Reset()
-503ae3d4: RThread::ReadL(void const *, TDes16 &, int)const
-503a1108: _gtsf2
-503aca78: TDes8::FormatList(TDesC8 const &, signed char **)
-503b6a7c: TDeltaQueBase::FirstDelta(int &)
-503aec50: UserHal::TickPeriod(TTimeIntervalMicroSeconds32 &)
-5039d9b4: TDes8::SetMax()
-503ae0c4: RSemaphore::Wait()
-503aafa4: TDes16::AppendNum(unsigned int, TRadix)
-503a3dac: TLex8::Val(float &)
-5039e5ac: _muldi3
-503b05ec: TSize::_pl(TSize const &)const
-503aae1c: TDes16::Num(unsigned int, TRadix)
-503b8628: TTime::MicroSecondsFrom(TTime)const
-50394c0c: CActive::SetPriority(int)
-503a0724: Math::PolyX(TRealX &, TRealX const &, int, TRealX const *)
-503aa068: HBufC16::NewL(int)
-503ae4e4: RTimer::Cancel()
-503953d4: CActiveScheduler::Reserved_1()
-503a814c: RPointerArrayBase::Remove(int)
-503ae598: UserSvr::CaptureEventHook()
-503b4f70: TLex8::Offset()const
-503ab4ec: TDes16::AppendFormat(TRefByValue<TDesC16 const>, ...)
-503a10b4: _eqdf2
-503b8d14: TTime::_pl(TTimeIntervalSeconds)const
-503b4f7c: TLex8::MarkedOffset(TLexMark8)const
-503a1ba8: Mem::Copy(void *, void const *, int)
-503a9f34: TDesC16::LocateF(TChar)const
-503b4bb8: TLex8::Assign(unsigned char const *)
-503b7124: TRegion::ForceError()
-5039561c: TKeyArrayFix::TKeyArrayFix(int, TKeyCmpNumeric)
-503af794: User::BinarySearch(int, TKey const &, int &)
-503afc7c: TKey::At(int)const
-503b0b14: TRect::Width()const
-503a2998: TRegion::ClipRect(TRect const &)
-503b790c: RTest::End()
-5039c10c: Console::NewL(TDesC16 const &, TSize)
-503b075c: TRect::SetRect(TPoint const &, TSize const &)
-503aee28: RDebug::GetException(SDebugInfo &, TRequestStatus &)
-503ac4e4: TDes8::AppendJustify(TDesC8 const &, int, int, TAlign, TChar)
-503ae068: RProcess::SetOwner(RProcess const &)const
-5039cce0: RArrayBase::HeapSort(int (*)(void const *, void const *))
-503b0218: User::InfoPrint(TDesC16 const &)
-503ac7a8: TDes8::AppendNum(TInt64)
-5039e9e8: TInt64::_als(int)
-5039ce24: TPtrC16::TPtrC16(TDesC16 const &)
-503a6878: Math::Sin(double &, double const &)
-503aa0ec: HBufC16::_as(unsigned short const *)
-503ae634: TBusLocalDrive::TBusLocalDrive()
-50395794: TKeyArrayPak::TKeyArrayPak(int, TKeyCmpText)
-503b24a8: RMessage::Complete(int)const
-503b0ad8: TRect::Size()const
-5039d764: TPtr8::TPtr8(unsigned char *, int)
-5039c1e0: RPointerArrayBase::Find(void const *)const
-503af570: Mem::CollationMethodById(unsigned int)
-503aa254: TDes16::Swap(TDes16 &)
-503adfc0: RProcess::SetPriority(TProcessPriority)const
-503acca0: TChar::GetUpperCase()const
-503b5858: TDateSuffix::TDateSuffix(int)
-503af130: RDebug::ProfileStart(int)
-503a1a8c: Mem::Fill(void *, int, TChar)
-503aa0d0: HBufC16::NewMaxLC(int)
-503ac5fc: TDes8::Num(int)
-503b6b98: TDeltaQueBase::DoRemoveFirst()
-5039b87c: CSharableSession::CreateL(CServer const &)
-503b77c4: RTest::Next(TDesC16 const &)
-503b1ab0: RNotifier::Connect()
-503a28f0: TRegion::Contains(TPoint const &)const
-5039959c: CleanupStack::PushL(CBase *)
-5039b954: CSession::ReadL(void const *, TDes16 &, int)const
-503985b4: CBufSeg::Compress()
-5039a1b4: CObjectCon::~CObjectCon()
-503a0964: Math::IsFinite(double const &)
-503991c0: CCleanup::PreviousLevel()
-50399874: CDeltaTimer::NewL(int, TTimeIntervalMicroSeconds32)
-5039d480: TDes16::Zero()
-503aa438: TDes16::Collate()
-503a9cc0: TDesC16::Find(unsigned short const *, int)const
-503acc70: User::TitleCase(unsigned int)
-503a4f90: Math::Pow10(double &, int)
-503b4c20: TLex8::UnGet()
-5039b98c: CSession::Terminate(int)const
-503aa038: HBufC16::New(int)
-503a0844: Math::Int(long &, double const &)
-503acb14: TDes8::_DbgTestInvariant()const
-503aaa48: TDes16::Insert(int, TDesC16 const &)
-503ade4c: TFindMutex::Next(TBuf<256> &)
-503ba43c: User::LeaveIfError(int)
-50395a40: CArrayFixBase::At(int)const
-503b58d8: TCurrencySymbol::TCurrencySymbol()
-503b8304: TTime::DateTime()const
-5039c554: RPointerArrayBase::HeapSortUnsigned()
-503ae5cc: UserSvr::WsRegisterSwitchOnScreenHandling(int)
-503ad014: TChar::GetNumericValue()const
-5039edb4: TInt64::_le(TInt64 const &)const
-503b0b94: TRect::SetSize(TSize const &)
-503a1340: _negdf2
-50394ff0: CActiveScheduler::~CActiveScheduler()
-503b0318: TPoint::_apl(TPoint const &)
-503b04e4: TSize::_ami(TSize const &)
-503b6bf0: TSglQueIterBase::SetToFirst()
-503b5540: TLex8::Val(TInt64 &)
-503b5b2c: RSessionBase::SendReceive(int, void *, TRequestStatus &)const
-5039ac68: Security::NewL()
-503ae0bc: RSemaphore::Count()
-503a88cc: RArrayBase::InsertIsqUnsigned(void const *, int)
-503b30e4: TBusLocalDrive::Disconnect()
-503a854c: RArrayBase::RArrayBase(int, int, int)
-503a10ec: _nedf2
-503af140: Math::Random()
-503b0a90: TRect::Contains(TPoint const &)const
-503a389c: Math::ATan(double &, double const &)
-503ae5a4: UserSvr::RequestEventCancel()
-503b10ac: RHeap::AllocL(int)
-5039947c: CTrapCleanup::New()
-503b7380: RRegion::Close()
-5039e648: TInt64::_ami(TInt64 const &)
-5039c450: RPointerArrayBase::FindIsqSigned(int)const
-503a8744: RArrayBase::Compress()
-503aa18c: HBufC16::ReAllocL(int)
-503ad7f8: User::Heap()
-50395d78: CArrayFixBase::InsertL(int, void const *, int)
-503b69e4: TDblQueBase::DoAddPriority(void *)
-50397f70: CBufBase::InsertL(int, void const *, int)
-503b2ad0: RProcess::Logon(TRequestStatus &)const
-50395944: CArrayFixBase::~CArrayFixBase()
-503a122c: _muldf3
-50398ca4: CCirBufBase::DoAdd(unsigned char const *, int)
-503ac52c: TDes8::AppendJustify(unsigned char const *, int, TAlign, TChar)
-50395b0c: CArrayFixBase::Back(int)const
-503a147c: _fixdfsi
-503b8f2c: TTime::_mi(TTimeIntervalMinutes)const
-5039a7b4: CObjectCon::FindByFullName(int &, TDesC16 const &, TBuf<256> &)const
-503b93e8: TTime::_ami(TTimeIntervalMinutes)
-503b4240: TLex16::SkipSpaceAndMark(TLexMark16 &)
-503b87dc: TTime::HoursFrom(TTime, TTimeIntervalHours &)const
-503ade44: RServer::Cancel()
-503ba570: PanicTFixedArray((*), void)
-503ae1c0: RThread::RaiseException(TExcType)
-503b8ca4: TTime::_pl(TTimeIntervalMinutes)const
-5039ce58: TPtrC16::TPtrC16(unsigned short const *)
-503acd44: TChar::IsAlpha()const
-503afe80: TUid::_ne(TUid const &)const
-503ab4bc: TDes16::AppendFormat(TRefByValue<TDesC16 const>, TDes16Overflow *, ...)
-503992f4: CCleanup::DoPop(int, int)
-503aec68: UserHal::RestoreXYInputCalibration(TDigitizerCalibrationType)
-503acf18: TChar::IsControl()const
-5039da78: TDes8::Copy(TDesC8 const &)
-503afd78: User::RequestComplete(TRequestStatus * &, int)
-503b0eac: RHeap::_nw(unsigned int, void *)
-503a7b60: UserSvr::BlockThreads(TBlockType)
-503b33cc: User::_DbgMarkCheck(RHeap::TDbgHeapType, int, int, TDesC8 const &, int)
-5039bbdc: CTimer::CTimer(int)
-503aa480: TDes16::LowerCase()
-503ad1c0: TFindLogicalChannel::Next(TBuf<256> &)
-50396ea0: CBitMapAllocator::CBitMapAllocator(int, int)
-503b9440: TTime::_ami(TTimeIntervalSeconds)
-50399424: CCleanup::PopAndDestroyAll()
-503b9764: TTime::WeekNoInYear()const
-503ad8d8: TShortDateFormatSpec::Set()
-503b3fbc: UserSvr::DllAddDependency(void *, void *)
-503b2fc0: RThread::Logon(TRequestStatus &)const
-5039acf8: Security::NewL(TDesC8 const &)
-503abecc: TDes8::CopyLC(TDesC8 const &)
-5039d6e8: TPtrC8::TPtrC8()
-503b3cc8: UserSvr::DllFreeTls(int)
-503af518: Mem::CollationMethods()
-503b92f8: TTime::_ami(TTimeIntervalMonths)
-503ae3a0: RThread::GetDesMaxLength(void const *)const
-50397c68: CBitMapAllocator::Size()
-503af8cc: TKey::TKey(int, TKeyCmpText, int)
-503b3eb4: RDebug::Close()
-503b14dc: RHeap::Check()const
-503a3e80: TLex8::Val(double &, TChar)
-503b518c: TLex8::Val(TInt64 &, TRadix, TInt64 const &)
-503b1fc0: RChunk::AdjustDoubleEnded(int, int)const
-50398dd8: CCirBufBase::DoRemove(unsigned char *, int)
-503ba458: User::LeaveIfNull(void *)
-50395270: CActiveScheduler::Error(int)const
-503ad160: TFindLogicalDevice::Next(TBuf<256> &)
-50395080: CActiveScheduler::Add(CActive *)
-503a8428: RPointerArrayBase::GetCount(CBase const *)
-503b4128: TLex16::Inc()
-5039eb90: TInt64::_rs(int)const
-503a01d4: TRealX::Sub(TRealX &, TRealX const &)const
-503aa660: TDes16::CopyLC(TDesC16 const &)
-503b0b34: TRect::IsNormalized()const
-5039f8c8: TRealX::SubEq(TRealX const &)
-5039d888: TBufCBase8::Copy(TDesC8 const &, int)
-503a5054: Math::FRand(TInt64 &)
-5039c71c: RArrayBase::At(int)const
-503aec44: UserHal::CalibrationPoints(TDigitizerCalibration &)
-503ae078: RProcess::GetRamSizes(int &, int &, int &, int &)
-50395d70: CArrayFixBase::InsertL(int, void const *)
-503b7384: RRegion::Destroy()
-5039ca44: RArrayBase::FindIsqSigned(void const *)const
-503b3d34: RChangeNotifier::Create()
-503b76bc: RTest::Close()
-50399260: CCleanup::PushL(TCleanupItem)
-503a9df0: TDesC16::FindC(unsigned short const *, int)const
-503ba378: Time::LeapYearsUpTo(int)
-503b6c38: TSglQueIterBase::DoCurrent()
-503b24b0: RServer::CreateGlobal(TDesC16 const &)
-503b26e8: RMutex::CreateLocal(TOwnerType)
-50394dc8: CAsyncOneShot::Call()
-503a9e9c: TDesC16::MatchF(TDesC16 const &)const
-503b3394: User::_DbgMarkStart(RHeap::TDbgHeapType)
-503ad3bc: RBusLogicalChannel::DoControl(int, void *)
-50397cbc: CBufBase::Reset()
-503af84c: User::QueryVersionSupported(TVersion const &, TVersion const &)
-503ae1ac: RThread::ModifyExceptionMask(unsigned long, unsigned long)
-50399dd4: CObjectIx::~CObjectIx()
-503aff5c: TUidType::_eq(TUidType const &)const
-503b0574: TSize::_mi(TSize const &)const
-503aed28: RDebug::ClrWatchPoint(TThreadId, unsigned int)
-503a2eb4: RHeap::Alloc(int)
-503b1560: RHeap::AllocSize(int &)const
-50399400: CCleanup::Pop(int)
-50394cdc: CIdle::CIdle(int)
-503a63d0: TRealFormat::TRealFormat(int, int)
-503acb7c: TRawEvent::Set(TRawEvent::TType, int)
+50396104: CArrayVarBase::Length(int)const
 503ab7c0: TDesC8::LocateReverseF(TChar)const
-503964a4: CArrayVarBase::FindIsq(void const *, TKeyArrayVar &, int &)const
-503aa094: HBufC16::NewMax(int)
-503b5a04: RMessage::WriteL(void const *, TDesC16 const &)const
-503ac64c: TDes8::NumUC(unsigned int, TRadix)
-503aee64: RDebug::CancelGetException()
-5039e510: _ashrdi3
-50399408: CCleanup::PopAll()
-503b68a8: TSglQueBase::DoAddLast(void *)
-5039bea4: CPeriodic::RunL()
-5039a400: CObjectCon::CheckUniqueFullName(CObject const *, TDesC16 const &)const
-503b6c9c: TDblQueIterBase::DoPostInc()
-503b58ac: TAmPmName::TAmPmName(TAmPm)
-50394ad8: CActive::CActive(int)
-503aebd8: UserHal::RomInfo(TDes8 &)
-503ad898: TDateSuffix::Set(int)
-503b8664: TTime::SecondsFrom(TTime, TTimeIntervalSeconds &)const
-503b32f0: TBusLocalDrive::Clear(TBuf8<16> &)
-5039c38c: RPointerArrayBase::BinarySearch(void const *, int &, int (*)(void const *, void const *))const
-503b3208: TBusLocalDrive::Unlock(TBuf8<16> &, int)
-50399b28: CObject::~CObject()
-503b69b0: TDblQueBase::Reset()
-503b2b30: RThread::Create(TDesC16 const &, int (*)(void *), int, void *, RLibrary *, RHeap *, int, int, TOwnerType)
-5039ce80: TPtrC16::TPtrC16(unsigned short const *, int)
-503affc8: TUidType::_vc(int)const
-503b57b0: TMonthName::TMonthName(TMonth)
-50396f08: CBitMapAllocator::New(int)
-503b9498: TTime::_ami(TTimeIntervalMicroSeconds)
-503ba55c: TFormatInfo::TFormatInfo()
-503b18a0: UserHeap::ChunkHeap(RChunk &, int, int)
-503a9d88: TDesC16::Find(TDesC16 const &)const
-503aa35c: TDes16::Fill(TChar, int)
-503b5920: TLongDateFormatSpec::TLongDateFormatSpec()
-5039526c: CActiveScheduler::Current()
-5039e630: TInt64::_apl(TInt64 const &)
-5039bf98: CHeartbeat::NewL(int)
-503b6c8c: TDblQueIterBase::DoSet(void *)
-503994f0: CTrapCleanup::CTrapCleanup()
-503b4384: TLex16::Remainder()const
-503ae844: TBusLocalDrive::Write(TInt64, TDesC8 const &)
-5039dd40: TDes8::Zero()
-50399c94: CObject::FullName()const
-503ae338: RThread::ExitCategory()const
-503ad5c4: RHandleBase::Name()const
-503b2a1c: RProcess::Kill(int)
-503ad8c4: TAmPmName::Set(TAmPm)
-503abda4: TDes8::Capitalize()
-503b10d8: RHeap::ChunkAdjust(int)
-503af93c: TKey::Compare(int, int)const
-503b5968: TLocaleMessageText::TLocaleMessageText()
-503a1284: _divsf3
-503b09a4: TRect::Intersection(TRect const &)
-5039eeb4: TRealX::Set(TInt64 const &)
-5039b8a8: CSharableSession::ResourceCountMarkEnd()
-503b0fe0: RHeap::Adjust(void *, int, int)
-503b0684: TSize::AsPoint()const
-503ab45c: TDes16::Format(TRefByValue<TDesC16 const>, ...)
-503b5bf8: RSubSessionBase::CloseSubSession(int)
-50394b60: CActive::Cancel()
-503b36d8: User::FreeLogicalDevice(TDesC16 const &)
-503ac2f8: TDes8::Delete(int, int)
-503a03d4: TRealX::_mm()
-503ae5c4: UserSvr::KernelStartup(int (*)(void *))
-5039e608: TInt64::TInt64(int)
-503b033c: TPoint::_apl(TSize const &)
-5039c07c: CBase::~CBase()
+5039edd8: TInt64::_gt(TInt64 const &)const
 50394f54: CAsyncCallBack::Set(TCallBack &)
-5039de4c: TDes8::Append(unsigned char const *, int)
-503959bc: CArrayFixBase::Reset()
-50394dfc: CAsyncOneShot::DoCancel()
-503b91b8: TTime::_apl(TTimeIntervalMinutes)
-50396ef8: CBitMapAllocator::~CBitMapAllocator()
-503ad6a0: User::AdjustL(void *, int, int)
-503980dc: CBufFlat::SetReserveL(int)
-503aae74: TDes16::NumFixedWidth(unsigned int, TRadix, int)
-503ae59c: UserSvr::ReleaseEventHook()
-503b4d48: TLex8::SkipAndMark(int, TLexMark8 &)
-503a4184: TLex16::Val(float &, TChar)
-503b02f4: TPoint::_ami(TSize const &)
-503b2e20: RThread::Open(TDesC16 const &, TOwnerType)
-503b1b08: RNotifier::Notify(TDesC16 const &, TDesC16 const &, TDesC16 const &, TDesC16 const &, int &, TRequestStatus &)
-5039d3fc: TDesC16::Mid(int)const
-503b7ddc: TTime::TTime(TDateTime const &)
-5039dfac: _udivsi3
-503a2854: TRegion::Offset(TPoint const &)
-5039d77c: TPtr8::TPtr8(unsigned char *, int, int)
-503b43b4: TLex16::RemainderFromMark(TLexMark16)const
-5039ce14: TPtrC16::TPtrC16()
-503b4b28: TLex16::Val(unsigned long &, TRadix)
-503acf9c: TChar::GetBdCategory()const
-503b72fc: RRegion::RRegion(RRegion const &)
-503b6b50: TDeltaQueBase::DoRemove(void *)
-503b0148: TCheckedUid::Set(TUidType const &)
-503ad110: TChar::TranslateToUnicode(unsigned int &, unsigned int, TChar::TEncoding)
-50396e04: CArrayPakBase::CountR(CBase const *)
-503ab610: TDesC8::Find(TDesC8 const &)const
-50395aa0: CArrayFixBase::End(int)const
-503a3130: CObjectCon::At(int)const
-503a860c: RArrayBase::Count()const
-503acf94: TChar::GetCategory()const
-503a4724: Math::Mod(double &, double const &, double const &)
-503b29a4: RProcess::Open(TProcessId, TOwnerType)
-50396648: CArrayPakBase::~CArrayPakBase()
-503a03a0: TRealX::_pp(int)
-503acc20: User::JustInTime()
-503abc08: TDes8::Fill(TChar, int)
-503aec8c: User::MachineConfiguration(TDes8 &, int &)
-5039ee10: TRealX::TRealX(unsigned int, unsigned int, unsigned int)
-503b9610: TTime::DayNoInYear()const
-5039d02c: TBufBase16::TBufBase16(unsigned short const *, int)
-5039b934: CSession::ReadL(void const *, TDes8 &)const
-503affac: TUidType::_ne(TUidType const &)const
-503a2704: TRegion::BoundingRect()const
-503b2588: RSessionBase::Share(RSessionBase::TAttachMode)
-503aae48: TDes16::NumUC(unsigned int, TRadix)
-503b7ce0: TDateTime::SetMonth(TMonth)
-5039f800: TRealX::Compare(TRealX const &)const
-503aebf0: UserHal::StartupReason(TMachineStartupType &)
-503a28a4: TRegion::Offset(int, int)
-50398ee8: CCirBuffer::~CCirBuffer()
-503acd64: TChar::IsDigit()const
-503ad090: TChar::Decompose(TPtrC16 &)const
-503ae3b0: RThread::ReadL(void const *, TDes8 &, int)const
-5039bcfc: CTimer::Inactivity(TTimeIntervalSeconds)
-503b2c58: RThread::Create(TDesC16 const &, int (*)(void *), int, int, int, void *, TOwnerType)
-5039e544: _ashldi3
-503abe64: TDes8::CopyC(TDesC8 const &)
-503b97e4: TTime::WeekNoInYear(TTime, TFirstWeekRule)const
-503ad150: RChunk::Top()const
-503ae138: RCriticalSection::Signal()
-503b5734: TDayNameAbb::TDayNameAbb()
-503a842c: RPointerArrayBase::GetElementPtr(CBase const *, int)
-503aab68: TDes16::Replace(int, int, TDesC16 const &)
-5039b8dc: CSharableSession::CountResources()
-503aad70: TDes16::AppendJustify(unsigned short const *, int, int, TAlign, TChar)
-503ab71c: TDesC8::Match(TDesC8 const &)const
-50395238: CActiveScheduler::Stop()
-503ab678: TDesC8::FindC(unsigned char const *, int)const
-50398974: CBufSeg::Delete(int, int)
-503a6380: TRealFormat::TRealFormat(int)
-503ade0c: TLocaleMessageText::Set(TLocaleMessage)
-503acbc0: TRawEvent::Set(TRawEvent::TType)
-50395c9c: CArrayFixBase::Find(void const *, TKeyArrayFix &, int &)const
-503b1970: RHeap::_DbgMarkCheck(int, int, TDesC8 const &, int)
-503af630: User::StringLength(unsigned short const *)
-503b72b4: RRegion::RRegion(TRect const &, int)
-503ae010: RProcess::Protected()const
-503b8aa8: TTime::YearsFrom(TTime)const
-503ad440: User::WaitForRequest(TRequestStatus &)
-503b067c: TSize::SetSize(int, int)
-5039df24: _builtin_new
-503b25d4: RSessionBase::Attach()const
-503acb9c: TRawEvent::Set(TRawEvent::TType, int, int)
-503ab110: TDes16::AppendNumFixedWidthUC(unsigned int, TRadix, int)
-50396740: CArrayPakBase::Reset()
-503ad610: RHandleBase::FullName()const
-503acec0: TChar::IsPrint()const
-503b0550: TSize::_apl(TPoint const &)
-5039d7c8: TBufCBase8::TBufCBase8()
-503ade30: RServer::Receive(TRequestStatus &)
-503965d0: CArrayVarBase::SetKey(TKeyArrayVar &)const
-50396064: CArrayVarBase::CArrayVarBase(CBufBase * (*)(int), int)
-503adf60: RProcess::ExitCategory()const
-5039e660: TInt64::_aml(TInt64 const &)
-50395278: CActiveScheduler::RunIfReady(int &, int)
-503a785c: UserSvr::RomRootDirectoryAddress()
-503953d0: CActiveScheduler::OnStopping()
-503b4ab8: TLex16::Val(unsigned char &, TRadix)
-5039e1cc: memcpy
-5039bc84: CTimer::After(TTimeIntervalMicroSeconds32)
-503957e4: TKeyArrayPak::TKeyArrayPak(int, TKeyCmpNumeric)
-503a097c: Math::SetZero(double &, int)
-50396574: CArrayVarBase::InsertIsqAllowDuplicatesL(void const *, int, TKeyArrayVar &)
-503b3e70: User::CompressAllHeaps()
-503a0314: TRealX::_adv(TRealX const &)
-5039dfbc: _umodsi3
-503ab944: HBufC8::NewMaxLC(int)
-503ad4cc: RLibrary::Lookup(int)const
-503b7090: TRegion::Sort()
-503b3e90: RDebug::Open(int, int, int, unsigned int)
-503acf38: TChar::IsAssigned()const
-503af880: TKey::TKey()
-503ba4a8: MBusDev::MBusDev()
-5039cad0: RArrayBase::HeapSortSigned()
-5039a164: CObjectCon::NewL()
-5039a908: CObjectConIx::~CObjectConIx()
-50395054: CActiveScheduler::Install(CActiveScheduler *)
-503b7054: TRegion::Clear()
-503a7f88: DummyEuser_1652((*), void)
-503acfec: TChar::IsMirrored()const
-503b0974: TRect::IsEmpty()const
-503a8650: RArrayBase::Insert(void const *, int)
-503b1c4c: RChunk::CreateLocalCode(int, int, TOwnerType)
-503b54d0: TLex8::Val(short &)
-5039dae4: TDesC8::AtC(int)const
-50398bc4: CCirBufBase::SetLengthL(int)
-503b1b78: RNotifier::InfoPrint(TDesC16 const &)
-503b01c8: TCheckedUid::Des()const
-503b4590: TLex16::Val(long &, int)
-503ac36c: TDes8::Replace(int, int, TDesC8 const &)
-503afdb0: TLoaderInfo::TLoaderInfo()
-503b4260: TLex16::SkipCharacters()
-503ab724: TDesC8::MatchF(TDesC8 const &)const
-50396270: CArrayVarBase::Delete(int)
-503ad558: RLibrary::Type()const
-503b3a24: RLoader::LoadLibrary(int &, TDesC16 const &, TDesC16 const &, TDesC16 const &, TUidType const &)
-503b3ef8: Password::SetEnabled(TBuf<16> const &, int)
-503ab52c: HBufC16::_DbgTestInvariant()const
-503a9e64: TDesC16::FindC(TDesC16 const &)const
-503b6cfc: TDblQueIterBase::DoCurrent()
-503b3020: RThread::Heap()
-503ade68: RMutex::Wait()
-503b3d7c: RUndertaker::Create()
-50399200: CCleanup::PushL(void *)
-503ae654: TBusLocalDrive::Read(TInt64, int, void const *, int, int)
-503b9048: TTime::_mi(TTimeIntervalMicroSeconds32)const
-503b764c: RTest::RTest(TDesC16 const &, int)
-50397c60: CBitMapAllocator::Avail()
-503b274c: RMutex::CreateGlobal(TDesC16 const &, TOwnerType)
-503b7d94: TDateTime::SetMicroSecond(int)
-503ade78: TFindProcess::Next(TBuf<256> &)
-503b7328: RRegion::RRegion(int, int)
-5039f020: TRealX::SetInfinite(int)
-503b2f0c: RThread::Rename(TDesC16 const &)const
-503b1248: RHeap::FreeZ(void * &)
-503ac180: TDes8::TrimLeft()
-503b21ac: RBusLogicalChannel::DoCreate(TDesC16 const &, TVersion const &, TDesC16 const *, int, int, TDesC8 const *, TOwnerType)
-503b8eb8: TTime::_mi(TTimeIntervalHours)const
-503b4e80: TLex8::NextToken()
-503ae5d0: UserSvr::WsSwitchOnScreen()
-503ae5a0: UserSvr::RequestEvent(TRawEventBuf &, TRequestStatus &)
-503a7f9c: DummyEuser_1657((*), void)
-5039651c: CArrayVarBase::InsertIsqL(void const *, int, TKeyArrayVar &)
-503a0434: TRealX::_pl(TRealX const &)const
-5039b9f8: CServer::~CServer()
-503a1098: _eqsf2
-5039e624: TInt64::_as(int)
-503b1508: RHeap::Count()const
-503b1f38: RChunk::OpenGlobal(TDesC16 const &, int, TOwnerType)
-503961a0: CArrayVarBase::Sort(TKeyArrayVar &)
-503a1b80: Mem::Move(void *, void const *, int)
-5039cfb8: TBufCBase16::Copy(TDesC16 const &, int)
-503a6414: Math::Round(double &, double const &, int)
-503ad868: TDayNameAbb::Set(TDay)
-5039e614: TInt64::GetTInt()const
-503b59d4: RMessage::ReadL(void const *, TDes8 &, int)const
-50399a0c: CDeltaTimer::Remove(TDeltaTimerEntry &)
-503b4f04: TLex8::RemainderFromMark(TLexMark8)const
-503a2fa0: RHeap::Free(void *)
-5039b83c: CSharableSession::~CSharableSession()
-503ab9b8: HBufC8::ReAlloc(int)
-503ae0fc: RCriticalSection::RCriticalSection()
-503af2f0: Mem::CompareC(unsigned char const *, int, int, int)
-5039941c: CCleanup::PopAndDestroy(int)
-50396164: CArrayVarBase::Compress()
-503b290c: RCriticalSection::CreateLocal(TOwnerType)
-503b24a4: RMessagePtr::Complete(int)const
-50395f78: CArrayFixBase::ResizeL(int, void const *)
-503b6d1c: RRefBase::Free()
-503a85e4: RArrayBase::Close()
-5039d63c: TDes16::Fill(TChar)
-503a46e4: Math::Log(double &, double const &)
-503b682c: TSglQueBase::IsEmpty()const
-503b0c58: TFindHandleBase::Find(TDesC16 const &)
-50395ed4: CArrayFixBase::InsertIsqL(void const *, TKeyArrayFix &)
-5039d850: TBufCBase8::Copy(unsigned char const *, int)
-503b0698: TRect::TRect()
-503b4010: UserSvr::ResetMachine(TMachineStartupType)
-50399b88: CObject::Open()
-503ace0c: TChar::IsSpace()const
-503ae028: RProcess::SetProtected(int)const
-503b6d18: TDblQueBase::_DbgTestEmpty()const
-503af844: User::Invariant()
-503b4ba0: TLex8::TLex8()
-5039ee20: TRealX::Set(int)
-503aa11c: HBufC16::_as(TDesC16 const &)
-503b7898: RTest::_cl(int)
-503ac620: TDes8::Num(unsigned int, TRadix)
-503b68d0: TSglQueBase::DoRemove(void *)
-50394b10: CActive::~CActive()
-503b35f8: User::LoadLogicalDevice(TDesC16 const &)
-503b41f8: TLex16::SkipAndMark(int, TLexMark16 &)
-503b0044: TUidType::IsPresent(TUid)const
-5039ca78: RArrayBase::FindIsqUnsigned(void const *)const
-5039bd38: CTimer::ConstructL()
-503ad768: User::Free(void *)
-5039ea4c: TInt64::_pp()
-503b0fa8: RHeap::GetAddress(void *)
-503b59c8: RMessage::ReadL(void const *, TDes8 &)const
-503b0470: TPoint::AsSize()const
-5039f0ac: TRealX::_as(float)
-503b8acc: TTime::_pl(TTimeIntervalYears)const
-503acd94: TChar::IsAlphaDigit()const
-503ad198: RDevice::QueryVersionSupported(TVersion const &)const
-50395e0c: CArrayFixBase::InsertRepL(int, void const *, int)
-5039c0bc: CBase::newL(unsigned int)
-503b8bbc: TTime::_pl(TTimeIntervalDays)const
-503b2404: RHandleBase::Close()
-503aba30: HBufC8::Des()
-5039ea8c: TInt64::_mm(int)
-5039a2a4: CObjectCon::Remove(CObject *)
-503a0500: Math::Sqrt(double &, double const &)
-5039d7d4: TBufCBase8::TBufCBase8(unsigned char const *, int)
-50397df4: CBufBase::Write(int, TDesC8 const &)
-5039b940: CSession::ReadL(void const *, TDes8 &, int)const
-5039ced8: TPtr16::TPtr16(TBufCBase16 &, int)
-503953d8: CActiveScheduler::Reserved_2()
-503b1cfc: RChunk::CreateGlobal(TDesC16 const &, int, int, TOwnerType)
-5039e4c8: _moddi3
-503ae320: RThread::RequestCount()const
-503956dc: TKeyArrayVar::TKeyArrayVar(int, TKeyCmpText, int)
-503b7d6c: TDateTime::SetMinute(int)
-5039d524: TDes16::Append(TChar)
-503b3f6c: UserSvr::MediaChangeNotify(TMediaDevice, TRequestStatus *)
-5039eabc: TInt64::_mi(TInt64 const &)const
-503ba290: Time::MaxTTime()
-503a8480: RArrayBase::RArrayBase(int, int)
-503b2f64: RThread::Terminate(int)
-5039fc28: TRealX::MultEq(TRealX const &)
-503b59b0: RMessage::RMessage()
-503ac6e0: TDes8::Num(TInt64)
-5039c210: RPointerArrayBase::Find(void const *, int (*)(void const *, void const *))const
-503950c8: CActiveScheduler::WaitForAnyRequest()
-503ad80c: User::AllocSize(int &)
-503980d0: CBufFlat::Compress()
-503a7868: RLibrary::LoadRomLibrary(TDesC16 const &, TDesC16 const &)
-5039e1e4: _divdi3
-5039f0c0: TRealX::Set(float)
-5039abf0: CSecurityDecryptBase::CSecurityDecryptBase()
-503ae260: RThread::Resume()const
-5039c180: RPointerArrayBase::At(int)const
-5039d254: TDesC16::Locate(TChar)const
-503a14e8: _extendsfdf2
-503b53b0: TLex8::Val(TInt64 &, TInt64 const &)
-5039602c: CArrayFixBase::SetKey(TKeyArrayFix &)const
-5039eaf4: TInt64::_dv(TInt64 const &)const
-5039c980: RArrayBase::BinarySearch(void const *, int &, int (*)(void const *, void const *))const
-503b6c00: TSglQueIterBase::DoSet(void *)
-50396b3c: CArrayPakBase::FindIsq(void const *, TKeyArrayPak &, int &)const
-503aaea8: TDes16::NumFixedWidthUC(unsigned int, TRadix, int)
-503ad140: RChunk::Size()const
-503b1e6c: RChunk::CreateDoubleEndedGlobal(TDesC16 const &, int, int, int, TOwnerType)
-503a02ec: TRealX::_aml(TRealX const &)
-5039eed0: TRealX::TRealX(TInt64 const &)
-503b2aa4: RProcess::Owner(RProcess &)const
-5039e958: TInt64::_amd(TInt64 const &)
-503b109c: RHeap::AdjustL(void *, int, int)
-503aebe4: UserHal::DriveInfo(TDes8 &)
-5039d7a8: TPtr8::TPtr8(TBufCBase8 &, int)
-503b2ff4: RThread::LogonCancel(TRequestStatus &)const
-5039f688: TRealX::GetTReal(double &)const
-503b3370: TBusLocalDrive::WritePasswordData(TDesC8 &)
-503ad5bc: User::FastCounter()
-503ac740: TDes8::NumUC(TInt64, TRadix)
-503b42d4: TLex16::MarkedToken(TLexMark16)const
-5039d6f8: TPtrC8::TPtrC8(TDesC8 const &)
-5039ec80: TInt64::MulTop(TInt64 const &)
-503b6aa8: TDeltaQueBase::CountDown(int)
-503afca4: TSwap::Swap(int, int)const
-503b6ccc: TDblQueIterBase::DoPostDec()
-503acf58: TChar::GetInfo(TChar::TCharInfo &)const
-503ad43c: User::WaitForAnyRequest()
-503b6c7c: TDblQueIterBase::SetToLast()
-50397788: CBitMapAllocator::AllocAt(int)
-50396e0c: CArrayPakBase::AtR(CBase const *, int)
-50394bd4: CActive::SetActive()
-5039942c: CCleanup::Check(void *)
-503b5884: TAmPmName::TAmPmName()
-503b8f9c: TTime::_mi(TTimeIntervalSeconds)const
-503a16fc: User::Leave(int)
-50396e10: _t13CArrayFixFlat1Zii
-503afe94: TUid::Name()const
-503958ec: CArrayFixBase::CArrayFixBase(CBufBase * (*)(int), int, int)
-503ae050: RProcess::LoadedFromRam()const
-503a83a0: RPointerArrayBase::InsertIsq(void const *, int (*)(void const *, void const *), int)
-5039dddc: TDes8::Append(TChar)
-503b8e08: TTime::_mi(TTimeIntervalYears)const
-503aace0: TDes16::AppendJustify(TDesC16 const &, int, int, TAlign, TChar)
-50395f24: CArrayFixBase::InsertIsqAllowDuplicatesL(void const *, TKeyArrayFix &)
-503b4c68: TLex8::Inc(int)
-503b59fc: RMessage::WriteL(void const *, TDesC8 const &, int)const
-503b781c: RTest::_cl(int, int)
-503a24fc: TDes8::AppendNumFixedWidth(unsigned int, TRadix, int)
-503af0c4: RDebug::ProfileResult(TProfile *, int, int)
-503ba404: TTrap::UnTrap()
-503aff04: TUidType::TUidType()
-503af298: Mem::CompareF(unsigned char const *, int, int, int)
-50398aa0: CBufSeg::Ptr(int)
-503ae8ac: TBusLocalDrive::Format(TFormatInfo &)
-5039cf80: TBufCBase16::Copy(unsigned short const *, int)
-503ab8f0: HBufC8::NewLC(int)
-503abd64: TDes8::UpperCase()
-503ab98c: HBufC8::_as(TDesC8 const &)
-5039d3b8: TDesC16::Right(int)const
-503b3514: RProcess::Create(TDesC16 const &, TDesC16 const &, TOwnerType)
-503a0a5c: TInt64::GetTReal()const
-503b073c: TRect::SetRect(TPoint const &, TPoint const &)
-5039d8dc: TBufBase8::TBufBase8(int, int)
-50395820: TKeyArrayPak::At(int)const
-503968e4: CArrayPakBase::Delete(int, int)
-503997fc: CConsoleBase::WhereY()const
-5039c820: RArrayBase::BinarySearchSigned(void const *, int &)const
-503b0414: TPoint::_pl(TSize const &)const
-503a09bc: TInt64::TInt64(double)
-503b28c0: RSemaphore::OpenGlobal(TDesC16 const &, TOwnerType)
-503a1140: _gesf2
-503ab85c: TDesC8::AllocL()const
-503b2958: RProcess::Open(TDesC16 const &, TOwnerType)
-5039e1a4: memset
-503b5a3c: RMessage::Terminate(int)const
-503ad914: User::Language()
-503af3bc: Mem::CompareF(unsigned short const *, int, int, int)
-503b6868: TSglQueBase::Reset()
-503a30f4: CObjectIx::_vc(int)
-503b4ed4: TLex8::Remainder()const
-503acdd0: TChar::IsHexDigit()const
-503b0be8: TFindHandleBase::TFindHandleBase()
-503ab648: TDesC8::FindF(TDesC8 const &)const
-503a7d84: User::HandleException(void (*)(TExcType), TExcType)
-503ab82c: TDesC8::Alloc()const
-50399da4: CObjectIx::CObjectIx()
-503b50d0: TLex8::Val(long &, int)
-5039b984: CSession::Kill(int)const
-503b57dc: TMonthNameAbb::TMonthNameAbb()
-503ad374: RBusLogicalChannel::DoCancel(unsigned int)
-50396060: CArrayFixBase::AtR(CBase const *, int)
-503aa00c: TDesC16::AllocLC()const
-503aaf3c: TDes16::NumUC(TInt64, TRadix)
-503a01f8: TRealX::Mult(TRealX &, TRealX const &)const
-503b10e0: RHeap::CompressAll()
-5039d108: TDes16::Copy(unsigned short const *)
-5039d598: TDes16::Append(unsigned short const *, int)
-503ad8d4: TCurrencySymbol::Set()
-503af60c: User::StringLength(unsigned char const *)
-5039c198: RPointerArrayBase::Append(void const *)
-503a9fe0: TDesC16::AllocL()const
-5039ef7c: TRealX::_as(unsigned int)
-503aefb4: RDebug::ResumeThread(TThreadId)
-503b4428: TLex16::Offset()const
-503b725c: RRegion::RRegion()
-50395350: CActiveScheduler::Replace(CActiveScheduler *)
-5039d9d8: TDes8::Copy(unsigned char const *)
-503b5708: TDayName::TDayName(TDay)
-5039b97c: CSession::WriteL(void const *, TDesC16 const &, int)const
-503a0054: TRealX::ModEq(TRealX const &)
-5039db70: TDesC8::LocateReverse(TChar)const
-50397f3c: CBufBase::InsertL(int, TDesC8 const &, int)
-503a021c: TRealX::Div(TRealX &, TRealX const &)const
-503b9678: TTime::DayNoInYear(TTime)const
-503ab520: TDesC16::_DbgTestInvariant()const
-503b3264: TBusLocalDrive::Lock(TBuf8<16> &, TBuf8<16> &, int)
-503b316c: TBusLocalDrive::Enlarge(int)
 503b24f4: RSessionBase::CreateSession(TDesC16 const &, TVersion const &, int)
-503ac6ac: TDes8::NumFixedWidthUC(unsigned int, TRadix, int)
-503ad838: User::CountAllocCells(int &)
-5039d06c: TBufBase16::TBufBase16(TDesC16 const &, int)
-503b5b70: RSubSessionBase::CreateSubSession(RSessionBase &, int, void const *)
-503a315c: CObjectCon::AtL(int)const
-5039ea2c: TInt64::_pl()const
-5039a9ec: CObjectConIx::CreateL()
-503aebb0: UserSvr::HalGet(int, void *)
-503957bc: TKeyArrayPak::TKeyArrayPak(int, TKeyCmpText, int)
-503b6c6c: TDblQueIterBase::SetToFirst()
-50399064: CCleanup::New()
-503b5cc4: RSubSessionBase::SendReceive(int, void const *)const
-503ac010: TDes8::Repeat(unsigned char const *, int)
-50396e58: _t13CArrayFixFlat1Z4TUidi
-50394eec: CAsyncCallBack::CAsyncCallBack(TCallBack &, int)
-50397e2c: CBufBase::Write(int, TDesC8 const &, int)
-5039dbc0: TDesC8::CompareF(TDesC8 const &)const
-503ac774: TDes8::AppendNum(int)
-50394ca0: CIdle::NewL(int)
-503a8430: RArrayBase::RArrayBase(int)
-503a2cc0: TRegion::Intersection(TRegion const &, TRegion const &)
-503a80c8: RPointerArrayBase::Insert(void const *, int)
-503b4cc0: TLex8::Get()
-503a44ec: Math::Ln(double &, double const &)
-503b4c94: TLex8::Inc()
-503afc94: TSwap::TSwap()
-503b404c: TLex16::Assign(unsigned short const *)
-5039f098: TRealX::IsFinite()const
-50399120: CCleanup::~CCleanup()
-503af134: RDebug::ProfileEnd(int)
-503b090c: TRect::Grow(TSize const &)
-503ad8e0: TTimeFormatSpec::Set()
-5039a3a8: User::ValidateName(TDesC16 const &)
-5039ec54: TInt64::Mul10()
-50399634: CleanupStack::Check(void *)
-503ae188: RThread::HandleCount(int &, int &)const
-503a0f34: _cmpsf3
+503ad5bc: User::FastCounter()
+503adee4: RProcess::Resume()
+503a02c4: TRealX::_ami(TRealX const &)
+5039ea38: TInt64::_mi()const
+503b35f8: User::LoadLogicalDevice(TDesC16 const &)
+5039a164: CObjectCon::NewL()
+503aaaf0: TDes16::Delete(int, int)
+503acfec: TChar::IsMirrored()const
+503b59e8: RMessage::ReadL(void const *, TDes16 &, int)const
+5039cbd8: RArrayBase::HeapSortUnsigned()
+503953d0: CActiveScheduler::OnStopping()
+5039ee3c: TRealX::TRealX(int)
+5039cffc: TBufBase16::TBufBase16(int)
+503b4e20: TLex8::MarkedToken(TLexMark8)const
+50397f70: CBufBase::InsertL(int, void const *, int)
+503b067c: TSize::SetSize(int, int)
+503b316c: TBusLocalDrive::Enlarge(int)
+5039c554: RPointerArrayBase::HeapSortUnsigned()
+503ad954: TLocale::Refresh()
+50396604: CArrayPakBase::CArrayPakBase(CBufBase * (*)(int), int)
+503b1a00: RNotifier::StartNotifierAndGetResponse(TRequestStatus &, TUid, TDesC8 const &, TDes8 &)
+503ae288: RThread::ProcessPriority()const
+503a8824: RArrayBase::InsertIsqSigned(void const *, int)
+503a01f8: TRealX::Mult(TRealX &, TRealX const &)const
+50396060: CArrayFixBase::AtR(CBase const *, int)
+503b5804: TMonthNameAbb::TMonthNameAbb(TMonth)
+5039f0c0: TRealX::Set(float)
 503ae190: RThread::ExceptionHandler()const
-5039ed7c: TInt64::_lt(TInt64 const &)const
-503a8a1c: RArrayBase::GetElementPtr(CBase const *, int)
-503b67b0: TDblQueLinkBase::AddBefore(TDblQueLinkBase *)
-5039cdf0: TDesC16::Ptr()const
-503b7d80: TDateTime::SetSecond(int)
-503b09e8: TRect::Intersects(TRect const &)const
-503b1524: RHeap::Count(int &)const
-503b4034: TLex16::TLex16()
-503ad8dc: TLongDateFormatSpec::Set()
-503ae470: User::After(TTimeIntervalMicroSeconds32)
-503ad0fc: TChar::TranslateFromUnicode(unsigned int &, TChar::TEncoding)const
-503ae4ec: RTimer::After(TRequestStatus &, TTimeIntervalMicroSeconds32)
-50394e7c: CAsyncOneShot::~CAsyncOneShot()
-503ad5b4: User::InactivityTime()
-50396f64: CBitMapAllocator::Alloc()
-50399580: CleanupStack::PushL(void *)
+503b4f7c: TLex8::MarkedOffset(TLexMark8)const
+5039c0bc: CBase::newL(unsigned int)
+503b764c: RTest::RTest(TDesC16 const &, int)
+503b7c74: TDateTime::SetYear(int)
+503adf48: RProcess::CommandLineLength()const
+503b10ac: RHeap::AllocL(int)
+5039941c: CCleanup::PopAndDestroy(int)
+5039a8d8: CObjectConIx::CObjectConIx()
 503ad9c4: TLocale::FormatCurrency(TDes16 &, TDes16Overflow &, int)
-503b2b04: RProcess::LogonCancel(TRequestStatus &)const
-503b23b0: RHandleBase::Open(TFindHandleBase const &, TOwnerType)
-5039dbcc: TDesC8::CompareC(TDesC8 const &)const
-503aaf70: TDes16::AppendNum(int)
-503b7140: TRegion::RectangleListW()
-503b6e1c: TRegion::IsEmpty()const
-503ae278: RThread::SetProcessPriority(TProcessPriority)const
-503ab90c: HBufC8::NewMax(int)
-503b6940: TDblQueBase::TDblQueBase(int)
-5039df38: _builtin_vec_delete
-503a13c0: _floatsidf
-5039bd58: CTimer::DoCancel()
-50396714: CArrayPakBase::Compress()
-50397d08: CBufBase::Read(int, TDes8 &, int)const
-5039b948: CSession::ReadL(void const *, TDes16 &)const
-503b5830: TDateSuffix::TDateSuffix()
-50398af8: CBufSeg::BackPtr(int)
-5039d4e4: TDes16::PtrZ()
-503a4390: Math::Exp(double &, double const &)
-503b5a60: RMessage::Panic(TDesC16 const &, int)const
-50398070: CBufFlat::CBufFlat(int)
-503acaa8: TDes8::AppendFormat(TRefByValue<TDesC8 const>, TDes8Overflow *, ...)
-5039ead4: TInt64::_ml(TInt64 const &)const
-503aebb4: UserSvr::HalSet(int, void *)
-503af550: Mem::CollationMethodByIndex(int)
-503acb10: TPtrC8::_DbgTestInvariant()const
-503b1a58: RNotifier::LoadNotifiers(TUid)
-503aa870: TDes16::Trim()
-503af660: User::Panic(TDesC16 const &, int)
-503b2310: RBusLogicalChannel::DoSvControl(int, void *, void *)
-503ad5c0: User::LockPeriod()
-503b9210: TTime::_apl(TTimeIntervalSeconds)
-50399798: CConsoleBase::SetPos(int, int)
-503ab9f4: HBufC8::ReAllocL(int)
-503aec38: UserHal::SetXYInputCalibration(TDigitizerCalibration const &)
-503b9100: TTime::_apl(TTimeIntervalDays)
-503b3800: RLoader::Connect()
-503b3bd0: UserSvr::ProcessLoaded(TLoaderInfo &)
-503ae290: RThread::SetPriority(TThreadPriority)const
-503aff54: TUidType::TUidType(TUid, TUid, TUid)
-503aeb78: TLocalDriveCaps::TLocalDriveCaps()
-503ade1c: TFindServer::Next(TBuf<256> &)
-503b039c: TPoint::_mi(TSize const &)const
-503b92c0: TTime::_ami(TTimeIntervalYears)
-503b5984: TLocaleMessageText::TLocaleMessageText(TLocaleMessage)
-503abac8: TDes8::Append(TDesC16 const &)
-503b692c: TDblQueBase::TDblQueBase()
-5039a080: CObjectIx::Count(CObject *)const
-50399520: CTrapCleanup::~CTrapCleanup()
-503a0484: TRealX::_ml(TRealX const &)const
-503a30b8: CObjectIx::At(int)
-503b0270: TPoint::_eq(TPoint const &)const
-50398254: CBufFlat::Ptr(int)
-503af6c8: User::QuickSort(int, TKey const &, TSwap const &)
-503a9db8: TDesC16::FindF(unsigned short const *, int)const
-503ae440: RThread::RequestComplete(TRequestStatus * &, int)const
-503a8260: RPointerArrayBase::Reset()
-5039d21c: TDesC16::AtC(int)const
-503a04d4: TRealX::_md(TRealX const &)const
-5039d56c: TDes16::Append(TDesC16 const &)
-503b3f40: UserSvr::ForceRemountMedia(TMediaDevice)
-5039a13c: CObjectIx::AtL(int)
-50396600: CArrayVarBase::AtR(CBase const *, int)
-503971d0: CBitMapAllocator::AllocFromTopFrom(int)
-503995ec: CleanupStack::Pop(int)
-50398ebc: CCirBuffer::CCirBuffer()
-503b5698: TLex8::Val(TInt64 &, TRadix)
-503ad758: User::Check()
-5039f7e4: TRealX::_pl()const
-503b5c34: RSubSessionBase::Send(int, void const *)const
-5039dcbc: TDesC8::Mid(int)const
-503afcd0: TVersion::Name()
-503b0c30: TFindHandleBase::TFindHandleBase(TDesC16 const &)
-50394e00: CAsyncOneShot::CAsyncOneShot(int)
-503ad958: TLocale::Set()const
-503b575c: TDayNameAbb::TDayNameAbb(TDay)
-50399b9c: CObject::Close()
-503b5ae0: RSessionBase::Send(int, void *)const
-5039b924: CSession::~CSession()
-503adfd0: RProcess::System()const
-503b40e0: TLex16::UnGetToMark(TLexMark16)
-50396ab8: CArrayPakBase::Find(void const *, TKeyArrayPak &, int &)const
-503ab7bc: TDesC8::LocateF(TChar)const
-503997cc: CConsoleBase::WhereX()const
-503aaf08: TDes16::Num(TInt64, TRadix)
-503b99a4: TTime::FormatL(TDes16 &, TDesC16 const &)const
-503a6e3c: TUnicode::GetLowerCase(TUnicodeDataSet const *)const
-503b43f0: TLex16::RemainderFromMark()const
-5039a8b8: CObjectConIx::NewL()
-5039bac4: CServer::DoCancel()
-50398680: CBufSeg::DoInsertL(int, void const *, int)
-5039b80c: CSharableSession::CSharableSession()
-503b9290: TTime::_apl(TTimeIntervalMicroSeconds32)
-503b1454: RHeap::Base()const
-503b6a60: TDeltaQueBase::Reset()
-5039686c: CArrayPakBase::At(int)const
-503b3b74: UserSvr::ProcessCreate(TLoaderInfo &, HBufC16 *)
-503b4154: TLex16::Get()
-503b06e0: TRect::TRect(TPoint const &, TSize const &)
-503aec08: UserHal::ExceptionId(int &)
-503998ec: CDeltaTimer::CDeltaTimer(int, TTimeIntervalMicroSeconds32)
-50396e90: CArrayFixFlat::CArrayFixFlat(TUid)
-503a1574: _truncdfsf2
-503b6c54: TDblQueIterBase::TDblQueIterBase(TDblQueBase &)
-503b5c78: RSubSessionBase::SendReceive(int, void const *, TRequestStatus &)const
-503955cc: TKeyArrayFix::TKeyArrayFix(int, TKeyCmpText)
-503ac678: TDes8::NumFixedWidth(unsigned int, TRadix, int)
-503b0bc8: TRect::SetWidth(int)
-503b0bd8: TRect::SetHeight(int)
-503b0870: TRect::Move(int, int)
-50398c2c: CCirBufBase::DoAdd(unsigned char const *)
-503b95ec: TTime::DayNoInMonth()const
-50396e48: CArrayFixFlat::CArrayFixFlat(int)
-503a7f98: DummyEuser_1656((*), void)
-503adfe8: RProcess::SetSystem(int)const
-503b4188: TLex16::Peek()const
-5039be3c: CPeriodic::~CPeriodic()
-503af890: TKey::TKey(int, TKeyCmpText)
-5039f310: TRealX::_op6TInt64()
-5039dc78: TDesC8::Right(int)const
-503abca4: TDes8::Fold()
-503acc64: User::Collate(unsigned int)
-503b1994: RNotifier::StartNotifier(TUid, TDesC8 const &, TDes8 &)
-5039f16c: TRealX::TRealX(double)
-5039caac: RArrayBase::FindIsq(void const *, int (*)(void const *, void const *))const
-503aecf8: RDebug::SetWatchPoint(TThreadId, unsigned int, int)
-503b82d8: TTime::_as(TDateTime const &)
-5039ef60: TRealX::Set(unsigned int)
-503ad73c: User::Available(int &)
-503a8058: RPointerArrayBase::Close()
-503a23bc: TDes8::AppendNumUC(unsigned int, TRadix)
+503a1108: _gtsf2
 503a0b5c: Math::Frac(double &, double const &)
+503aef1c: RDebug::SetXtalError(int)
+503ae598: UserSvr::CaptureEventHook()
+503b3514: RProcess::Create(TDesC16 const &, TDesC16 const &, TOwnerType)
+503aed5c: RDebug::GetRegister(TThreadId, int, unsigned int &)
+503ad8c4: TAmPmName::Set(TAmPm)
+503ad304: RBusLogicalChannel::DoRequest(int, TRequestStatus &, void *, void *)
+503b68d0: TSglQueBase::DoRemove(void *)
+503b145c: RHeap::Size()const
+503aa0d0: HBufC16::NewMaxLC(int)
+50399608: CleanupStack::PopAndDestroy()
+503ad888: TMonthNameAbb::Set(TMonth)
+5039a3a8: User::ValidateName(TDesC16 const &)
+503b10e4: CalcChunkHeapCompression((*), RHeap *, int)
+503ac52c: TDes8::AppendJustify(unsigned char const *, int, TAlign, TChar)
+503b3fe0: UserSvr::ExeAddDependency(void *, void *)
+5039d254: TDesC16::Locate(TChar)const
+503b6c10: TSglQueIterBase::DoPostInc()
+503a4f90: Math::Pow10(double &, int)
+503a16fc: User::Leave(int)
+503b7090: TRegion::Sort()
+503b6878: TSglQueBase::DoAddFirst(void *)
+503b2e20: RThread::Open(TDesC16 const &, TOwnerType)
+503b976c: TTime::WeekNoInYear(TTime)const
+5039d168: TDes16::Copy(unsigned short const *, int)
+503adf58: RProcess::ExitReason()const
+503ad4f4: RLibrary::EntryPoint()const
+5039561c: TKeyArrayFix::TKeyArrayFix(int, TKeyCmpNumeric)
+503b4428: TLex16::Offset()const
+5039f7e4: TRealX::_pl()const
+503ad5b8: User::ResetInactivityTime()
+503b33cc: User::_DbgMarkCheck(RHeap::TDbgHeapType, int, int, TDesC8 const &, int)
+5039c5fc: RPointerArrayBase::HeapSort(int (*)(void const *, void const *))
+503b0c64: RHandleBase::SetHandleNC(int)
+503b6bd8: TSglQueIterBase::TSglQueIterBase(TSglQueBase &)
+5039bfc4: CHeartbeat::RunL()
+503aa35c: TDes16::Fill(TChar, int)
+50395238: CActiveScheduler::Stop()
+503b05b0: TSize::_mi(TPoint const &)const
+503b6cfc: TDblQueIterBase::DoCurrent()
+503ae5c0: UserSvr::DllFileName(int, TDes16 &)
+503ae028: RProcess::SetProtected(int)const
+503acc28: User::Fold(unsigned int)
+503b7d94: TDateTime::SetMicroSecond(int)
+503ad3f8: RBusLogicalChannel::DoControl(int, void *, void *)
+503955f4: TKeyArrayFix::TKeyArrayFix(int, TKeyCmpText, int)
+50395e0c: CArrayFixBase::InsertRepL(int, void const *, int)
+503aed8c: RDebug::SetRegister(TThreadId, int, unsigned int)
+50397aec: CBitMapAllocator::Free(int)
+503acc68: User::LowerCase(unsigned int)
+503aee94: RDebug::ReadMemory(TThreadId, unsigned int, TDes8 &, int)
+50394c60: CIdle::New(int)
+503a029c: TRealX::_apl(TRealX const &)
+503ae3a0: RThread::GetDesMaxLength(void const *)const
+503b5b2c: RSessionBase::SendReceive(int, void *, TRequestStatus &)const
+503b94c0: TTime::_ami(TTimeIntervalMicroSeconds32)
+503b69e4: TDblQueBase::DoAddPriority(void *)
+503ab82c: TDesC8::Alloc()const
+5039b87c: CSharableSession::CreateL(CServer const &)
+503b22cc: RBusLogicalChannel::DoSvControl(int, void *)
+503ae068: RProcess::SetOwner(RProcess const &)const
+503b1754: UserHeap::FixedHeap(void *, int)
+5039ef7c: TRealX::TRealX(unsigned int)
+503a9dc0: TDesC16::FindF(TDesC16 const &)const
+503b5698: TLex8::Val(TInt64 &, TRadix)
+5039d56c: TDes16::Append(TDesC16 const &)
+503b7e08: TTime::Set(TDesC16 const &)
+503ad148: RChunk::Bottom()const
+503b8c30: TTime::_pl(TTimeIntervalHours)const
+503a7b10: User::LockedDec(int &)
+503b82d8: TTime::_as(TDateTime const &)
+503b26e8: RMutex::CreateLocal(TOwnerType)
+5039a908: CObjectConIx::~CObjectConIx()
+503acd44: TChar::IsAlpha()const
+5039d7a8: TPtr8::TPtr8(TBufCBase8 &, int)
+503ad5c4: RHandleBase::Name()const
+503ac498: TDes8::AppendJustify(TDesC8 const &, int, TAlign, TChar)
+503a7b58: UserSvr::ServerStarted()
+503adfd0: RProcess::System()const
+503b6788: TSglQueLink::Enque(TSglQueLink *)
+503ae2e0: RThread::Protected()const
+503acc70: User::TitleCase(unsigned int)
+503a7f88: DummyEuser_1652((*), void)
+503aff04: TUidType::TUidType()
+50399d4c: CObject::SetNameL(TDesC16 const *)
+503aebfc: UserHal::FaultReason(int &)
+50396f64: CBitMapAllocator::Alloc()
+5039bc84: CTimer::After(TTimeIntervalMicroSeconds32)
+5039b934: CSession::ReadL(void const *, TDes8 &)const
+503b0be8: TFindHandleBase::TFindHandleBase()
+5039651c: CArrayVarBase::InsertIsqL(void const *, int, TKeyArrayVar &)
+503b0fc8: RHeap::AllocLen(void const *)const
+503b3f1c: Password::Set(TBuf<16> const &, TBuf<16> const &)
+503a5054: Math::FRand(TInt64 &)
+503aeb78: TLocalDriveCaps::TLocalDriveCaps()
+503a1284: _divsf3
+5039a0b8: CObjectIx::At(CObject const *)const
+50397d08: CBufBase::Read(int, TDes8 &, int)const
+50398c2c: CCirBufBase::DoAdd(unsigned char const *)
+503aaea8: TDes16::NumFixedWidthUC(unsigned int, TRadix, int)
+503ae4ec: RTimer::After(TRequestStatus &, TTimeIntervalMicroSeconds32)
+503b6ccc: TDblQueIterBase::DoPostDec()
+5039fc28: TRealX::MultEq(TRealX const &)
+503ab610: TDesC8::Find(TDesC8 const &)const
+5039b948: CSession::ReadL(void const *, TDes16 &)const
+503aec5c: UserHal::SaveXYInputCalibration()
+503ad1a8: RDevice::IsAvailable(int, TDesC16 const *, TDesC16 const *)const
+50396190: CArrayVarBase::Reset()
+503a10d0: _nesf2
+503a4140: TLex16::Val(float &)
 503a7930: RLibrary::Load(TDesC16 const &, TDesC16 const &, TUidType const &)
-503af530: Mem::CollationMethodId(int)
-503b0360: TPoint::_mi(TPoint const &)const
-50394d0c: CIdle::~CIdle()
+503b0c30: TFindHandleBase::TFindHandleBase(TDesC16 const &)
+503a2fa0: RHeap::Free(void *)
+503aef7c: RDebug::SuspendThread(TThreadId)
+503b5c34: RSubSessionBase::Send(int, void const *)const
+503ae270: RThread::Priority()const
+503afc7c: TKey::At(int)const
+5039c46c: RPointerArrayBase::FindIsqUnsigned(unsigned int)const
+50397d4c: CBufBase::Read(int, void *, int)const
+5039c0e0: CBase::_nw(unsigned int, unsigned int)
+503a23bc: TDes8::AppendNumUC(unsigned int, TRadix)
+5039ca78: RArrayBase::FindIsqUnsigned(void const *)const
+503a09a0: Math::SetInfinite(double &, int)
+503b69bc: TDblQueBase::DoAddFirst(void *)
+503ad6cc: User::AllocLen(void const *)
+503ade30: RServer::Receive(TRequestStatus &)
+5039a1b4: CObjectCon::~CObjectCon()
+50398070: CBufFlat::CBufFlat(int)
+503aefec: RDebug::RegisterInfo(SRegisterInfo &)
+503b27ec: RSemaphore::CreateLocal(int, TOwnerType)
+503b3800: RLoader::Connect()
+503b59dc: RMessage::ReadL(void const *, TDes16 &)const
+50398548: CBufSeg::CBufSeg(int)
+5039c180: RPointerArrayBase::At(int)const
+503ace0c: TChar::IsSpace()const
+503a7a5c: RLibrary::Close()
+5039dfac: _udivsi3
+5039e5ac: _muldi3
+503ae390: RThread::GetDesLength(void const *)const
+503a6e3c: TUnicode::GetLowerCase(TUnicodeDataSet const *)const
+50399260: CCleanup::PushL(TCleanupItem)
+50399064: CCleanup::New()
+503af2f0: Mem::CompareC(unsigned char const *, int, int, int)
+503af698: User::Exit(int)
+503acb10: TPtrC8::_DbgTestInvariant()const
+503b69b0: TDblQueBase::Reset()
+503a389c: DummyEuser_1670((*), void)
+503b43f0: TLex16::RemainderFromMark()const
+5039bbb8: CServer::ReStart()
+503b7d20: TDateTime::SetDay(int)
+503aaa48: TDes16::Insert(int, TDesC16 const &)
+503ad958: TLocale::Set()const
+503b5540: TLex8::Val(TInt64 &)
+50395a40: CArrayFixBase::At(int)const
+503a3130: CObjectCon::At(int)const
+503acb1c: TPtr8::_DbgTestInvariant()const
+503b725c: RRegion::RRegion()
+503ac5fc: TDes8::Num(int)
+503ac07c: TDes8::Repeat(TDesC8 const &)
+5039eb90: TInt64::_rs(int)const
+503b4bb8: TLex8::Assign(unsigned char const *)
+50398578: CBufSeg::~CBufSeg()
+503b159c: THeapWalk::THeapWalk(RHeap const &)
+503abdfc: TDes8::CopyF(TDesC8 const &)
+50399520: CTrapCleanup::~CTrapCleanup()
+5039b95c: CSession::WriteL(void const *, TDesC8 const &)const
+5039bc48: CTimer::At(TTime const &)
+503a2eb4: RHeap::Alloc(int)
+503b72b4: RRegion::RRegion(TRect const &, int)
+5039cf04: TBufCBase16::TBufCBase16(unsigned short const *, int)
+50396f48: CBitMapAllocator::NewL(int)
+503aed28: RDebug::ClrWatchPoint(TThreadId, unsigned int)
+5039ea2c: TInt64::_pl()const
+503ab7bc: TDesC8::LocateF(TChar)const
+503ac740: TDes8::NumUC(TInt64, TRadix)
+503b01f0: TCheckedUid::Check()const
+503abf34: TDes8::CopyUC(TDesC8 const &)
+503a6e00: TUnicode::GetCategory(TUnicodeDataSet const *)const
+503ae050: RProcess::LoadedFromRam()const
+503a0990: Math::SetNaN(double &)
+503ab48c: TDes16::FormatList(TDesC16 const &, signed char **)
+503ad838: User::CountAllocCells(int &)
+503abac8: TDes8::Append(TDesC16 const &)
+503aebb4: UserSvr::HalSet(int, void *)
+503a78a8: RLibrary::Load(TDesC16 const &, TUidType const &)
+5039df24: _builtin_new
+503aa14c: HBufC16::ReAlloc(int)
+503ac4e4: TDes8::AppendJustify(TDesC8 const &, int, int, TAlign, TChar)
+503ae41c: RThread::WriteL(void const *, TDesC16 const &, int)const
+50396278: CArrayVarBase::Delete(int, int)
+50397b5c: CBitMapAllocator::Free(int, int)
+503969ec: CArrayPakBase::ExpandL(int, int)
+503ac448: TDes8::Justify(TDesC8 const &, int, TAlign, TChar)
+503a0918: Math::IsNaN(double const &)
+503b3b74: UserSvr::ProcessCreate(TLoaderInfo &, HBufC16 *)
+503ac574: TDes8::AppendJustify(unsigned char const *, int, int, TAlign, TChar)
+503a0724: Math::PolyX(TRealX &, TRealX const &, int, TRealX const *)
+503aae74: TDes16::NumFixedWidth(unsigned int, TRadix, int)
+503b1a34: RNotifier::UnloadNotifiers(TUid)
+503b0b94: TRect::SetSize(TSize const &)
+503aebf0: UserHal::StartupReason(TMachineStartupType &)
+503a8080: RPointerArrayBase::Count()const
+503ad558: RLibrary::Type()const
+503ac0c8: TDes8::TrimAll()
+503b0b24: TRect::Height()const
+503b274c: RMutex::CreateGlobal(TDesC16 const &, TOwnerType)
+50399758: CConsoleBase::SetPos(int)
+503acc64: User::Collate(unsigned int)
+5039c734: RArrayBase::Append(void const *)
+5039e6b0: TInt64::_adv(TInt64 const &)
+503b5858: TDateSuffix::TDateSuffix(int)
+503b90c8: TTime::_apl(TTimeIntervalMonths)
+503b8720: TTime::MinutesFrom(TTime, TTimeIntervalMinutes &)const
+50397f3c: CBufBase::InsertL(int, TDesC8 const &, int)
+503aa038: HBufC16::New(int)
+50397018: CBitMapAllocator::AllocFrom(int)
+503a30f4: CObjectIx::_vc(int)
+5039dd40: TDes8::Zero()
+50396574: CArrayVarBase::InsertIsqAllowDuplicatesL(void const *, int, TKeyArrayVar &)
+503977f8: CBitMapAllocator::AllocAt(int, int)
+503b1560: RHeap::AllocSize(int &)const
+503a2a88: TRegion::SubRect(TRect const &, TRegion *)
+503a878c: RArrayBase::GranularCompress()
+503ae540: RTimer::Lock(TRequestStatus &, TTimerLockSpec)
+503af818: User::Version()
+5039c980: RArrayBase::BinarySearch(void const *, int &, int (*)(void const *, void const *))const
+50397788: CBitMapAllocator::AllocAt(int)
+503b95ec: TTime::DayNoInMonth()const
+503b6798: TDblQueLinkBase::Enque(TDblQueLinkBase *)
+503b039c: TPoint::_mi(TSize const &)const
+503ae5ac: UserSvr::ScreenInfo(TDes8 &)
+503b2f38: RThread::Kill(int)
+503a44ec: Math::Ln(double &, double const &)
+50395d20: CArrayFixBase::FindIsq(void const *, TKeyArrayFix &, int &)const
+503ae468: RThread::GetCpuTime(TTimeIntervalMicroSeconds &)const
+50398134: CBufFlat::DoInsertL(int, void const *, int)
+503a2cc0: TRegion::Intersection(TRegion const &, TRegion const &)
+50397c70: CBufBase::CBufBase(int)
+503ad828: User::CountAllocCells()
+5039ed44: TInt64::_eq(TInt64 const &)const
+503ad720: User::AllocLC(int)
+503b0684: TSize::AsPoint()const
+50394bd4: CActive::SetActive()
+5039ee3c: TRealX::_as(int)
+503ae588: RChangeNotifier::LogonCancel()const
+50396740: CArrayPakBase::Reset()
+503abd24: TDes8::LowerCase()
+503b4438: TLex16::MarkedOffset(TLexMark16)const
+5039ce24: TPtrC16::TPtrC16(TDesC16 const &)
+503ae138: RCriticalSection::Signal()
+50398dd8: CCirBufBase::DoRemove(unsigned char *, int)
+5039df28: _builtin_vec_new
+503b56e0: TDayName::TDayName()
+503a1140: _gesf2
+503b0450: TPoint::_mi()const
+503a3948: CActiveSchedulerWait::~CActiveSchedulerWait()
+50394c0c: CActive::SetPriority(int)
+5039d8fc: TBufBase8::TBufBase8(unsigned char const *, int)
+5039d02c: TBufBase16::TBufBase16(unsigned short const *, int)
+503aa068: HBufC16::NewL(int)
+503ad138: RChunk::Base()const
+503afca4: TSwap::Swap(int, int)const
+50399200: CCleanup::PushL(void *)
+503b6800: TSglQueBase::TSglQueBase(int)
+5039b99c: CServer::CServer(int, CServer::TServerType)
+503acdd0: TChar::IsHexDigit()const
+503ae654: TBusLocalDrive::Read(TInt64, int, void const *, int, int)
+5039d374: TDesC16::Left(int)const
+503b00a4: TUidType::IsValid()const
+503a7854: UserSvr::UnlockRamDrive()
+503958ec: CArrayFixBase::CArrayFixBase(CBufBase * (*)(int), int, int)
+503b407c: TLex16::Assign(TDesC16 const &)
+503aac94: TDes16::AppendJustify(TDesC16 const &, int, TAlign, TChar)
+50396e10: _t13CArrayFixFlat1Zii
+503a04d4: TRealX::_md(TRealX const &)const
+50399b28: CObject::~CObject()
+503a16b0: TTrap::Trap(int &)
+5039580c: TKeyArrayPak::Set(CBufBase *)
+50396420: CArrayVarBase::Find(void const *, TKeyArrayVar &, int &)const
+503b69d0: TDblQueBase::DoAddLast(void *)
+503a4184: TLex16::Val(float &, TChar)
+503b6c8c: TDblQueIterBase::DoSet(void *)
+503ac774: TDes8::AppendNum(int)
+503ad294: RBusLogicalChannel::DoRequest(int, TRequestStatus &, void *)
+503b7350: RRegion::RRegion(int, TRect *, int)
+503a7864: UserSvr::DebugMask()
+5039cfb8: TBufCBase16::Copy(TDesC16 const &, int)
+5039eed0: TRealX::TRealX(TInt64 const &)
+5039c450: RPointerArrayBase::FindIsqSigned(int)const
+503ac0ac: TDes8::Trim()
+503b0550: TSize::_apl(TPoint const &)
+50395054: CActiveScheduler::Install(CActiveScheduler *)
+503b0698: TRect::TRect()
+503a0400: TRealX::_mm(int)
+503b052c: TSize::_apl(TSize const &)
+503ba404: TTrap::UnTrap()
+503b4ae8: TLex16::Val(unsigned short &, TRadix)
+503b9100: TTime::_apl(TTimeIntervalDays)
+5039c2f8: RPointerArrayBase::BinarySearchUnsigned(unsigned int, int &)const
+5039f0ac: TRealX::_as(float)
+503a4214: TLex16::Val(double &, TChar)
+50398680: CBufSeg::DoInsertL(int, void const *, int)
+50397df4: CBufBase::Write(int, TDesC8 const &)
+50395d70: CArrayFixBase::InsertL(int, void const *)
+5039e9a4: TInt64::_ars(int)
+50394f28: CAsyncCallBack::CallBack()
+503aebd8: UserHal::RomInfo(TDes8 &)
+5039dbd8: TDesC8::Compare(TDesC8 const &)const
+503a9f34: TDesC16::LocateF(TChar)const
+503ab648: TDesC8::FindF(TDesC8 const &)const
+503b2fc0: RThread::Logon(TRequestStatus &)const
+5039cf3c: TBufCBase16::TBufCBase16(TDesC16 const &, int)
+503995dc: CleanupStack::Pop()
+5039a13c: CObjectIx::AtL(int)
+503ade4c: TFindMutex::Next(TBuf<256> &)
+503b3264: TBusLocalDrive::Lock(TBuf8<16> &, TBuf8<16> &, int)
+503a09bc: TInt64::TInt64(double)
+503a7d40: User::StartThread(int (*)(void *), void *)
+5039f078: TRealX::IsInfinite()const
+503b0e4c: RHeap::RHeap(RChunk const &, int, int, int, int)
+503b3cc8: UserSvr::DllFreeTls(int)
+503a2704: TRegion::BoundingRect()const
+503aaf3c: TDes16::NumUC(TInt64, TRadix)
+503ae260: RThread::Resume()const
+503a1178: _ltsf2
+503ab85c: TDesC8::AllocL()const
+503abecc: TDes8::CopyLC(TDesC8 const &)
+503b9440: TTime::_ami(TTimeIntervalSeconds)
+5039e9e8: TInt64::_als(int)
+503975fc: CBitMapAllocator::AllocAlignedBlock(int)
+503ad674: User::Adjust(void *, int, int)
+503abe64: TDes8::CopyC(TDesC8 const &)
+503959d4: CArrayFixBase::Sort(TKeyArrayFix &)
+503a8430: RArrayBase::RArrayBase(int)
+503ad03c: TChar::GetCjkWidth()const
+503ab1bc: TDes16::AppendNum(TInt64)
+503ba2d8: Time::DaysInMonth(int, TMonth)
+503b5c78: RSubSessionBase::SendReceive(int, void const *, TRequestStatus &)const
+503b10bc: RHeap::AllocLC(int)
+503af094: RDebug::SupervisorMode(int)
+5039dbc0: TDesC8::CompareF(TDesC8 const &)const
+503abda4: TDes8::Capitalize()
+503abce4: TDes8::Collate()
+5039b884: CSharableSession::ResourceCountMarkStart()
+50395aa0: CArrayFixBase::End(int)const
+503b7ca8: TDateTime::SetYearLeapCheck(int)
+5039804c: CBufFlat::NewL(int)
+503ab064: TDes16::AppendNumFixedWidth(unsigned int, TRadix, int)
+503aff5c: TUidType::_eq(TUidType const &)const
+503a8650: RArrayBase::Insert(void const *, int)
+503b5a84: RServer::Receive()
+503a81f0: RPointerArrayBase::GranularCompress()
+503b53b0: TLex8::Val(TInt64 &, TInt64 const &)
+503b5a3c: RMessage::Terminate(int)const
+503b4304: TLex16::MarkedToken()const
+503ae0bc: RSemaphore::Count()
+503b0f30: RHeap::Open()
+5039a11c: CObjectIx::AtL(int, int)
+5039cf80: TBufCBase16::Copy(unsigned short const *, int)
+503b5984: TLocaleMessageText::TLocaleMessageText(TLocaleMessage)
+503a7f94: DummyEuser_1655((*), void)
+503aa078: HBufC16::NewLC(int)
+503af01c: RDebug::Print(TRefByValue<TDesC16 const>, ...)
+503b6e1c: TRegion::IsEmpty()const
+503aaf70: TDes16::AppendNum(int)
+503b30e4: TBusLocalDrive::Disconnect()
+503ac678: TDes8::NumFixedWidth(unsigned int, TRadix, int)
+503ade70: RMutex::Signal()
+503b3ed4: RDebug::KillThread(TThreadId)
+503b25d4: RSessionBase::Attach()const
+503a0500: Math::Sqrt(double &, double const &)
+503b5a60: RMessage::Panic(TDesC16 const &, int)const
+503a277c: TRegion::IsContainedBy(TRect const &)const
+503b0470: TPoint::AsSize()const
+503b6a7c: TDeltaQueBase::FirstDelta(int &)
+503a1338: _negsf2
+503aafa4: TDes16::AppendNum(unsigned int, TRadix)
+503b09e8: TRect::Intersects(TRect const &)const
+5039edb4: TInt64::_le(TInt64 const &)const
+5039e660: TInt64::_aml(TInt64 const &)
+503b05ec: TSize::_pl(TSize const &)const
+503b4e80: TLex8::NextToken()
+503b49d0: TLex16::Val(long &)
+503a0764: Math::Int(double &, double const &)
+50398ef8: CCirBuffer::Get()
+503b77a0: RTest::Start(TDesC16 const &)
+5039c0bc: CActiveSchedulerWait::CanStopNow()const
+50397e2c: CBufBase::Write(int, TDesC8 const &, int)
+503af298: Mem::CompareF(unsigned char const *, int, int, int)
+5039bcfc: CTimer::Inactivity(TTimeIntervalSeconds)
+50395650: TKeyArrayFix::At(int)const
+5039c7d4: RArrayBase::Find(void const *, int (*)(void const *, void const *))const
+503aa0c0: HBufC16::NewMaxL(int)
+5039686c: CArrayPakBase::At(int)const
+50394e00: CAsyncOneShot::CAsyncOneShot(int)
+5039d80c: TBufCBase8::TBufCBase8(TDesC8 const &, int)
+503ad198: RDevice::QueryVersionSupported(TVersion const &)const
+503b06c0: TRect::TRect(TPoint const &, TPoint const &)
+503b9518: TTime::DayNoInWeek()const
+503b7124: TRegion::ForceError()
+5039c06c: CBase::CBase()
+503ae3f8: RThread::WriteL(void const *, TDesC8 const &, int)const
+5039d750: TPtrC8::TPtrC8(unsigned char const *, int)
+5039ca44: RArrayBase::FindIsqSigned(void const *)const
+503ada08: TLocale::FormatCurrency(TDes16 &, TDes16Overflow &, TInt64)
+503a88cc: RArrayBase::InsertIsqUnsigned(void const *, int)
+503ae330: RThread::ExitReason()const
+5039bcc0: CTimer::Lock(TTimerLockSpec)
+5039c198: RPointerArrayBase::Append(void const *)
+503978f4: CBitMapAllocator::ExtractRamPages(int, int &)
+5039ce14: TPtrC16::TPtrC16()
+5039de4c: TDes8::Append(unsigned char const *, int)
+50398c14: CCirBufBase::Reset()
+503b57dc: TMonthNameAbb::TMonthNameAbb()
+503b34cc: User::_DbgSetAllocFail(RHeap::TDbgHeapType, RHeap::TAllocFail, int)
+5039d63c: TDes16::Fill(TChar)
+503afcc0: TVersion::TVersion(int, int, int)
+503b2860: RSemaphore::CreateGlobal(TDesC16 const &, int, TOwnerType)
+50396344: CArrayVarBase::ExpandL(int, int)
+503abc7c: TDes8::FillZ(int)
+503b2a74: RProcess::Panic(TDesC16 const &, int)
+503b07ac: TRect::Resize(TSize const &)
+503a0484: TRealX::_ml(TRealX const &)const
+50396e0c: CArrayPakBase::AtR(CBase const *, int)
+503b2f0c: RThread::Rename(TDesC16 const &)const
+5039deb0: TDes8::FillZ()
+503a093c: Math::IsInfinite(double const &)
+503ab71c: TDesC8::Match(TDesC8 const &)const
+5039b80c: CSharableSession::CSharableSession()
+503a1b80: Mem::Move(void *, void const *, int)
+503b6c6c: TDblQueIterBase::SetToFirst()
+503ba43c: User::LeaveIfError(int)
+503b090c: TRect::Grow(TSize const &)
+503ae768: TBusLocalDrive::Write(TInt64, int, void const *, int, int)
+503a03a0: TRealX::_pp(int)
+503b7898: RTest::_cl(int)
+503b59f0: RMessage::WriteL(void const *, TDesC8 const &)const
+5039e614: TInt64::GetTInt()const
+5039eed0: TRealX::_as(TInt64 const &)
+503ad858: TDayName::Set(TDay)
+503ae628: User::TrapHandler()
+503a3948: Math::ATan(double &, double const &, double const &)
+5039bd58: CTimer::DoCancel()
+503b0148: TCheckedUid::Set(TUidType const &)
+5039f040: TRealX::IsZero()const
+503b0a64: TRect::Normalize()
+50394dc8: CAsyncOneShot::Call()
+503ac99c: TDes8::AppendNumUC(TInt64, TRadix)
+503b1790: UserHeap::ChunkHeap(TDesC16 const *, int, int, int)
+503b4c4c: TLex8::UnGetToMark(TLexMark8)
+503ae110: RCriticalSection::Close()
+503ac180: TDes8::TrimLeft()
+503ae8ac: TBusLocalDrive::Format(TFormatInfo &)
+503ad124: TFindChunk::Next(TBuf<256> &)
+50399400: CCleanup::Pop(int)
+503b6e74: TRegion::Union(TRegion const &)
+50396b8c: CArrayPakBase::InsertL(int, void const *, int)
+503ab3b0: TDes16::AppendNumUC(TInt64, TRadix)
+50396ef8: CBitMapAllocator::~CBitMapAllocator()
+5039d108: TDes16::Copy(unsigned short const *)
+503b2b30: RThread::Create(TDesC16 const &, int (*)(void *), int, void *, RLibrary *, RHeap *, int, int, TOwnerType)
+5039d77c: TPtr8::TPtr8(unsigned char *, int, int)
+503957bc: TKeyArrayPak::TKeyArrayPak(int, TKeyCmpText, int)
+503b5830: TDateSuffix::TDateSuffix()
+503aa660: TDes16::CopyLC(TDesC16 const &)
+503ae0cc: RSemaphore::Signal()
+5039e624: TInt64::_as(int)
+5039ab44: CObjectConIx::Lookup(int)const
+503ae010: RProcess::Protected()const
+50397cfc: CBufBase::Read(int, TDes8 &)const
+50399b88: CObject::Open()
+503a78f0: RLibrary::Load(TDesC16 const &, TDesC16 const &)
+503b8bbc: TTime::_pl(TTimeIntervalDays)const
+5039eeb4: TRealX::Set(TInt64 const &)
+5039e608: TInt64::TInt64(int)
+503b8ca4: TTime::_pl(TTimeIntervalMinutes)const
+503b2310: RBusLogicalChannel::DoSvControl(int, void *, void *)
+503b2354: RHandleBase::Duplicate(RThread const &, TOwnerType)
+503ae5b0: UserSvr::DllGlobalAllocated(int)
+503ab4bc: TDes16::AppendFormat(TRefByValue<TDesC16 const>, TDes16Overflow *, ...)
+503b1c4c: RChunk::CreateLocalCode(int, int, TOwnerType)
+5039de20: TDes8::Append(TDesC8 const &)
+5039e958: TInt64::_amd(TInt64 const &)
+503aa5ec: TDes16::CopyC(TDesC16 const &)
+503af8cc: TKey::TKey(int, TKeyCmpText, int)
+503a9344: TDes16::AppendFormatList(TDesC16 const &, signed char **, TDes16Overflow *)
+503b24b0: RServer::CreateGlobal(TDesC16 const &)
+5039a080: CObjectIx::Count(CObject *)const
+503aa11c: HBufC16::_as(TDesC16 const &)
+503af5c0: Mem::Crc(unsigned short &, void const *, int)
+503ade68: RMutex::Wait()
+503ab98c: HBufC8::_as(TDesC8 const &)
+503a9fb0: TDesC16::Alloc()const
+503a021c: TRealX::Div(TRealX &, TRealX const &)const
+503aca48: TDes8::Format(TRefByValue<TDesC8 const>, ...)
+50395820: TKeyArrayPak::At(int)const
+5039e544: _ashldi3
+5039dcfc: TDesC8::Mid(int, int)const
+503a23c8: TDes8::AppendNum(unsigned int, TRadix)
+5039ed60: TInt64::_ne(TInt64 const &)const
+5039b994: CSession::Panic(TDesC16 const &, int)const
+503b8aec: TTime::_pl(TTimeIntervalMonths)const
+503b7db8: TTime::TTime(TDesC16 const &)
+503ad384: RBusLogicalChannel::DoControl(int)
+50394cdc: CIdle::CIdle(int)
+5039b924: CSession::~CSession()
+5039b97c: CSession::WriteL(void const *, TDesC16 const &, int)const
+503a02ec: TRealX::_aml(TRealX const &)
+503acc20: User::JustInTime()
+503b7684: RTest::RTest(TDesC16 const &)
+50394d40: CIdle::Start(TCallBack)
+503aedf0: RDebug::SingleStep(TThreadId)
+503ad868: TDayNameAbb::Set(TDay)
+503a8974: RArrayBase::InsertIsq(void const *, int (*)(void const *, void const *), int)
+5039f180: TRealX::Set(double)
+5039e1a4: CActiveSchedulerWait::AsyncStop()
+503b1b08: RNotifier::Notify(TDesC16 const &, TDesC16 const &, TDesC16 const &, TDesC16 const &, int &, TRequestStatus &)
+5039ceac: TPtr16::TPtr16(unsigned short *, int, int)
+503b1f88: RChunk::Adjust(int)const
+5039ecdc: TInt64::DivMod(TInt64 const &, TInt64 &)
+503968e4: CArrayPakBase::Delete(int, int)
+503b0ecc: RHeap::Close()
+503aec14: UserHal::ExceptionInfo(TExcInfo &)
+50396d48: CArrayPakBase::BuildVarArrayL(CArrayVarFlat<void> * &)
+503a8058: RPointerArrayBase::Close()
+503af518: Mem::CollationMethods()
+50399d84: CObjectIx::NewL()
+503b57b0: TMonthName::TMonthName(TMonth)
+50399120: CCleanup::~CCleanup()
+503b1cfc: RChunk::CreateGlobal(TDesC16 const &, int, int, TOwnerType)
+503ad898: TDateSuffix::Set(int)
+503b0484: TSize::_eq(TSize const &)const
+503961a0: CArrayVarBase::Sort(TKeyArrayVar &)
+503ad50c: RLibrary::FileName()const
+503b0fe0: RHeap::Adjust(void *, int, int)
+50398b8c: CCirBufBase::~CCirBufBase()
+503b7d80: TDateTime::SetSecond(int)
+503ac6ac: TDes8::NumFixedWidthUC(unsigned int, TRadix, int)
+503ba304: Time::IsLeapYear(int)
+5039fdb0: TRealX::DivEq(TRealX const &)
+503956dc: TKeyArrayVar::TKeyArrayVar(int, TKeyCmpText, int)
+503b00d4: TCheckedUid::TCheckedUid()
+503b1964: RHeap::_DbgSetAllocFail(RHeap::TAllocFail, int)
+503b4cf8: TLex8::SkipSpace()
+503b3d34: RChangeNotifier::Create()
+503ad440: User::WaitForRequest(TRequestStatus &)
+5039dddc: TDes8::Append(TChar)
+503b4010: UserSvr::ResetMachine(TMachineStartupType)
+503ae240: RThread::IsExceptionHandled(TExcType)
+503afdb0: TLoaderInfo::TLoaderInfo()
+503a0434: TRealX::_pl(TRealX const &)const
+50399da4: CObjectIx::CObjectIx()
+50396c68: CArrayPakBase::SetKey(TKeyArrayPak &)const
+503a81a8: RPointerArrayBase::Compress()
+503ac36c: TDes8::Replace(int, int, TDesC8 const &)
+5039e1e4: _divdi3
+503ab678: TDesC8::FindC(unsigned char const *, int)const
 503aa1cc: HBufC16::Des()
+503b7ad4: RTest::Printf(TRefByValue<TDesC16 const>, ...)
+503b0218: User::InfoPrint(TDesC16 const &)
+5039ed7c: TInt64::_lt(TInt64 const &)const
+503b0b34: TRect::IsNormalized()const
+503b0414: TPoint::_pl(TSize const &)const
+503ae320: RThread::RequestCount()const
+503b8e44: TTime::_mi(TTimeIntervalDays)const
+503ae114: RCriticalSection::Wait()
+503b4d48: TLex8::SkipAndMark(int, TLexMark8 &)
+5039df2c: _nw((*), unsigned int, unsigned int)
+503b5b70: RSubSessionBase::CreateSubSession(RSessionBase &, int, void const *)
+503b41a8: TLex16::SkipSpace()
+50397fc4: CBufBase::ExpandL(int, int)
+503b40b4: TLex16::UnGet()
+503ae328: RThread::ExitType()const
+5039ea8c: TInt64::_mm(int)
+503ad7d4: User::ReAllocL(void *, int)
+503b99a4: TTime::FormatL(TDes16 &, TDesC16 const &)const
+50395b6c: CArrayFixBase::Delete(int)
+5039d0b8: TDes16::SetLength(int)
+503aa7d4: TDes16::Repeat(unsigned short const *, int)
+503aeb74: TBusLocalDrive::PasswordStoreLengthInBytes()
+50395944: CArrayFixBase::~CArrayFixBase()
+5039d318: TDesC16::Compare(TDesC16 const &)const
+5039df38: _builtin_vec_delete
+503ba290: Time::MaxTTime()
+503972c0: CBitMapAllocator::Alloc(int, int &)
+50396f08: CBitMapAllocator::New(int)
+503b2a48: RProcess::Terminate(int)
+503b5788: TMonthName::TMonthName()
+503a24fc: TDes8::AppendNumFixedWidth(unsigned int, TRadix, int)
+503a10ec: _nedf2
+503b1a7c: RNotifier::RNotifier()
+503aebc0: UserHal::MachineInfo(TDes8 &)
+5039bed4: CHeartbeat::CHeartbeat(int)
+5039cef8: TBufCBase16::TBufCBase16()
+503ad8e0: TTimeFormatSpec::Set()
+50396e90: CArrayFixFlat::CArrayFixFlat(TUid)
+503a860c: RArrayBase::Count()const
+503a7f9c: DummyEuser_1657((*), void)
+503b073c: TRect::SetRect(TPoint const &, TPoint const &)
+503ae0c4: RSemaphore::Wait()
+503a0f34: _cmpsf3
+503b6b98: TDeltaQueBase::DoRemoveFirst()
+50395fd0: CArrayFixBase::SetReserveFlatL(int)
+503ae730: TBusLocalDrive::Read(TInt64, int, TDes8 &)
+50398ebc: CCirBuffer::CCirBuffer()
+503b0318: TPoint::_apl(TPoint const &)
+503b55f8: TLex8::Val(unsigned char &, TRadix)
+503b93e8: TTime::_ami(TTimeIntervalMinutes)
+5039e5c4: _negdi2
+50396c0c: CArrayPakBase::InsertIsqAllowDuplicatesL(void const *, int, TKeyArrayPak &)
+5039e510: _ashrdi3
+503ab8e0: HBufC8::NewL(int)
+503abd64: TDes8::UpperCase()
+503b0dac: RHeap::RHeap(int)
+5039eaf4: TInt64::_dv(TInt64 const &)const
+503ad610: RHandleBase::FullName()const
+5039be4c: CPeriodic::Start(TTimeIntervalMicroSeconds32, TTimeIntervalMicroSeconds32, TCallBack)
+503ad4fc: RLibrary::DllRefTable()const
+503b01c8: TCheckedUid::Des()const
+5039acf8: Security::NewL(TDesC8 const &)
+503b5734: TDayNameAbb::TDayNameAbb()
+503af844: User::Invariant()
+503b9268: TTime::_apl(TTimeIntervalMicroSeconds)
+5039ea4c: TInt64::_pp()
+503b54d0: TLex8::Val(short &)
+503b3d10: UserSvr::DllFreeData(int)
+5039d300: TDesC16::CompareF(TDesC16 const &)const
+503ae4e4: RTimer::Cancel()
+503ab8f0: HBufC8::NewLC(int)
+503acfc4: TChar::GetCombiningClass()const
+503aa438: TDes16::Collate()
+503a35d8: CActiveSchedulerWait::IsStarted()const
+503ad110: TChar::TranslateToUnicode(unsigned int &, unsigned int, TChar::TEncoding)
+50395270: CActiveScheduler::Error(int)const
+503ba4a8: MBusDev::MBusDev()
+503b7990: RTest::Panic(int, TRefByValue<TDesC16 const>, ...)
+503b3370: TBusLocalDrive::WritePasswordData(TDesC8 &)
+503a7b0c: User::LockedInc(int &)
+503a177c: Mem::Compare(unsigned char const *, int, int, int)
+5039a9ec: CObjectConIx::CreateL()
+503b3428: User::_DbgMarkEnd(RHeap::TDbgHeapType, int)
+503950c8: CActiveScheduler::WaitForAnyRequest()
+503b02f4: TPoint::_ami(TSize const &)
+503b36fc: User::LoadPhysicalDevice(TDesC16 const &)
+503974f8: CBitMapAllocator::AllocAligned(int)
+50397a34: CBitMapAllocator::IsFree(int, int)
+503b1524: RHeap::Count(int &)const
+5039bab4: CServer::StartL(TDesC16 const &)
+5039c38c: RPointerArrayBase::BinarySearch(void const *, int &, int (*)(void const *, void const *))const
+503aab68: TDes16::Replace(int, int, TDesC16 const &)
+503acbc0: TRawEvent::Set(TRawEvent::TType)
+503b9210: TTime::_apl(TTimeIntervalSeconds)
+503a10b4: _eqdf2
+5039abc8: CSecurityEncryptBase::CSecurityEncryptBase()
+503b5510: TLex8::Val(long &)
+503b5a18: RMessage::Kill(int)const
+503b27a0: RMutex::OpenGlobal(TDesC16 const &, TOwnerType)
+503b5944: TTimeFormatSpec::TTimeFormatSpec()
+50394dc4: CIdle::DoCancel()
+503abc08: TDes8::Fill(TChar, int)
+503955cc: TKeyArrayFix::TKeyArrayFix(int, TKeyCmpText)
+503b0468: TPoint::SetXY(int, int)
+503a1430: _fixsfsi
+503b54a0: TLex8::Val(signed char &)
+503a3dac: TLex8::Val(float &)
+503b02a0: TPoint::_ne(TPoint const &)const
+5039d6c4: TDesC8::Ptr()const
+503aefb4: RDebug::ResumeThread(TThreadId)
+50394ff0: CActiveScheduler::~CActiveScheduler()
+503aea84: TBusLocalDrive::Format(TInt64, int)
+503ab4ec: TDes16::AppendFormat(TRefByValue<TDesC16 const>, ...)
+503b94f0: TTime::DaysInMonth()const
+503b9610: TTime::DayNoInYear()const
+503acb14: TDes8::_DbgTestInvariant()const
+503b19b8: RNotifier::CancelNotifier(TUid)
+503a65f8: TDes16::AppendNum(double, TRealFormat const &)
+503a7860: UserSvr::RomHeaderAddress()
+503acb18: HBufC8::_DbgTestInvariant()const
+503b084c: TRect::Move(TPoint const &)
+503ac824: TDes8::AppendNum(TInt64, TRadix)
+50396270: CArrayVarBase::Delete(int)
+503a9e94: TDesC16::Match(TDesC16 const &)const
+5039c210: RPointerArrayBase::Find(void const *, int (*)(void const *, void const *))const
+503b59fc: RMessage::WriteL(void const *, TDesC8 const &, int)const
+50396600: CArrayVarBase::AtR(CBase const *, int)
+5039b8dc: CSharableSession::CountResources()
+503b9290: TTime::_apl(TTimeIntervalMicroSeconds32)
+503b0730: TRect::SetRect(int, int, int, int)
+503ace68: TChar::IsGraph()const
+5039ac18: CSecurityBase::CSecurityBase()
+503aebe4: UserHal::DriveInfo(TDes8 &)
+503971d0: CBitMapAllocator::AllocFromTopFrom(int)
+50399678: CConsoleBase::~CConsoleBase()
+503a1a7c: Mem::FillZ(void *, int)
+50396210: CArrayVarBase::At(int)const
+5039f16c: TRealX::TRealX(double)
+503a9d88: TDesC16::Find(TDesC16 const &)const
+503aba30: HBufC8::Des()
+5039bbdc: CTimer::CTimer(int)
+5039c07c: CBase::~CBase()
+5039bfa8: CHeartbeat::~CHeartbeat()
+50399580: CleanupStack::PushL(void *)
+503ab724: TDesC8::MatchF(TDesC8 const &)const
+503b6db8: RRefBase::DoAllocL(void const *, int)
+503953d4: CActiveScheduler::Reserved_1()
+503b8d14: TTime::_pl(TTimeIntervalSeconds)const
+503ba3f4: TTrapHandler::TTrapHandler()
+503aa870: TDes16::Trim()
+503b7380: RRegion::Close()
+503b0bc8: TRect::SetWidth(int)
+503ad918: TLocale::TLocale()
+503af880: TKey::TKey()
+503b24a8: RMessage::Complete(int)const
+5039c71c: RArrayBase::At(int)const
+5039bf98: CHeartbeat::NewL(int)
+503b3f40: UserSvr::ForceRemountMedia(TMediaDevice)
+503aff44: TUidType::TUidType(TUid, TUid)
+503985b4: CBufSeg::Compress()
+503ae62c: User::SetTrapHandler(TTrapHandler *)
+503a9db8: TDesC16::FindF(unsigned short const *, int)const
+503ad150: RChunk::Top()const
+503aaf08: TDes16::Num(TInt64, TRadix)
+503ae2f8: RThread::SetProtected(int)const
+503b6988: TDblQueBase::SetOffset(int)
+503b1248: RHeap::FreeZ(void * &)
+503ae5c8: UserSvr::TestBootSequence()
+503ba2b4: Time::MinTTime()
+503b0120: TCheckedUid::TCheckedUid(TDesC8 const &)
+503b9764: TTime::WeekNoInYear()const
+503b079c: TRect::Shrink(int, int)
+503b7b7c: RTest::Getch()
+503af0fc: RDebug::ProfileReset(int, int)
+503b0044: TUidType::IsPresent(TUid)const
+503ab6ec: TDesC8::FindC(TDesC8 const &)const
+5039d850: TBufCBase8::Copy(unsigned char const *, int)
+50396e04: CArrayPakBase::CountR(CBase const *)
+503b4960: TLex16::Val(signed char &)
+503ab528: TDes16::_DbgTestInvariant()const
+503b6c7c: TDblQueIterBase::SetToLast()
+5039d480: TDes16::Zero()
+503a24f0: TDes8::AppendNumFixedWidthUC(unsigned int, TRadix, int)
+503ad768: User::Free(void *)
+503ae268: RThread::Suspend()const
+50398098: CBufFlat::~CBufFlat()
+503ab530: TPtr16::_DbgTestInvariant()const
+503b4f04: TLex8::RemainderFromMark(TLexMark8)const
+50396064: CArrayVarBase::CArrayVarBase(CBufBase * (*)(int), int)
+5715b100: DummyEuser_1668((*), void)
+503ae5b4: UserSvr::DllGlobalRead(int, int, int, TDes8 &)
+503b72fc: RRegion::RRegion(RRegion const &)
+503b6adc: TDeltaQueBase::DoAddDelta(void *, int)
+503aa480: TDes16::LowerCase()
+503ac2f8: TDes8::Delete(int, int)
+503a18e4: Mem::Swap(void *, void *, int)
+503ad73c: User::Available(int &)
+503981e4: CBufFlat::Delete(int, int)
+503a12d4: _divdf3
+503ae5a4: UserSvr::RequestEventCancel()
+503993f4: CCleanup::Pop()
+503b8664: TTime::SecondsFrom(TTime, TTimeIntervalSeconds &)const
+5039711c: CBitMapAllocator::AllocFromTop()
+503acca8: TChar::GetLowerCase()const
+503ac250: TDes8::Insert(int, TDesC8 const &)
+503a85e4: RArrayBase::Close()
+503ad4b8: TFindLibrary::Next(TBuf<256> &)
+503ad964: TLocale::FormatCurrency(TDes16 &, int)
+503b58fc: TShortDateFormatSpec::TShortDateFormatSpec()
+503a14e8: _extendsfdf2
+503ae440: RThread::RequestComplete(TRequestStatus * &, int)const
+503ae634: TBusLocalDrive::TBusLocalDrive()
+503a3340: CServer::RunL()
+503b8eb8: TTime::_mi(TTimeIntervalHours)const
+503ad0fc: TChar::TranslateFromUnicode(unsigned int &, TChar::TEncoding)const
+503b445c: TLex16::Val(unsigned long &, TRadix, unsigned int)
+503b50d0: TLex8::Val(long &, int)
+503b4e00: TLex8::TokenLength(TLexMark8)const
+50394b10: CActive::~CActive()
+503ab72c: TDesC8::MatchC(TDesC8 const &)const
+503ba570: PanicTFixedArray((*), void)
+503aebb0: UserSvr::HalGet(int, void *)
+503af134: RDebug::ProfileEnd(int)
+503ba378: Time::LeapYearsUpTo(int)
+503a7f98: DummyEuser_1656((*), void)
+5039c790: RArrayBase::Find(void const *)const
+503b8f9c: TTime::_mi(TTimeIntervalSeconds)const
+503b28c0: RSemaphore::OpenGlobal(TDesC16 const &, TOwnerType)
+50396e48: CArrayFixFlat::CArrayFixFlat(int)
+503a7ff4: RPointerArrayBase::RPointerArrayBase(int)
+50396ea0: CBitMapAllocator::CBitMapAllocator(int, int)
+503afe80: TUid::_ne(TUid const &)const
+50396164: CArrayVarBase::Compress()
+503ae4b0: User::At(TTime const &)
+503b42b0: TLex16::TokenLength(TLexMark16)const
+503ae5a0: UserSvr::RequestEvent(TRawEventBuf &, TRequestStatus &)
+503b033c: TPoint::_apl(TSize const &)
+503adf50: RProcess::ExitType()const
+503af138: Password::IsEnabled()
+503b2920: RTimer::CreateLocal()
+503b36d8: User::FreeLogicalDevice(TDesC16 const &)
+503a2998: TRegion::ClipRect(TRect const &)
+5039dee8: TDes8::Fill(TChar)
+503ad060: TChar::Compose(unsigned int &, TDesC16 const &)
+50398008: CBufBase::ResizeL(int)
+503ade60: RMutex::Count()
+503a30b8: CObjectIx::At(int)
+5039ec80: TInt64::MulTop(TInt64 const &)
+5039bd38: CTimer::ConstructL()
+503afe94: TUid::Name()const
+503aace0: TDes16::AppendJustify(TDesC16 const &, int, int, TAlign, TChar)
+503996e0: CConsoleBase::Printf(TRefByValue<TDesC16 const>, ...)
+503b3eb4: RDebug::Close()
+503ba26c: Time::NullTTime()
+503b4ed4: TLex8::Remainder()const
+503b8aa8: TTime::YearsFrom(TTime)const
+503b10d8: RHeap::ChunkAdjust(int)
+503aedbc: RDebug::Continue(TThreadId)
+503a11b0: _lesf2
+503b3e28: UserSvr::DllGlobalAlloc(int, int)
+503ad788: User::FreeZ(void * &)
+503b2018: RDevice::Open(TDesC16 const &, TOwnerType)
+503b0bd8: TRect::SetHeight(int)
+503b5628: TLex8::Val(unsigned short &, TRadix)
+503a389c: Math::ATan(double &, double const &)
+503b6c00: TSglQueIterBase::DoSet(void *)
+503b1454: RHeap::Base()const
+503aa254: TDes16::Swap(TDes16 &)
+5039f008: TRealX::SetNaN()
+50396b3c: CArrayPakBase::FindIsq(void const *, TKeyArrayPak &, int &)const
+50395d78: CArrayFixBase::InsertL(int, void const *, int)
+503adf38: RProcess::CommandLine(TDes16 &)const
+5039dda0: TDes8::PtrZ()
+50397c60: CBitMapAllocator::Avail()
+503b5cc4: RSubSessionBase::SendReceive(int, void const *)const
+5039a6b0: CObjectCon::FindByName(int &, TDesC16 const &, TBuf<128> &)const
+503a9e9c: TDesC16::MatchF(TDesC16 const &)const
+503a4724: Math::Mod(double &, double const &, double const &)
+503b3fbc: UserSvr::DllAddDependency(void *, void *)
+503b59d4: RMessage::ReadL(void const *, TDes8 &, int)const
+503ae5bc: UserSvr::DllTls(int)
+5039a5f8: CObjectCon::CheckUniqueFullName(CObject const *)const
+503a6e5c: TUnicode::GetUpperCase(TUnicodeDataSet const *)const
+503950cc: CActiveScheduler::Start()
+503b080c: TRect::_ne(TRect const &)const
+503b1960: RHeap::_DbgMarkStart()
+503adfc0: RProcess::SetPriority(TProcessPriority)const
+50399230: CCleanup::PushL(CBase *)
+50395644: TKeyArrayFix::Set(CBufBase *, int)
+503b4b28: TLex16::Val(unsigned long &, TRadix)
+5039d06c: TBufBase16::TBufBase16(TDesC16 const &, int)
+50399650: CConsoleBase::CConsoleBase()
+503b4e50: TLex8::MarkedToken()const
+503aec8c: User::MachineConfiguration(TDes8 &, int &)
+503b3588: RProcess::Create(TDesC16 const &, TDesC16 const &, TUidType const &, TOwnerType)
+5039f310: TRealX::_op6TInt64()
+503b0c58: TFindHandleBase::Find(TDesC16 const &)
+503af550: Mem::CollationMethodByIndex(int)
+503b0ad8: TRect::Size()const
+503b67b0: TDblQueLinkBase::AddBefore(TDblQueLinkBase *)
+503b21ac: RBusLogicalChannel::DoCreate(TDesC16 const &, TVersion const &, TDesC16 const *, int, int, TDesC8 const *, TOwnerType)
+503ae5b8: UserSvr::DllGlobalWrite(int, int, TDesC8 const &)
+503965d0: CArrayVarBase::SetKey(TKeyArrayVar &)const
+503ad140: RChunk::Size()const
+503b4990: TLex16::Val(short &)
+503acca0: TChar::GetUpperCase()const
+503ae078: RProcess::GetRamSizes(int &, int &, int &, int &)
+5039ba80: CServer::Start(TDesC16 const &)
+5039c8d0: RArrayBase::BinarySearchUnsigned(void const *, int &)const
+5039d4e4: TDes16::PtrZ()
+503b10e0: RHeap::CompressAll()
+50399c58: CObject::Name()const
+503968dc: CArrayPakBase::Delete(int)
+503a8314: RPointerArrayBase::InsertIsqUnsigned(unsigned int, int)
+5039aa70: CObjectConIx::Remove(CObjectCon *)
+5039a400: CObjectCon::CheckUniqueFullName(CObject const *, TDesC16 const &)const
+503ad8e4: UserExec::FatUtilityFunctions()
+503b4154: TLex16::Get()
+503956b4: TKeyArrayVar::TKeyArrayVar(int, TKeyCmpText)
+503b67f0: TSglQueBase::TSglQueBase()
+503af13c: Password::IsValid(TBuf<16> const &)
+503ad994: TLocale::FormatCurrency(TDes16 &, TInt64)
+5039caac: RArrayBase::FindIsq(void const *, int (*)(void const *, void const *))const
+503af0c4: RDebug::ProfileResult(TProfile *, int, int)
+503b5ae0: RSessionBase::Send(int, void *)const
+503ae578: RChangeNotifier::Logon(TRequestStatus &)const
+503ad80c: User::AllocSize(int &)
+503b6d18: TDblQueBase::_DbgTestEmpty()const
+503b04e4: TSize::_ami(TSize const &)
+5039937c: CCleanup::DoPopAll(int)
+5039d524: TDes16::Append(TChar)
+503b6974: TDblQueBase::IsEmpty()const
+5039d30c: TDesC16::CompareC(TDesC16 const &)const
+503b9678: TTime::DayNoInYear(TTime)const
+503a1340: _negdf2
+50395c9c: CArrayFixBase::Find(void const *, TKeyArrayFix &, int &)const
+503b58ac: TAmPmName::TAmPmName(TAmPm)
+503b0664: TSize::_mi()const
+503ad704: User::AllocL(int)
+503b6c38: TSglQueIterBase::DoCurrent()
+50395bf4: CArrayFixBase::ExpandL(int)
+503acec0: TChar::IsPrint()const
+503ab110: TDes16::AppendNumFixedWidthUC(unsigned int, TRadix, int)
+503ab56c: TDesC8::Find(unsigned char const *, int)const
+503ae0fc: RCriticalSection::RCriticalSection()
+5039e4c8: _moddi3
+503adecc: RProcess::SetType(TUidType const &)
+503b37dc: User::FreePhysicalDevice(TDesC16 const &)
+503b781c: RTest::_cl(int, int)
+503ad5c0: User::LockPeriod()
+503a033c: TRealX::_amd(TRealX const &)
+503995b8: CleanupStack::PushL(TCleanupItem)
+503b23b0: RHandleBase::Open(TFindHandleBase const &, TOwnerType)
+503b3bd0: UserSvr::ProcessLoaded(TLoaderInfo &)
+503a2db8: TRegion::Tidy()
+503b4260: TLex16::SkipCharacters()
+503b3ca4: UserSvr::DllSetTls(int, void *)
+503a7b60: UserSvr::BlockThreads(TBlockType)
+5039dc34: TDesC8::Left(int)const
+503ae3d4: RThread::ReadL(void const *, TDes16 &, int)const
+503acb74: TRawEvent::Modifiers()const
+50399f4c: CObjectIx::Remove(int)
+503b8acc: TTime::_pl(TTimeIntervalYears)const
+5039ead4: TInt64::_ml(TInt64 const &)const
+503aa200: TDes16::Copy(TDesC8 const &)
+5039bdfc: CPeriodic::NewL(int)
+503a9c68: TDesC16::CompareC(TDesC16 const &, int, TCollationMethod const *)const
+503b6940: TDblQueBase::TDblQueBase(int)
+503a7d84: User::HandleException(void (*)(TExcType), TExcType)
+5039db1c: TDesC8::Locate(TChar)const
+5039b940: CSession::ReadL(void const *, TDes8 &, int)const
+5039c820: RArrayBase::BinarySearchSigned(void const *, int &)const
+5039a188: CObjectCon::CObjectCon(int)
+503adedc: RProcess::Id()const
+5039dfbc: _umodsi3
+503a63d0: TRealFormat::TRealFormat(int, int)
+503abf9c: TDes8::CopyCP(TDesC8 const &)
+503a854c: RArrayBase::RArrayBase(int, int, int)
+503a814c: RPointerArrayBase::Remove(int)
+50399618: CleanupStack::PopAndDestroy(int)
+503b8f2c: TTime::_mi(TTimeIntervalMinutes)const
+503b40fc: TLex16::Inc(int)
+503b58d8: TCurrencySymbol::TCurrencySymbol()
+503b5968: TLocaleMessageText::TLocaleMessageText()
+50399410: CCleanup::PopAndDestroy()
+503b4c94: TLex8::Inc()
+5039f574: TRealX::GetTReal(float &)const
+503b5920: TLongDateFormatSpec::TLongDateFormatSpec()
+503957e4: TKeyArrayPak::TKeyArrayPak(int, TKeyCmpNumeric)
+503b4188: TLex16::Peek()const
+50396750: CArrayPakBase::SortL(TKeyArrayVar &)
+50398524: CBufSeg::NewL(int)
+503b3e90: RDebug::Open(int, int, int, unsigned int)
+503b7a44: RTest::Panic(TRefByValue<TDesC16 const>, ...)
+503aa748: TDes16::CopyCP(TDesC16 const &)
+503aac44: TDes16::Justify(TDesC16 const &, int, TAlign, TChar)
+503aad28: TDes16::AppendJustify(unsigned short const *, int, TAlign, TChar)
+503b7288: RRegion::RRegion(int)
+503ab9f4: HBufC8::ReAllocL(int)
+5039ce80: TPtrC16::TPtrC16(unsigned short const *, int)
+503acad8: TDes8::AppendFormat(TRefByValue<TDesC8 const>, ...)
+5039b8f4: CSession::CSession(RThread)
+5039947c: CTrapCleanup::New()
+50395990: CArrayFixBase::Compress()
+5039efec: TRealX::SetZero(int)
+503b0574: TSize::_mi(TSize const &)const
+503af3bc: Mem::CompareF(unsigned short const *, int, int, int)
+503ad854: User::SwitchHeap(RHeap *)
+503a658c: TDes8::Num(double, TRealFormat const &)
+503b4ab8: TLex16::Val(unsigned char &, TRadix)
+503b1968: RHeap::_DbgMarkEnd(int)
+50395f24: CArrayFixBase::InsertIsqAllowDuplicatesL(void const *, TKeyArrayFix &)
+503ad224: RBusLogicalChannel::DoRequest(int, TRequestStatus &)
+5039959c: CleanupStack::PushL(CBase *)
+503a0368: TRealX::_pp()
+503af130: RDebug::ProfileStart(int)
+5039d1b0: TDes16::Copy(TDesC16 const &)
+503b92f8: TTime::_ami(TTimeIntervalMonths)
+503a097c: Math::SetZero(double &, int)
+503ae55c: RTimer::Inactivity(TRequestStatus &, TTimeIntervalSeconds)
+503b6c9c: TDblQueIterBase::DoPostInc()
+503b2f90: RThread::Panic(TDesC16 const &, int)
+503acf38: TChar::IsAssigned()const
+503a8260: RPointerArrayBase::Reset()
+503ad174: TFindPhysicalDevice::Next(TBuf<256> &)
+503a87fc: RArrayBase::Reset()
+503a1574: _truncdfsf2
+503b7328: RRegion::RRegion(int, int)
+5039eabc: TInt64::_mi(TInt64 const &)const
+503b3ef8: Password::SetEnabled(TBuf<16> const &, int)
+5039dae4: TDesC8::AtC(int)const
+503b43b4: TLex16::RemainderFromMark(TLexMark16)const
+50398ca4: CCirBufBase::DoAdd(unsigned char const *, int)
+503aef4c: RDebug::Fault(int)
+503b0eac: RHeap::_nw(unsigned int, void *)
+503af60c: User::StringLength(unsigned char const *)
+503a045c: TRealX::_mi(TRealX const &)const
+5039d3b8: TDesC16::Right(int)const
+503aa094: HBufC16::NewMax(int)
+5039c094: CBase::_nw(unsigned int)
+5039d3fc: TDesC16::Mid(int)const
+503b0270: TPoint::_eq(TPoint const &)const
+503b29a4: RProcess::Open(TProcessId, TOwnerType)
+503960a8: CArrayVarBase::~CArrayVarBase()
+5039d7c8: TBufCBase8::TBufCBase8()
+503aa840: TDes16::Repeat(TDesC16 const &)
+5039ea78: TInt64::_mm()
+503b3a24: RLoader::LoadLibrary(int &, TDesC16 const &, TDesC16 const &, TDesC16 const &, TUidType const &)
+50394eb8: CAsyncCallBack::CAsyncCallBack(int)
+503b5a04: RMessage::WriteL(void const *, TDesC16 const &)const
+5039ee20: TRealX::Set(int)
+503a01b0: TRealX::Add(TRealX &, TRealX const &)const
+503b6bf0: TSglQueIterBase::SetToFirst()
+503b7ce0: TDateTime::SetMonth(TMonth)
+503affac: TUidType::_ne(TUidType const &)const
+5039cce0: RArrayBase::HeapSort(int (*)(void const *, void const *))
+503ae524: RTimer::At(TRequestStatus &, TTime const &)
+503a7b50: UserSvr::WsRegisterThread(int (*)(void *))
+503ab90c: HBufC8::NewMax(int)
+50398b50: CCirBufBase::CCirBufBase(int)
+503a8a18: RArrayBase::GetCount(CBase const *)
+5039b8a8: CSharableSession::ResourceCountMarkEnd()
+503953cc: CActiveScheduler::OnStarting()
+503ad374: RBusLogicalChannel::DoCancel(unsigned int)
+50399b9c: CObject::Close()
+5039ee10: TRealX::TRealX(unsigned int, unsigned int, unsigned int)
+503a0314: TRealX::_adv(TRealX const &)
+503a4fe0: Math::Rand(TInt64 &)
+503a80c8: RPointerArrayBase::Insert(void const *, int)
+5039942c: CCleanup::Check(void *)
+503ab52c: HBufC16::_DbgTestInvariant()const
+503a6414: Math::Round(double &, double const &, int)
+503b0710: TRect::TRect(TSize const &)
+503acd94: TChar::IsAlphaDigit()const
+503ad598: RLibrary::GetRamSizes(int &, int &)
+503b0360: TPoint::_mi(TPoint const &)const
+503aff20: TUidType::TUidType(TUid)
+503ad158: RChunk::MaxSize()const
+5039f020: TRealX::SetInfinite(int)
+5039ebd0: TInt64::_ls(int)const
+503b692c: TDblQueBase::TDblQueBase()
+503a65c0: TDes8::AppendNum(double, TRealFormat const &)
+503aebbc: User::SetDebugMask(unsigned long)
+50398af8: CBufSeg::BackPtr(int)
+503a1194: _ltdf2
+503a06b4: Math::Poly(double, SPoly const *)
+503965f8: CArrayVarBase::CountR(CBase const *)
+503b9774: TTime::WeekNoInYear(TFirstWeekRule)const
+5039bea4: CPeriodic::RunL()
+503ba55c: TFormatInfo::TFormatInfo()
+5039f8c8: TRealX::SubEq(TRealX const &)
+57140150: DummyEuser_1666((*), void)
+503b8128: TTime::RoundUpToNextMinute()
+5039e1cc: memcpy
+5039c1e0: RPointerArrayBase::Find(void const *)const
+503b4c20: TLex8::UnGet()
+503af530: Mem::CollationMethodId(int)
+5039f800: TRealX::Compare(TRealX const &)const
+503aecf8: RDebug::SetWatchPoint(TThreadId, unsigned int, int)
+503a8288: RPointerArrayBase::InsertIsqSigned(int, int)
+503a8744: RArrayBase::Compress()
+503b4f3c: TLex8::RemainderFromMark()const
+503b07b4: TRect::Resize(int, int)
+503b3c60: UserSvr::LibraryLoaded(TLoaderInfo &)
+503b3cec: UserSvr::DllInitialiseData(int)
+503a842c: RPointerArrayBase::GetElementPtr(CBase const *, int)
+503a0e98: _subsf3
+50399874: CDeltaTimer::NewL(int, TTimeIntervalMicroSeconds32)
+503b18a0: UserHeap::ChunkHeap(RChunk &, int, int)
+503b2288: RBusLogicalChannel::DoSvControl(int)
+503aeb70: TBusLocalDrive::ReadPasswordData(TDes8 &)
+5039602c: CArrayFixBase::SetKey(TKeyArrayFix &)const
+503ad3bc: RBusLogicalChannel::DoControl(int, void *)
+5039d00c: TBufBase16::TBufBase16(int, int)
+503b3dc4: RUndertaker::Logon(TRequestStatus &, int &)const
+503ad8d8: TShortDateFormatSpec::Set()
+503af358: Mem::Compare(unsigned short const *, int, int, int)
+503a7858: UserSvr::LockRamDrive()
+503b03d8: TPoint::_pl(TPoint const &)const
+503b1d9c: RChunk::CreateDoubleEndedLocal(int, int, int, TOwnerType)
+503b07d0: TRect::_eq(TRect const &)const
+5039dcbc: TDesC8::Mid(int)const
+503b6dd4: RRefBase::Copy(RRefBase const &)
+503a04ac: TRealX::_dv(TRealX const &)const
+503aebb8: UserSvr::SetMemoryThresholds(int, int)
+503b4034: TLex16::TLex16()
+503ae2a0: RThread::System()const
+5039a8b8: CObjectConIx::NewL()
+50397cac: CBufBase::~CBufBase()
+503ad188: RDevice::GetCaps(TDes8 &)const
+50398aa0: CBufSeg::Ptr(int)
+503b0930: TRect::BoundingRect(TRect const &)
+503aec08: UserHal::ExceptionId(int &)
+503a9fe0: TDesC16::AllocL()const
+5039c488: RPointerArrayBase::FindIsq(void const *, int (*)(void const *, void const *))const
+5039d93c: TBufBase8::TBufBase8(TDesC8 const &, int)
+503a1348: _floatsisf
+503aca78: TDes8::FormatList(TDesC8 const &, signed char **)
+503aa88c: TDes16::TrimAll()
+503a11cc: _ledf2
+503964a4: CArrayVarBase::FindIsq(void const *, TKeyArrayVar &, int &)const
+503b3e4c: User::SetMachineConfiguration(TDesC8 const &)
+503b6e44: TRegion::_vc(int)const
+503b4ce0: TLex8::Peek()const
+503b4384: TLex16::Remainder()const
+5039da34: TDes8::Copy(unsigned char const *, int)
+503959bc: CArrayFixBase::Reset()
+503acc24: User::SetJustInTime(int)
+503ade0c: TLocaleMessageText::Set(TLocaleMessage)
+50395b0c: CArrayFixBase::Back(int)const
+503990dc: CCleanup::NewL()
+5039df34: _builtin_delete
+5039d9d8: TDes8::Copy(unsigned char const *)
+503acb9c: TRawEvent::Set(TRawEvent::TType, int, int)
+503ae59c: UserSvr::ReleaseEventHook()
+5039e5f0: _pure_virtual
+503b7ddc: TTime::TTime(TDateTime const &)
+5039be0c: CPeriodic::CPeriodic(int)
+503ab960: HBufC8::_as(unsigned char const *)
+503b7384: RRegion::Destroy()
+50396714: CArrayPakBase::Compress()
+503aa18c: HBufC16::ReAllocL(int)
+503a7f84: DummyEuser_1651((*), void)
+5039f8e8: TRealX::AddEq(TRealX const &)
+503ad6e8: User::Alloc(int)
+503aec44: UserHal::CalibrationPoints(TDigitizerCalibration &)
+5039ea60: TInt64::_pp(int)
+503b464c: TLex16::Val(TInt64 &, TRadix, TInt64 const &)
+503b6a60: TDeltaQueBase::Reset()
+5039e578: _lshrdi3
+5039a7b4: CObjectCon::FindByFullName(int &, TDesC16 const &, TBuf<256> &)const
+503ae180: RThread::Id()const
+503b7ba0: TDateTime::TDateTime(int, TMonth, int, int, int, int, int)
+503b0b64: TRect::Center()const
+503af6c8: User::QuickSort(int, TKey const &, TSwap const &)
+5039dd64: TDes8::ZeroTerminate()
+503b8898: TTime::DaysFrom(TTime)const
+503ae454: RThread::GetRamSizes(int &, int &)
+5039df3c: _divsi3
+5039d7d4: TBufCBase8::TBufCBase8(unsigned char const *, int)
+503aee28: RDebug::GetException(SDebugInfo &, TRequestStatus &)
+503b2df4: RThread::SetInitialParameter(void *)
+503a3948: DummyEuser_1671((*), void)
+503ac7a8: TDes8::AppendNum(TInt64)
+503b9048: TTime::_mi(TTimeIntervalMicroSeconds32)const
+503acd04: TChar::IsUpper()const
+503ae5cc: UserSvr::WsRegisterSwitchOnScreenHandling(int)
+503b6b50: TDeltaQueBase::DoRemove(void *)
+503aa3d4: TDes16::FillZ(int)
+50395794: TKeyArrayPak::TKeyArrayPak(int, TKeyCmpText)
+503aba60: TDes8::Copy(TDesC16 const &)
+503abb3c: TDes8::Swap(TDes8 &)
+503b1268: RHeap::FreeAll()
+503a307c: CObjectIx::At(int, int)
+503afcac: TVersion::TVersion()
+5039a988: CObjectConIx::CreateContainerL(CObjectCon * &)
+503afe68: TUid::_eq(TUid const &)const
+503b11cc: RHeap::Compress()
+503aae1c: TDes16::Num(unsigned int, TRadix)
+503b1f38: RChunk::OpenGlobal(TDesC16 const &, int, TOwnerType)
+5039526c: CActiveScheduler::Current()
+50399868: CDeltaTimer::NewL(int)
+503acd24: TChar::IsTitle()const
+503b77c4: RTest::Next(TDesC16 const &)
+5039ec54: TInt64::Mul10()
+503a785c: UserSvr::RomRootDirectoryAddress()
+503a0844: Math::Int(long &, double const &)
+5039d0e4: TDes16::SetMax()
+503aa0ec: HBufC16::_as(unsigned short const *)
+503a1ba8: Mem::Copy(void *, void const *, int)
+503b67c8: TDblQueLink::Deque()
+503ade8c: RProcess::Type()const
+503b15b8: THeapWalk::Walk()
+503aa960: TDes16::TrimLeft()
+503a4a80: Math::Pow(double &, double const &, double const &)
+503ba458: User::LeaveIfNull(void *)
+5039ac68: Security::NewL()
+503ae1ac: RThread::ModifyExceptionMask(unsigned long, unsigned long)
+503ad7b0: User::ReAlloc(void *, int)
+503a0fd8: _cmpdf3
+5039d988: TDes8::SetLength(int)
+5039d2ac: TDesC16::LocateReverse(TChar)const
+503acc2c: User::Fold(unsigned int, int)
+5039d8cc: TBufBase8::TBufBase8(int)
+503966a4: CArrayPakBase::Length(int)const
+503b7140: TRegion::RectangleListW()
+5039f7f0: TRealX::_mi()const
+503b80d0: TTime::HomeTime()
+5039d72c: TPtrC8::TPtrC8(unsigned char const *)
+503acb0c: TDesC8::_DbgTestInvariant()const
+503ae16c: TFindThread::Next(TBuf<256> &)
+503a3114: CObjectCon::_vc(int)
+50394eec: CAsyncCallBack::CAsyncCallBack(TCallBack &, int)
+503964f4: CArrayVarBase::InsertL(int, void const *, int)
+503afd78: User::RequestComplete(TRequestStatus * &, int)
+503ad8d4: TCurrencySymbol::Set()
+503b6c54: TDblQueIterBase::TDblQueIterBase(TDblQueBase &)
+503b02d0: TPoint::_ami(TPoint const &)
+503afcd0: TVersion::Name()
+503a9ea4: TDesC16::MatchC(TDesC16 const &)const
+5039edfc: TRealX::TRealX()
+503b2ff4: RThread::LogonCancel(TRequestStatus &)const
+5039d598: TDes16::Append(unsigned short const *, int)
+5039ced8: TPtr16::TPtr16(TBufCBase16 &, int)
+503b0f74: RHeap::Initialise()
+503b2b04: RProcess::LogonCancel(TRequestStatus &)const
+503b6840: TSglQueBase::SetOffset(int)
+503ac70c: TDes8::Num(TInt64, TRadix)
+503982a4: CBufFlat::BackPtr(int)
+503b1fc0: RChunk::AdjustDoubleEnded(int, int)const
+503b2ad0: RProcess::Logon(TRequestStatus &)const
+503b40e0: TLex16::UnGetToMark(TLexMark16)
+503a0a5c: TInt64::GetTReal()const
+50399dd4: CObjectIx::~CObjectIx()
+503ad7f8: User::Heap()
+50399688: CConsoleBase::Getch()
+503a03d4: TRealX::_mm()
+503b59b0: RMessage::RMessage()
+503a0054: TRealX::ModEq(TRealX const &)
+503acb58: TRawEvent::Pos()const
+503b9498: TTime::_ami(TTimeIntervalMicroSeconds)
+503ba434: User::LeaveNoMemory()
+503b09a4: TRect::Intersection(TRect const &)
+503b1508: RHeap::Count()const
+503ae844: TBusLocalDrive::Write(TInt64, TDesC8 const &)
 503b938c: TTime::_ami(TTimeIntervalHours)
+5039a240: CObjectCon::AddL(CObject *)
+503ad8e8: User::SetCurrencySymbol(TDesC16 const &)
+503aa384: TDes16::AppendFill(TChar, int)
+50398d7c: CCirBufBase::DoRemove(unsigned char *)
+503a6878: Math::Sin(double &, double const &)
+503affc8: TUidType::_vc(int)const
+503aecc4: RDebug::ClrBreakPoint(TThreadId, unsigned int)
+503b7d58: TDateTime::SetHour(int)
+503b5884: TAmPmName::TAmPmName()
+503a65c4: TDes16::Num(double, TRealFormat const &)
+503af904: TKey::TKey(int, TKeyCmpNumeric)
+503b6868: TSglQueBase::Reset()
+50396058: CArrayFixBase::CountR(CBase const *)
+503ab004: TDes16::AppendNumUC(unsigned int, TRadix)
+503b518c: TLex8::Val(TInt64 &, TRadix, TInt64 const &)
+50396648: CArrayPakBase::~CArrayPakBase()
+503b6fe4: TRegion::SubRegion(TRegion const &, TRegion *)
+503ab520: TDesC16::_DbgTestInvariant()const
+5039b83c: CSharableSession::~CSharableSession()
+503a7b54: UserSvr::FsRegisterThread(int (*)(void *))
+503b1a58: RNotifier::LoadNotifiers(TUid)
+503a35d8: Math::ASin(double &, double const &)
+5039e5d0: _udivmoddi4
+503a8a1c: RArrayBase::GetElementPtr(CBase const *, int)
+503b5708: TDayName::TDayName(TDay)
+503a11e8: _mulsf3
+5039f3b4: TRealX::_opf()
+503b97e4: TTime::WeekNoInYear(TTime, TFirstWeekRule)const
+503b4b58: TLex16::Val(TInt64 &, TRadix)
+503b59c8: RMessage::ReadL(void const *, TDes8 &)const
+503a86e4: RArrayBase::Remove(int)
+5039572c: TKeyArrayVar::Set(CBufBase *)
+503b016c: TCheckedUid::Set(TDesC8 const &)
+503b6d5c: RRefBase::DoAlloc(void const *, int)
+5039bc0c: CTimer::~CTimer()
+503af890: TKey::TKey(int, TKeyCmpText)
+503a2854: TRegion::Offset(TPoint const &)
+503ad160: TFindLogicalDevice::Next(TBuf<256> &)
+503b88f8: TTime::MonthsFrom(TTime)const
+503980dc: CBufFlat::SetReserveL(int)
+50399408: CCleanup::PopAll()
+503ab944: HBufC8::NewMaxLC(int)
+503a3df0: TLex8::Val(float &, TChar)
+503b5a10: RMessage::WriteL(void const *, TDesC16 const &, int)const
+503a1098: _eqsf2
+503a9df0: TDesC16::FindC(unsigned short const *, int)const
+5039f688: TRealX::GetTReal(double &)const
+503b6ef0: TRegion::Intersect(TRegion const &)
+503ab640: TDesC8::FindF(unsigned char const *, int)const
+503af144: User::IMB_Range(void *, void *)
+503ade44: RServer::Cancel()
+503b2c58: RThread::Create(TDesC16 const &, int (*)(void *), int, int, int, void *, TOwnerType)
+503b4cc0: TLex8::Get()
+503ae1c0: RThread::RaiseException(TExcType)
+503997cc: CConsoleBase::WhereX()const
+503b14dc: RHeap::Check()const
+503b31b8: TBusLocalDrive::ReduceSize(int, int)
+503adfe8: RProcess::SetSystem(int)const
+50394b9c: CActive::Deque()
+503acb6c: TRawEvent::ScanCode()const
+503a7b14: User::IsRomAddress(int &, void *)
+503992f4: CCleanup::DoPop(int, int)
+5039f474: TRealX::_opd()
+5039e1cc: CActiveSchedulerWait::AsyncStop(TCallBack const &)
+503ae470: User::After(TTimeIntervalMicroSeconds32)
+503a7868: RLibrary::LoadRomLibrary(TDesC16 const &, TDesC16 const &)
+503b5ab8: RSessionBase::SendReceive(int, void *)const
+503aeeec: RDebug::ReadXtalError()
+503ac620: TDes8::Num(unsigned int, TRadix)
+503b6e08: TRegion::TRegion(int)
+503ad090: TChar::Decompose(TPtrC16 &)const
+503b8628: TTime::MicroSecondsFrom(TTime)const
+503aee64: RDebug::CancelGetException()
+50399d04: CObject::SetName(TDesC16 const *)
+5039ce94: TPtr16::TPtr16(unsigned short *, int)
+503a27cc: TRegion::Copy(TRegion const &)
+503ace44: TChar::IsPunctuation()const
+503b0a90: TRect::Contains(TPoint const &)const
+503b3c14: UserSvr::LibraryCreateExact(TLoaderInfo &)
+50399af8: CObject::CObject()
+5039d764: TPtr8::TPtr8(unsigned char *, int)
+50394b60: CActive::Cancel()
+5039bfb8: CHeartbeat::Start(TTimerLockSpec, MBeating *)
+50394d7c: CIdle::RunL()
+503b29f0: RProcess::Rename(TDesC16 const &)
+503b290c: RCriticalSection::CreateLocal(TOwnerType)
+50396e58: _t13CArrayFixFlat1Z4TUidi
+50398974: CBufSeg::Delete(int, int)
+503b3394: User::_DbgMarkStart(RHeap::TDbgHeapType)
+503ade1c: TFindServer::Next(TBuf<256> &)
+503b146c: RHeap::Available(int &)const
+503a28f0: TRegion::Contains(TPoint const &)const
+503aec68: UserHal::RestoreXYInputCalibration(TDigitizerCalibrationType)
+503a41d0: TLex16::Val(double &)
+503995ec: CleanupStack::Pop(int)
+5039d4a4: TDes16::ZeroTerminate()
+503b3e70: User::CompressAllHeaps()
+5039be3c: CPeriodic::~CPeriodic()
+503aad70: TDes16::AppendJustify(unsigned short const *, int, int, TAlign, TChar)
+503abc3c: TDes8::AppendFill(TChar, int)
+503b7054: TRegion::Clear()
+50398f38: CCirBuffer::Put(int)
+503aa510: TDes16::Capitalize()
+503afc94: TSwap::TSwap()
+503a9f38: TDesC16::LocateReverseF(TChar)const
+503a83a0: RPointerArrayBase::InsertIsq(void const *, int (*)(void const *, void const *), int)
+503acf58: TChar::GetInfo(TChar::TCharInfo &)const
+503998ec: CDeltaTimer::CDeltaTimer(int, TTimeIntervalMicroSeconds32)
+5039d888: TBufCBase8::Copy(TDesC8 const &, int)
+503b3f6c: UserSvr::MediaChangeNotify(TMediaDevice, TRequestStatus *)
+503b3f98: UserSvr::ChangeLocale(RLibrary)
+503b2d18: RThread::Create(TDesC16 const &, int (*)(void *), int, RHeap *, void *, TOwnerType)
+503a3e3c: TLex8::Val(double &)
+50398bc4: CCirBufBase::SetLengthL(int)
+503b70b8: TRegion::Sort(TPoint const &)
+5039d43c: TDesC16::Mid(int, int)const
+503a7264: TUnicode::Fold(int, TUnicodeDataSet const *)const
+5039b9f8: CServer::~CServer()
+503953d8: CActiveScheduler::Reserved_2()
+503b2a1c: RProcess::Kill(int)
+50394c58: CActive::RunError(int)
+503b41f8: TLex16::SkipAndMark(int, TLexMark16 &)
+503b7be4: TDateTime::Set(int, TMonth, int, int, int, int, int)
+503a7f90: DummyEuser_1654((*), void)
+5039f054: TRealX::IsNaN()const
+503b2f64: RThread::Terminate(int)
+503b8104: TTime::UniversalTime()
+50397e60: CBufBase::Write(int, void const *, int)
+5039e630: TInt64::_apl(TInt64 const &)
+5039bd60: CPeriodic::New(int)
+503b8e08: TTime::_mi(TTimeIntervalYears)const
+503aae48: TDes16::NumUC(unsigned int, TRadix)
+503b3054: TBusLocalDrive::Connect(int, int &)
+50395ed4: CArrayFixBase::InsertIsqL(void const *, TKeyArrayFix &)
+503af93c: TKey::Compare(int, int)const
+503b4be8: TLex8::Assign(TDesC8 const &)
+503ab9b8: HBufC8::ReAlloc(int)
+503b0628: TSize::_pl(TPoint const &)const
+503acf9c: TChar::GetBdCategory()const
+503b92c0: TTime::_ami(TTimeIntervalYears)
+503b0fa8: RHeap::GetAddress(void *)
+503ae5c4: UserSvr::KernelStartup(int (*)(void *))
+5039f2bc: TRealX::_opUi()
+503ac6e0: TDes8::Num(TInt64)
+50398ee8: CCirBuffer::~CCirBuffer()
+503b0508: TSize::_ami(TPoint const &)
+503affec: TUidType::MostDerived()const
+503ae880: TBusLocalDrive::Caps(TDes8 &)
+50396c90: CArrayPakBase::GetOffset(int)const
+503b00f8: TCheckedUid::TCheckedUid(TUidType const &)
+503adfb8: RProcess::Priority()const
+503ad4cc: RLibrary::Lookup(int)const
+5039eaa4: TInt64::_pl(TInt64 const &)const
+5039f16c: TRealX::_as(double)
+503ad6a0: User::AdjustL(void *, int, int)
+503accb0: TChar::GetTitleCase()const
+50399634: CleanupStack::Check(void *)
+503b2eb8: RThread::Process(RProcess &)const
+503b915c: TTime::_apl(TTimeIntervalHours)
+5039b954: CSession::ReadL(void const *, TDes16 &, int)const
+503af630: User::StringLength(unsigned short const *)
+503ad014: TChar::GetNumericValue()const
+503a122c: _muldf3
+503aa578: TDes16::CopyF(TDesC16 const &)
+503b790c: RTest::End()
+503b42d4: TLex16::MarkedToken(TLexMark16)const
+503b6a40: TDeltaQueBase::TDeltaQueBase(int)
+503b1ab0: RNotifier::Connect()
+503b0974: TRect::IsEmpty()const
+503ade78: TFindProcess::Next(TBuf<256> &)
+503a0964: Math::IsFinite(double const &)
+503a632c: TRealFormat::TRealFormat()
+503a0edc: _subdf3
+503b04b4: TSize::_ne(TSize const &)const
+503b0870: TRect::Move(int, int)
+503b7d6c: TDateTime::SetMinute(int)
+5039db70: TDesC8::LocateReverse(TChar)const
+503979ec: CBitMapAllocator::IsFree(int)
+50394d0c: CIdle::~CIdle()
+503a3e80: TLex8::Val(double &, TChar)
+50394ad8: CActive::CActive(int)
+503adf60: RProcess::ExitCategory()const
+503ad5ac: User::SetHomeTime(TTime const &)
+503b4c68: TLex8::Inc(int)
+50397c68: CBitMapAllocator::Size()
+503b4db0: TLex8::SkipCharacters()
+503b4870: TLex16::Val(TInt64 &, TInt64 const &)
+503af570: Mem::CollationMethodById(unsigned int)
+503b4ba0: TLex8::TLex8()
+503b4f9c: TLex8::Val(unsigned long &, TRadix, unsigned int)
+503a13c0: _floatsidf
+503abca4: TDes8::Fold()
+503adeec: RProcess::FileName()const
+503ae2b8: RThread::SetSystem(int)const
+5039b970: CSession::WriteL(void const *, TDesC16 const &)const
+5039b98c: CSession::Terminate(int)const
+503b3208: TBusLocalDrive::Unlock(TBuf8<16> &, int)
+503aec2c: UserHal::SwitchOff()
+50399a0c: CDeltaTimer::Remove(TDeltaTimerEntry &)
+503a0dfc: _addsf3
+503b2404: RHandleBase::Close()
+503b76f0: RTest::Title()
+503ab45c: TDes16::Format(TRefByValue<TDesC16 const>, ...)
+503a8480: RArrayBase::RArrayBase(int, int)
+503aeec0: RDebug::WriteMemory(TThreadId, unsigned int, TDesC8 &, int)
+503acd64: TChar::IsDigit()const
+503ad914: User::Language()
+503a0900: Math::IsZero(double const &)
+5039c4ac: RPointerArrayBase::HeapSortSigned()
+503aa9d8: TDes16::TrimRight()
+503a3640: Math::ACos(double &, double const &)
+50399e4c: CObjectIx::AddL(CObject *)
+503aaedc: TDes16::Num(TInt64)
+503a28a4: TRegion::Offset(int, int)
+50399c94: CObject::FullName()const
+50399798: CConsoleBase::SetPos(int, int)
+503a1a8c: Mem::Fill(void *, int, TChar)
+503b4590: TLex16::Val(long &, int)
+503b682c: TSglQueBase::IsEmpty()const
+503af660: User::Panic(TDesC16 const &, int)
+503a7f8c: DummyEuser_1653((*), void)
+503b1294: RHeap::ReAlloc(void *, int)
+503b6aa8: TDeltaQueBase::CountDown(int)
+503b6aa0: TDeltaQueBase::CountDown()
+503980d0: CBufFlat::Compress()
+503a8428: RPointerArrayBase::GetCount(CBase const *)
+50394dfc: CAsyncOneShot::DoCancel()
+5039ed98: TInt64::_ge(TInt64 const &)const
+503b8d84: TTime::_pl(TTimeIntervalMicroSeconds)const
+503b404c: TLex16::Assign(unsigned short const *)
+503990f8: CCleanup::CCleanup()
+503a7fd8: RPointerArrayBase::RPointerArrayBase()
+503b06e0: TRect::TRect(TPoint const &, TSize const &)
+503b1994: RNotifier::StartNotifier(TUid, TDesC8 const &, TDes8 &)
+503b143c: RHeap::ReAllocL(void *, int)
+5039e648: TInt64::_ami(TInt64 const &)
+503a389c: CActiveSchedulerWait::Start()
+503a6380: TRealFormat::TRealFormat(int)
+503a315c: CObjectCon::AtL(int)const
+5039df84: _modsi3
+503b9330: TTime::_ami(TTimeIntervalDays)
+503b1b9c: RChunk::CreateLocal(int, int, TOwnerType)
+503aec38: UserHal::SetXYInputCalibration(TDigitizerCalibration const &)
+503b8e28: TTime::_mi(TTimeIntervalMonths)const
+503a01d4: TRealX::Sub(TRealX &, TRealX const &)const
+503aff54: TUidType::TUidType(TUid, TUid, TUid)
+503aebcc: UserHal::MemoryInfo(TDes8 &)
+503ac1ec: TDes8::TrimRight()
+503ae5a8: UserSvr::AddEvent(TRawEvent const &)
+503b0b14: TRect::Width()const
+503b5668: TLex8::Val(unsigned long &, TRadix)
+503b19dc: RNotifier::UpdateNotifier(TUid, TDesC8 const &, TDes8 &)
+503aec90: RDebug::SetBreakPoint(TThreadId, unsigned int)
+503ab524: TPtrC16::_DbgTestInvariant()const
+503b8dc0: TTime::_pl(TTimeIntervalMicroSeconds32)const
+503acc6c: User::UpperCase(unsigned int)
+503b2588: RSessionBase::Share(RSessionBase::TAttachMode)
+503aec50: UserHal::TickPeriod(TTimeIntervalMicroSeconds32 &)
+503acf18: TChar::IsControl()const
+50399930: CDeltaTimer::Queue(TTimeIntervalMicroSeconds32, TDeltaTimerEntry &)
+503ab934: HBufC8::NewMaxL(int)
+503ad878: TMonthName::Set(TMonth)
+50398254: CBufFlat::Ptr(int)
+50395080: CActiveScheduler::Add(CActive *)
+5039f264: TRealX::_opi()
+50396ab8: CArrayPakBase::Find(void const *, TKeyArrayPak &, int &)const
+50395350: CActiveScheduler::Replace(CActiveScheduler *)
+503b5bf8: RSubSessionBase::CloseSubSession(int)
+503ae3b0: RThread::ReadL(void const *, TDes8 &, int)const
+5039dc78: TDesC8::Right(int)const
+5039b984: CSession::Kill(int)const
+503b2e6c: RThread::Open(TThreadId, TOwnerType)
+503acce4: TChar::IsLower()const
+503af84c: User::QueryVersionSupported(TVersion const &, TVersion const &)
+503b144c: RHeap::Type()const
+5039ef60: TRealX::Set(unsigned int)
+5039d600: TDes16::FillZ()
+503ae198: RThread::SetExceptionHandler(void (*)(TExcType), unsigned long)
+503b075c: TRect::SetRect(TPoint const &, TSize const &)
+503af794: User::BinarySearch(int, TKey const &, int &)
+5039cdf0: TDesC16::Ptr()const
+503994f0: CTrapCleanup::CTrapCleanup()
+503991c0: CCleanup::PreviousLevel()
+5039c264: RPointerArrayBase::BinarySearchSigned(int, int &)const
+503b91b8: TTime::_apl(TTimeIntervalMinutes)
+5039eb44: TInt64::_md(TInt64 const &)const
+5039d9b4: TDes8::SetMax()
+503a693c: Math::Tan(double &, double const &)
+503b4334: TLex16::NextToken()
+503b575c: TDayNameAbb::TDayNameAbb(TDay)
+503ad1c0: TFindLogicalChannel::Next(TBuf<256> &)
+503b9090: TTime::_apl(TTimeIntervalYears)
+503ae630: User::Beep(int, TTimeIntervalMicroSeconds32)
+503b8304: TTime::DateTime()const
+5039d6e8: TPtrC8::TPtrC8()
+503acaa8: TDes8::AppendFormat(TRefByValue<TDesC8 const>, TDes8Overflow *, ...)
+503ae250: RThread::Context(TDes8 &)const
+503a0e40: _adddf3
+503a68e0: Math::Cos(double &, double const &)
+50394e7c: CAsyncOneShot::~CAsyncOneShot()
+50395278: CActiveScheduler::RunIfReady(int &, int)
+50399424: CCleanup::PopAndDestroyAll()
+503b6d1c: RRefBase::Free()
+503ad758: User::Check()
+5039abf0: CSecurityDecryptBase::CSecurityDecryptBase()
+5039ec10: TInt64::Lsr(int)
+503b08d8: TRect::Grow(int, int)
+503b3d7c: RUndertaker::Create()
+50395704: TKeyArrayVar::TKeyArrayVar(int, TKeyCmpNumeric)
+5039befc: CHeartbeat::New(int)
+503ab238: TDes16::AppendNum(TInt64, TRadix)
+503a0240: TRealX::Mod(TRealX &, TRealX const &)const
+5039da78: TDes8::Copy(TDesC8 const &)
+503a147c: _fixdfsi
+50397f04: CBufBase::InsertL(int, TDesC8 const &)
+503a4390: Math::Exp(double &, double const &)
+5039ce58: TPtrC16::TPtrC16(unsigned short const *)
+503a09bc: TInt64::_as(double)
+50394ca0: CIdle::NewL(int)
+503af430: Mem::CompareC(unsigned short const *, int, int, int)
+503b6f50: TRegion::AddRect(TRect const &)
+50394fbc: CActiveScheduler::CActiveScheduler()
+503b6758: TTime::Parse(TDesC16 const &, int)
+503ac010: TDes8::Repeat(unsigned char const *, int)
+5039e1a4: memset
+503aa3f0: TDes16::Fold()
+503b1e6c: RChunk::CreateDoubleEndedGlobal(TDesC16 const &, int, int, int, TOwnerType)
+503b6a20: TDeltaQueBase::TDeltaQueBase()
+503ae0d4: RSemaphore::Signal(int)
+571c6f20: RArrayBase::RArrayBase(int, void *, int)
+503b4f70: TLex8::Offset()const
+5039f0ac: TRealX::TRealX(float)
+503b900c: TTime::_mi(TTimeIntervalMicroSeconds)const
+503a1124: _gtdf2
+503b68a8: TSglQueBase::DoAddLast(void *)
+5039bac4: CServer::DoCancel()
+503ad43c: User::WaitForAnyRequest()
+503ae188: RThread::HandleCount(int &, int &)const
+503ad65c: RHandleBase::HandleInfo(THandleInfo *)
+503ae278: RThread::SetProcessPriority(TProcessPriority)const
+503b76bc: RTest::Close()
+503acb7c: TRawEvent::Set(TRawEvent::TType, int)
+503ad5b0: User::TickCount()
+5039a2a4: CObjectCon::Remove(CObject *)
+503b109c: RHeap::AdjustL(void *, int, int)
+503b24a4: RMessagePtr::Complete(int)const
+503af498: Mem::CompareC(unsigned short const *, int, int, int, int, TCollationMethod const *)
+5039cad0: RArrayBase::HeapSortSigned()
+5039d8dc: TBufBase8::TBufBase8(int, int)
+503a115c: _gedf2
+503ae290: RThread::SetPriority(TThreadPriority)const
+503b2958: RProcess::Open(TDesC16 const &, TOwnerType)
+503a46e4: Math::Log(double &, double const &)
+503aadf8: TDes16::Num(int)
+503ae338: RThread::ExitCategory()const
+5039d6f8: TPtrC8::TPtrC8(TDesC8 const &)
+5039b968: CSession::WriteL(void const *, TDesC8 const &, int)const
+503ab888: TDesC8::AllocLC()const
+503a8a20: TDes8::AppendFormatList(TDesC8 const &, signed char **, TDes8Overflow *)
+503ac64c: TDes8::NumUC(unsigned int, TRadix)
+50395f78: CArrayFixBase::ResizeL(int, void const *)
+503b4a00: TLex16::Val(TInt64 &)
+503b87dc: TTime::HoursFrom(TTime, TTimeIntervalHours &)const
+503b32f0: TBusLocalDrive::Clear(TBuf8<16> &)
+503ad8dc: TLongDateFormatSpec::Set()
+50395b74: CArrayFixBase::Delete(int, int)
+503b4240: TLex16::SkipSpaceAndMark(TLexMark16 &)
+5039dbcc: TDesC8::CompareC(TDesC8 const &)const
+503a9cc0: TDesC16::Find(unsigned short const *, int)const
+503af140: Math::Random()
+5039d21c: TDesC16::AtC(int)const
+503ad66c: RHandleBase::Attributes()const
+503b4128: TLex16::Inc()
+503b2aa4: RProcess::Owner(RProcess &)const
+503997fc: CConsoleBase::WhereY()const
+503aa6d4: TDes16::CopyUC(TDesC16 const &)
+503ad5b4: User::InactivityTime()
+50397cbc: CBufBase::Reset()
+503ad474: User::WaitForRequest(TRequestStatus &, TRequestStatus &)
+503b3020: RThread::Heap()
+503a9e64: TDesC16::FindC(TDesC16 const &)const
+503a0800: Math::Int(short &, double const &)
+5039ef7c: TRealX::_as(unsigned int)
+503aa4c8: TDes16::UpperCase()
+503b3e00: RUndertaker::LogonCancel()const
+503aec20: UserHal::PageSizeInBytes(int &)
+503b07a0: TRect::Shrink(TSize const &)
+5039c10c: Console::NewL(TDesC16 const &, TSize)
+503b4d90: TLex8::SkipSpaceAndMark(TLexMark8 &)
+503aa00c: TDesC16::AllocLC()const
+503acf94: TChar::GetCategory()const
+5039f098: TRealX::IsFinite()const
+503b06b4: TRect::TRect(int, int, int, int)
+50395734: TKeyArrayVar::At(int)const
+50396bb4: CArrayPakBase::InsertIsqL(void const *, int, TKeyArrayPak &)
+503ae5d0: UserSvr::WsSwitchOnScreen()
+503ab8b4: HBufC8::New(int)
+503b1b78: RNotifier::InfoPrint(TDesC16 const &)
+50399170: CCleanup::NextLevel()
+503b1970: RHeap::_DbgMarkCheck(int, int, TDesC8 const &, int)
