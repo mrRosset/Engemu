@@ -208,24 +208,27 @@ exports = dict()
 idt = dict()
 
 #Load exports
-with open("Euser.exports") as f:
+with open(sys.argv[1]) as f:
 	for line in f:
 		line = line.rstrip()
 		ordinal, address = line.split(": ")
-		if ordinal in exports:
-			print("an ordinal can not appears 2 time in the export list:", ordinal)
-			sys.exit(-1)
-		exports[ordinal] = address
+
+		#make sure it's in valid rom range
+		if address > "50000000" and address < "57FFFFFF":
+			if ordinal in exports:
+				print("an ordinal can not appears 2 time in the export list:", ordinal, "file:", sys.argv[2])
+				sys.exit(-1)
+			exports[ordinal] = address
 
 
 #Load idt
-with open("euser.idt") as f:
+with open(sys.argv[2]) as f:
 	for line in f:
 		line = line.rstrip()
 		if line != "" and line != " ":
 			ordinal, name = line.split(" Name=")
 			if ordinal in idt:
-				print("an ordinal can not appears 2 time in the id list:", ordinal)
+				print("an ordinal can not appears 2 time in the id list:", ordinal, "file:", sys.argv[2])
 				sys.exit(-1)
 			idt[ordinal] = name
 
@@ -233,7 +236,7 @@ with open("euser.idt") as f:
 #produce address: name
 for ordinal in exports:
 	if ordinal not in idt:
-		print(ordinal, "is not in both table")
+		print(ordinal, "is not in both table", "file:", sys.argv[2])
 		sys.exit(-1)
 	address = exports[ordinal]
 	name = idt[ordinal]
@@ -241,33 +244,36 @@ for ordinal in exports:
 	print(address + ": " + demangle_name(name))
 
 
+
+
+
 #tests
-print(demangle_name("PageSizeInBytes__7UserHalRi"))
-print(demangle_name("newL__5CBaseUi"))
-print(demangle_name("BinarySearchUnsigned__C17RPointerArrayBasePUiRi"))
-print(demangle_name("CalibrationPoints__7UserHalR21TDigitizerCalibration"))
-print(demangle_name("BuildVarArrayL__13CArrayPakBaseRPt13CArrayVarFlat1Zv"))
-print(demangle_name("Print__6RDebugGt11TRefByValue1ZC7TDesC16e"))
-print(demangle_name("AppendFormat__6TDes16Gt11TRefByValue1ZC7TDesC16P14TDes16Overflowe"))
-print(demangle_name("Pow10__4MathRdi"))
-print(demangle_name("Pow__4MathRdRCdT2"))
-print(demangle_name("_5RHeapRC6RChunkiiii"))
-print(demangle_name("_5RHeapi"))
-print(demangle_name("._5RHeap"))
-print(demangle_name("._10CCirBuffer"))
-print(demangle_name("_DbgMarkEnd__4UserQ25RHeap12TDbgHeapTypei"))
-print(demangle_name("PanicTFixedArray__Fv"))
-print(demangle_name("DummyEuser_1659__Fv"))
-print(demangle_name("Next__10TFindMutexRt4TBuf1i256"))
-print(demangle_name("StringLength__4UserPCUs"))
-print(demangle_name("SetExceptionHandler__7RThreadPF8TExcType_vUl"))
-print(demangle_name("Find__C10RArrayBasePCvPFPCvPCv_i"))
-print(demangle_name("IsPresent__C8TUidTypeG4TUid"))
-print(demangle_name("._t13CArrayFixFlat1Zi"))
-print(demangle_name("._t13CArrayFixFlat1Z4TUidi"))
-print(demangle_name("Create__8RProcessRC7TDesC16T110TOwnerType"))
-print(demangle_name("LoadLibrary__7RLoaderRiRC7TDesC16N22RC8TUidType"))
-print(demangle_name("_8TUidTypeG4TUidN21"))
-print(demangle_name("FormatList__6TDes16RC7TDesC16PPSc"))
-print(demangle_name("GetRamSizes__8RProcessRiN31"))
-print(demangle_name("DoRequest__18RBusLogicsalChanneliR14TRequestStatusPvT3"))
+# print(demangle_name("PageSizeInBytes__7UserHalRi"))
+# print(demangle_name("newL__5CBaseUi"))
+# print(demangle_name("BinarySearchUnsigned__C17RPointerArrayBasePUiRi"))
+# print(demangle_name("CalibrationPoints__7UserHalR21TDigitizerCalibration"))
+# print(demangle_name("BuildVarArrayL__13CArrayPakBaseRPt13CArrayVarFlat1Zv"))
+# print(demangle_name("Print__6RDebugGt11TRefByValue1ZC7TDesC16e"))
+# print(demangle_name("AppendFormat__6TDes16Gt11TRefByValue1ZC7TDesC16P14TDes16Overflowe"))
+# print(demangle_name("Pow10__4MathRdi"))
+# print(demangle_name("Pow__4MathRdRCdT2"))
+# print(demangle_name("_5RHeapRC6RChunkiiii"))
+# print(demangle_name("_5RHeapi"))
+# print(demangle_name("._5RHeap"))
+# print(demangle_name("._10CCirBuffer"))
+# print(demangle_name("_DbgMarkEnd__4UserQ25RHeap12TDbgHeapTypei"))
+# print(demangle_name("PanicTFixedArray__Fv"))
+# print(demangle_name("DummyEuser_1659__Fv"))
+# print(demangle_name("Next__10TFindMutexRt4TBuf1i256"))
+# print(demangle_name("StringLength__4UserPCUs"))
+# print(demangle_name("SetExceptionHandler__7RThreadPF8TExcType_vUl"))
+# print(demangle_name("Find__C10RArrayBasePCvPFPCvPCv_i"))
+# print(demangle_name("IsPresent__C8TUidTypeG4TUid"))
+# print(demangle_name("._t13CArrayFixFlat1Zi"))
+# print(demangle_name("._t13CArrayFixFlat1Z4TUidi"))
+# print(demangle_name("Create__8RProcessRC7TDesC16T110TOwnerType"))
+# print(demangle_name("LoadLibrary__7RLoaderRiRC7TDesC16N22RC8TUidType"))
+# print(demangle_name("_8TUidTypeG4TUidN21"))
+# print(demangle_name("FormatList__6TDes16RC7TDesC16PPSc"))
+# print(demangle_name("GetRamSizes__8RProcessRiN31"))
+# print(demangle_name("DoRequest__18RBusLogicsalChanneliR14TRequestStatusPvT3")) 
