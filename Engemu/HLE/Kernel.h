@@ -12,6 +12,7 @@ namespace Kernel {
 	void Executive_Call(u32 number, CPU& cpu, Gui* gui);
 
 	void User_Heap(CPU& cpu, Gui * gui);
-	void LockedDec(CPU& cpu);
+	void User_LockedDec(CPU& cpu);
+	void RSemaphore_Wait(CPU & cpu);
 
 }
