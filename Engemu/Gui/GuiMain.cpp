@@ -197,7 +197,9 @@ void GuiMain::render_disassembly(bool scroll_to_pc) {
 
 		screen_cursor = ImGui::GetCursorScreenPos();
 
-		if (symbols.find(cur_address) != symbols.end()) {
+		u32 symbol_addr = cur_address | (thumb ? 1 : 0);
+		//Print symbols if found
+		if (symbols.find(symbol_addr) != symbols.end()) {
 			//empty line
 			ImGui::Selectable("", false, ImGuiSelectableFlags_SpanAllColumns | ImGuiSelectableFlags_AllowDoubleClick);
 			ImGui::NextColumn();
@@ -210,7 +212,7 @@ void GuiMain::render_disassembly(bool scroll_to_pc) {
 			ImGui::NextColumn();
 			ImGui::Text("0x%X", cur_address); ImGui::NextColumn();
 			ImGui::Text(""); ImGui::NextColumn();
-			ImGui::Text(symbols[cur_address].c_str());  ImGui::NextColumn();
+			ImGui::Text(symbols[symbol_addr].c_str());  ImGui::NextColumn();
 			label_lines+=2;
 			i+=2;
 		}
