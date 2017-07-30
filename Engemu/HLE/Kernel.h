@@ -13,6 +13,7 @@ namespace Kernel {
 
 	void User_Heap(CPU& cpu, Gui * gui);
 	void User_LockedDec(CPU& cpu);
+	void User_LockedInc(CPU & cpu);
 	void RSemaphore_Wait(CPU & cpu);
 
 }

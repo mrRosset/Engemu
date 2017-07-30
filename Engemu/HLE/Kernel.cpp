@@ -17,6 +17,7 @@ void Kernel::Executive_Call(u32 number, CPU& cpu, Gui* gui) {
 	switch (number) {	
 
 	case 0x6C: User_Heap(cpu, gui); break;
+	case 0x8D: User_LockedInc(cpu); break;
 	case 0x8E: User_LockedDec(cpu); break;
 	case 0x2A: RSemaphore_Wait(cpu); break;
 
@@ -62,6 +63,13 @@ void Kernel::User_LockedDec(CPU& cpu) {
 	//TODO: Change if multithreading is implemented
 	u32 value = cpu.mem.read32(cpu.gprs[0]);
 	cpu.mem.write32(cpu.gprs[0], value - 1);
+	cpu.gprs[0] = value;
+}
+
+void Kernel::User_LockedInc(CPU& cpu) {
+	//TODO: Change if multithreading is implemented
+	u32 value = cpu.mem.read32(cpu.gprs[0]);
+	cpu.mem.write32(cpu.gprs[0], value + 1);
 	cpu.gprs[0] = value;
 }
 
