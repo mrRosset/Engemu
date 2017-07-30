@@ -60,7 +60,9 @@ void Kernel::User_Heap(CPU& cpu, Gui* gui) {
 
 void Kernel::User_LockedDec(CPU& cpu) {
 	//TODO: Change if multithreading is implemented
-	cpu.mem.write32(cpu.gprs[0]+1, cpu.mem.read32(cpu.gprs[0]));
+	u32 value = cpu.mem.read32(cpu.gprs[0]);
+	cpu.mem.write32(cpu.gprs[0], value - 1);
+	cpu.gprs[0] = value;
 }
 
 void Kernel::RSemaphore_Wait(CPU& cpu) {
