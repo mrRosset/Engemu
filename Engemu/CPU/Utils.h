@@ -134,8 +134,21 @@ template <class T>
 u32 getLo(T) = delete;
 
 
-inline u32 composePSR(PSR psr) {
+inline u32 PSR_to_u32(PSR& psr) {
 	return (psr.flag_N << 31) | (psr.flag_Z << 30) | (psr.flag_C << 29) | (psr.flag_V << 28) |
 		((psr.reserved & 0xFFFFF) << 8) | (psr.flag_inter_I << 7) | (psr.flag_inter_F << 6) |
-		(psr.flag_T << 5) | (static_cast<u8>(psr.mode) & 0xF);
+		(psr.flag_T << 5) | (static_cast<u8>(psr.mode) & 0b11111);
+}
+
+inline void u32_to_PSR(u32 input, PSR& psr) {
+	psr.mode = static_cast<CpuMode>(input & 0b11111);
+	psr.flag_T = getBit(input, 5);
+	psr.flag_inter_F = getBit(input, 6);
+	psr.flag_inter_I = getBit(input, 7);
+	psr.reserved = (input >> 8) & 0xFFFFF;
+	psr.flag_V = getBit(input, 28);
+	psr.flag_C = getBit(input, 29);
+	psr.flag_Z = getBit(input, 30);
+	psr.flag_N = getBit(input, 31);
+
 }

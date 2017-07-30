@@ -254,10 +254,10 @@ inline void CPU::Status_Register_Access(IR_ARM& ir) {
 			if (cpsr.mode == CpuMode::User || cpsr.mode == CpuMode::System) {
 				throw std::string("Unpredictable, there is no spsr");
 			}
-			gprs[Rd] = composePSR(spsr);
+			gprs[Rd] = PSR_to_u32(spsr);
 		}
 		else {
-			gprs[Rd] = composePSR(cpsr);
+			gprs[Rd] = PSR_to_u32(cpsr);
 		}
 	}
 	else if (ir.instr == AInstructions::MSR) {
@@ -266,7 +266,28 @@ inline void CPU::Status_Register_Access(IR_ARM& ir) {
 		u32 shifter_op;
 		std::tie(shifter_op, std::ignore) = shifter_operand(ir.shifter_operand, false);
 
-		throw std::string("MSR not implemented yet.");
+		if (R) {
+			if (cpsr.mode == CpuMode::User || cpsr.mode == CpuMode::System) {
+				throw std::string("Unpredictable, there is no spsr");
+			}
+			throw std::string("MSR for priviledged modes not implemented yet.");
+		}
+		else {
+			u32 new_CPSR = PSR_to_u32(cpsr);
+			if (getBit(field_mask, 0) == 1 && cpsr.mode != CpuMode::User) {
+				new_CPSR = (new_CPSR & 0xFFFFFF00) | (shifter_op & 0x000000FF);
+			}
+			if (getBit(field_mask, 1) == 1 && cpsr.mode != CpuMode::User) {
+				new_CPSR = (new_CPSR & 0xFFFF00FF) | (shifter_op & 0x0000FF00);
+			}
+			if (getBit(field_mask, 2) == 1 && cpsr.mode != CpuMode::User) {
+				new_CPSR = (new_CPSR & 0xFF00FFFF) | (shifter_op & 0x00FF0000);
+			}
+			if (getBit(field_mask, 3) == 1) {
+				new_CPSR = (new_CPSR & 0x00FFFFFF) | (shifter_op & 0xFF000000);
+			}
+			u32_to_PSR(new_CPSR, cpsr);
+		}
 	}
 }
 
