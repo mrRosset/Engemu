@@ -418,10 +418,23 @@ std::tuple<u32, bool> CPU::shifter_operand(Shifter_op& so, bool negatif) {
 	u32& Rm = so.operand1;
 	u32& Rs = so.operand2;
 	u32& shift_imm = so.operand2;
+	
+	u32 vRm = Rm <= Regs::PC ? gprs[Rm] : 0;
+	u32 vRs = Rs <= Regs::PC ? gprs[Rs] : 0;
 
 	//TODO take care of PC as Rm, Rn, Rd, Rs
-	if (Rm == Regs::PC || (Rs == Regs::PC && so.type != Shifter_type::Immediate && so.type != Shifter_type::Register && so.type != Shifter_type::LSL_imm && so.type != Shifter_type::LSR_imm && so.type != Shifter_type::ASR_imm && so.type != Shifter_type::ROR_imm && so.type != Shifter_type::RRX)) {
-		throw std::string("unimpletend: PC as Rm, Rn, Rd, Rs is either unpredictable or current instruction address + 8");
+	
+	if (Rs == Regs::PC && so.type != Shifter_type::Immediate && so.type != Shifter_type::Register && so.type != Shifter_type::LSL_imm && so.type != Shifter_type::LSR_imm && so.type != Shifter_type::ASR_imm && so.type != Shifter_type::ROR_imm && so.type != Shifter_type::RRX) {
+		throw std::string("PC as Rs is unpredictable");
+	}
+
+	if (Rm == Regs::PC) {
+		if (so.type != Shifter_type::Immediate && so.type != Shifter_type::Register && so.type != Shifter_type::LSL_imm && so.type != Shifter_type::LSR_imm && so.type != Shifter_type::ASR_imm && so.type != Shifter_type::ROR_imm && so.type != Shifter_type::RRX) {
+			throw std::string("PC as Rm is unpredictable");
+		}
+		else {
+			vRm += 8;
+		}
 	}
 
 	unsigned vRs7_0 = gprs[Rs] & 0xFF;
@@ -432,46 +445,46 @@ std::tuple<u32, bool> CPU::shifter_operand(Shifter_op& so, bool negatif) {
 		if (so.operand2 == 0) return std::make_tuple(so.operand1, cpsr.flag_C);
 		else return std::make_tuple(so.operand1, getBit(so.operand1, 31) == 1);
 
-	case Shifter_type::Register: return std::make_tuple(gprs[Rm], cpsr.flag_C);
+	case Shifter_type::Register: return std::make_tuple(vRm, cpsr.flag_C);
 
-	case Shifter_type::LSL_imm: return std::make_tuple(gprs[Rm] << shift_imm, getBit(gprs[Rm], 32 - shift_imm) == 1);
+	case Shifter_type::LSL_imm: return std::make_tuple(vRm << shift_imm, getBit(vRm, 32 - shift_imm) == 1);
 
 	case Shifter_type::LSL_reg:
-		if (vRs7_0 == 0) return std::make_tuple(gprs[Rm], cpsr.flag_C);
-		else if (vRs7_0 < 32) return std::make_tuple(gprs[Rm] << vRs7_0, getBit(gprs[Rm], 32 - vRs7_0) == 1);
-		else if (vRs7_0 == 32) return std::make_tuple(0, (gprs[Rm] & 0b1) == 1);
+		if (vRs7_0 == 0) return std::make_tuple(vRm, cpsr.flag_C);
+		else if (vRs7_0 < 32) return std::make_tuple(vRm << vRs7_0, getBit(vRm, 32 - vRs7_0) == 1);
+		else if (vRs7_0 == 32) return std::make_tuple(0, (vRm & 0b1) == 1);
 		else return std::make_tuple(0, false);
 
 	case Shifter_type::LSR_imm: //>> is logical because gprs are unsigned
-		if (shift_imm == 32) return std::make_tuple(0, getBit(gprs[Rm], 31) == 1);
-		else return std::make_tuple(gprs[Rm] >> shift_imm, getBit(gprs[Rm], shift_imm - 1) == 1);
+		if (shift_imm == 32) return std::make_tuple(0, getBit(vRm, 31) == 1);
+		else return std::make_tuple(vRm >> shift_imm, getBit(vRm, shift_imm - 1) == 1);
 
 	case Shifter_type::LSR_reg:
-		if (vRs7_0 == 0) return std::make_tuple(gprs[Rm], cpsr.flag_C);
-		else if (vRs7_0 < 32) return std::make_tuple(gprs[Rm] >> vRs7_0, getBit(gprs[Rm], vRs7_0 - 1) == 1);
-		else if (vRs7_0 == 32) return std::make_tuple(0, getBit(gprs[Rm], 31) == 1);
+		if (vRs7_0 == 0) return std::make_tuple(vRm, cpsr.flag_C);
+		else if (vRs7_0 < 32) return std::make_tuple(vRm >> vRs7_0, getBit(vRm, vRs7_0 - 1) == 1);
+		else if (vRs7_0 == 32) return std::make_tuple(0, getBit(vRm, 31) == 1);
 		else return std::make_tuple(0, false);
 
 	case Shifter_type::ASR_imm:
 		if (shift_imm == 32)
-			if (getBit(gprs[Rm], 31) == 0) return std::make_tuple(0, getBit(gprs[Rm], 31) == 1);
-			else return std::make_tuple(0xFFFFFFFF, getBit(gprs[Rm], 31) == 1);
-		else return std::make_tuple(static_cast<signed>(gprs[Rm]) >> shift_imm, getBit(gprs[Rm], shift_imm - 1) == 1);
+			if (getBit(vRm, 31) == 0) return std::make_tuple(0, getBit(vRm, 31) == 1);
+			else return std::make_tuple(0xFFFFFFFF, getBit(vRm, 31) == 1);
+		else return std::make_tuple(static_cast<signed>(vRm) >> shift_imm, getBit(vRm, shift_imm - 1) == 1);
 
 	case Shifter_type::ASR_reg:
-		if (vRs7_0 == 0) return std::make_tuple(gprs[Rm], cpsr.flag_C);
-		else if (vRs7_0 < 32) return std::make_tuple(static_cast<signed>(gprs[Rm]) >> vRs7_0, getBit(gprs[Rm], vRs7_0 - 1) == 1);
-		else if (getBit(gprs[Rm], 31) == 0) return std::make_tuple(0, getBit(gprs[Rm], 31) == 1);
-		else return std::make_tuple(0xFFFFFFFF, getBit(gprs[Rm], 31) == 1);
+		if (vRs7_0 == 0) return std::make_tuple(vRm, cpsr.flag_C);
+		else if (vRs7_0 < 32) return std::make_tuple(static_cast<signed>(vRm) >> vRs7_0, getBit(vRm, vRs7_0 - 1) == 1);
+		else if (getBit(vRm, 31) == 0) return std::make_tuple(0, getBit(vRm, 31) == 1);
+		else return std::make_tuple(0xFFFFFFFF, getBit(vRm, 31) == 1);
 
-	case Shifter_type::ROR_imm: return std::make_tuple(ror32(gprs[Rm], shift_imm), getBit(gprs[Rm], shift_imm - 1) == 1);
+	case Shifter_type::ROR_imm: return std::make_tuple(ror32(vRm, shift_imm), getBit(vRm, shift_imm - 1) == 1);
 
 	case Shifter_type::ROR_reg:
-		if (vRs7_0 == 0) return std::make_tuple(gprs[Rm], cpsr.flag_C);
-		else if (vRs4_0 == 0) return std::make_tuple(gprs[Rm], getBit(gprs[Rm], 31) == 1);
-		else return std::make_tuple(ror32(gprs[Rm], vRs4_0), getBit(gprs[Rm], vRs4_0 - 1) == 1);
+		if (vRs7_0 == 0) return std::make_tuple(vRm, cpsr.flag_C);
+		else if (vRs4_0 == 0) return std::make_tuple(vRm, getBit(vRm, 31) == 1);
+		else return std::make_tuple(ror32(vRm, vRs4_0), getBit(vRm, vRs4_0 - 1) == 1);
 
-	case Shifter_type::RRX: return std::make_tuple((cpsr.flag_C << 31) | (gprs[Rm] >> 1), (gprs[Rm] & 0b1) == 1);
+	case Shifter_type::RRX: return std::make_tuple((cpsr.flag_C << 31) | (vRm >> 1), (vRm & 0b1) == 1);
 
 	default: throw "invalid shifter operand";
 	}
