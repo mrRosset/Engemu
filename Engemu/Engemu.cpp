@@ -2,6 +2,7 @@
 #include <chrono>
 #include <thread>
 #include <experimental/filesystem>
+#include <spdlog/spdlog.h>
 #include "Common.h"
 #include "CPU/CPU.h"
 #include "E32Image.h"
@@ -38,10 +39,10 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 	}
 
 
-	//cpu.gprs[Regs::PC] = image.header->code_base_address + image.header->entry_point_offset; // 0x50392D54 <- entry of Euser.dll;
+	cpu.gprs[Regs::PC] = image.header->code_base_address + image.header->entry_point_offset; // 0x50392D54 <- entry of Euser.dll;
 	//cpu.gprs[Regs::PC] = image.header->code_base_address + image.code_section.export_directory[0];
-	cpu.gprs[Regs::PC] = 0x5063D444;
-	cpu.cpsr.flag_T = true;
+	//cpu.gprs[Regs::PC] = 0x5063D444; //Main of AppRun
+	//cpu.cpsr.flag_T = true;
 	
 	//TODO: find the correct place where the SP is initialized
 	//cpu.gprs[Regs::SP] = 0x7FFF'FFFF; //start of the ram section
@@ -95,13 +96,33 @@ int main(int argc, char* argv[])
 		return -1;
 	}
 
-	try {
+
+	//setup logging system.
+	try
+	{
+		auto console = spdlog::stdout_color_st("console");
+		// set the log pattern to [HH:MM:SS.nano]
+		spdlog::set_pattern("[%T] [%l] %v");
+		console->info("Start of the emulator");
+
+		
 		emulate(std::string(argv[1]), std::string(argv[2]), std::string(argv[3]), std::string(argv[4]));
+
+		// Release and close all loggers
+		spdlog::drop_all();
 	}
-	catch (std::string error_message){
+	// Exceptions will only be thrown upon failed logger or sink construction (not during logging)
+	catch (const spdlog::spdlog_ex& ex)
+	{
+		std::cout << "Log init failed: " << ex.what() << std::endl;
+		return 1;
+	}
+	catch (std::string& error_message) {
 		std::cout << "Uncaught exception:\n" << error_message << std::endl;
 		std::cin.get();
 	}
+
+
 
 	return 0;
 }
