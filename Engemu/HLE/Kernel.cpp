@@ -14,14 +14,14 @@ namespace Kernel {
 
 void Kernel::Executive_Call(u32 number, CPU& cpu, Gui* gui) {
 
-	switch (number) {	
-
+	switch (number) {
 	case 0x6C: User_Heap(cpu, gui); break;
 	case 0x8D: User_LockedInc(cpu); break;
 	case 0x8E: User_LockedDec(cpu); break;
 	case 0x2A: RSemaphore_Wait(cpu); break;
 
 	default:
+
 		throw std::string("non-implemented executive call ") + std::to_string(number);
 	}
 

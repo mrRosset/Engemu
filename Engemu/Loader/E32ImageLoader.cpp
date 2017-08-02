@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <spdlog/spdlog.h>
 
 #include "E32ImageLoader.h"
 #include "TRomImageLoader.h"
@@ -20,7 +21,10 @@ std::string locateLibrary(std::string& lib_entry, std::string& lib_folder_path) 
 }
 
 void E32ImageLoader::load(E32Image& image, std::string& file_name,  Memory& mem, std::string& lib_folder_path) {
-	
+
+	auto logger = spdlog::get("console");
+	logger->info("Loading E32Image {}", file_name);
+
 	//Load code to it's prefered location
 	u32& code_base_address = image.header->code_base_address;
 	if (code_base_address != 0) {
@@ -48,10 +52,12 @@ void E32ImageLoader::load(E32Image& image, std::string& file_name,  Memory& mem,
 	for (auto& block : image.import_section.imports) {
 		std::string lib_name = (char*)&image.data[(image.header->import_offset + block->dll_name_offset)];
 		std::string lib_path = locateLibrary(lib_name, lib_folder_path);
-		
+
 		TRomImage lib;
 		TRomImageLoader::parse(lib_path, lib);
 		TRomImageLoader::load(lib, mem, lib_folder_path);
+
+		logger->info("Replcacing IAT ordinal from {}", lib_name);
 
 		//replace the ordinal of the import with it'saddress in the IAT
 		for (u32 ordinal : block->ordinals) {
@@ -99,6 +105,8 @@ bool E32ImageLoader::parse(std::string& path, E32Image& image)
 		std::cerr << "Incoherence between the Import Address Table and the Import section" << std::endl;
 		return false;
 	}
+
+	spdlog::get("console")->info("Parsed E32Image {}", path);
 
 	return true;
 }

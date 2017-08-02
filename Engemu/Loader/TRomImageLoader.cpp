@@ -1,4 +1,5 @@
 #include <iostream>
+#include <spdlog/spdlog.h>
 
 #include "TRomImageLoader.h"
 #include "Utils.h"
