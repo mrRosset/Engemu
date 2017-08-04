@@ -31,7 +31,7 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 	E32ImageLoader::parse(app_path, image);
 
 	std::string file_name = extract_filename(app_path);
-	GuiMain* gui = new GuiMain(cpu, extract_filename(app_path));
+	GuiMain* gui = new GuiMain(&cpu, extract_filename(app_path));
 
 	cpu.mem.loadRom(rom_path);
 	E32ImageLoader::load(image, file_name, cpu.mem, lib_folder_path);

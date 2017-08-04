@@ -20,7 +20,7 @@ private:
 	void render_call_stack();
 
 public:
-	CPU& cpu;
-	GuiMain(CPU& cpu, std::string& additional_title);
+	CPU* cpu;
+	GuiMain(CPU* cpu, std::string& additional_title);
 	bool render();
 };
