@@ -29,6 +29,7 @@ inline void CPU::Exception_Generating(IR_ARM& ir) {
 			//same as BX LR
 			cpsr.flag_T = !!(gprs[Regs::LR] & 0b1);
 			gprs[Regs::PC] = gprs[Regs::LR] & 0xFFFFFFFE;
+			call_stack.pop_back();
 		}
 		else {
 			throw std::string("callback not set for swi");
