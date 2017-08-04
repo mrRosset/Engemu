@@ -62,7 +62,7 @@ void GuiMain::render_cpu() {
 	bool scroll_to_pc = render_controls();
 	ImGui::EndChild();
 
-	ImGui::BeginChild("Disassembly", ImVec2(592, 720), true);
+	ImGui::BeginChild("Disassembly", ImVec2(592, 700), true);
 	render_disassembly(scroll_to_pc);
 	ImGui::EndChild();
 
@@ -80,7 +80,7 @@ void GuiMain::render_cpu() {
 
 	ImGui::EndGroup();
 
-	ImGui::BeginChild("Call Stack", ImVec2(800, 90), true);
+	ImGui::BeginChild("Call Stack", ImVec2(800, 105), true);
 	render_call_stack();
 	ImGui::EndChild();
 }
@@ -311,11 +311,18 @@ void GuiMain::render_stack() {
 }
 
 void GuiMain::render_call_stack() {
-	int size = cpu.call_stack.size() > 0 ? cpu.call_stack.size() : 1;
 	ImGuiListClipper clipper(cpu.call_stack.size(), ImGui::GetTextLineHeight()); // Bytes are grouped by four (the alignment for instructions
 
-	for (int i = clipper.DisplayStart; i < clipper.DisplayEnd; i++)
+	ImGui::Columns(2, "Call Stack");
+	ImGui::SetColumnOffset(1, 50);
+	ImGui::Text("#"); ImGui::NextColumn();
+	ImGui::Text("Address"); ImGui::NextColumn();
+	ImGui::Separator();
+
+	for (int i = clipper.DisplayEnd -1 ; i >= clipper.DisplayStart; i--)
 	{
+		ImGui::Selectable(std::to_string(i).c_str(), false, ImGuiSelectableFlags_SpanAllColumns | ImGuiSelectableFlags_AllowDoubleClick);
+		ImGui::NextColumn();
 		if (i < cpu.call_stack.size()) {
 			ImGui::Text(cpu.call_stack[i].c_str());
 		}
@@ -324,6 +331,8 @@ void GuiMain::render_call_stack() {
 		}
 		ImGui::NextColumn();
 	}
+	///ImGui::Selectable(" ", false, ImGuiSelectableFlags_SpanAllColumns | ImGuiSelectableFlags_AllowDoubleClick);
+	//ImGui::NextColumn();
 
 	clipper.End();
 

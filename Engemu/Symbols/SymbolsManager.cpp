@@ -45,7 +45,7 @@ std::string Symbols::getFunctionNameOrElse(u32 address) {
 	}
 	else {
 		std::stringstream stream;
-		stream << std::hex << address;
+		stream << "0x" << std::hex << address;
 		return stream.str();
 	}
 }
