@@ -2,6 +2,7 @@
 #include "CPU.h"
 #include "Utils.h"
 #include "Decoder/Decoder.h"
+#include "../Symbols/SymbolsManager.h"
 
 void CPU::Execute(IR_ARM& ir) {
 	switch (ir.type) {
@@ -372,7 +373,7 @@ inline void CPU::Branch(IR_ARM& ir) {
 	case AInstructions::BL:
 		gprs[Regs::LR] = gprs[Regs::PC] + 4;
 		gprs[Regs::PC] += SignExtend<s32>(ir.operand1 << 2, 26) + 8;
-		call_stack.push_back(gprs[Regs::PC]);
+		call_stack.push_back(Symbols::getFunctionNameOrElse(gprs[Regs::PC]));
 		break;
 
 	case AInstructions::BX:
@@ -385,7 +386,7 @@ inline void CPU::Branch(IR_ARM& ir) {
 			//replace the last one with the new
 			//Useful for import stubs
 			call_stack.pop_back();
-			call_stack.push_back(gprs[Regs::PC]);
+			call_stack.push_back(Symbols::getFunctionNameOrElse(gprs[Regs::PC]));
 		}
 		break;
 	}

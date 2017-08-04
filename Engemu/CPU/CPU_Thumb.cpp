@@ -1,6 +1,7 @@
 #include "CPU.h"
 #include "Utils.h"
 #include "Decoder/Decoder.h"
+#include "../Symbols/SymbolsManager.h"
 
 void CPU::Execute(IR_Thumb& ir) {
 	switch (ir.type) {
@@ -241,7 +242,7 @@ void CPU::Branch(IR_Thumb& ir) {
 		u32 next_instruction = (gprs[Regs::PC] + 2) | 1;
 		gprs[Regs::PC] = gprs[Regs::LR] + (ir.operand1 << 1);
 		gprs[Regs::LR] = next_instruction;
-		call_stack.push_back(gprs[Regs::PC]);
+		call_stack.push_back(Symbols::getFunctionNameOrElse(gprs[Regs::PC]));
 		break;
 	}
 	case TInstructions::BX:
@@ -254,7 +255,7 @@ void CPU::Branch(IR_Thumb& ir) {
 			//replace the last one with the new
 			//Useful for import stubs
 			call_stack.pop_back();
-			call_stack.push_back(gprs[Regs::PC]);
+			call_stack.push_back(Symbols::getFunctionNameOrElse(gprs[Regs::PC]));
 		}
 		break;
 	}
