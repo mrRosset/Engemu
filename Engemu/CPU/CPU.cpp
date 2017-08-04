@@ -9,7 +9,7 @@ In VC++ it's arithmetic. https://msdn.microsoft.com/en-us/library/336xbhcz.aspx
 Not tested in any other compiler,
 */
 
-CPU::CPU() : gprs{}, spsr{} {
+CPU::CPU() : gprs{}, spsr{}, call_stack() {
 	//TODO: Seriously think about initialization values
 	cpsr.flag_N = cpsr.flag_Z = cpsr.flag_C = cpsr.flag_V = cpsr.flag_inter_I = cpsr.flag_inter_F = cpsr.flag_T = false;
 	cpsr.reserved = 0;

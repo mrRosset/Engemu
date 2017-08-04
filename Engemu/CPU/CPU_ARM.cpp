@@ -372,11 +372,21 @@ inline void CPU::Branch(IR_ARM& ir) {
 	case AInstructions::BL:
 		gprs[Regs::LR] = gprs[Regs::PC] + 4;
 		gprs[Regs::PC] += SignExtend<s32>(ir.operand1 << 2, 26) + 8;
+		call_stack.push_back(gprs[Regs::PC]);
 		break;
 
 	case AInstructions::BX:
 		cpsr.flag_T = !!(gprs[ir.operand1] & 0b1);
 		gprs[Regs::PC] = gprs[ir.operand1] & 0xFFFFFFFE;
+		if (ir.operand1 == Regs::LR) {
+			call_stack.pop_back();
+		}
+		else {
+			//replace the last one with the new
+			//Useful for import stubs
+			call_stack.pop_back();
+			call_stack.push_back(gprs[Regs::PC]);
+		}
 		break;
 	}
 }

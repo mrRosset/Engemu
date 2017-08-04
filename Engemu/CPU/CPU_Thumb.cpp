@@ -241,11 +241,21 @@ void CPU::Branch(IR_Thumb& ir) {
 		u32 next_instruction = (gprs[Regs::PC] + 2) | 1;
 		gprs[Regs::PC] = gprs[Regs::LR] + (ir.operand1 << 1);
 		gprs[Regs::LR] = next_instruction;
+		call_stack.push_back(gprs[Regs::PC]);
 		break;
 	}
 	case TInstructions::BX:
 		cpsr.flag_T = !!(gprs[ir.operand1] & 0b1);
 		gprs[Regs::PC] = gprs[ir.operand1] & 0xFFFFFFFE;
+		if (ir.operand1 == Regs::LR) {
+			call_stack.pop_back();
+		}
+		else {
+			//replace the last one with the new
+			//Useful for import stubs
+			call_stack.pop_back();
+			call_stack.push_back(gprs[Regs::PC]);
+		}
 		break;
 	}
 }
