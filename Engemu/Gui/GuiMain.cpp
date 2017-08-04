@@ -7,27 +7,10 @@
 #include "../CPU/Decoder/Decoder.h"
 #include "../CPU/Disassembler/Disassembler.h"
 #include "../CPU/Decoder/IR.h"
+#include "../Symbols/SymbolsManager.h"
 
 
-GuiMain::GuiMain(CPU & cpu_, std::string& additional_title) : Gui(additional_title), cpu(cpu_), symbols() {}
-
-void GuiMain::loadSymbols(std::string& symbol_file) {
-	std::ifstream infile(symbol_file);
-	std::string line;
-	while (std::getline(infile, line))
-	{
-		size_t found = line.find(": ");
-		if (found != std::string::npos)
-		{
-			std::string addr_s = line.substr(0, found);
-			std::string symbol = line.substr(found + 2, std::string::npos);
-			u32 addr;
-			sscanf(addr_s.c_str(), "%x", &addr);
-			symbols[addr] = symbol;
-		}
-		
-	}
-}
+GuiMain::GuiMain(CPU & cpu_, std::string& additional_title) : Gui(additional_title), cpu(cpu_) {}
 
 bool GuiMain::render() {
 	if (!glfwWindowShouldClose(window))
@@ -199,7 +182,7 @@ void GuiMain::render_disassembly(bool scroll_to_pc) {
 
 		u32 symbol_addr = cur_address | (thumb ? 1 : 0);
 		//Print symbols if found
-		if (symbols.find(symbol_addr) != symbols.end()) {
+		if (Symbols::hasFunctionName(symbol_addr)) {
 			//empty line
 			ImGui::Selectable("", false, ImGuiSelectableFlags_SpanAllColumns | ImGuiSelectableFlags_AllowDoubleClick);
 			ImGui::NextColumn();
@@ -212,7 +195,7 @@ void GuiMain::render_disassembly(bool scroll_to_pc) {
 			ImGui::NextColumn();
 			ImGui::Text("0x%X", cur_address); ImGui::NextColumn();
 			ImGui::Text(""); ImGui::NextColumn();
-			ImGui::Text(symbols[symbol_addr].c_str());  ImGui::NextColumn();
+			ImGui::Text(Symbols::getFunctionName(symbol_addr).c_str());  ImGui::NextColumn();
 			label_lines+=2;
 			i+=2;
 		}

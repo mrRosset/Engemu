@@ -17,11 +17,9 @@ private:
 	void render_disassembly(bool scroll_to_pc);
 	void render_registers();
 	void render_stack();
-	std::unordered_map<u32, std::string> symbols;
 
 public:
 	CPU& cpu;
 	GuiMain(CPU& cpu, std::string& additional_title);
 	bool render();
-	void loadSymbols(std::string& symbol_file);
 };

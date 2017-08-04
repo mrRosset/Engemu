@@ -167,6 +167,7 @@
     <ClCompile Include="Loader\E32ImageLoader.cpp" />
     <ClCompile Include="Loader\TRomImageLoader.cpp" />
     <ClCompile Include="Loader\Utils.cpp" />
+    <ClCompile Include="Symbols\SymbolsManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h" />
@@ -192,6 +193,7 @@
     <ClInclude Include="imgui\stb_truetype.h" />
     <ClInclude Include="Loader\E32ImageLoader.h" />
     <ClInclude Include="Loader\TRomImageLoader.h" />
+    <ClInclude Include="Symbols\SymbolsManager.h" />
     <ClInclude Include="TRomImage.h" />
     <ClInclude Include="Loader\Utils.h" />
   </ItemGroup>

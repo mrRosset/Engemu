@@ -12,6 +12,7 @@
 #include "Gui/Gui.h"
 #include "Gui/GuiMain.h"
 #include "HLE/Kernel.h"
+#include "Symbols/SymbolsManager.h"
 
 std::string extract_filename(const std::string& filepath)
 {
@@ -37,9 +38,7 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 
 	//Load Symbols if exists
 	logger->info("Loading Symbols");
-	for (auto & p : std::experimental::filesystem::directory_iterator(symbols_folder_path)) {
-		gui->loadSymbols(p.path().string());
-	}
+	Symbols::load(symbols_folder_path);
 
 	cpu.gprs[Regs::PC] = image.header->code_base_address + image.header->entry_point_offset; // 0x50392D54 <- entry of Euser.dll;
 	//cpu.gprs[Regs::PC] = image.header->code_base_address + image.code_section.export_directory[0];
@@ -50,7 +49,6 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 	//cpu.gprs[Regs::SP] = 0x7FFF'FFFF; //start of the ram section
 	cpu.gprs[Regs::SP] = 0x7FFFFFFC; //start of the ram section aligned with last 2 bit 0
 
-	
 
 	cpu.swi_callback = [&](u32 number) {logger->info("SWI {:x}", number); Kernel::Executive_Call(number, cpu, gui); };
 	
