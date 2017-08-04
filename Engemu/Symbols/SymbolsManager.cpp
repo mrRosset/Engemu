@@ -1,6 +1,7 @@
 #include <experimental/filesystem>
 #include <unordered_map>
 #include <fstream>
+#include <sstream>
 #include "SymbolsManager.h"
 
 
@@ -43,6 +44,8 @@ std::string Symbols::getFunctionNameOrElse(u32 address) {
 		return getFunctionName(address);
 	}
 	else {
-		return std::to_string(address);
+		std::stringstream stream;
+		stream << std::hex << address;
+		return stream.str();
 	}
 }

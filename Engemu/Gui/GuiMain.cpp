@@ -79,6 +79,10 @@ void GuiMain::render_cpu() {
 	ImGui::EndChild();
 
 	ImGui::EndGroup();
+
+	ImGui::BeginChild("Call Stack", ImVec2(800, 90), true);
+	render_call_stack();
+	ImGui::EndChild();
 }
 
 void GuiMain::render_memoryNav() {
@@ -303,5 +307,24 @@ void GuiMain::render_stack() {
 	}
 
 	stack_clipper.End();
+
+}
+
+void GuiMain::render_call_stack() {
+	int size = cpu.call_stack.size() > 0 ? cpu.call_stack.size() : 1;
+	ImGuiListClipper clipper(cpu.call_stack.size(), ImGui::GetTextLineHeight()); // Bytes are grouped by four (the alignment for instructions
+
+	for (int i = clipper.DisplayStart; i < clipper.DisplayEnd; i++)
+	{
+		if (i < cpu.call_stack.size()) {
+			ImGui::Text(cpu.call_stack[i].c_str());
+		}
+		else {
+			ImGui::Text("");
+		}
+		ImGui::NextColumn();
+	}
+
+	clipper.End();
 
 }

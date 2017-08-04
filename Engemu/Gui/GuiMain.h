@@ -17,6 +17,7 @@ private:
 	void render_disassembly(bool scroll_to_pc);
 	void render_registers();
 	void render_stack();
+	void render_call_stack();
 
 public:
 	CPU& cpu;
