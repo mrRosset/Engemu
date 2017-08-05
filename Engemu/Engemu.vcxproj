@@ -155,7 +155,6 @@
     <ClCompile Include="CPU\Decoder\Decoder_Thumb.cpp" />
     <ClCompile Include="CPU\Disassembler\Disassembler_ARM.cpp" />
     <ClCompile Include="CPU\Disassembler\Disassembler_Thumb.cpp" />
-    <ClCompile Include="CPU\Registers.cpp" />
     <ClCompile Include="deps\gl3w.c" />
     <ClCompile Include="Engemu.cpp" />
     <ClCompile Include="Gui\Gui.cpp" />
@@ -177,7 +176,6 @@
     <ClInclude Include="CPU\Decoder\IR.h" />
     <ClInclude Include="CPU\Disassembler\Disassembler.h" />
     <ClInclude Include="CPU\Memory.h" />
-    <ClInclude Include="CPU\Registers.h" />
     <ClInclude Include="CPU\Utils.h" />
     <ClInclude Include="E32Image.h" />
     <ClInclude Include="E32Std.h" />
