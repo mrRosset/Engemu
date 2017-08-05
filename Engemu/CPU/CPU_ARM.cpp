@@ -182,10 +182,6 @@ inline void CPU::Load_Store(IR_ARM& ir) {
 		//offset
 		if (U) address = gprs[Rn] + offset;
 		else address = gprs[Rn] - offset;
-		if (Rn == Regs::PC) {
-			//To change if the pc is incremented before the instruction is executed
-			address += 8;
-		}
 	}
 
 	/*
@@ -368,12 +364,12 @@ inline void CPU::MUL_Instr2(bool S, unsigned RdHi, unsigned RdLo, u32 resultHi, 
 inline void CPU::Branch(IR_ARM& ir) {
 	switch (ir.instr) {
 	case AInstructions::B:
-		gprs[Regs::PC] += SignExtend<s32>(ir.operand1 << 2, 26) + 8;
+		gprs[Regs::PC] += SignExtend<s32>(ir.operand1 << 2, 26);
 		break;
 
 	case AInstructions::BL:
 		gprs[Regs::LR] = gprs[Regs::PC] + 4;
-		gprs[Regs::PC] += SignExtend<s32>(ir.operand1 << 2, 26) + 8;
+		gprs[Regs::PC] += SignExtend<s32>(ir.operand1 << 2, 26);
 		call_stack.push_back(Symbols::getFunctionNameOrElse(gprs[Regs::PC]));
 		break;
 
