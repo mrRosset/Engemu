@@ -24,6 +24,7 @@
     <ClCompile Include="Gui\GuiMain.cpp" />
     <ClCompile Include="HLE\Kernel.cpp" />
     <ClCompile Include="Symbols\SymbolsManager.cpp" />
+    <ClCompile Include="CPU\Registers.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CPU\Decoder\Decoder.h" />
@@ -52,5 +53,6 @@
     <ClInclude Include="HLE\Kernel.h" />
     <ClInclude Include="HLE\E32std.h" />
     <ClInclude Include="Symbols\SymbolsManager.h" />
+    <ClInclude Include="CPU\Registers.h" />
   </ItemGroup>
 </Project>
