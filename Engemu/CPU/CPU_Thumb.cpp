@@ -248,10 +248,10 @@ void CPU::Branch(IR_Thumb& ir) {
 	case TInstructions::BX:
 		cpsr.flag_T = !!(gprs[ir.operand1] & 0b1);
 		gprs[Regs::PC] = gprs[ir.operand1] & 0xFFFFFFFE;
-		if (ir.operand1 == Regs::LR) {
+		if (ir.operand1 == Regs::LR && !call_stack.empty()) {
 			call_stack.pop_back();
 		}
-		else {
+		else if (!call_stack.empty()) {
 			//replace the last one with the new
 			//Useful for import stubs
 			call_stack.pop_back();
