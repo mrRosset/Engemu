@@ -25,9 +25,6 @@ void CPU::Step() {
 		Decoder::Decode(ir, instr);
 
 		//Find where and how pc is incremented
-
-		//This is to simlate the 2 stage pipeline
-		gprs[Regs::PC] += 4;
 		u32 old_pc = gprs[Regs::PC];
 
 		if (Check_Condition(ir.cond)) {
@@ -47,7 +44,6 @@ void CPU::Step() {
 		//Find where and how pc is incremented
 		
 		//This is to simlate the 2 stage pipeline
-		gprs[Regs::PC] += 8;
 		u32 old_pc = gprs[Regs::PC];
 
 		if (Check_Condition(ir.cond)) {
