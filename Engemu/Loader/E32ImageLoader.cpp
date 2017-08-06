@@ -57,7 +57,7 @@ void E32ImageLoader::load(E32Image& image, std::string& file_name,  Memory& mem,
 		TRomImageLoader::parse(lib_path, lib);
 		TRomImageLoader::load(lib, mem, lib_folder_path);
 
-		logger->info("Replcacing IAT ordinal from {}", lib_name);
+		logger->info("Replacing IAT ordinal from {}", lib_name);
 
 		//replace the ordinal of the import with it'saddress in the IAT
 		for (u32 ordinal : block->ordinals) {
