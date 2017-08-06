@@ -370,7 +370,8 @@ inline void CPU::Branch(IR_ARM& ir) {
 		break;
 
 	case AInstructions::BL:
-		gprs[Regs::LR] = gprs[Regs::PC] + 4;
+		//point to next instruction. remember pc is current address + 8
+		gprs[Regs::LR] = gprs[Regs::PC] - 4;
 		gprs[Regs::PC] += SignExtend<s32>(ir.operand1 << 2, 26);
 		call_stack.push_back(Symbols::getFunctionNameOrElse(gprs[Regs::PC]));
 		break;
