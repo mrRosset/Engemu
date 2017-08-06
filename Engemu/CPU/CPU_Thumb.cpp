@@ -209,9 +209,7 @@ void CPU::Load_Store(IR_Thumb& ir) {
 	//from here the Rd, Rn, ... don't correspond anymore
 
 	case TInstructions::LDR_pc: {
-		//While it's not specified, it seems from debugging that it should
-		//use pc+4 and not just pc
-		u32 address = (gprs[Regs::PC] & 0xFFFFFFFC) + 4 + (ir.operand1 * 4);
+		u32 address = (gprs[Regs::PC] & 0xFFFFFFFC) + (ir.operand1 * 4);
 		gprs[ir.operand2] = mem.read32(address);
 		break;
 	}
@@ -234,12 +232,12 @@ void CPU::Load_Store(IR_Thumb& ir) {
 void CPU::Branch(IR_Thumb& ir) {
 
 	switch (ir.instr) {
-	case TInstructions::B_cond: gprs[Regs::PC] += SignExtend<s32>(ir.operand1 << 1, 9) + 4;  break;
-	case TInstructions::B_imm:  gprs[Regs::PC] += SignExtend<s32>(ir.operand1 << 1, 12) + 4; break;
-	case TInstructions::BL_high: gprs[Regs::LR] = gprs[Regs::PC] + (SignExtend<s32>(ir.operand1, 11) << 12) + 4;  break;
+	case TInstructions::B_cond: gprs[Regs::PC] += SignExtend<s32>(ir.operand1 << 1, 9);  break;
+	case TInstructions::B_imm:  gprs[Regs::PC] += SignExtend<s32>(ir.operand1 << 1, 12); break;
+	case TInstructions::BL_high: gprs[Regs::LR] = gprs[Regs::PC] + (SignExtend<s32>(ir.operand1, 11) << 12);  break;
 	case TInstructions::BL: {
 		//TODO: Check that it works
-		u32 next_instruction = (gprs[Regs::PC] + 2) | 1;
+		u32 next_instruction = (gprs[Regs::PC] - 2) | 1;
 		gprs[Regs::PC] = gprs[Regs::LR] + (ir.operand1 << 1);
 		gprs[Regs::LR] = next_instruction;
 		call_stack.push_back(Symbols::getFunctionNameOrElse(gprs[Regs::PC]));
@@ -380,7 +378,7 @@ void CPU::Data_Processing_6_7(IR_Thumb& ir) {
 	u16& immed = ir.operand1;
 	u16& Rd = ir.operand2;
 
-	//PC = PC or PC + 4 ??
+	//Is bit 1 of pc cleared ? (see stackoverflow about pc +  8/4)
 	switch (ir.instr) {
 	case TInstructions::ADD_imm_pc: gprs[Rd] = (gprs[Regs::PC] & 0xFFFFFFFC) + (immed << 2);  break;
 	case TInstructions::ADD_imm_sp: gprs[Rd] = gprs[Regs::SP] + (immed << 2); break;
