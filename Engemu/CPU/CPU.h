@@ -6,28 +6,6 @@
 #include "Memory.h"
 #include "Registers.h"
 
-//TODO: make sure scope of the elements are appropriate
-
-//shoud only be 5 bits long
-enum struct CpuMode: u8 {
-	User = 0b10000,
-	FIQ = 0b10001,
-	IRQ = 0b10010,
-	Supervisor = 0b10011,
-	Abort = 0b10111,
-	Undefined = 0b11011,
-	System = 0b11111
-};
-
-
-//TODO: Think about default values.
-struct PSR {
-	bool flag_N, flag_Z, flag_C, flag_V; //bits 31 - 28
-	u32 reserved; //bits 27 - 8
-	bool flag_inter_I, flag_inter_F; //bits 7-6 
-	bool flag_T; //bit 5
-	CpuMode mode; //bits 4-0
-};
 
 //Forward declaration
 struct IR_ARM;

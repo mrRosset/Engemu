@@ -155,7 +155,6 @@
     <ClCompile Include="CPU\Decoder\Decoder_Thumb.cpp" />
     <ClCompile Include="CPU\Disassembler\Disassembler_ARM.cpp" />
     <ClCompile Include="CPU\Disassembler\Disassembler_Thumb.cpp" />
-    <ClCompile Include="CPU\Registers.cpp" />
     <ClCompile Include="deps\gl3w.c" />
     <ClCompile Include="Engemu.cpp" />
     <ClCompile Include="Gui\Gui.cpp" />
