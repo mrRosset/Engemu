@@ -45,6 +45,9 @@ void Kernel::User_Heap(CPU& cpu, Gui* gui) {
 	cpu.gprs[Regs::PC] = 0x503B0DAC; //TODO: not hardcode this.
 	cpu.gprs[Regs::LR] = 0;
 
+	//Don't fuck up the original call stack
+	cpu.call_stack.push_back("0x503B0DAC");
+
 	while (cpu.gprs[Regs::PC] != 0) {
 		cpu.Step();
 		gui->render();
