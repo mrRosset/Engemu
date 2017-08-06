@@ -439,13 +439,8 @@ std::tuple<u32, bool> CPU::shifter_operand(Shifter_op& so, bool negatif) {
 		throw std::string("PC as Rs is unpredictable");
 	}
 
-	if (Rm == Regs::PC) {
-		if (so.type != Shifter_type::Immediate && so.type != Shifter_type::Register && so.type != Shifter_type::LSL_imm && so.type != Shifter_type::LSR_imm && so.type != Shifter_type::ASR_imm && so.type != Shifter_type::ROR_imm && so.type != Shifter_type::RRX) {
-			throw std::string("PC as Rm is unpredictable");
-		}
-		else {
-			vRm += 8;
-		}
+	if (Rm == Regs::PC && so.type != Shifter_type::Immediate && so.type != Shifter_type::Register && so.type != Shifter_type::LSL_imm && so.type != Shifter_type::LSR_imm && so.type != Shifter_type::ASR_imm && so.type != Shifter_type::ROR_imm && so.type != Shifter_type::RRX) {
+		throw std::string("PC as Rm is unpredictable");
 	}
 
 	unsigned vRs7_0 = gprs[Rs] & 0xFF;
