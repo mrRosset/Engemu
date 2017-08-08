@@ -146,6 +146,12 @@ bool GuiMain::render_controls() {
 	ImGui::SameLine();
 
 	ImGui::Checkbox("Track PC", &track_pc);
+
+	ImGui::SameLine();
+
+	ImGui::Text(" %.3f ms/frame (%.1f fps)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+
+
 	return scroll_to_pc;
 }
 
