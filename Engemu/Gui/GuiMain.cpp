@@ -7,6 +7,7 @@
 #include "../CPU/Decoder/Decoder.h"
 #include "../CPU/Disassembler/Disassembler.h"
 #include "../CPU/Decoder/IR.h"
+#include "../CPU/Utils.h"
 #include "../Symbols/SymbolsManager.h"
 
 
@@ -284,7 +285,7 @@ void GuiMain::render_registers() {
 	ImGui::SameLine(38);
 	ImGui::Text("0x%X", cpu->gprs.RealPC() + 0);
 
-	ImGui::Text("CPSR: 0x%X", cpu->cpsr);
+	ImGui::Text("CPSR: 0x%X", PSR_to_u32(cpu->cpsr));
 }
 
 void GuiMain::render_stack() {
