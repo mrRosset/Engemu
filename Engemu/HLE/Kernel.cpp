@@ -48,7 +48,7 @@ void Kernel::User_Heap(CPU& cpu, Gui* gui) {
 	//Don't fuck up the original call stack
 	cpu.call_stack.push_back("0x503B0DAC");
 
-	while (cpu.gprs[Regs::PC] != 0) {
+	while (cpu.gprs.RealPC() != 0) {
 		cpu.Step();
 		gui->render();
 		std::this_thread::sleep_for(std::chrono::milliseconds(40));
