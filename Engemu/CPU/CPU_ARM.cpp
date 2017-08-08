@@ -366,13 +366,13 @@ inline void CPU::MUL_Instr2(bool S, unsigned RdHi, unsigned RdLo, u32 resultHi, 
 inline void CPU::Branch(IR_ARM& ir) {
 	switch (ir.instr) {
 	case AInstructions::B:
-		gprs[Regs::PC] += SignExtend<s32>(ir.operand1 << 2, 26);
+		gprs[Regs::PC] = gprs[Regs::PC] + SignExtend<s32>(ir.operand1 << 2, 26);
 		break;
 
 	case AInstructions::BL:
 		//point to next instruction. remember pc is current address + 8
 		gprs[Regs::LR] = gprs[Regs::PC] - 4;
-		gprs[Regs::PC] += SignExtend<s32>(ir.operand1 << 2, 26);
+		gprs[Regs::PC] = gprs[Regs::PC] + SignExtend<s32>(ir.operand1 << 2, 26);
 		call_stack.push_back(Symbols::getFunctionNameOrElse(gprs[Regs::PC]));
 		break;
 

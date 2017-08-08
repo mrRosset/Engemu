@@ -20,38 +20,38 @@ CPU::CPU() : cpsr{}, spsr{}, gprs(cpsr), call_stack() {
 
 void CPU::Step() {
 	if (cpsr.flag_T) {
-		u16 instr = mem.read16(gprs[Regs::PC]);
+		u16 instr = mem.read16(gprs.RealPC());
 		IR_Thumb ir;
 		Decoder::Decode(ir, instr);
 
 		//Find where and how pc is incremented
-		u32 old_pc = gprs[Regs::PC];
+		u32 old_pc = gprs.RealPC();
 
 		if (Check_Condition(ir.cond)) {
 			Execute(ir);
 		}
 
-		if (gprs[Regs::PC] == old_pc) {
-			gprs[Regs::PC] -= 2;
+		if (gprs.RealPC() == old_pc) {
+			gprs.RealPC() += 2;
 		}
 
 	}
 	else {
-		u32 instr = mem.read32(gprs[Regs::PC]);
+		u32 instr = mem.read32(gprs.RealPC());
 		IR_ARM ir;
 		Decoder::Decode(ir, instr);
 
 		//Find where and how pc is incremented
 		
 		//This is to simlate the 2 stage pipeline
-		u32 old_pc = gprs[Regs::PC];
+		u32 old_pc = gprs.RealPC();
 
 		if (Check_Condition(ir.cond)) {
 			Execute(ir);
 		}
 
-		if (gprs[Regs::PC] == old_pc) {
-			gprs[Regs::PC] -= 4;
+		if (gprs[Regs::PC] - 8 == old_pc) {
+			gprs.RealPC() += 4;
 		}
 	}
 	

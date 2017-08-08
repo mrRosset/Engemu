@@ -61,13 +61,8 @@ private:
 		Reg(u32 &a, bool pc_, bool flagT_) : el(a) { pc = pc_; flagT = flagT_; }
 		
 		operator u32() const { 
-			if (pc) {
-				//TODO: check bit 1 for non-branch thumb instr;
-				return flagT ? el + 4 : el + 8;
-			}
-			else {
-				return el;
-			}
+			if (pc) return flagT ? el + 4 : el + 8;
+			else return el;
 		}
 		
 		u32 operator=(u32 val) const {
@@ -80,21 +75,26 @@ private:
 			return el;
 		}
 
-		Reg& operator+=(u32 val) {
+
+		//+4/8 for pc or not ?
+		/*Reg& operator+=(u32 val) {
 			el += val;
 			return *this;
 		}
 
 		Reg& operator-=(u32 val) {
-			el += val;
+			el -= val;
 			return *this;
-		}
+		}*/
 
 	};
+
 
 public:
 	Reg operator[](int idx) { 
 		return Reg(gprs[idx], idx == Regs::PC, cpsr.flag_T);
 	}
+
+	u32& RealPC() { return gprs[Regs::PC]; }
 
 };

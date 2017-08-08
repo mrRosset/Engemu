@@ -232,8 +232,8 @@ void CPU::Load_Store(IR_Thumb& ir) {
 void CPU::Branch(IR_Thumb& ir) {
 
 	switch (ir.instr) {
-	case TInstructions::B_cond: gprs[Regs::PC] += SignExtend<s32>(ir.operand1 << 1, 9);  break;
-	case TInstructions::B_imm:  gprs[Regs::PC] += SignExtend<s32>(ir.operand1 << 1, 12); break;
+	case TInstructions::B_cond: gprs[Regs::PC] = gprs[Regs::PC] + SignExtend<s32>(ir.operand1 << 1, 9);  break;
+	case TInstructions::B_imm:  gprs[Regs::PC] = gprs[Regs::PC] + SignExtend<s32>(ir.operand1 << 1, 12); break;
 	case TInstructions::BL_high: gprs[Regs::LR] = gprs[Regs::PC] + (SignExtend<s32>(ir.operand1, 11) << 12);  break;
 	case TInstructions::BL: {
 		//TODO: Check that it works
