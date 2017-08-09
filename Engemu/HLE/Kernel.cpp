@@ -20,6 +20,8 @@ void Kernel::Executive_Call(u32 number, CPU& cpu, Gui* gui) {
 	case 0x8E: User_LockedDec(cpu); break;
 	case 0x2A: RSemaphore_Wait(cpu); break;
 
+	case 0x8000C0: RProcess_CommandLineLength(cpu); break;
+
 	default:
 
 		throw std::string("non-implemented executive call ") + std::to_string(number);
@@ -28,9 +30,12 @@ void Kernel::Executive_Call(u32 number, CPU& cpu, Gui* gui) {
 }
 
 void Kernel::User_Heap(CPU& cpu, Gui* gui) {
-	if (!RHeap_ptr) {
-		RHeap_ptr = cpu.mem.allocateRam(sizeof(RHeap));
+	if (RHeap_ptr) {
+		cpu.gprs[0] = RHeap_ptr;
+		return;
 	}
+
+	RHeap_ptr = cpu.mem.allocateRam(sizeof(RHeap));
 
 	//save all registers
 	u32 saved_gprs[16];
@@ -82,4 +87,8 @@ void Kernel::RSemaphore_Wait(CPU& cpu) {
 	Problem is that for semaphore inside the rom, I don't know how, when, where
 	thy are created and initialized.
 	*/
+}
+
+void Kernel::RProcess_CommandLineLength(CPU& cpu) {
+	cpu.gprs[0] = 43;
 }

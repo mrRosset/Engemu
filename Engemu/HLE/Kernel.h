@@ -15,5 +15,6 @@ namespace Kernel {
 	void User_LockedDec(CPU& cpu);
 	void User_LockedInc(CPU & cpu);
 	void RSemaphore_Wait(CPU & cpu);
+	void RProcess_CommandLineLength(CPU & cpu);
 
 }
