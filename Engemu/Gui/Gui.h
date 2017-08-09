@@ -17,5 +17,6 @@ protected:
 public:
 	Gui(std::string& additional_title);
 	~Gui();
+	void Resize_callback(GLFWwindow * window, int width, int height);
 	virtual bool render() = 0;
 };

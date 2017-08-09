@@ -1,8 +1,8 @@
-#include "Gui.h"
 #include <string>
 #include <iostream>
 #include <sstream>
 #include <inttypes.h>
+#include "Gui.h"
 
 
 static void error_callback(int error, const char* description)
@@ -32,6 +32,16 @@ Gui::Gui(std::string& additional_title) {
 	glfwGetWindowSize(window, &window_width, &window_height);
 	glfwSetWindowPos(window, (mode->width - window_width)/2, (mode->height - window_height) / 2);
 
+
+	//User pointer to get the instance of gui to access member variables and functions
+	glfwSetWindowUserPointer(window, this);
+	auto func = [](GLFWwindow* w, int width, int height)
+	{
+		static_cast<Gui*>(glfwGetWindowUserPointer(w))->Resize_callback(w, width, height);
+	};
+	glfwSetWindowSizeCallback(window, func);
+
+
 	glfwMakeContextCurrent(window);
 	gl3wInit();
 
@@ -42,4 +52,9 @@ Gui::Gui(std::string& additional_title) {
 Gui::~Gui() {
 	ImGui_ImplGlfwGL3_Shutdown();
 	glfwTerminate();
+}
+
+void Gui::Resize_callback(GLFWwindow* window, int width, int height) {
+	window_width = width;
+	window_height = height;
 }
