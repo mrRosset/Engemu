@@ -10,7 +10,7 @@ static void error_callback(int error, const char* description)
 	fprintf(stderr, "Error %d: %s\n", error, description);
 }
 
-Gui::Gui(std::string& additional_title) {
+Gui::Gui(std::string& additional_title, int width, int height) {
 	// Setup window
 	glfwSetErrorCallback(error_callback);
 	if (!glfwInit()) {
@@ -22,8 +22,8 @@ Gui::Gui(std::string& additional_title) {
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
 
-	window_width = 815;
-	window_height = 920;
+	window_width = width;
+	window_height = height;
 
 	window = glfwCreateWindow(window_width, window_height, ("Engemu - " + additional_title).c_str(), NULL, NULL);
 	//center windows

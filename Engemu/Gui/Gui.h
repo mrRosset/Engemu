@@ -15,7 +15,7 @@ protected:
 	ImVec4 clear_color = ImColor(114, 144, 154);
 
 public:
-	Gui(std::string& additional_title);
+	Gui(std::string& additional_title, int width, int height);
 	~Gui();
 	void Resize_callback(GLFWwindow * window, int width, int height);
 	virtual bool render() = 0;

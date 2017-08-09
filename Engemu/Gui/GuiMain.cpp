@@ -11,7 +11,7 @@
 #include "../Symbols/SymbolsManager.h"
 
 
-GuiMain::GuiMain(CPU* cpu_, std::string& additional_title) : Gui(additional_title) {
+GuiMain::GuiMain(CPU* cpu_, std::string& additional_title) : Gui(additional_title, 815, 920) {
 	cpu = cpu_;
 }
 
