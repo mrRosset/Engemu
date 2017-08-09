@@ -159,6 +159,7 @@
     <ClCompile Include="Engemu.cpp" />
     <ClCompile Include="Gui\Gui.cpp" />
     <ClCompile Include="Gui\GuiMain.cpp" />
+    <ClCompile Include="Gui\GuiMemory.cpp" />
     <ClCompile Include="HLE\Kernel.cpp" />
     <ClCompile Include="imgui\imgui.cpp" />
     <ClCompile Include="imgui\imgui_demo.cpp" />
@@ -182,6 +183,7 @@
     <ClInclude Include="E32Std.h" />
     <ClInclude Include="Gui\Gui.h" />
     <ClInclude Include="Gui\GuiMain.h" />
+    <ClInclude Include="Gui\GuiMemory.h" />
     <ClInclude Include="Gui\MemoryEditor.h" />
     <ClInclude Include="HLE\E32std.h" />
     <ClInclude Include="HLE\Kernel.h" />
