@@ -11,8 +11,11 @@
 #include "CPU/Disassembler/Disassembler.h"
 #include "Gui/Gui.h"
 #include "Gui/GuiMain.h"
+#include "Gui/GuiMemory.h"
 #include "HLE/Kernel.h"
 #include "Symbols/SymbolsManager.h"
+#include "imgui/imgui.h"
+#include "imgui/imgui_impl_glfw_gl3.h"
 
 std::string extract_filename(const std::string& filepath)
 {
@@ -31,7 +34,12 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 	E32ImageLoader::parse(app_path, image);
 
 	std::string file_name = extract_filename(app_path);
-	GuiMain* gui = new GuiMain(&cpu, extract_filename(app_path));
+	GuiMain* guimain = new GuiMain(&cpu, extract_filename(app_path));
+	//ImGuiContext* guimainContext = ImGui::GetCurrentContext();
+
+	//ImGuiContext* guiMemoryContext = ImGui::CreateContext(malloc, free);
+	//ImGui::SetCurrentContext(guiMemoryContext);
+	//GuiMemory* guiMemory = new GuiMemory(cpu.mem, std::string("Memory Editor"));
 
 	cpu.mem.loadRom(rom_path);
 	E32ImageLoader::load(image, file_name, cpu.mem, lib_folder_path);
@@ -40,17 +48,17 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 	logger->info("Loading Symbols");
 	Symbols::load(symbols_folder_path);
 
-	cpu.gprs[Regs::PC] = image.header->code_base_address + image.header->entry_point_offset; // 0x50392D54 <- entry of Euser.dll;
+	//cpu.gprs[Regs::PC] = image.header->code_base_address + image.header->entry_point_offset; // 0x50392D54 <- entry of Euser.dll;
 	//cpu.gprs[Regs::PC] = image.header->code_base_address + image.code_section.export_directory[0];
-	//cpu.gprs[Regs::PC] = 0x5063D444; //Main of AppRun
-	//cpu.cpsr.flag_T = true;
+	cpu.gprs[Regs::PC] = 0x5063D444; //Main of AppRun
+	cpu.cpsr.flag_T = true;
 	
 	//TODO: find the correct place where the SP is initialized
 	//cpu.gprs[Regs::SP] = 0x7FFF'FFFF; //start of the ram section
 	cpu.gprs[Regs::SP] = 0x7FFFFFFC; //start of the ram section aligned with last 2 bit 0
 
 
-	cpu.swi_callback = [&](u32 number) {logger->info("SWI {:x}", number); Kernel::Executive_Call(number, cpu, gui); };
+	cpu.swi_callback = [&](u32 number) {logger->info("SWI {:x}", number); Kernel::Executive_Call(number, cpu, guimain); };
 	
 	//emulation loop
 
@@ -62,8 +70,10 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 	bool running = true;
 
 	while (running) {
-		running = gui->render();
-
+		//ImGui::SetCurrentContext(guimainContext);
+		running = guimain->render();
+		//ImGui::SetCurrentContext(guiMemoryContext);
+		//running = guiMemory->render();
 		switch (cpu.state) {
 
 		case CPU::State::Step:

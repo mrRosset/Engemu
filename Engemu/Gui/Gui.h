@@ -10,6 +10,7 @@
 
 class Gui {
 protected:
+	static bool initialized;
 	GLFWwindow* window;
 	int window_width, window_height;
 	ImVec4 clear_color = ImColor(114, 144, 154);

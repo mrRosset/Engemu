@@ -10,12 +10,20 @@ static void error_callback(int error, const char* description)
 	fprintf(stderr, "Error %d: %s\n", error, description);
 }
 
+bool Gui::initialized = false;
+
 Gui::Gui(std::string& additional_title, int width, int height) {
-	// Setup window
-	glfwSetErrorCallback(error_callback);
-	if (!glfwInit()) {
-		exit(-1);
+	//does not work with multi threading
+	if (!initialized) {
+		glfwSetErrorCallback(error_callback);
+		if (!glfwInit()) {
+			exit(-1);
+		}
+
+		initialized = true;
 	}
+	// Setup window
+
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
 #if __APPLE__
@@ -33,14 +41,13 @@ Gui::Gui(std::string& additional_title, int width, int height) {
 	glfwSetWindowPos(window, (mode->width - window_width)/2, (mode->height - window_height) / 2);
 
 
-	//User pointer to get the instance of gui to access member variables and functions
+	/*//User pointer to get the instance of gui to access member variables and functions
 	glfwSetWindowUserPointer(window, this);
 	auto func = [](GLFWwindow* w, int width, int height)
 	{
 		static_cast<Gui*>(glfwGetWindowUserPointer(w))->Resize_callback(w, width, height);
 	};
-	glfwSetWindowSizeCallback(window, func);
-
+	glfwSetWindowSizeCallback(window, func);*/
 
 	glfwMakeContextCurrent(window);
 	gl3wInit();
