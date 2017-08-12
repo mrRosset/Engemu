@@ -176,7 +176,7 @@
     <ClInclude Include="CPU\Decoder\Decoder.h" />
     <ClInclude Include="CPU\Decoder\IR.h" />
     <ClInclude Include="CPU\Disassembler\Disassembler.h" />
-    <ClInclude Include="CPU\Memory.h" />
+    <ClInclude Include="Memory.h" />
     <ClInclude Include="CPU\Registers.h" />
     <ClInclude Include="CPU\Utils.h" />
     <ClInclude Include="E32Image.h" />

@@ -28,7 +28,8 @@ std::string extract_filename(const std::string& filepath)
 void emulate(std::string& app_path, std::string& lib_folder_path, std::string& rom_path, std::string& symbols_folder_path) {
 	auto logger = spdlog::get("console");
 	
-	CPU cpu;
+	Memory mem;
+	CPU cpu(mem);
 	
 	E32Image image;
 	E32ImageLoader::parse(app_path, image);

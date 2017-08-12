@@ -3,7 +3,7 @@
 #include <functional>
 #include <vector>
 #include "../Common.h"
-#include "Memory.h"
+#include "../Memory.h"
 #include "Registers.h"
 
 
@@ -21,11 +21,11 @@ public:
 	Registers gprs;
 	PSR cpsr;
 	PSR spsr;
-	Memory mem;
+	Memory& mem;
 
 	State state;
 
-	CPU();
+	CPU(Memory& mem);
 	void Step();
 	bool Check_Condition(Conditions& cond);
 

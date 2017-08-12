@@ -31,7 +31,6 @@
     <ClInclude Include="CPU\Decoder\IR.h" />
     <ClInclude Include="CPU\Disassembler\Disassembler.h" />
     <ClInclude Include="CPU\CPU.h" />
-    <ClInclude Include="CPU\Memory.h" />
     <ClInclude Include="CPU\Utils.h" />
     <ClInclude Include="Common.h" />
     <ClInclude Include="Loader\E32ImageLoader.h" />
@@ -55,5 +54,6 @@
     <ClInclude Include="Symbols\SymbolsManager.h" />
     <ClInclude Include="CPU\Registers.h" />
     <ClInclude Include="Gui\GuiMemory.h" />
+    <ClInclude Include="Memory.h" />
   </ItemGroup>
 </Project>

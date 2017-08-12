@@ -5,9 +5,9 @@
 #include "E32ImageLoader.h"
 #include "TRomImageLoader.h"
 #include "Utils.h"
+#include "../Memory.h"
 #include "../TRomImage.h"
 #include "../E32Image.h"
-#include "../CPU/Memory.h"
 #include "../Gui/GuiMain.h"
 
 std::string locateLibrary(std::string& lib_entry, std::string& lib_folder_path) {
