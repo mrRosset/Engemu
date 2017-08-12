@@ -12,7 +12,7 @@ namespace Kernel {
 	vir_add RHeap_ptr = 0;
 }
 
-void Kernel::Executive_Call(u32 number, CPU& cpu, Gui* gui) {
+void Kernel::Executive_Call(u32 number, CPU& cpu, GuiMain* gui) {
 
 	switch (number) {
 	case 0x6C: User_Heap(cpu, gui); break;
@@ -29,14 +29,39 @@ void Kernel::Executive_Call(u32 number, CPU& cpu, Gui* gui) {
 
 }
 
-void Kernel::User_Heap(CPU& cpu, Gui* gui) {
+void Kernel::User_Heap(CPU& cpu, GuiMain* gui) {
 	if (RHeap_ptr) {
 		cpu.gprs[0] = RHeap_ptr;
 		return;
 	}
-
+	
 	RHeap_ptr = cpu.mem.allocateRam(sizeof(RHeap));
 
+	CPU ker_cpu(cpu.mem);
+
+	ker_cpu.gprs[0] = RHeap_ptr;
+	ker_cpu.gprs[1] = 1052672; //Found in a test on the hardware
+
+	ker_cpu.gprs[Regs::PC] = 0x503B0DAC; //TODO: not hardcode this.
+	ker_cpu.gprs[Regs::LR] = 0;
+	ker_cpu.gprs[Regs::SP] = cpu.gprs[Regs::SP];
+	
+	ker_cpu.call_stack.push_back("0x503B0DAC");
+
+	gui->cpu = &ker_cpu;
+
+	while (ker_cpu.gprs.RealPC() != 0) {
+		ker_cpu.Step();
+		gui->render();
+		std::this_thread::sleep_for(std::chrono::milliseconds(40));
+	}
+
+	gui->cpu = &cpu;
+
+	//get the return value
+	cpu.gprs[0] = ker_cpu.gprs[0];
+
+	/*
 	//save all registers
 	u32 saved_gprs[16];
 	for (int i = 0; i < 16; i++) {
@@ -64,7 +89,7 @@ void Kernel::User_Heap(CPU& cpu, Gui* gui) {
 		cpu.gprs[i] = saved_gprs[i];
 	}
 
-	gui->render();
+	gui->render();*/
 }
 
 void Kernel::User_LockedDec(CPU& cpu) {
