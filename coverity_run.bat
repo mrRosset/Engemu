@@ -1,0 +1,1 @@
+cov-build --dir cov-int --instrument coverity_build.bat
