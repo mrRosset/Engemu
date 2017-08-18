@@ -30,7 +30,7 @@ u16 utils::crc16_ccitt(u8(&values)[6])
 
 bool utils::loadData(std::string& path, std::vector<u8>& data) {
 
-	std::ifstream stream(path, std::ios::binary);
+	std::ifstream stream(path, std::ios::binary | std::ios::ate);
 
 	if (!stream)
 	{
@@ -38,15 +38,14 @@ bool utils::loadData(std::string& path, std::vector<u8>& data) {
 		return false;
 	}
 
-	stream.seekg(0, std::ios::end);
 	u64 length = stream.tellg();
-	stream.seekg(0, std::ios::beg);
-
 	data.resize(length);
 
-	for (u64 i = 0; i < length; i++)
+	stream.seekg(0, std::ios::beg);
+
+	if (!stream.read((char*)data.data(), length))
 	{
-		data[i] = stream.get();
+		throw std::string("Error reading bytes from file");
 	}
 
 	stream.close();
