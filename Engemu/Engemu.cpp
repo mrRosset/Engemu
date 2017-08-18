@@ -50,9 +50,9 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 	Symbols::load(symbols_folder_path);
 
 	//cpu.gprs[Regs::PC] = image.header->code_base_address + image.header->entry_point_offset; // 0x50392D54 <- entry of Euser.dll;
-	//cpu.gprs[Regs::PC] = image.header->code_base_address + image.code_section.export_directory[0];
-	cpu.gprs[Regs::PC] = 0x5063D444; //Main of AppRun
-	cpu.cpsr.flag_T = true;
+	cpu.gprs[Regs::PC] = image.header->code_base_address + image.code_section.export_directory[0];
+	//cpu.gprs[Regs::PC] = 0x5063D444; //Main of AppRun
+	//cpu.cpsr.flag_T = true;
 	
 	//TODO: find the correct place where the SP is initialized
 	//cpu.gprs[Regs::SP] = 0x7FFF'FFFF; //start of the ram section
@@ -129,6 +129,10 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 	catch (std::string& error_message) {
+		std::cout << "Uncaught exception:\n" << error_message << std::endl;
+		std::cin.get();
+	}
+	catch (const char* error_message) {
 		std::cout << "Uncaught exception:\n" << error_message << std::endl;
 		std::cin.get();
 	}

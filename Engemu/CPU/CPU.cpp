@@ -76,7 +76,7 @@ bool CPU::Check_Condition(Conditions& cond) {
 	case Conditions::GT: return !cpsr.flag_Z && cpsr.flag_N == cpsr.flag_V;
 	case Conditions::LE: return cpsr.flag_Z && cpsr.flag_N != cpsr.flag_V;
 	case Conditions::AL: return true;
-	case Conditions::NV: throw "Unpredictable instructions are not emulated";
+	case Conditions::NV: throw std::string("Unpredictable instructions are not emulated");
 	}
 	throw "Invalid condition";
 }
