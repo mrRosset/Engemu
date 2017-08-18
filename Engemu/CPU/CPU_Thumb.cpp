@@ -356,7 +356,7 @@ void CPU::Data_Processing_5(IR_Thumb& ir) {
 	case TInstructions::ASR_reg: {
 		unsigned vRs_7_0 = gprs[Rs] & 0xFF;
 		if (vRs_7_0 > 0 && vRs_7_0 < 32) { cpsr.flag_C = !!getBit(gprs[Rd], vRs_7_0 - 1); gprs[Rd] = u32(s32(gprs[Rd]) >> vRs_7_0); }
-		else if (vRs_7_0 == 32) { cpsr.flag_C = fun_Rd_31(); if (cpsr.flag_C) gprs[Rd] = 0xFFFFFFFF; else gprs[Rd] = 0; }
+		else if (vRs_7_0 >= 32) { cpsr.flag_C = fun_Rd_31(); if (cpsr.flag_C) gprs[Rd] = 0xFFFFFFFF; else gprs[Rd] = 0; }
 		cpsr.flag_N = fun_Rd_31();
 		cpsr.flag_Z = fun_Rd_0();
 	}
@@ -366,7 +366,7 @@ void CPU::Data_Processing_5(IR_Thumb& ir) {
 		unsigned vRs_4_0 = gprs[Rs] & 0b1'1111;
 		if (vRs_7_0 == 0) {}
 		else if (vRs_4_0 == 0) { cpsr.flag_C = fun_Rd_31(); }
-		else if (vRs_4_0 == 0) { cpsr.flag_C = !!getBit(gprs[Rd], vRs_4_0 - 1); gprs[Rd] = ror32(gprs[Rd], vRs_4_0); }
+		else { cpsr.flag_C = !!getBit(gprs[Rd], vRs_4_0 - 1); gprs[Rd] = ror32(gprs[Rd], vRs_4_0); }
 		cpsr.flag_N = fun_Rd_31();
 		cpsr.flag_Z = fun_Rd_0();
 	}
