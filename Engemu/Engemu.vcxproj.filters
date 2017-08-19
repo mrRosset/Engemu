@@ -25,6 +25,7 @@
     <ClCompile Include="HLE\Kernel.cpp" />
     <ClCompile Include="Symbols\SymbolsManager.cpp" />
     <ClCompile Include="Gui\GuiMemory.cpp" />
+    <ClCompile Include="HLE\TChar.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CPU\Decoder\Decoder.h" />
