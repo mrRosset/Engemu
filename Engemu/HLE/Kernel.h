@@ -13,8 +13,8 @@ namespace Kernel {
 
 	void User_Heap(CPU& cpu, GuiMain* gui);
 	void User_LockedDec(CPU& cpu);
-	void User_LockedInc(CPU & cpu);
-	void RSemaphore_Wait(CPU & cpu);
-	void RProcess_CommandLineLength(CPU & cpu);
-
+	void User_LockedInc(CPU& cpu);
+	void RSemaphore_Wait(CPU& cpu);
+	void RProcess_CommandLineLength(CPU& cpu);
+	void TChar_GetCategory(CPU& cpu);
 }
