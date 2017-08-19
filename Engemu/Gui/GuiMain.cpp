@@ -72,7 +72,7 @@ void GuiMain::render_cpu() {
 
 	ImGui::BeginGroup();
 	
-	ImGui::BeginChild("Registers", ImVec2(200, 300), true);
+	ImGui::BeginChild("Registers", ImVec2(200, 420), true);
 	render_registers();
 	ImGui::EndChild();
 
@@ -291,6 +291,14 @@ void GuiMain::render_registers() {
 	ImGui::Text("0x%X", cpu->gprs.RealPC() + 0);
 
 	ImGui::Text("CPSR: 0x%X", PSR_to_u32(cpu->cpsr));
+	ImGui::Text("N : %s", cpu->cpsr.flag_N ? "true" : "false");
+	ImGui::Text("Z : %s", cpu->cpsr.flag_Z ? "true" : "false");
+	ImGui::Text("C : %s", cpu->cpsr.flag_C ? "true" : "false");
+	ImGui::Text("V : %s", cpu->cpsr.flag_V ? "true" : "false");
+	ImGui::Text("I : %s", cpu->cpsr.flag_inter_I ? "true" : "false");
+	ImGui::Text("F : %s", cpu->cpsr.flag_inter_F ? "true" : "false");
+	ImGui::Text("T : %s", cpu->cpsr.flag_T ? "true" : "false");
+
 }
 
 void GuiMain::render_stack() {
