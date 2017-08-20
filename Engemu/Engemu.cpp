@@ -60,7 +60,7 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 
 
 	cpu.swi_callback = [&](u32 number) {logger->info("SWI {:x}", number); Kernel::Executive_Call(number, cpu, guimain); };
-	std::vector<u32> breakpoints = { 0x503A1c44 };
+	std::vector<u32> breakpoints = {};
 
 
 	//emulation loop
