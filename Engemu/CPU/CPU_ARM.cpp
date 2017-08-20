@@ -178,7 +178,7 @@ inline void CPU::Load_Store(IR_ARM& ir) {
 		//pre-indexed
 		if (U) gprs[Rn] = gprs[Rn] + offset;
 		else gprs[Rn] = gprs[Rn] - offset;
-		address = Rn;
+		address = gprs[Rn];
 	}
 	else {
 		//offset
