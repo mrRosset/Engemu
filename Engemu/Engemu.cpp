@@ -60,7 +60,9 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 
 
 	cpu.swi_callback = [&](u32 number) {logger->info("SWI {:x}", number); Kernel::Executive_Call(number, cpu, guimain); };
-	
+	std::vector<u32> breakpoints = { 0x503A1c44 };
+
+
 	//emulation loop
 
 	const int FRAMES_PER_SECOND = 25;
@@ -75,6 +77,13 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 		running = guimain->render();
 		//ImGui::SetCurrentContext(guiMemoryContext);
 		//running = guiMemory->render();
+
+		//Breakpoints
+		if (std::find(breakpoints.begin(), breakpoints.end(), cpu.gprs.RealPC()) != breakpoints.end() && cpu.state == CPU::State::Running) {
+			cpu.state = CPU::State::Stopped;
+		}
+
+
 		switch (cpu.state) {
 
 		case CPU::State::Step:
