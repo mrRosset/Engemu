@@ -107,7 +107,7 @@ std::string Disassembler::Disassemble_Small_Reg_List(u16 list, bool lr, bool pc)
 			start = i;
 		}
 
-		if (current && getBit(list, i) == 1 && (i == 15 || getBit(list, i + 1) == 0)) {
+		if (current && getBit(list, i) == 1 && (i == 7 || getBit(list, i + 1) == 0)) {
 			current = false;
 			end = i;
 			if (start == end) {
