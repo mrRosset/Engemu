@@ -18,10 +18,10 @@ public:
 
 	enum class State { Stopped, Running, Step };
 	
-	Registers gprs;
 	PSR cpsr;
 	PSR spsr;
 	Memory& mem;
+	Registers gprs;
 
 	State state;
 
