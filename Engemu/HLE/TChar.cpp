@@ -264,6 +264,7 @@ void Kernel::TChar_GetCategory(CPU& cpu) {
 	case 254: cpu.gprs[0] = 1; break;
 	case 255: cpu.gprs[0] = 1; break;
 
+	default: throw std::string("No hardcoded unicode category for this number") + std::to_string(character);
 	}
 
 }
