@@ -28,7 +28,7 @@ bool GuiMain::render() {
 		if (show_cpu_window) {
 			ImGui::SetNextWindowPos(ImVec2(0, 0), ImGuiSetCond_Always);
 			ImGui::SetNextWindowSize(ImVec2((float)window_width, (float)window_height), ImGuiSetCond_Always);
-			ImGui::Begin("CPU", &show_cpu_window, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize);
+			ImGui::Begin("CPU", &show_cpu_window, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoCollapse  | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize);
 			render_cpu();
 			ImGui::End();
 		}
