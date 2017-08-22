@@ -42,7 +42,7 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 	//ImGui::SetCurrentContext(guiMemoryContext);
 	//GuiMemory* guiMemory = new GuiMemory(cpu.mem, std::string("Memory Editor"));
 
-	cpu.mem.loadBios(rom_path);
+	cpu.mem.loadBios(app_path);
 	//E32ImageLoader::load(image, file_name, cpu.mem, lib_folder_path);
 
 	//Load Symbols if exists

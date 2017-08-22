@@ -102,7 +102,7 @@ public:
 		if (address >= 0x0040'0000 && address <= 0x2FFF'FFFF) return user_data[address - 0x0040'0000];
 		else if (address >= 0x5000'0000 && address <= 0x57FF'FFFF) return rom[address - 0x5000'0000];
 		else if (address >= 0x6000'0000 && address <= 0x7FFF'FFFF) return ram[address - 0x6000'0000];
-		else gba[address];
+		else return gba[address];
 	}
 
 	inline u16 read16(u32 address)
