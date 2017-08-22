@@ -4,7 +4,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-#include "../Common.h"
+#include "Common.h"
 
 /*
 From THC
@@ -35,12 +35,13 @@ From THC
 class Memory {
 public:
 
+	std::vector<u8> gba;
 	std::vector<u8> user_data;
 	std::vector<u8> rom;
 	std::vector<u8> ram;
 	u32 ram_cursor;
 
-	Memory() : user_data(0x2FFF'FFFF - 0x0040'0000), rom(0x57FF'FFFF - 0x5000'0000), ram(0x7FFF'FFFF - 0x6000'0000) {
+	Memory() : gba(0x0040'0000), user_data(0x2FFF'FFFF - 0x0040'0000), rom(0x57FF'FFFF - 0x5000'0000), ram(0x6FFF'FFFF - 0x6000'0000) {
 		ram_cursor = 15'0000;
 	}
 
@@ -67,6 +68,29 @@ public:
 		stream.close();
 	}
 
+	void loadBios(std::string& rom_path) {
+		std::ifstream stream(rom_path, std::ios::binary | std::ios::ate);
+
+		if (!stream) {
+			std::cerr << "Failed to open image file." << std::endl;
+			return;
+		}
+
+		u64 length = stream.tellg();
+
+		if (length > gba.size()) {
+			std::cerr << "Rom dump is too big";
+		}
+
+		stream.seekg(0, std::ios::beg);
+
+		if (!stream.read((char*)gba.data(), length))
+		{
+			throw std::string("Error reading bytes from file");
+		}
+		stream.close();
+	}
+
 	u32 allocateRam(u32 size) {
 		//TODO: is it an increasing or decreasing heap ?
 		ram_cursor += size;
@@ -78,7 +102,7 @@ public:
 		if (address >= 0x0040'0000 && address <= 0x2FFF'FFFF) return user_data[address - 0x0040'0000];
 		else if (address >= 0x5000'0000 && address <= 0x57FF'FFFF) return rom[address - 0x5000'0000];
 		else if (address >= 0x6000'0000 && address <= 0x7FFF'FFFF) return ram[address - 0x6000'0000];
-		else throw (std::string("read to unmapped memory:") + std::to_string(address));
+		else gba[address];
 	}
 
 	inline u16 read16(u32 address)
@@ -96,7 +120,7 @@ public:
 		if (address >= 0x0040'0000 && address <= 0x2FFF'FFFF) user_data[address - 0x0040'0000] = value;
 		else if (address >= 0x5000'0000 && address <= 0x57FF'FFFF) rom[address - 0x5000'0000] = value;
 		else if (address >= 0x6000'0000 && address <= 0x7FFF'FFFF) ram[address - 0x6000'0000] = value;
-		else throw (std::string("write to unmapped memory:") + std::to_string(address));
+		else gba[address];
 	}
 
 	inline void write16(u32 address, u16 value)

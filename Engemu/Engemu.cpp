@@ -31,25 +31,26 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 	Memory mem;
 	CPU cpu(mem);
 	
-	E32Image image;
-	E32ImageLoader::parse(app_path, image);
+	//E32Image image;
+	//E32ImageLoader::parse(app_path, image);
 
-	std::string file_name = extract_filename(app_path);
-	GuiMain* guimain = new GuiMain(&cpu, extract_filename(app_path));
+	//std::string file_name = extract_filename(app_path);
+	GuiMain* guimain = new GuiMain(&cpu, std::string("gba bios"));
 	//ImGuiContext* guimainContext = ImGui::GetCurrentContext();
 
 	//ImGuiContext* guiMemoryContext = ImGui::CreateContext(malloc, free);
 	//ImGui::SetCurrentContext(guiMemoryContext);
 	//GuiMemory* guiMemory = new GuiMemory(cpu.mem, std::string("Memory Editor"));
 
-	cpu.mem.loadRom(rom_path);
-	E32ImageLoader::load(image, file_name, cpu.mem, lib_folder_path);
+	cpu.mem.loadBios(rom_path);
+	//E32ImageLoader::load(image, file_name, cpu.mem, lib_folder_path);
 
 	//Load Symbols if exists
-	logger->info("Loading Symbols");
-	Symbols::load(symbols_folder_path);
+	//logger->info("Loading Symbols");
+	//Symbols::load(symbols_folder_path);
 
-	cpu.gprs[Regs::PC] = image.header->code_base_address + image.header->entry_point_offset; // 0x50392D54 <- entry of Euser.dll;
+	cpu.gprs[Regs::PC] = 0;
+	//cpu.gprs[Regs::PC] = image.header->code_base_address + image.header->entry_point_offset; // 0x50392D54 <- entry of Euser.dll;
 	//cpu.gprs[Regs::PC] = image.header->code_base_address + image.code_section.export_directory[0];
 	//cpu.gprs[Regs::PC] = 0x5063D444; //Main of AppRun
 	//cpu.cpsr.flag_T = true;
@@ -60,7 +61,7 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 
 
 	cpu.swi_callback = [&](u32 number) {logger->info("SWI {:x}", number); Kernel::Executive_Call(number, cpu, guimain); };
-	std::vector<u32> breakpoints = { 0x503aa384 };
+	std::vector<u32> breakpoints = { };
 
 
 	//emulation loop
