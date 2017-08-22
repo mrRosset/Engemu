@@ -60,7 +60,7 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 
 
 	cpu.swi_callback = [&](u32 number) {logger->info("SWI {:x}", number); Kernel::Executive_Call(number, cpu, guimain); };
-	std::vector<u32> breakpoints = { 0x503aa384 };
+	std::vector<u32> breakpoints = { };
 
 
 	//emulation loop
@@ -120,11 +120,11 @@ int main(int argc, char* argv[])
 	//setup logging system.
 	try
 	{
-		auto console = spdlog::stdout_color_st("console");
+		auto console = spdlog::basic_logger_st("console", "Engemu.log");
 		// set the log pattern to [HH:MM:SS.nano]
 		spdlog::set_pattern("[%T] [%l] %v");
 		console->info("Start of the emulator");
-
+		console->set_level(spdlog::level::debug);
 		
 		emulate(std::string(argv[1]), std::string(argv[2]), std::string(argv[3]), std::string(argv[4]));
 

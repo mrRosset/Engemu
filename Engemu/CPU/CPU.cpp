@@ -1,6 +1,8 @@
+#include <spdlog/spdlog.h>
 #include "CPU.h"
 #include "Utils.h"
 #include "Decoder/Decoder.h"
+#include "Disassembler/Disassembler.h"
 
 /*
 Code in this file is compiler-specific.
@@ -19,10 +21,13 @@ CPU::CPU(Memory& mem_) : mem(mem_), cpsr{}, spsr{}, gprs(cpsr), call_stack() {
 }
 
 void CPU::Step() {
+	auto logger = spdlog::get("console");
+
 	if (cpsr.flag_T) {
 		u16 instr = mem.read16(gprs.RealPC());
 		IR_Thumb ir;
 		Decoder::Decode(ir, instr);
+		logger->debug(Disassembler::Disassemble(ir));
 
 		//Find where and how pc is incremented
 		u32 old_pc = gprs.RealPC();
@@ -40,10 +45,10 @@ void CPU::Step() {
 		u32 instr = mem.read32(gprs.RealPC());
 		IR_ARM ir;
 		Decoder::Decode(ir, instr);
+		logger->debug("[T]" + Disassembler::Disassemble(ir));
+
 
 		//Find where and how pc is incremented
-		
-		//This is to simlate the 2 stage pipeline
 		u32 old_pc = gprs.RealPC();
 
 		if (Check_Condition(ir.cond)) {
