@@ -379,7 +379,7 @@ inline void CPU::Branch(IR_ARM& ir) {
 	case AInstructions::BX:
 		cpsr.flag_T = !!(gprs[ir.operand1] & 0b1);
 		gprs[Regs::PC] = gprs[ir.operand1] & 0xFFFFFFFE;
-		if ((ir.operand1 == Regs::LR || ir.operand1 == 12) && !call_stack.empty()) {
+		if ((ir.operand1 == Regs::LR /*|| ir.operand1 == 12*/) && !call_stack.empty()) {
 			call_stack.pop_back();
 		}
 		else if (!call_stack.empty()) {

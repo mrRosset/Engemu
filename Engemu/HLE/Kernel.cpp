@@ -20,7 +20,7 @@ void Kernel::Executive_Call(u32 number, CPU& cpu, GuiMain* gui) {
 	case 0x8E: User_LockedDec(cpu); break;
 	case 0x2A: RSemaphore_Wait(cpu); break;
 	case 0x53: TChar_GetCategory(cpu); break;
-	case 0x52: break;
+	case 0x52: TChar_GetUpperCase(cpu);  break;
 
 	case 0x8000C0: RProcess_CommandLineLength(cpu); break;
 

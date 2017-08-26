@@ -268,3 +268,7 @@ void Kernel::TChar_GetCategory(CPU& cpu) {
 	}
 
 }
+
+void Kernel::TChar_GetUpperCase(CPU & cpu) {
+	//TODO do something, actually return the uppercase value
+}
