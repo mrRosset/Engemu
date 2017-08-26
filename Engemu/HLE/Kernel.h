@@ -8,6 +8,7 @@ typedef u32 vir_add;
 
 namespace Kernel {
 	extern vir_add RHeap_ptr;
+	extern vir_add TrapHandler_ptr;
 	
 	void Executive_Call(u32 number, CPU& cpu, GuiMain* gui);
 
@@ -18,5 +19,5 @@ namespace Kernel {
 	void RProcess_CommandLineLength(CPU& cpu);
 	void TChar_GetCategory(CPU& cpu);
 	void TChar_GetUpperCase(CPU& cpu);
-
+	void User_SetTrapHandler(CPU& cpu);
 }
