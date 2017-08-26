@@ -6,6 +6,7 @@
 // If you are new to ImGui, see examples/README.txt and documentation at the top of imgui.cpp.
 // https://github.com/ocornut/imgui
 
+#include <map>
 #include "imgui.h"
 #include "imgui_impl_glfw_gl3.h"
 
@@ -28,7 +29,8 @@ static GLuint       g_FontTexture = 0;
 static int          g_ShaderHandle = 0, g_VertHandle = 0, g_FragHandle = 0;
 static int          g_AttribLocationTex = 0, g_AttribLocationProjMtx = 0;
 static int          g_AttribLocationPosition = 0, g_AttribLocationUV = 0, g_AttribLocationColor = 0;
-static unsigned int g_VboHandle = 0, g_VaoHandle = 0, g_ElementsHandle = 0;
+static unsigned int g_VboHandle = 0, g_ElementsHandle = 0;
+static std::map<ImGuiContext*, unsigned int> g_VaoHandles;
 
 // This is the main rendering function that you have to implement and provide to ImGui (via setting up 'RenderDrawListsFn' in the ImGuiIO structure)
 // If text or lines are blurry when integrating ImGui in your engine:
@@ -82,9 +84,32 @@ void ImGui_ImplGlfwGL3_RenderDrawLists(ImDrawData* draw_data)
         {-1.0f,                  1.0f,                   0.0f, 1.0f },
     };
     glUseProgram(g_ShaderHandle);
-    glUniform1i(g_AttribLocationTex, 0);
-    glUniformMatrix4fv(g_AttribLocationProjMtx, 1, GL_FALSE, &ortho_projection[0][0]);
-    glBindVertexArray(g_VaoHandle);
+	glUniform1i(g_AttribLocationTex, 0);
+	glUniformMatrix4fv(g_AttribLocationProjMtx, 1, GL_FALSE, &ortho_projection[0][0]);
+
+	ImGuiContext* imgui_ctx = ImGui::GetCurrentContext();
+	auto vao = g_VaoHandles.find(imgui_ctx);
+	if (vao == g_VaoHandles.end())
+	{
+		unsigned int new_vao;
+		glGenVertexArrays(1, &new_vao);
+		g_VaoHandles[imgui_ctx] = new_vao;
+		glBindVertexArray(new_vao);
+		glBindBuffer(GL_ARRAY_BUFFER, g_VboHandle);
+		glEnableVertexAttribArray(g_AttribLocationPosition);
+		glEnableVertexAttribArray(g_AttribLocationUV);
+		glEnableVertexAttribArray(g_AttribLocationColor);
+
+		#define OFFSETOF(TYPE, ELEMENT) ((size_t)&(((TYPE *)0)->ELEMENT))
+		glVertexAttribPointer(g_AttribLocationPosition, 2, GL_FLOAT, GL_FALSE, sizeof(ImDrawVert), (GLvoid*)OFFSETOF(ImDrawVert, pos));
+		glVertexAttribPointer(g_AttribLocationUV, 2, GL_FLOAT, GL_FALSE, sizeof(ImDrawVert), (GLvoid*)OFFSETOF(ImDrawVert, uv));
+		glVertexAttribPointer(g_AttribLocationColor, 4, GL_UNSIGNED_BYTE, GL_TRUE, sizeof(ImDrawVert), (GLvoid*)OFFSETOF(ImDrawVert, col));
+		#undef OFFSETOF
+	}
+	else
+	{
+		glBindVertexArray(vao->second);
+	}
 
     for (int n = 0; n < draw_data->CmdListsCount; n++)
     {
@@ -254,8 +279,6 @@ bool ImGui_ImplGlfwGL3_CreateDeviceObjects()
     glGenBuffers(1, &g_VboHandle);
     glGenBuffers(1, &g_ElementsHandle);
 
-    glGenVertexArrays(1, &g_VaoHandle);
-    glBindVertexArray(g_VaoHandle);
     glBindBuffer(GL_ARRAY_BUFFER, g_VboHandle);
     glEnableVertexAttribArray(g_AttribLocationPosition);
     glEnableVertexAttribArray(g_AttribLocationUV);
@@ -279,10 +302,15 @@ bool ImGui_ImplGlfwGL3_CreateDeviceObjects()
 
 void    ImGui_ImplGlfwGL3_InvalidateDeviceObjects()
 {
-    if (g_VaoHandle) glDeleteVertexArrays(1, &g_VaoHandle);
-    if (g_VboHandle) glDeleteBuffers(1, &g_VboHandle);
+	for (auto i : g_VaoHandles)
+	{
+		glDeleteVertexArrays(1, &i.second);
+	}
+	g_VaoHandles.clear();
+	
+	if (g_VboHandle) glDeleteBuffers(1, &g_VboHandle);
     if (g_ElementsHandle) glDeleteBuffers(1, &g_ElementsHandle);
-    g_VaoHandle = g_VboHandle = g_ElementsHandle = 0;
+	g_VboHandle = g_ElementsHandle = 0;
 
     if (g_ShaderHandle && g_VertHandle) glDetachShader(g_ShaderHandle, g_VertHandle);
     if (g_VertHandle) glDeleteShader(g_VertHandle);
