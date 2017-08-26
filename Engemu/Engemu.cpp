@@ -36,11 +36,11 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 
 	std::string file_name = extract_filename(app_path);
 	GuiMain* guimain = new GuiMain(&cpu, extract_filename(app_path));
-	//ImGuiContext* guimainContext = ImGui::GetCurrentContext();
+	ImGuiContext* guimainContext = ImGui::GetCurrentContext();
 
-	//ImGuiContext* guiMemoryContext = ImGui::CreateContext(malloc, free);
-	//ImGui::SetCurrentContext(guiMemoryContext);
-	//GuiMemory* guiMemory = new GuiMemory(cpu.mem, std::string("Memory Editor"));
+	ImGuiContext* guiMemoryContext = ImGui::CreateContext(malloc, free);
+	ImGui::SetCurrentContext(guiMemoryContext);
+	GuiMemory* guiMemory = new GuiMemory(cpu.mem, std::string("Memory Editor"));
 
 	cpu.mem.loadRom(rom_path);
 	E32ImageLoader::load(image, file_name, cpu.mem, lib_folder_path);
@@ -73,10 +73,10 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 	bool running = true;
 
 	while (running) {
-		//ImGui::SetCurrentContext(guimainContext);
+		ImGui::SetCurrentContext(guimainContext);
 		running = guimain->render();
-		//ImGui::SetCurrentContext(guiMemoryContext);
-		//running = guiMemory->render();
+		ImGui::SetCurrentContext(guiMemoryContext);
+		running = guiMemory->render();
 
 		//Breakpoints
 		if (std::find(breakpoints.begin(), breakpoints.end(), cpu.gprs.RealPC()) != breakpoints.end() && cpu.state == CPU::State::Running) {

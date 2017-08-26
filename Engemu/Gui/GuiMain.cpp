@@ -16,6 +16,8 @@ GuiMain::GuiMain(CPU* cpu_, std::string& additional_title) : Gui(additional_titl
 }
 
 bool GuiMain::render() {
+	glfwMakeContextCurrent(window);
+
 	if (!glfwWindowShouldClose(window))
 	{
 		glfwPollEvents();

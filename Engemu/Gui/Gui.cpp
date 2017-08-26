@@ -19,9 +19,8 @@ Gui::Gui(std::string& additional_title, int width, int height) {
 		if (!glfwInit()) {
 			exit(-1);
 		}
-
-		initialized = true;
 	}
+
 	// Setup window
 
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -35,11 +34,11 @@ Gui::Gui(std::string& additional_title, int width, int height) {
 
 	window = glfwCreateWindow(window_width, window_height, ("Engemu - " + additional_title).c_str(), NULL, NULL);
 	//center windows
-	const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+	/*const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 	int window_width, window_height;
 	glfwGetWindowSize(window, &window_width, &window_height);
 	glfwSetWindowPos(window, (mode->width - window_width)/2, (mode->height - window_height) / 2);
-
+	*/
 
 	/*//User pointer to get the instance of gui to access member variables and functions
 	glfwSetWindowUserPointer(window, this);
@@ -50,7 +49,12 @@ Gui::Gui(std::string& additional_title, int width, int height) {
 	glfwSetWindowSizeCallback(window, func);*/
 
 	glfwMakeContextCurrent(window);
-	gl3wInit();
+	
+	if (!initialized) {
+		gl3wInit();
+	}
+
+	initialized = true;
 
 	// Setup ImGui binding
 	ImGui_ImplGlfwGL3_Init(window, true);

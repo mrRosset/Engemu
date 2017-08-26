@@ -4,6 +4,8 @@
 GuiMemory::GuiMemory(Memory& mem_, std::string& additional_title) : mem(mem_), Gui(additional_title, 600, 600) {}
 
 bool GuiMemory::render() {
+	glfwMakeContextCurrent(window);
+
 	if (!glfwWindowShouldClose(window))
 	{
 		glfwPollEvents();

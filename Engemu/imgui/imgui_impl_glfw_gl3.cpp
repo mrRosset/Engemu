@@ -357,8 +357,8 @@ void ImGui_ImplGlfwGL3_NewFrame()
 {
     if (!g_FontTexture)
         ImGui_ImplGlfwGL3_CreateDeviceObjects();
-	//else 
-		//ImGui::GetIO().Fonts->TexID = (void *)(intptr_t)g_FontTexture;
+	else 
+		ImGui::GetIO().Fonts->TexID = (void *)(intptr_t)g_FontTexture;
 
     ImGuiIO& io = ImGui::GetIO();
 
