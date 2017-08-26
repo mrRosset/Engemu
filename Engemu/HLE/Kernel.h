@@ -18,4 +18,5 @@ namespace Kernel {
 	void RProcess_CommandLineLength(CPU& cpu);
 	void TChar_GetCategory(CPU& cpu);
 	void TChar_GetUpperCase(CPU& cpu);
+
 }
