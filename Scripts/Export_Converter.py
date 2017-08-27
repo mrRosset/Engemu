@@ -72,13 +72,13 @@ def demangle_arg(buf):
 			num = get_num(buf)
 			arg = buf.get(num)
 		else:
-			print("unknow letter for demangling", letter)
+			print("unknow letter for demangling", letter, file=sys.stderr)
 			sys.exit(-1)
 
 	if hasTemplate:
 		#Todo: understand what they represent
 		if buf.get(1) != "1":
-			print("unknow template format for demangling")
+			print("unknow template format for demangling", file=sys.stderr)
 			sys.exit(-1)
 		temp_l = buf.get(1)
 		if temp_l == 'Z':
@@ -86,7 +86,7 @@ def demangle_arg(buf):
 		elif temp_l == 'i':
 			template = str(get_num(buf))
 		else:
-			print("unknow template format for demangling")
+			print("unknow template format for demangling", file=sys.stderr)
 			sys.exit(-1)
 
 	if hasNamespace:
@@ -129,7 +129,7 @@ def demangle_args(mangled_args):
 			buf.get(1)
 			repetition_num = buf.get(1)
 			if repetition_num != '1' and repetition_num != '2' and repetition_num != '3':
-				print("Unkonw T repetition number:", repetition_num)
+				print("Unkonw T repetition number:", repetition_num, file=sys.stderr)
 				sys.exit(-1)
 			args.append(args[-1])
 
@@ -156,7 +156,7 @@ def demangle_name(mangled):
 	elif mangled[0] == '.':
 		#destructors
 		if mangled[1] != '_':
-			print("unknow desctructor format")
+			print("unknow desctructor format", file=sys.stderr)
 			sys.exit(-1)
 		const = ""
 		rest = mangled[2:len(mangled)]
@@ -216,7 +216,7 @@ with open(sys.argv[1]) as f:
 		#make sure it's in valid rom range
 		if address > "50000000" and address < "57FFFFFF":
 			if ordinal in exports:
-				print("an ordinal can not appears 2 time in the export list:", ordinal, "file:", sys.argv[2])
+				print("an ordinal can not appears 2 time in the export list:", ordinal, "file:", sys.argv[2], file=sys.stderr)
 				sys.exit(-1)
 			exports[ordinal] = address
 
@@ -228,7 +228,7 @@ with open(sys.argv[2]) as f:
 		if line != "" and line != " " and line[0] != ';':
 			ordinal, name = line.split(" Name=")
 			if ordinal in idt:
-				print("an ordinal can not appears 2 time in the id list:", ordinal, "file:", sys.argv[2])
+				print("an ordinal can not appears 2 time in the id list:", ordinal, "file:", sys.argv[2], file=sys.stderr)
 				sys.exit(-1)
 			idt[ordinal] = name
 
@@ -236,7 +236,7 @@ with open(sys.argv[2]) as f:
 #produce address: name
 for ordinal in exports:
 	if ordinal not in idt:
-		print(ordinal, "is not in both table", "file:", sys.argv[2])
+		print(ordinal, "is not in both table", "file:", sys.argv[2], file=sys.stderr)
 		sys.exit(-1)
 	address = exports[ordinal]
 	name = idt[ordinal]
