@@ -225,7 +225,7 @@ with open(sys.argv[1]) as f:
 with open(sys.argv[2]) as f:
 	for line in f:
 		line = line.rstrip()
-		if line != "" and line != " ":
+		if line != "" and line != " " and line[0] != ';':
 			ordinal, name = line.split(" Name=")
 			if ordinal in idt:
 				print("an ordinal can not appears 2 time in the id list:", ordinal, "file:", sys.argv[2])
@@ -241,7 +241,7 @@ for ordinal in exports:
 	address = exports[ordinal]
 	name = idt[ordinal]
 	# print(name)
-	print(address + ": " + name)
+	print(address + ": " + demangle_name(name))
 
 
 

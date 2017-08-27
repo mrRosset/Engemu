@@ -23,4 +23,4 @@ To generate a list that map the address of the rom function with the name of the
 
 If you want a mapping from Address <-> Demangled Function Name you need to activate the demangler: 
 
-* <TODO>
+* Replace line 244 from Export_Converter.py from `print(address + ": " + name)` to `print(address + ": " + demangle_name(name))`
