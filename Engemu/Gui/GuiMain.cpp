@@ -76,9 +76,9 @@ void GuiMain::render_cpu() {
 	render_registers();
 	ImGui::EndChild();
 
-	ImGui::BeginChild("Stack", ImVec2(200, 200), true);
+	/*ImGui::BeginChild("Stack", ImVec2(200, 200), true);
 	render_stack();
-	ImGui::EndChild();
+	ImGui::EndChild();*/
 
 	ImGui::EndGroup();
 
