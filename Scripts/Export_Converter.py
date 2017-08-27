@@ -241,7 +241,7 @@ for ordinal in exports:
 	address = exports[ordinal]
 	name = idt[ordinal]
 	# print(name)
-	print(address + ": " + demangle_name(name))
+	print(address + ": " + name)
 
 
 
