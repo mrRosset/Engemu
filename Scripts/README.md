@@ -1,7 +1,7 @@
 ## Requirements
 
-* Pyhton 3 installed
-* Ida ids folder with idt files in it (if it's in epoch6.zip form simply unzip if somewhere and look for the folder inside)
+* Python 3 installed
+* Ida ids folder with idt files in it (if it's in epoch6.zip form simply unzip if somewhere and look for the ARM folder inside)
 * an n-gage
 
 **Note:** The folder with ids can not be in Program Files, unless you run the scripts with admin priviliedges.
