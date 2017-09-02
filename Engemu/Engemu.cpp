@@ -17,6 +17,9 @@
 #include "imgui/imgui.h"
 #include "imgui/imgui_impl_glfw_gl3.h"
 
+#define CATCH_CONFIG_RUNNER
+#include <catch\catch.hpp>
+
 std::string extract_filename(const std::string& filepath)
 {
 	auto pos = filepath.rfind("\\");
@@ -112,10 +115,9 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 int main(int argc, char* argv[])
 {
 	if (argc < 5) {
-		std::cout << "Error missing E32Image or library folder path or rom file or symbols folder" << std::endl;
-		return -1;
+		int result = Catch::Session().run(argc, argv);
+		return (result < 0xff ? result : 0xff);
 	}
-
 
 	//setup logging system.
 	try
@@ -145,6 +147,7 @@ int main(int argc, char* argv[])
 		std::cout << "Uncaught exception:\n" << error_message << std::endl;
 		std::cin.get();
 	}
+
 
 
 
