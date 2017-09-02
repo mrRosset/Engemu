@@ -116,6 +116,7 @@ int main(int argc, char* argv[])
 {
 	if (argc < 5) {
 		int result = Catch::Session().run(argc, argv);
+		std::cin.get();
 		return (result < 0xff ? result : 0xff);
 	}
 
