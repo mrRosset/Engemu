@@ -29,6 +29,7 @@
     <ClCompile Include="Tests\CPU_Tests.cpp" />
     <ClCompile Include="Tests\Disassembler_ARM_Tests.cpp" />
     <ClCompile Include="Tests\Decoder_Tests.cpp" />
+    <ClCompile Include="Tests\Disassembler_Thumb_Tests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CPU\Decoder\Decoder.h" />
