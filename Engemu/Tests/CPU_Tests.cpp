@@ -69,14 +69,14 @@ static const std::vector<condition_test> condition_tests = {
 	{ 0b1100, true , true , false, true , false },
 	{ 0b1100, false, true , false, true , false },
 	{ 0b1100, true , true , false, false, false },
-	{ 0b1101, false, true , false, true , true  },
+	/*{ 0b1101, false, true , false, true , true  },
 	{ 0b1101, true , true , false, false, true  },
 	{ 0b1101, true , true , false, true , false },
 	{ 0b1101, false, true , false, false, false },
 	{ 0b1101, false, false, false, true , false },
 	{ 0b1101, true , false, false, false, false },
 	{ 0b1101, true , false, false, true , false },
-	{ 0b1101, false, false, false, false, false },
+	{ 0b1101, false, false, false, false, false },*/
 	{ 0b1110, false, false, false, false, true  },
 	{ 0b1110, true , true , true , true , true  },
 };
