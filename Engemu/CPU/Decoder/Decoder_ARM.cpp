@@ -10,8 +10,8 @@ void Decoder::Decode(IR_ARM & ir, u32 instr) {
 		throw std::string("undefined or unpredictable instrutions are not emulated");
 	}
 
-	unsigned bits28_25 = (instr >> 25) & 0b111;
-	switch (bits28_25) {
+	unsigned bits27_25 = (instr >> 25) & 0b111;
+	switch (bits27_25) {
 	case 0b000:  // Data processing + Miscellaneous
 	{
 		unsigned bit4 = (instr >> 4) & 0b1;
@@ -70,8 +70,12 @@ void Decoder::Decode(IR_ARM & ir, u32 instr) {
 		break;
 	}
 	case 0b010: Decode_Load_Store_W_UB(ir, instr); break; // Load / store immediate offset
-	case 0b011: Decode_Load_Store_W_UB(ir, instr); break; // Load / store register offset
+	
+	case 0b011: if (getBit(instr, 4) == 0) Decode_Load_Store_W_UB(ir, instr); 
+				else throw std::string("Undefined instruction");  break; // Load / store register offset
+	
 	case 0b100: Decode_Load_Store_Multiple(ir, instr); break; // Load/store multiple
+	
 	case 0b101: Decode_Branch(ir, instr); break; // Branch and branch with link
 	case 0b110: throw std::string("Unimplemented opcode"); break; // Coprocessor load/store and double register transfers[<- does it exist without the DSP extension ?
 	case 0b111: if (getBit(instr, 24) == 1) Decode_Exception_Generating(ir, instr);
