@@ -8,7 +8,7 @@ public:
 	std::vector<u8> ram;
 	u32 ram_cursor;
 
-	class TestMemory() : ram(0x1000'0000) {
+	class TestMemory() : ram(0x1000) {
 		ram_cursor = 0;
 	}
 
