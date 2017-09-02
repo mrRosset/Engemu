@@ -1,7 +1,7 @@
 ## Requirements
 
-* Pyhton 3 installed
-* Ida ids folder with idt files in it (if it's in epoch6.zip form simply unzip if somewhere and look for the folder inside)
+* Python 3 installed
+* Ida ids folder with idt files in it (if it's in epoch6.zip form simply unzip if somewhere and look for the ARM folder inside)
 * an n-gage
 
 **Note:** The folder with ids can not be in Program Files, unless you run the scripts with admin priviliedges.
@@ -10,7 +10,7 @@
 
 To generate a list that map the address of the rom function with the name of the function:
 
-1. Have 3 Folder ready:
+1. Have 4 folders ready:
 	* A folder with a copy of all the files from the Z:\System\Libs on an n-gage  
   	* A folder with a copy of all idt files found from ida ids.
   	* A temporary folder
