@@ -5,7 +5,7 @@
 #include "Utils.h"
 #include "../TRomImage.h"
 
-void TRomImageLoader::load(TRomImage& image, Memory& mem, std::string& lib_folder_path) {
+void TRomImageLoader::load(TRomImage& image, GageMemory& mem, std::string& lib_folder_path) {
 	//What is there to do here ?
 }
 

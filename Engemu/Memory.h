@@ -31,8 +31,37 @@ From THC
 +----------------------------+------------------------------------------------+
 */
 
-
 class Memory {
+public:
+	inline virtual u8 read8(u32 address) = 0;
+	inline virtual void write8(u32 address, u8 value) = 0;
+	inline virtual u32 allocateRam(u32 size) = 0;
+
+	inline u16 read16(u32 address)
+	{
+		return (read8(address + 1) << 8) | read8(address);
+	}
+
+	inline u32 read32(u32 address)
+	{
+		return (read16(address + 2) << 16) | read16(address);
+	}
+
+	inline void write16(u32 address, u16 value)
+	{
+		write8(address + 1, value >> 8);
+		write8(address, value & 0xFF);
+	}
+
+	inline void write32(u32 address, u32 value)
+	{
+		write16(address + 2, value >> 16);
+		write16(address, value & 0xFFFF);
+	}
+
+};
+
+class GageMemory : public Memory {
 public:
 
 	std::vector<u8> user_data;
@@ -40,8 +69,28 @@ public:
 	std::vector<u8> ram;
 	u32 ram_cursor;
 
-	Memory() : user_data(0x2FFF'FFFF - 0x0040'0000), rom(0x57FF'FFFF - 0x5000'0000), ram(0x7FFF'FFFF - 0x6000'0000) {
+	GageMemory() : user_data(0x2FFF'FFFF - 0x0040'0000), rom(0x57FF'FFFF - 0x5000'0000), ram(0x7FFF'FFFF - 0x6000'0000) {
 		ram_cursor = 15'0000;
+	}
+
+	inline u8 read8(u32 address) override {
+		if (address >= 0x0040'0000 && address <= 0x2FFF'FFFF) return user_data[address - 0x0040'0000];
+		else if (address >= 0x5000'0000 && address <= 0x57FF'FFFF) return rom[address - 0x5000'0000];
+		else if (address >= 0x6000'0000 && address <= 0x7FFF'FFFF) return ram[address - 0x6000'0000];
+		else throw (std::string("read to unmapped memory:") + std::to_string(address));
+	}
+
+	inline void write8(u32 address, u8 value) override {
+		if (address >= 0x0040'0000 && address <= 0x2FFF'FFFF) user_data[address - 0x0040'0000] = value;
+		else if (address >= 0x5000'0000 && address <= 0x57FF'FFFF) rom[address - 0x5000'0000] = value;
+		else if (address >= 0x6000'0000 && address <= 0x7FFF'FFFF) ram[address - 0x6000'0000] = value;
+		else throw (std::string("write to unmapped memory:") + std::to_string(address));
+	}
+
+	u32 allocateRam(u32 size) override {
+		//TODO: is it an increasing or decreasing heap ?
+		ram_cursor += size;
+		return 0x6000'0000 + ram_cursor;
 	}
 
 	void loadRom(std::string& rom_path) {
@@ -67,48 +116,5 @@ public:
 		stream.close();
 	}
 
-	u32 allocateRam(u32 size) {
-		//TODO: is it an increasing or decreasing heap ?
-		ram_cursor += size;
-		return 0x6000'0000 + ram_cursor;
-	}
-
-	inline u8 read8(u32 address)
-	{
-		if (address >= 0x0040'0000 && address <= 0x2FFF'FFFF) return user_data[address - 0x0040'0000];
-		else if (address >= 0x5000'0000 && address <= 0x57FF'FFFF) return rom[address - 0x5000'0000];
-		else if (address >= 0x6000'0000 && address <= 0x7FFF'FFFF) return ram[address - 0x6000'0000];
-		else throw (std::string("read to unmapped memory:") + std::to_string(address));
-	}
-
-	inline u16 read16(u32 address)
-	{
-		return (read8(address + 1) << 8) | read8(address);
-	}
-
-	inline u32 read32(u32 address)
-	{
-		return (read16(address + 2) << 16) | read16(address);
-	}
-
-	inline void write8(u32 address, u8 value)
-	{
-		if (address >= 0x0040'0000 && address <= 0x2FFF'FFFF) user_data[address - 0x0040'0000] = value;
-		else if (address >= 0x5000'0000 && address <= 0x57FF'FFFF) rom[address - 0x5000'0000] = value;
-		else if (address >= 0x6000'0000 && address <= 0x7FFF'FFFF) ram[address - 0x6000'0000] = value;
-		else throw (std::string("write to unmapped memory:") + std::to_string(address));
-	}
-
-	inline void write16(u32 address, u16 value)
-	{
-		write8(address + 1, value >> 8);
-		write8(address, value & 0xFF);
-	}
-
-	inline void write32(u32 address, u32 value)
-	{
-		write16(address + 2, value >> 16);
-		write16(address, value & 0xFFFF);
-	}
 
 };

@@ -1,7 +1,7 @@
 #include "GuiMemory.h"
 #include "../Memory.h"
 
-GuiMemory::GuiMemory(Memory& mem_, std::string& additional_title) : mem(mem_), Gui(additional_title, 600, 600) {}
+GuiMemory::GuiMemory(GageMemory& mem_, std::string& additional_title) : mem(mem_), Gui(additional_title, 600, 600) {}
 
 bool GuiMemory::render() {
 	if (!glfwWindowShouldClose(window))

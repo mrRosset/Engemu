@@ -31,7 +31,7 @@ std::string extract_filename(const std::string& filepath)
 void emulate(std::string& app_path, std::string& lib_folder_path, std::string& rom_path, std::string& symbols_folder_path) {
 	auto logger = spdlog::get("console");
 	
-	Memory mem;
+	GageMemory mem;
 	CPU cpu(mem);
 	
 	E32Image image;
@@ -45,8 +45,8 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 	//ImGui::SetCurrentContext(guiMemoryContext);
 	//GuiMemory* guiMemory = new GuiMemory(cpu.mem, std::string("Memory Editor"));
 
-	cpu.mem.loadRom(rom_path);
-	E32ImageLoader::load(image, file_name, cpu.mem, lib_folder_path);
+	mem.loadRom(rom_path);
+	E32ImageLoader::load(image, file_name, mem, lib_folder_path);
 
 	//Load Symbols if exists
 	logger->info("Loading Symbols");

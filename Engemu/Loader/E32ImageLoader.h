@@ -3,12 +3,12 @@
 #include <string>
 
 struct E32Image;
-class Memory;
+class GageMemory;
 class GuiMain;
 
 namespace E32ImageLoader
 {
-	void load(E32Image& image, std::string& file_name, Memory& mem, std::string& lib_folder_path);
+	void load(E32Image& image, std::string& file_name, GageMemory& mem, std::string& lib_folder_path);
 	bool parse(std::string& path, E32Image& image);
 	void parseHeader(E32Image& image);
 	void parseIAT(E32Image& image);

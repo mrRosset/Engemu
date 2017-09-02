@@ -26,6 +26,7 @@
     <ClCompile Include="Symbols\SymbolsManager.cpp" />
     <ClCompile Include="Gui\GuiMemory.cpp" />
     <ClCompile Include="HLE\TChar.cpp" />
+    <ClCompile Include="Tests\CPU_Tests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CPU\Decoder\Decoder.h" />
@@ -56,5 +57,6 @@
     <ClInclude Include="CPU\Registers.h" />
     <ClInclude Include="Gui\GuiMemory.h" />
     <ClInclude Include="Memory.h" />
+    <ClInclude Include="Tests\TestMemory.h" />
   </ItemGroup>
 </Project>
