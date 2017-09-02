@@ -102,3 +102,7 @@ TEST_CASE("Disassemble SWI", "[Disassembler][ARM]") {
 	REQUIRE(Disassemble(0xEF5CB35C) == "swi #6075228");
 	REQUIRE(Disassemble(0xEF00006C) == "swi #108");
 }
+
+TEST_CASE("Disassemble Unknow instructions", "[Disassember][ARM]") {
+	REQUIRE_THROWS(Disassemble(0xe63dbf59));
+}
