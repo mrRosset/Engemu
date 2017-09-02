@@ -232,6 +232,8 @@
     <ClCompile Include="Loader\Utils.cpp" />
     <ClCompile Include="Symbols\SymbolsManager.cpp" />
     <ClCompile Include="Tests\CPU_Tests.cpp" />
+    <ClCompile Include="Tests\Decoder_Tests.cpp" />
+    <ClCompile Include="Tests\Disassembler_ARM_Tests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h" />

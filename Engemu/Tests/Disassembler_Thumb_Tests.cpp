@@ -1,10 +1,10 @@
 #include <iostream>
 #include "../Common.h"
-#include "../Decoder/Decoder.h"
-#include "../Disassembler/Disassembler.h"
-#include "../Utils.h"
+#include "../CPU/Decoder/Decoder.h"
+#include "../CPU/Disassembler/Disassembler.h"
+#include "../CPU/Utils.h"
 
-#include "../catch/catch.hpp"
+#include <catch/catch.hpp>
 
 
 std::string Disassemble(u16 instr) {
