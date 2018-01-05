@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <intrin.h>  
 #include "../Common.h"
 #include "CPU.h"
 
