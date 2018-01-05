@@ -87,17 +87,28 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 		}
 
 
-		switch (cpu.state) {
+		try {
+			switch (cpu.state) {
 
-		case CPU::State::Step:
-			cpu.Step();
-			cpu.state = CPU::State::Stopped;
-			break;
+			case CPU::State::Step:
+				cpu.Step();
+				cpu.state = CPU::State::Stopped;
+				break;
 
-		case CPU::State::Running:
-			cpu.Step();
-			break;
+			case CPU::State::Running:
+				cpu.Step();
+				break;
+			}
 		}
+		catch (std::string& error_message) {
+			std::cout << "Uncaught exception:\n" << error_message << std::endl;
+			cpu.state = CPU::State::Stopped;
+		}
+		catch (const char* error_message) {
+			std::cout << "Uncaught exception:\n" << error_message << std::endl;
+			cpu.state = CPU::State::Stopped;
+		}
+
 
 		next_game_tick += SKIP_TICKS;
 
