@@ -339,7 +339,7 @@ TEST_CASE("try every r3 adc test case", "[ARM]") {
 		//MOV     R3, R5
 		//MOV     R4, #0xC8
 		//ADC     R0, R1, R2,LSL R3
-		std::vector<u8> test_code = { 0x01, 0x00, 0xA0, 0xE3, 0x63, 0x10, 0xA0, 0xE3, 0x08, 0x20, 0xA0, 0xE3, 0x05, 0x30, 0xA0, 0xE1, 0xC8, 0x40, 0xA0, 0xE3, 0x12, 0x03, 0xA1, 0xE0 };
+		std::vector<u8> test_code =  { 0x01, 0x00, 0xA0, 0xE3, 0x63, 0x10, 0xA0, 0xE3, 0x08, 0x20, 0xA0, 0xE3, 0x05, 0x30, 0xA0, 0xE1, 0xC8, 0x40, 0xA0, 0xE3, 0x12, 0x03, 0xA1, 0xE0 };
 		mem.ram = test_code;
 
 		cpu.gprs[5] = test.input;
@@ -350,5 +350,45 @@ TEST_CASE("try every r3 adc test case", "[ARM]") {
 
 		REQUIRE(cpu.gprs[0] == test.output);
 	}
+
+}
+
+TEST_CASE("CPU test 1 100", "[ARM]") {
+	TestMemory mem;
+	CPU cpu(mem);
+	std::vector<u8> test_code = {
+		#include "cpu_test1_100.inc"
+	};
+	mem.ram = test_code;
+
+	for (int i = 0; i < test_code.size() / 4; i++) {
+		cpu.Step();
+	}
+
+	REQUIRE(cpu.gprs[0] == 0x1C);
+	REQUIRE(cpu.gprs[1] == 0);
+	REQUIRE(cpu.gprs[2] == 0);
+	REQUIRE(cpu.gprs[3] == 0);
+	REQUIRE(cpu.gprs[4] == 0);
+}
+
+
+TEST_CASE("CPU test 1 350", "[ARM]") {
+	TestMemory mem;
+	CPU cpu(mem);
+	std::vector<u8> test_code = {
+		#include "cpu_test1_350.inc"
+	};
+	mem.ram = test_code;
+
+	for (int i = 0; i < test_code.size() / 4; i++) {
+		cpu.Step();
+	}
+
+	REQUIRE(cpu.gprs[0] == 0x1);
+	REQUIRE(cpu.gprs[1] == 0x10000016);
+	REQUIRE(cpu.gprs[2] == 0x11);
+	REQUIRE(cpu.gprs[3] == 0x3);
+	REQUIRE(cpu.gprs[4] == 0x18);
 
 }

@@ -64,5 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Tests\simple_adc_tests.inc" />
+    <None Include="Tests\cpu_test1_100.inc" />
+    <None Include="Tests\cpu_test1_350.inc" />
   </ItemGroup>
 </Project>
