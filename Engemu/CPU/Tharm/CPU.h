@@ -4,6 +4,7 @@
 #include <vector>
 #include "../../Common.h"
 #include "../../Memory.h"
+#include "../CPU_Interface.h"
 #include "Registers.h"
 
 
@@ -13,7 +14,7 @@ struct IR_Thumb;
 struct Shifter_op;
 enum class Conditions : u8;
 
-class CPU {
+class CPU : public CPU_Interface {
 public:
 
 	enum class State { Stopped, Running, Step };
@@ -26,7 +27,15 @@ public:
 	State state;
 
 	CPU(Memory& mem);
-	void Step();
+
+	void Step() override;
+	u32 GetPC() override;
+	void SetPC(u32 addr) override;
+	u32 GetReg(int index) override;
+	void SetReg(int index, u32 value) override;
+	u32 GetCPSR() override;
+	void SetCPSR(u32 cpsr) override;
+
 	bool Check_Condition(Conditions& cond);
 
 	//ARM

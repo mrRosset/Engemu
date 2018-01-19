@@ -61,6 +61,7 @@
     <ClInclude Include="CPU\Tharm\Decoder\Decoder.h" />
     <ClInclude Include="CPU\Tharm\Disassembler\Disassembler.h" />
     <ClInclude Include="CPU\Tharm\Decoder\IR.h" />
+    <ClInclude Include="CPU\CPU_Interface.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Tests\simple_adc_tests.inc" />

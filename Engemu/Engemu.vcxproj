@@ -238,6 +238,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h" />
+    <ClInclude Include="CPU\CPU_Interface.h" />
     <ClInclude Include="CPU\Tharm\CPU.h" />
     <ClInclude Include="CPU\Tharm\Decoder\Decoder.h" />
     <ClInclude Include="CPU\Tharm\Decoder\IR.h" />

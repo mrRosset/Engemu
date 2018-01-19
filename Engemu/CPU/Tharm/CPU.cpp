@@ -61,6 +61,30 @@ void CPU::Step() {
 	// interrupts and prefetch aborts exist whether or not conditions are met 
 }
 
+u32 CPU::GetPC() {
+	return gprs.RealPC();
+}
+
+void CPU::SetPC(u32 addr) {
+	gprs.RealPC() = addr;
+}
+
+u32 CPU::GetReg(int index) {
+	return gprs[index];
+}
+
+void CPU::SetReg(int index, u32 value) {
+	gprs[index] = value;
+}
+
+u32 CPU::GetCPSR() {
+	return PSR_to_u32(cpsr);
+}
+
+void CPU::SetCPSR(u32 value) {
+	u32_to_PSR(value, cpsr);
+}
+
 bool CPU::Check_Condition(Conditions& cond) {
 	switch (cond) {
 	case Conditions::EQ: return cpsr.flag_Z;
