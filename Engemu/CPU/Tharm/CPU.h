@@ -70,6 +70,5 @@ public:
 	std::function<bool(u32)> fun_r_C = [&](u32 r)->bool {return cpsr.flag_C; };
 	std::function<bool(u32)> fun_r_V = [&](u32 r)->bool {return cpsr.flag_V; };
 
-	//Call stack
-	std::vector<std::string> call_stack;
+
 };

@@ -331,7 +331,6 @@ void GuiMain::render_stack() {
 }
 
 void GuiMain::render_call_stack() {
-	/*
 	ImGuiListClipper clipper(cpu->call_stack.size(), ImGui::GetTextLineHeight()); // Bytes are grouped by four (the alignment for instructions
 
 	ImGui::Columns(2, "Call Stack");
@@ -356,5 +355,4 @@ void GuiMain::render_call_stack() {
 	//ImGui::NextColumn();
 
 	clipper.End();
-	*/
 }
