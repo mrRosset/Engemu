@@ -34,7 +34,7 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 	auto logger = spdlog::get("console");
 	
 	GageMemory mem;
-	CPU_Interface& cpu = CPU(mem);
+	CPU_Interface& cpu = CPUnicorn(mem);
 
 	E32Image image;
 	E32ImageLoader::parse(app_path, image);
