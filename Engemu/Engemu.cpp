@@ -4,9 +4,10 @@
 #include <experimental/filesystem>
 #include <spdlog/spdlog.h>
 #include "Common.h"
-#include "CPU/Tharm/CPU.h"
 #include "E32Image.h"
 #include "Loader/E32ImageLoader.h"
+#include "CPU/CPU_Interface.h"
+#include "CPU/Tharm/CPU.h"
 #include "CPU/Tharm/Decoder/Decoder.h"
 #include "CPU/Tharm/Disassembler/Disassembler.h"
 #include "Gui/Gui.h"
@@ -32,8 +33,8 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 	auto logger = spdlog::get("console");
 	
 	GageMemory mem;
-	CPU cpu(mem);
-	
+	CPU_Interface& cpu = CPU(mem);
+
 	E32Image image;
 	E32ImageLoader::parse(app_path, image);
 
@@ -52,19 +53,17 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 	logger->info("Loading Symbols");
 	Symbols::load(symbols_folder_path);
 
-	cpu.gprs[Regs::PC] = image.header->code_base_address + image.header->entry_point_offset; // 0x50392D54 <- entry of Euser.dll;
+	cpu.SetPC(image.header->code_base_address + image.header->entry_point_offset); // 0x50392D54 <- entry of Euser.dll;
 	//cpu.gprs[Regs::PC] = image.header->code_base_address + image.code_section.export_directory[0];
 	//cpu.gprs[Regs::PC] = 0x5063D444; //Main of AppRun
 	//cpu.cpsr.flag_T = true;
 	
 	//TODO: find the correct place where the SP is initialized
 	//cpu.gprs[Regs::SP] = 0x7FFF'FFFF; //start of the ram section
-	cpu.gprs[Regs::SP] = 0x7FFFFFFC; //start of the ram section aligned with last 2 bit 0
-
+	cpu.SetReg(Regs::SP, 0x7FFFFFFC); //start of the ram section aligned with last 2 bit 0
 
 	cpu.swi_callback = [&](u32 number) {logger->info("SWI {:x}", number); Kernel::Executive_Call(number, cpu, guimain); };
 	std::vector<u32> breakpoints = { /*0x503aa384*/ };
-
 
 	//emulation loop
 
@@ -82,31 +81,31 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 		//running = guiMemory->render();
 
 		//Breakpoints
-		if (std::find(breakpoints.begin(), breakpoints.end(), cpu.gprs.RealPC()) != breakpoints.end() && cpu.state == CPU::State::Running) {
-			cpu.state = CPU::State::Stopped;
+		if (std::find(breakpoints.begin(), breakpoints.end(), cpu.GetPC()) != breakpoints.end() && cpu.state == CPUState::Running) {
+			cpu.state = CPUState::Stopped;
 		}
 
 
 		try {
 			switch (cpu.state) {
 
-			case CPU::State::Step:
+			case CPUState::Step:
 				cpu.Step();
-				cpu.state = CPU::State::Stopped;
+				cpu.state = CPUState::Stopped;
 				break;
 
-			case CPU::State::Running:
+			case CPUState::Running:
 				cpu.Step();
 				break;
 			}
 		}
 		catch (std::string& error_message) {
 			std::cout << "Uncaught exception:\n" << error_message << std::endl;
-			cpu.state = CPU::State::Stopped;
+			cpu.state = CPUState::Stopped;
 		}
 		catch (const char* error_message) {
 			std::cout << "Uncaught exception:\n" << error_message << std::endl;
-			cpu.state = CPU::State::Stopped;
+			cpu.state = CPUState::Stopped;
 		}
 
 

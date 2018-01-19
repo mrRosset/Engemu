@@ -3,7 +3,7 @@
 #include "Gui.h"
 #include "../Common.h"
 
-class CPU;
+class CPU_Interface;
 
 class GuiMain : public Gui
 {
@@ -19,7 +19,7 @@ private:
 	void render_call_stack();
 
 public:
-	CPU* cpu;
-	GuiMain(CPU* cpu, std::string& additional_title);
+	CPU_Interface* cpu;
+	GuiMain(CPU_Interface* cpu, std::string& additional_title);
 	bool render();
 };

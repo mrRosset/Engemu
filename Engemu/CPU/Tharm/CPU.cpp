@@ -9,7 +9,7 @@ In VC++ it's arithmetic. https://msdn.microsoft.com/en-us/library/336xbhcz.aspx
 Not tested in any other compiler,
 */
 
-CPU::CPU(Memory& mem_) : mem(mem_), cpsr{}, spsr{}, gprs(cpsr), call_stack() {
+CPU::CPU(Memory& mem_) : cpsr{}, spsr{}, gprs(cpsr), call_stack(), CPU_Interface(mem_) {
 	//TODO: Seriously think about initialization values
 	cpsr.flag_N = cpsr.flag_Z = cpsr.flag_C = cpsr.flag_V = cpsr.flag_inter_I = cpsr.flag_inter_F = cpsr.flag_T = false;
 	cpsr.reserved = 0;
@@ -17,7 +17,7 @@ CPU::CPU(Memory& mem_) : mem(mem_), cpsr{}, spsr{}, gprs(cpsr), call_stack() {
 	cpsr.flag_inter_I = true;
 	cpsr.flag_inter_F = true;
 	
-	state = State::Stopped;
+	state = CPUState::Stopped;
 }
 
 void CPU::Step() {
@@ -77,12 +77,8 @@ void CPU::SetReg(int index, u32 value) {
 	gprs[index] = value;
 }
 
-u32 CPU::GetCPSR() {
-	return PSR_to_u32(cpsr);
-}
-
-void CPU::SetCPSR(u32 value) {
-	u32_to_PSR(value, cpsr);
+PSR& CPU::GetCPSR() {
+	return cpsr;
 }
 
 bool CPU::Check_Condition(Conditions& cond) {

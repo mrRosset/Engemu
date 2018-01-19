@@ -13,7 +13,7 @@ namespace Kernel {
 	vir_add TrapHandler_ptr = 0;
 }
 
-void Kernel::Executive_Call(u32 number, CPU& cpu, GuiMain* gui) {
+void Kernel::Executive_Call(u32 number, CPU_Interface& cpu, GuiMain* gui) {
 
 	switch (number) {
 	case 0x6C: User_Heap(cpu, gui); break;
@@ -33,9 +33,9 @@ void Kernel::Executive_Call(u32 number, CPU& cpu, GuiMain* gui) {
 
 }
 
-void Kernel::User_Heap(CPU& cpu, GuiMain* gui) {
+void Kernel::User_Heap(CPU_Interface& cpu, GuiMain* gui) {
 	if (RHeap_ptr) {
-		cpu.gprs[0] = RHeap_ptr;
+		cpu.SetReg(0, RHeap_ptr);
 		return;
 	}
 	
@@ -48,7 +48,7 @@ void Kernel::User_Heap(CPU& cpu, GuiMain* gui) {
 
 	ker_cpu.gprs[Regs::PC] = 0x503B0DAC; //TODO: not hardcode this.
 	ker_cpu.gprs[Regs::LR] = 0;
-	ker_cpu.gprs[Regs::SP] = cpu.gprs[Regs::SP];
+	ker_cpu.gprs[Regs::SP] = cpu.GetReg(Regs::SP);
 	
 	ker_cpu.call_stack.push_back("0x503B0DAC");
 
@@ -63,7 +63,7 @@ void Kernel::User_Heap(CPU& cpu, GuiMain* gui) {
 	gui->cpu = &cpu;
 
 	//get the return value
-	cpu.gprs[0] = ker_cpu.gprs[0];
+	cpu.SetReg(0, ker_cpu.gprs[0]);
 
 	/*
 	//save all registers
@@ -96,21 +96,21 @@ void Kernel::User_Heap(CPU& cpu, GuiMain* gui) {
 	gui->render();*/
 }
 
-void Kernel::User_LockedDec(CPU& cpu) {
+void Kernel::User_LockedDec(CPU_Interface& cpu) {
 	//TODO: Change if multithreading is implemented
-	u32 value = cpu.mem.read32(cpu.gprs[0]);
-	cpu.mem.write32(cpu.gprs[0], value - 1);
-	cpu.gprs[0] = value;
+	u32 value = cpu.mem.read32(cpu.GetReg(0));
+	cpu.mem.write32(cpu.GetReg(0), value - 1);
+	cpu.SetReg(0, value);
 }
 
-void Kernel::User_LockedInc(CPU& cpu) {
+void Kernel::User_LockedInc(CPU_Interface& cpu) {
 	//TODO: Change if multithreading is implemented
-	u32 value = cpu.mem.read32(cpu.gprs[0]);
-	cpu.mem.write32(cpu.gprs[0], value + 1);
-	cpu.gprs[0] = value;
+	u32 value = cpu.mem.read32(cpu.GetReg(0));
+	cpu.mem.write32(cpu.GetReg(0), value + 1);
+	cpu.SetReg(0, value);
 }
 
-void Kernel::RSemaphore_Wait(CPU& cpu) {
+void Kernel::RSemaphore_Wait(CPU_Interface& cpu) {
 	//TODO: emulate properely Semaphore
 	/*
 	Problem is that for semaphore inside the rom, I don't know how, when, where
@@ -118,12 +118,12 @@ void Kernel::RSemaphore_Wait(CPU& cpu) {
 	*/
 }
 
-void Kernel::RProcess_CommandLineLength(CPU& cpu) {
-	cpu.gprs[0] = 43;
+void Kernel::RProcess_CommandLineLength(CPU_Interface& cpu) {
+	cpu.SetReg(0, 43);
 }
 
-void Kernel::User_SetTrapHandler(CPU& cpu) {
+void Kernel::User_SetTrapHandler(CPU_Interface& cpu) {
 	vir_add oldHandler = TrapHandler_ptr;
-	TrapHandler_ptr = cpu.gprs[0];
-	cpu.gprs[0] = oldHandler;
+	TrapHandler_ptr = cpu.GetReg(0);
+	cpu.SetReg(0, oldHandler);
 }

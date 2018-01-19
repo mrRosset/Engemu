@@ -17,14 +17,9 @@ enum class Conditions : u8;
 class CPU : public CPU_Interface {
 public:
 
-	enum class State { Stopped, Running, Step };
-	
 	PSR cpsr;
 	PSR spsr;
-	Memory& mem;
 	Registers gprs;
-
-	State state;
 
 	CPU(Memory& mem);
 
@@ -33,9 +28,8 @@ public:
 	void SetPC(u32 addr) override;
 	u32 GetReg(int index) override;
 	void SetReg(int index, u32 value) override;
-	u32 GetCPSR() override;
-	void SetCPSR(u32 cpsr) override;
-
+	PSR& GetCPSR() override;
+	
 	bool Check_Condition(Conditions& cond);
 
 	//ARM
@@ -78,7 +72,4 @@ public:
 
 	//Call stack
 	std::vector<std::string> call_stack;
-
-	//Callbacks
-	std::function<void(u32 number)> swi_callback = nullptr;
 };

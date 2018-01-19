@@ -3,7 +3,7 @@
 #include "GuiMain.h"
 
 #include "MemoryEditor.h"
-#include "../CPU/Tharm/CPU.h"
+#include "../CPU/CPU_Interface.h"
 #include "../CPU/Tharm/Decoder/Decoder.h"
 #include "../CPU/Tharm/Disassembler/Disassembler.h"
 #include "../CPU/Tharm/Decoder/IR.h"
@@ -11,7 +11,7 @@
 #include "../Symbols/SymbolsManager.h"
 
 
-GuiMain::GuiMain(CPU* cpu_, std::string& additional_title) : Gui(additional_title, 815, 920) {
+GuiMain::GuiMain(CPU_Interface* cpu_, std::string& additional_title) : Gui(additional_title, 815, 920) {
 	cpu = cpu_;
 }
 
@@ -53,7 +53,7 @@ bool GuiMain::render() {
 }
 
 void GuiMain::render_cpu() {
-	bool thumb = cpu->cpsr.flag_T;
+	bool thumb = cpu->GetCPSR().flag_T;
 	u8 instruction_bytes = thumb ? 2 : 4;
 
 	ImGui::BeginChild("MemoryNav", ImVec2(800, 50), false);
@@ -107,7 +107,7 @@ void GuiMain::render_memoryNav() {
 	draw_list->AddLine(ImVec2(p.x + 275, p.y + 10), ImVec2(p.x + 275, p.y + 24), col, 1);
 	draw_list->AddText(ImVec2(p.x + 252, p.y - 3), ImColor(255, 255, 255, 255), "Rom");
 
-	float cursor_x = p.x + u64(cpu->gprs.RealPC()) / float(0xFFFF'FFFF) * 800.0f;
+	float cursor_x = p.x + u64(cpu->GetPC()) / float(0xFFFF'FFFF) * 800.0f;
 	float cursor_y = p.y + 19;
 	draw_list->AddTriangleFilled(ImVec2(cursor_x, cursor_y), ImVec2(cursor_x - 4, cursor_y + 7), ImVec2(cursor_x + 4, cursor_y + 7), ImColor(255, 255, 255, 255));
 }
@@ -115,21 +115,21 @@ void GuiMain::render_memoryNav() {
 bool GuiMain::render_controls() {
 	if (ImGui::Button("Run"))
 	{
-		cpu->state = CPU::State::Running;
+		cpu->state = CPUState::Running;
 	}
 
 	ImGui::SameLine();
 
 	if (ImGui::Button("Pause"))
 	{
-		cpu->state = CPU::State::Stopped;
+		cpu->state = CPUState::Stopped;
 	}
 
 	ImGui::SameLine();
 
 	if (ImGui::Button("Step"))
 	{
-		cpu->state = CPU::State::Step;
+		cpu->state = CPUState::Step;
 	}
 
 	ImGui::SameLine();
@@ -155,7 +155,7 @@ bool GuiMain::render_controls() {
 }
 
 void GuiMain::render_disassembly(bool scroll_to_pc) {
-	bool thumb = cpu->cpsr.flag_T;
+	bool thumb = cpu->GetCPSR().flag_T;
 	u8 instruction_bytes = thumb ? 2 : 4;
 
 	ImGui::Columns(4, "Disassembly");
@@ -169,7 +169,7 @@ void GuiMain::render_disassembly(bool scroll_to_pc) {
 	ImGui::Separator();
 
 	u32 number_instructions_displayed = 0x2000;
-	u32 offset = (s32(cpu->gprs.RealPC()) - s32(number_instructions_displayed / 2)) < 0 ? 0 : cpu->gprs.RealPC() - (number_instructions_displayed / 2);
+	u32 offset = (s32(cpu->GetPC()) - s32(number_instructions_displayed / 2)) < 0 ? 0 : cpu->GetPC() - (number_instructions_displayed / 2);
 
 	ImGuiListClipper clipper(number_instructions_displayed / instruction_bytes, ImGui::GetTextLineHeight()); // Bytes are grouped by four (the alignment for instructions
 	
@@ -181,7 +181,7 @@ void GuiMain::render_disassembly(bool scroll_to_pc) {
 	// Perform scrolling, if necessary
 	if (track_pc || scroll_to_pc)
 	{
-		ImGui::SetScrollFromPosY((((cpu->gprs.RealPC() - offset) / instruction_bytes) * ImGui::GetTextLineHeight()) - ImGui::GetScrollY(), 0.35f);
+		ImGui::SetScrollFromPosY((((cpu->GetPC() - offset) / instruction_bytes) * ImGui::GetTextLineHeight()) - ImGui::GetScrollY(), 0.35f);
 	}
 
 	int label_lines = 0;
@@ -212,7 +212,7 @@ void GuiMain::render_disassembly(bool scroll_to_pc) {
 			i+=2;
 		}
 
-		if (ImGui::Selectable("", cpu->gprs.RealPC() == cur_address, ImGuiSelectableFlags_SpanAllColumns | ImGuiSelectableFlags_AllowDoubleClick))
+		if (ImGui::Selectable("", cpu->GetPC() == cur_address, ImGuiSelectableFlags_SpanAllColumns | ImGuiSelectableFlags_AllowDoubleClick))
 		{
 			//emulator.cpu->breakpoint = cur_address;
 		}
@@ -283,26 +283,26 @@ void GuiMain::render_registers() {
 	{
 		ImGui::Text("%s: ", Disassembler::Disassemble_Reg(i).c_str());
 		ImGui::SameLine(38);
-		ImGui::Text("0x%X", cpu->gprs[i] + 0);
+		ImGui::Text("0x%X", cpu->GetReg(i));
 	}
 
 	ImGui::Text("%s: ", Disassembler::Disassemble_Reg(0xF).c_str());
 	ImGui::SameLine(38);
-	ImGui::Text("0x%X", cpu->gprs.RealPC() + 0);
+	ImGui::Text("0x%X", cpu->GetPC());
 
-	ImGui::Text("CPSR: 0x%X", PSR_to_u32(cpu->cpsr));
-	ImGui::Text("N : %s", cpu->cpsr.flag_N ? "true" : "false");
-	ImGui::Text("Z : %s", cpu->cpsr.flag_Z ? "true" : "false");
-	ImGui::Text("C : %s", cpu->cpsr.flag_C ? "true" : "false");
-	ImGui::Text("V : %s", cpu->cpsr.flag_V ? "true" : "false");
-	ImGui::Text("I : %s", cpu->cpsr.flag_inter_I ? "true" : "false");
-	ImGui::Text("F : %s", cpu->cpsr.flag_inter_F ? "true" : "false");
-	ImGui::Text("T : %s", cpu->cpsr.flag_T ? "true" : "false");
+	ImGui::Text("CPSR: 0x%X", PSR_to_u32(cpu->GetCPSR()));
+	ImGui::Text("N : %s", cpu->GetCPSR().flag_N ? "true" : "false");
+	ImGui::Text("Z : %s", cpu->GetCPSR().flag_Z ? "true" : "false");
+	ImGui::Text("C : %s", cpu->GetCPSR().flag_C ? "true" : "false");
+	ImGui::Text("V : %s", cpu->GetCPSR().flag_V ? "true" : "false");
+	ImGui::Text("I : %s", cpu->GetCPSR().flag_inter_I ? "true" : "false");
+	ImGui::Text("F : %s", cpu->GetCPSR().flag_inter_F ? "true" : "false");
+	ImGui::Text("T : %s", cpu->GetCPSR().flag_T ? "true" : "false");
 
 }
 
 void GuiMain::render_stack() {
-	bool thumb = cpu->cpsr.flag_T;
+	bool thumb = cpu->GetCPSR().flag_T;
 	u8 instruction_bytes = thumb ? 2 : 4;
 
 	ImGui::Columns(2, "Stack");
@@ -311,7 +311,7 @@ void GuiMain::render_stack() {
 	ImGui::Text("Bytes"); ImGui::NextColumn();
 	ImGui::Separator();
 
-	ImGuiListClipper stack_clipper((0x1000000 - cpu->gprs[Regs::SP]) / instruction_bytes, ImGui::GetTextLineHeight()); // Bytes are grouped by four (the alignment for instructions)
+	ImGuiListClipper stack_clipper((0x1000000 - cpu->GetReg(Regs::SP)) / instruction_bytes, ImGui::GetTextLineHeight()); // Bytes are grouped by four (the alignment for instructions)
 
 	for (s32 i = stack_clipper.DisplayStart; i < stack_clipper.DisplayEnd; i++)
 	{
@@ -331,6 +331,7 @@ void GuiMain::render_stack() {
 }
 
 void GuiMain::render_call_stack() {
+	/*
 	ImGuiListClipper clipper(cpu->call_stack.size(), ImGui::GetTextLineHeight()); // Bytes are grouped by four (the alignment for instructions
 
 	ImGui::Columns(2, "Call Stack");
@@ -355,5 +356,5 @@ void GuiMain::render_call_stack() {
 	//ImGui::NextColumn();
 
 	clipper.End();
-
+	*/
 }

@@ -3,21 +3,21 @@
 #include "../Common.h"
 #include "../Gui/GuiMain.h"
 
-class CPU;
+class CPU_Interface;
 typedef u32 vir_add;
 
 namespace Kernel {
 	extern vir_add RHeap_ptr;
 	extern vir_add TrapHandler_ptr;
 	
-	void Executive_Call(u32 number, CPU& cpu, GuiMain* gui);
+	void Executive_Call(u32 number, CPU_Interface& cpu, GuiMain* gui);
 
-	void User_Heap(CPU& cpu, GuiMain* gui);
-	void User_LockedDec(CPU& cpu);
-	void User_LockedInc(CPU& cpu);
-	void RSemaphore_Wait(CPU& cpu);
-	void RProcess_CommandLineLength(CPU& cpu);
-	void TChar_GetCategory(CPU& cpu);
-	void TChar_GetUpperCase(CPU& cpu);
-	void User_SetTrapHandler(CPU& cpu);
+	void User_Heap(CPU_Interface& cpu, GuiMain* gui);
+	void User_LockedDec(CPU_Interface& cpu);
+	void User_LockedInc(CPU_Interface& cpu);
+	void RSemaphore_Wait(CPU_Interface& cpu);
+	void RProcess_CommandLineLength(CPU_Interface& cpu);
+	void TChar_GetCategory(CPU_Interface& cpu);
+	void TChar_GetUpperCase(CPU_Interface& cpu);
+	void User_SetTrapHandler(CPU_Interface& cpu);
 }
