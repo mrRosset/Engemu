@@ -1,5 +1,5 @@
 #pragma once
-#include "../Common.h"
+#include "../../Common.h"
 #include "Decoder/IR.h"
 
 //shoud only be 5 bits long

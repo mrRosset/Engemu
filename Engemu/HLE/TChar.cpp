@@ -1,5 +1,5 @@
 #include "Kernel.h"
-#include "../CPU/CPU.h"
+#include "../CPU/Tharm/CPU.h"
 
 void Kernel::TChar_GetCategory(CPU& cpu) {
 	//TODO: Properly deal with utf-16 code points

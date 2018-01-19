@@ -5,8 +5,8 @@
 
 #include "Kernel.h"
 #include "E32std.h"
-#include "../CPU/CPU.h"
-#include "../CPU/Decoder/IR.h"
+#include "../CPU/Tharm/CPU.h"
+#include "../CPU/Tharm/Decoder/IR.h"
 
 namespace Kernel {
 	vir_add RHeap_ptr = 0;

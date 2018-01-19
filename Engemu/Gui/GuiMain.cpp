@@ -3,11 +3,11 @@
 #include "GuiMain.h"
 
 #include "MemoryEditor.h"
-#include "../CPU/CPU.h"
-#include "../CPU/Decoder/Decoder.h"
-#include "../CPU/Disassembler/Disassembler.h"
-#include "../CPU/Decoder/IR.h"
-#include "../CPU/Utils.h"
+#include "../CPU/Tharm/CPU.h"
+#include "../CPU/Tharm/Decoder/Decoder.h"
+#include "../CPU/Tharm/Disassembler/Disassembler.h"
+#include "../CPU/Tharm/Decoder/IR.h"
+#include "../CPU/Tharm/Utils.h"
 #include "../Symbols/SymbolsManager.h"
 
 

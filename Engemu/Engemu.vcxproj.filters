@@ -5,16 +5,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engemu.cpp" />
-    <ClCompile Include="CPU\Decoder\Decoder_ARM.cpp" />
-    <ClCompile Include="CPU\Decoder\Decoder_Thumb.cpp" />
-    <ClCompile Include="CPU\CPU.cpp" />
     <ClCompile Include="Loader\E32ImageLoader.cpp" />
     <ClCompile Include="Loader\TRomImageLoader.cpp" />
     <ClCompile Include="Loader\Utils.cpp" />
-    <ClCompile Include="CPU\Disassembler\Disassembler_ARM.cpp" />
-    <ClCompile Include="CPU\Disassembler\Disassembler_Thumb.cpp" />
-    <ClCompile Include="CPU\CPU_Thumb.cpp" />
-    <ClCompile Include="CPU\CPU_ARM.cpp" />
     <ClCompile Include="imgui\imgui.cpp" />
     <ClCompile Include="imgui\imgui_demo.cpp" />
     <ClCompile Include="imgui\imgui_draw.cpp" />
@@ -30,13 +23,15 @@
     <ClCompile Include="Tests\Disassembler_ARM_Tests.cpp" />
     <ClCompile Include="Tests\Decoder_Tests.cpp" />
     <ClCompile Include="Tests\Disassembler_Thumb_Tests.cpp" />
+    <ClCompile Include="CPU\Tharm\CPU.cpp" />
+    <ClCompile Include="CPU\Tharm\CPU_ARM.cpp" />
+    <ClCompile Include="CPU\Tharm\CPU_Thumb.cpp" />
+    <ClCompile Include="CPU\Tharm\Decoder\Decoder_ARM.cpp" />
+    <ClCompile Include="CPU\Tharm\Decoder\Decoder_Thumb.cpp" />
+    <ClCompile Include="CPU\Tharm\Disassembler\Disassembler_ARM.cpp" />
+    <ClCompile Include="CPU\Tharm\Disassembler\Disassembler_Thumb.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CPU\Decoder\Decoder.h" />
-    <ClInclude Include="CPU\Decoder\IR.h" />
-    <ClInclude Include="CPU\Disassembler\Disassembler.h" />
-    <ClInclude Include="CPU\CPU.h" />
-    <ClInclude Include="CPU\Utils.h" />
     <ClInclude Include="Common.h" />
     <ClInclude Include="Loader\E32ImageLoader.h" />
     <ClInclude Include="Loader\TRomImageLoader.h" />
@@ -57,10 +52,15 @@
     <ClInclude Include="HLE\Kernel.h" />
     <ClInclude Include="HLE\E32std.h" />
     <ClInclude Include="Symbols\SymbolsManager.h" />
-    <ClInclude Include="CPU\Registers.h" />
     <ClInclude Include="Gui\GuiMemory.h" />
     <ClInclude Include="Memory.h" />
     <ClInclude Include="Tests\TestMemory.h" />
+    <ClInclude Include="CPU\Tharm\CPU.h" />
+    <ClInclude Include="CPU\Tharm\Registers.h" />
+    <ClInclude Include="CPU\Tharm\Utils.h" />
+    <ClInclude Include="CPU\Tharm\Decoder\Decoder.h" />
+    <ClInclude Include="CPU\Tharm\Disassembler\Disassembler.h" />
+    <ClInclude Include="CPU\Tharm\Decoder\IR.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Tests\simple_adc_tests.inc" />

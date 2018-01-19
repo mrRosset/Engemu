@@ -2,8 +2,8 @@
 #include <tuple>
 #include <functional>
 #include <vector>
-#include "../Common.h"
-#include "../Memory.h"
+#include "../../Common.h"
+#include "../../Memory.h"
 #include "Registers.h"
 
 

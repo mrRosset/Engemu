@@ -209,13 +209,13 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CPU\CPU.cpp" />
-    <ClCompile Include="CPU\CPU_ARM.cpp" />
-    <ClCompile Include="CPU\CPU_Thumb.cpp" />
-    <ClCompile Include="CPU\Decoder\Decoder_ARM.cpp" />
-    <ClCompile Include="CPU\Decoder\Decoder_Thumb.cpp" />
-    <ClCompile Include="CPU\Disassembler\Disassembler_ARM.cpp" />
-    <ClCompile Include="CPU\Disassembler\Disassembler_Thumb.cpp" />
+    <ClCompile Include="CPU\Tharm\CPU.cpp" />
+    <ClCompile Include="CPU\Tharm\CPU_ARM.cpp" />
+    <ClCompile Include="CPU\Tharm\CPU_Thumb.cpp" />
+    <ClCompile Include="CPU\Tharm\Decoder\Decoder_ARM.cpp" />
+    <ClCompile Include="CPU\Tharm\Decoder\Decoder_Thumb.cpp" />
+    <ClCompile Include="CPU\Tharm\Disassembler\Disassembler_ARM.cpp" />
+    <ClCompile Include="CPU\Tharm\Disassembler\Disassembler_Thumb.cpp" />
     <ClCompile Include="deps\gl3w.c" />
     <ClCompile Include="Engemu.cpp" />
     <ClCompile Include="Gui\Gui.cpp" />
@@ -238,13 +238,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h" />
-    <ClInclude Include="CPU\CPU.h" />
-    <ClInclude Include="CPU\Decoder\Decoder.h" />
-    <ClInclude Include="CPU\Decoder\IR.h" />
-    <ClInclude Include="CPU\Disassembler\Disassembler.h" />
+    <ClInclude Include="CPU\Tharm\CPU.h" />
+    <ClInclude Include="CPU\Tharm\Decoder\Decoder.h" />
+    <ClInclude Include="CPU\Tharm\Decoder\IR.h" />
+    <ClInclude Include="CPU\Tharm\Disassembler\Disassembler.h" />
     <ClInclude Include="Memory.h" />
-    <ClInclude Include="CPU\Registers.h" />
-    <ClInclude Include="CPU\Utils.h" />
+    <ClInclude Include="CPU\Tharm\Registers.h" />
+    <ClInclude Include="CPU\Tharm\Utils.h" />
     <ClInclude Include="E32Image.h" />
     <ClInclude Include="E32Std.h" />
     <ClInclude Include="Gui\Gui.h" />

@@ -2,10 +2,10 @@
 #include <bitset>
 #include "TestMemory.h"
 #include "../Common.h"
-#include "../CPU/CPU.h"
-#include "../CPU/Utils.h"
-#include "../CPU/Decoder/Decoder.h"
-#include "../CPU/Disassembler/Disassembler.h"
+#include "../CPU/Tharm/CPU.h"
+#include "../CPU/Tharm/Utils.h"
+#include "../CPU/Tharm/Decoder/Decoder.h"
+#include "../CPU/Tharm/Disassembler/Disassembler.h"
 
 #include <catch/catch.hpp>
 

@@ -4,7 +4,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-#include "../Common.h"
+#include "Common.h"
 
 /*
 From THC

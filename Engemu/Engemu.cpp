@@ -4,11 +4,11 @@
 #include <experimental/filesystem>
 #include <spdlog/spdlog.h>
 #include "Common.h"
-#include "CPU/CPU.h"
+#include "CPU/Tharm/CPU.h"
 #include "E32Image.h"
 #include "Loader/E32ImageLoader.h"
-#include "CPU/Decoder/Decoder.h"
-#include "CPU/Disassembler/Disassembler.h"
+#include "CPU/Tharm/Decoder/Decoder.h"
+#include "CPU/Tharm/Disassembler/Disassembler.h"
 #include "Gui/Gui.h"
 #include "Gui/GuiMain.h"
 #include "Gui/GuiMemory.h"

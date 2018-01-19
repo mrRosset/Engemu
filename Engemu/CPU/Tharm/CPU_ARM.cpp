@@ -2,7 +2,7 @@
 #include "CPU.h"
 #include "Utils.h"
 #include "Decoder/Decoder.h"
-#include "../Symbols/SymbolsManager.h"
+#include "../../Symbols/SymbolsManager.h"
 
 void CPU::Execute(IR_ARM& ir) {
 	switch (ir.type) {

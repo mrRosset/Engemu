@@ -1,8 +1,8 @@
 #include <iostream>
 #include "../Common.h"
-#include "../CPU/Decoder/Decoder.h"
-#include "../CPU/Disassembler/Disassembler.h"
-#include "../CPU/Utils.h"
+#include "../CPU/Tharm/Decoder/Decoder.h"
+#include "../CPU/Tharm/Disassembler/Disassembler.h"
+#include "../CPU/Tharm/Utils.h"
 
 #include <catch/catch.hpp>
 
