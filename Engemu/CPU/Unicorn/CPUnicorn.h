@@ -17,4 +17,5 @@ public:
 
 private:
 	uc_engine * uc{};
+	PSR temp{};
 };

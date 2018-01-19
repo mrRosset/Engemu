@@ -11,17 +11,7 @@
 
 
 static void InterruptHook(uc_engine* uc, u32 intNo, void* user_data) {
-	/*u32 esr{};
-	uc_reg_read(uc, UC_ARM64_REG_ENDING, &esr);
-
-	auto ec = esr >> 26;
-	auto iss = esr & 0xFFFFFF;
-
-	switch (ec) {
-	case 0x15: // SVC
-		Kernel::CallSVC(iss);
-		break;
-	}*/
+	//TODO
 }
 
 static bool UnmappedMemoryHook(uc_engine* uc, uc_mem_type type, u64 addr, int size, u64 value,	void* user_data) {
@@ -35,6 +25,8 @@ CPUnicorn::CPUnicorn(GageMemory& mem_) : CPU_Interface(mem_) {
 	uc_hook hook{};
 	CHECKED(uc_hook_add(uc, &hook, UC_HOOK_INTR, (void*)InterruptHook, this, 0, -1));
 	CHECKED(uc_hook_add(uc, &hook, UC_HOOK_MEM_INVALID, (void*)UnmappedMemoryHook, this, 0, -1));
+
+	uc_mem_map(uc, 0x10000, 2 * 1024 * 1024, UC_PROT_ALL);
 }
 
 CPUnicorn::~CPUnicorn() {
@@ -102,9 +94,9 @@ void CPUnicorn::SetReg(int index, u32 val) {
 	case 14: treg = UC_ARM_REG_R14; break;
 	case 15: treg = UC_ARM_REG_R15; break;
 	}
-	CHECKED(uc_reg_write(uc, treg, &val));
+	CHECKED(uc_reg_write(uc, UC_ARM_REG_SP, &val));
 }
 
 PSR& CPUnicorn::GetCPSR() {
-	return PSR{};
+	return temp;
 }
