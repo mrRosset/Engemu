@@ -1,6 +1,7 @@
 #include "CPUnicorn.h"
 #include <unicorn/arm.h>
 #include "../../Common.h"
+#include "../Tharm/Utils.h"
 
 #define CHECKED(expr)                                                                              \
     do {                                                                                           \
@@ -98,5 +99,8 @@ void CPUnicorn::SetReg(int index, u32 val) {
 }
 
 PSR& CPUnicorn::GetCPSR() {
+	u32 cpsr{};
+	CHECKED(uc_reg_read(uc, UC_ARM_REG_CPSR, &cpsr));
+	u32_to_PSR(cpsr, temp);
 	return temp;
 }
