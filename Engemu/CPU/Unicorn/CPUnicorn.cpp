@@ -6,7 +6,7 @@
 #define CHECKED(expr)                                                                              \
     do {                                                                                           \
         if (auto _cerr = (expr)) {                                                                 \
-			throw std::string("Failure with error") + std::string(uc_strerror(_cerr));             \
+			throw std::string("Failure with error: ") + std::string(uc_strerror(_cerr));           \
         }                                                                                          \
     } while (0)
 
@@ -27,7 +27,9 @@ CPUnicorn::CPUnicorn(GageMemory& mem_) : CPU_Interface(mem_) {
 	CHECKED(uc_hook_add(uc, &hook, UC_HOOK_INTR, (void*)InterruptHook, this, 0, -1));
 	CHECKED(uc_hook_add(uc, &hook, UC_HOOK_MEM_INVALID, (void*)UnmappedMemoryHook, this, 0, -1));
 
-	uc_mem_map(uc, 0x10000, 2 * 1024 * 1024, UC_PROT_ALL);
+	CHECKED(uc_mem_map_ptr(uc, 0x0040'0000, mem_.user_data.size(), UC_PROT_READ | UC_PROT_WRITE | UC_PROT_EXEC, mem_.user_data.data()));
+	CHECKED(uc_mem_map_ptr(uc, 0x5000'0000, mem_.rom.size(), UC_PROT_READ | UC_PROT_WRITE | UC_PROT_EXEC, mem_.rom.data()));
+	CHECKED(uc_mem_map_ptr(uc, 0x6000'0000, mem_.ram.size(), UC_PROT_READ | UC_PROT_WRITE | UC_PROT_EXEC, mem_.ram.data()));
 }
 
 CPUnicorn::~CPUnicorn() {
