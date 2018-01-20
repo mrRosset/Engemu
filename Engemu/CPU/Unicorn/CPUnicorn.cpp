@@ -20,7 +20,7 @@ static bool UnmappedMemoryHook(uc_engine* uc, uc_mem_type type, u64 addr, int si
 }
 
 CPUnicorn::CPUnicorn(GageMemory& mem_) : CPU_Interface(mem_) {
-	CHECKED(uc_open(UC_ARCH_ARM64, UC_MODE_ARM, &uc));
+	CHECKED(uc_open(UC_ARCH_ARM, UC_MODE_ARM, &uc));
 
 	uc_hook hook{};
 	CHECKED(uc_hook_add(uc, &hook, UC_HOOK_INTR, (void*)InterruptHook, this, 0, -1));
