@@ -125,7 +125,7 @@ void CPUnicorn::SetReg(int index, u32 val) {
 	case 14: treg = UC_ARM_REG_R14; break;
 	case 15: treg = UC_ARM_REG_R15; break;
 	}
-	CHECKED(uc_reg_write(uc, UC_ARM_REG_SP, &val));
+	CHECKED(uc_reg_write(uc, treg, &val));
 }
 
 PSR& CPUnicorn::GetCPSR() {
