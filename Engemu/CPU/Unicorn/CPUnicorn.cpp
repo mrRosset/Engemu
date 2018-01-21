@@ -52,7 +52,13 @@ CPUnicorn::~CPUnicorn() {
 }
 
 void CPUnicorn::Step() {
-	CHECKED(uc_emu_start(uc, GetPC(), 1ULL << 32, 0, 1));
+	auto cpsr = GetCPSR();
+	if (cpsr.flag_T) {
+		CHECKED(uc_emu_start(uc, GetPC() | 1, (1ULL << 32) | 1, 0, 1));
+	}
+	else {
+		CHECKED(uc_emu_start(uc, GetPC(), 1ULL << 32, 0, 1));
+	}
 }
 
 u32 CPUnicorn::GetPC() {
