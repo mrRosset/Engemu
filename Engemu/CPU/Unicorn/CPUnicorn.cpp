@@ -2,6 +2,7 @@
 #include <unicorn/arm.h>
 #include "../../Common.h"
 #include "../Tharm/Utils.h"
+#include "../Tharm/Decoder/Decoder.h"
 
 #define CHECKED(expr)                                                                              \
     do {                                                                                           \
@@ -12,7 +13,6 @@
 
 static void hook_block(uc_engine *uc, uint64_t address, uint32_t size, void *user_data)
 {
-	//throw std::string("lol");
 	auto cpu = (CPUnicorn*)user_data;
 	cpu->logger->info("Tracing basic block at {}, block size = {}", address, size);
 }
@@ -24,7 +24,14 @@ static void hook_code(uc_engine *uc, uint64_t address, uint32_t size, void *user
 }
 
 static void InterruptHook(uc_engine* uc, u32 intNo, void* user_data) {
-	//TODO
+	auto cpu = (CPUnicorn*)user_data;
+	cpu->logger->info("InterruptHook: intNo: {}", intNo);
+	//TODO Handle other interrupts than SWI
+	//TODO Handle Thumb SWI
+	IR_ARM ir;
+	u32 instr = cpu->mem.read32(cpu->GetPC()-4);
+	Decoder::Decode(ir, instr);
+	cpu->swi_callback(ir.operand1);
 }
 
 static bool UnmappedMemoryHook(uc_engine* uc, uc_mem_type type, u64 addr, int size, u64 value,	void* user_data) {
@@ -39,8 +46,8 @@ CPUnicorn::CPUnicorn(GageMemory& mem_) : CPU_Interface(mem_) {
 	uc_hook hook{};
 	CHECKED(uc_hook_add(uc, &hook, UC_HOOK_INTR, (void*)InterruptHook, this, 0, -1));
 	CHECKED(uc_hook_add(uc, &hook, UC_HOOK_MEM_INVALID, (void*)UnmappedMemoryHook, this, 0, -1));
-	CHECKED(uc_hook_add(uc, &hook, UC_HOOK_BLOCK, hook_block, this, 1, 0));
-	CHECKED(uc_hook_add(uc, &hook, UC_HOOK_CODE, hook_code, this, 0, -1));
+	//CHECKED(uc_hook_add(uc, &hook, UC_HOOK_BLOCK, hook_block, this, 1, 0));
+	//CHECKED(uc_hook_add(uc, &hook, UC_HOOK_CODE, hook_code, this, 0, -1));
 
 	CHECKED(uc_mem_map_ptr(uc, 0x0040'0000, mem_.user_data.size(), UC_PROT_READ | UC_PROT_WRITE | UC_PROT_EXEC, mem_.user_data.data()));
 	CHECKED(uc_mem_map_ptr(uc, 0x5000'0000, mem_.rom.size(), UC_PROT_READ | UC_PROT_WRITE | UC_PROT_EXEC, mem_.rom.data()));
