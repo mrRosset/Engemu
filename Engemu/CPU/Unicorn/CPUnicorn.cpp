@@ -32,6 +32,9 @@ static void InterruptHook(uc_engine* uc, u32 intNo, void* user_data) {
 	u32 instr = cpu->mem.read32(cpu->GetPC()-4);
 	Decoder::Decode(ir, instr);
 	cpu->swi_callback(ir.operand1);
+
+	//TODO: More proper BX LR
+	cpu->SetPC(cpu->GetReg(Regs::LR));
 }
 
 static bool UnmappedMemoryHook(uc_engine* uc, uc_mem_type type, u64 addr, int size, u64 value,	void* user_data) {
