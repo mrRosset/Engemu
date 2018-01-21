@@ -1,10 +1,12 @@
 #pragma once
 
 #include <unicorn/unicorn.h>
+#include <spdlog/spdlog.h>
 #include "../CPU_Interface.h"
 
 class CPUnicorn : public CPU_Interface {
 public:
+	std::shared_ptr<spdlog::logger> logger;
 
 	CPUnicorn(GageMemory& mem);
 	~CPUnicorn();

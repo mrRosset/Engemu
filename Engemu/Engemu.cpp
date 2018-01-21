@@ -134,7 +134,7 @@ int main(int argc, char* argv[])
 	//setup logging system.
 	try
 	{
-		auto console = spdlog::stdout_color_st("console");
+		auto console = spdlog::stdout_color_mt("console");
 		// set the log pattern to [HH:MM:SS.nano]
 		spdlog::set_pattern("[%T] [%l] %v");
 		console->info("Start of the emulator");
