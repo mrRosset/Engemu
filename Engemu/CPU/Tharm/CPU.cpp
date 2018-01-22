@@ -20,7 +20,7 @@ CPU::CPU(Memory& mem_) : cpsr{}, spsr{}, gprs(cpsr), CPU_Interface(mem_) {
 	state = CPUState::Stopped;
 }
 
-void CPU::Step() {
+void CPU::ExecuteNextInstruction() {
 	if (cpsr.flag_T) {
 		u16 instr = mem.read16(gprs.RealPC());
 		IR_Thumb ir;

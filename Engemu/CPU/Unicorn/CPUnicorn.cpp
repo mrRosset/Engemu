@@ -61,7 +61,7 @@ CPUnicorn::~CPUnicorn() {
 	uc_close(uc);
 }
 
-void CPUnicorn::Step() {
+void CPUnicorn::ExecuteNextInstruction() {
 	auto cpsr = GetCPSR();
 	if (cpsr.flag_T) {
 		CHECKED(uc_emu_start(uc, GetPC() | 1, (1ULL << 32) | 1, 0, 1));

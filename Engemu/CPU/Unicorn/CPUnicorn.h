@@ -10,7 +10,7 @@ public:
 
 	CPUnicorn(GageMemory& mem);
 	~CPUnicorn();
-	void Step() override;
+	void ExecuteNextInstruction() override;
 	u32 GetPC() override;
 	void SetPC(u32 addr) override;
 	u32 GetReg(int index) override;
