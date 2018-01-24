@@ -17,6 +17,7 @@ private:
 	void render_registers();
 	void render_stack();
 	void render_call_stack();
+	void render_function_trace();
 
 public:
 	CPU_Interface* cpu;

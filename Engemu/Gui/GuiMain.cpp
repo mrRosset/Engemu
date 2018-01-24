@@ -83,7 +83,8 @@ void GuiMain::render_cpu() {
 	ImGui::EndGroup();
 
 	ImGui::BeginChild("Call Stack", ImVec2(800, 105), true);
-	render_call_stack();
+	//render_call_stack();
+	render_function_trace();
 	ImGui::EndChild();
 }
 
@@ -349,6 +350,35 @@ void GuiMain::render_call_stack() {
 
 		if (ci >= 0) {
 			ImGui::Text(cpu->call_stack[ci].c_str());
+		}
+		else {
+			ImGui::Text("");
+		}
+		ImGui::NextColumn();
+	}
+
+	clipper.End();
+}
+
+void GuiMain::render_function_trace() {
+
+	ImGui::Columns(2, "Function trace");
+	ImGui::SetColumnOffset(1, 50);
+	ImGui::Text("#"); ImGui::NextColumn();
+	ImGui::Text("function name"); ImGui::NextColumn();
+	ImGui::Separator();
+
+	ImGuiListClipper clipper(cpu->function_trace.size(), ImGui::GetTextLineHeight());
+
+	for (int i = clipper.DisplayStart; i < clipper.DisplayEnd; i++)
+	{
+		int ci = cpu->function_trace.size() - i - 1;
+
+		ImGui::Selectable(std::to_string(ci).c_str(), false, ImGuiSelectableFlags_SpanAllColumns | ImGuiSelectableFlags_AllowDoubleClick);
+		ImGui::NextColumn();
+
+		if (ci >= 0) {
+			ImGui::Text(cpu->function_trace[ci].c_str());
 		}
 		else {
 			ImGui::Text("");
