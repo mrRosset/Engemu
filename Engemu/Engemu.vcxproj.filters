@@ -64,6 +64,7 @@
     <ClInclude Include="CPU\Tharm\Decoder\IR.h" />
     <ClInclude Include="CPU\CPU_Interface.h" />
     <ClInclude Include="CPU\Unicorn\CPUnicorn.h" />
+    <ClInclude Include="Emulateur.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Tests\simple_adc_tests.inc" />

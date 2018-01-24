@@ -36,6 +36,7 @@ public:
 	inline virtual u8 read8(u32 address) = 0;
 	inline virtual void write8(u32 address, u8 value) = 0;
 	inline virtual u32 allocateRam(u32 size) = 0;
+	virtual void loadRom(std::string& rom_path) {}
 
 	inline u16 read16(u32 address)
 	{
@@ -93,7 +94,7 @@ public:
 		return 0x6000'0000 + ram_cursor;
 	}
 
-	void loadRom(std::string& rom_path) {
+	void loadRom(std::string& rom_path) override {
 		std::ifstream stream(rom_path, std::ios::binary | std::ios::ate);
 
 		if (!stream) {

@@ -246,6 +246,7 @@
     <ClInclude Include="CPU\Tharm\Decoder\IR.h" />
     <ClInclude Include="CPU\Tharm\Disassembler\Disassembler.h" />
     <ClInclude Include="CPU\Unicorn\CPUnicorn.h" />
+    <ClInclude Include="Emulateur.h" />
     <ClInclude Include="Memory.h" />
     <ClInclude Include="CPU\Tharm\Registers.h" />
     <ClInclude Include="CPU\Tharm\Utils.h" />

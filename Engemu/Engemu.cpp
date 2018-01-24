@@ -5,6 +5,7 @@
 #include <spdlog/spdlog.h>
 #include "Common.h"
 #include "E32Image.h"
+#include "Emulateur.h"
 #include "Loader/E32ImageLoader.h"
 #include "CPU/CPU_Interface.h"
 #include "CPU/Tharm/CPU.h"
@@ -22,48 +23,27 @@
 #define CATCH_CONFIG_RUNNER
 #include <catch\catch.hpp>
 
-std::string extract_filename(const std::string& filepath)
-{
-	auto pos = filepath.rfind("\\");
-	if (pos == std::string::npos)
-		pos = -1;
-	return std::string(filepath.begin() + pos + 1, filepath.end());
-}
-
 void emulate(std::string& app_path, std::string& lib_folder_path, std::string& rom_path, std::string& symbols_folder_path) {
 	auto logger = spdlog::get("console");
 	
 	GageMemory mem;
-	CPU_Interface& cpu = CPU(mem);
-
-	E32Image image;
-	E32ImageLoader::parse(app_path, image);
+	CPU_Interface& cpu = CPUnicorn(mem);
+	Emulator emu(mem, cpu, app_path, lib_folder_path, rom_path);
 
 	std::string file_name = extract_filename(app_path);
 	GuiMain* guimain = new GuiMain(&cpu, extract_filename(app_path));
-	//ImGuiContext* guimainContext = ImGui::GetCurrentContext();
+	
+	emu.cpu.swi_callback = [&](u32 number) {
+		auto logger = spdlog::get("console");
+		logger->info("SWI {:x}", number);
+		Kernel::Executive_Call(number, emu.cpu, guimain);
+	};
 
-	//ImGuiContext* guiMemoryContext = ImGui::CreateContext(malloc, free);
-	//ImGui::SetCurrentContext(guiMemoryContext);
-	//GuiMemory* guiMemory = new GuiMemory(cpu.mem, std::string("Memory Editor"));
-
-	mem.loadRom(rom_path);
-	E32ImageLoader::load(image, file_name, mem, lib_folder_path);
 
 	//Load Symbols if exists
 	logger->info("Loading Symbols");
 	Symbols::load(symbols_folder_path);
 
-	cpu.SetPC(image.header->code_base_address + image.header->entry_point_offset); // 0x50392D54 <- entry of Euser.dll;
-	//cpu.SetPC(image.header->code_base_address + image.code_section.export_directory[0]);
-	//cpu.gprs[Regs::PC] = 0x5063D444; //Main of AppRun
-	//cpu.cpsr.flag_T = true;
-	
-	//TODO: find the correct place where the SP is initialized
-	//cpu.gprs[Regs::SP] = 0x7FFF'FFFF; //start of the ram section
-	cpu.SetReg(Regs::SP, 0x7FFFFFFC); //start of the ram section aligned with last 2 bit 0
-
-	cpu.swi_callback = [&](u32 number) {logger->info("SWI {:x}", number); Kernel::Executive_Call(number, cpu, guimain); };
 	std::vector<u32> breakpoints = { /*0x503aa384*/ };
 
 	//emulation loop
@@ -76,40 +56,17 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 	bool running = true;
 
 	while (running) {
-		//ImGui::SetCurrentContext(guimainContext);
+		//Rendering
 		running = guimain->render();
-		//ImGui::SetCurrentContext(guiMemoryContext);
-		//running = guiMemory->render();
 
 		//Breakpoints
-		if (std::find(breakpoints.begin(), breakpoints.end(), cpu.GetPC()) != breakpoints.end() && cpu.state == CPUState::Running) {
-			cpu.state = CPUState::Stopped;
+		if (std::find(breakpoints.begin(), breakpoints.end(), cpu.GetPC()) != breakpoints.end() && emu.cpu.state == CPUState::Running) {
+			emu.cpu.state = CPUState::Stopped;
 		}
 
-
-		try {
-			switch (cpu.state) {
-
-			case CPUState::Step:
-				cpu.Step();
-				cpu.state = CPUState::Stopped;
-				break;
-
-			case CPUState::Running:
-				cpu.Step();
-				break;
-			}
-		}
-		catch (std::string& error_message) {
-			std::cout << "Uncaught exception:\n" << error_message << std::endl;
-			cpu.state = CPUState::Stopped;
-		}
-		catch (const char* error_message) {
-			std::cout << "Uncaught exception:\n" << error_message << std::endl;
-			cpu.state = CPUState::Stopped;
-		}
-
-
+		//Stepping
+		emu.Step();
+		
 		next_game_tick += SKIP_TICKS;
 
 		clock = std::chrono::high_resolution_clock::now().time_since_epoch();
