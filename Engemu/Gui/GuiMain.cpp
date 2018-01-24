@@ -331,7 +331,6 @@ void GuiMain::render_stack() {
 }
 
 void GuiMain::render_call_stack() {
-	ImGuiListClipper clipper(cpu->call_stack.size(), ImGui::GetTextLineHeight()); // Bytes are grouped by four (the alignment for instructions
 
 	ImGui::Columns(2, "Call Stack");
 	ImGui::SetColumnOffset(1, 50);
@@ -339,20 +338,23 @@ void GuiMain::render_call_stack() {
 	ImGui::Text("Address"); ImGui::NextColumn();
 	ImGui::Separator();
 
-	for (int i = clipper.DisplayEnd -1 ; i >= clipper.DisplayStart; i--)
+	ImGuiListClipper clipper(cpu->call_stack.size(), ImGui::GetTextLineHeight());
+
+	for (int i = clipper.DisplayStart ; i < clipper.DisplayEnd; i++)
 	{
-		ImGui::Selectable(std::to_string(i).c_str(), false, ImGuiSelectableFlags_SpanAllColumns | ImGuiSelectableFlags_AllowDoubleClick);
+		int ci = cpu->call_stack.size() - i - 1;
+
+		ImGui::Selectable(std::to_string(ci).c_str(), false, ImGuiSelectableFlags_SpanAllColumns | ImGuiSelectableFlags_AllowDoubleClick);
 		ImGui::NextColumn();
-		if (i < cpu->call_stack.size()) {
-			ImGui::Text(cpu->call_stack[i].c_str());
+
+		if (ci >= 0) {
+			ImGui::Text(cpu->call_stack[ci].c_str());
 		}
 		else {
 			ImGui::Text("");
 		}
 		ImGui::NextColumn();
 	}
-	///ImGui::Selectable(" ", false, ImGuiSelectableFlags_SpanAllColumns | ImGuiSelectableFlags_AllowDoubleClick);
-	//ImGui::NextColumn();
 
 	clipper.End();
 }
