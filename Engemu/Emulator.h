@@ -12,6 +12,7 @@ public:
 
 	void Step();
 	bool Equals(Emulator& that);
+	void Emulator::Print();
 
 	CPU_Interface& cpu;
 	Memory& mem;

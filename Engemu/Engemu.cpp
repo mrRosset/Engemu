@@ -105,6 +105,12 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 		emu2.Step();
 
 		if (!emu.Equals(emu2)) {
+			std::cout << "------ CPU 1 --------\n";
+			emu.Print();
+			std::cout << "------ CPU 2 --------\n";
+			emu2.Print();
+
+
 			throw std::string("Emu not equals");
 		}
 		
