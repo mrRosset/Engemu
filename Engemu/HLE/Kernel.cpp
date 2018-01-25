@@ -52,7 +52,9 @@ void Kernel::User_Heap(CPU_Interface& cpu, GuiMain* gui) {
 	
 	ker_cpu.call_stack.push_back("0x503B0DAC");
 
-	gui->cpu = &ker_cpu;
+	if (gui) {
+		gui->cpu = &ker_cpu;
+	}
 
 	while (ker_cpu.gprs.RealPC() != 0) {
 		ker_cpu.Step();
@@ -60,7 +62,9 @@ void Kernel::User_Heap(CPU_Interface& cpu, GuiMain* gui) {
 		std::this_thread::sleep_for(std::chrono::milliseconds(40));
 	}
 
-	gui->cpu = &cpu;
+	if (gui) {
+		gui->cpu = &cpu;
+	}
 
 	//get the return value
 	cpu.SetReg(0, ker_cpu.gprs[0]);

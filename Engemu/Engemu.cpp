@@ -5,7 +5,7 @@
 #include <spdlog/spdlog.h>
 #include "Common.h"
 #include "E32Image.h"
-#include "Emulateur.h"
+#include "Emulator.h"
 #include "Loader/E32ImageLoader.h"
 #include "CPU/CPU_Interface.h"
 #include "CPU/Tharm/CPU.h"
@@ -30,13 +30,23 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 	CPU_Interface& cpu = CPUnicorn(mem);
 	Emulator emu(mem, cpu, app_path, lib_folder_path, rom_path);
 
+	GageMemory mem2;
+	CPU_Interface& cpu2 = CPU(mem2);
+	Emulator emu2(mem2, cpu2, app_path, lib_folder_path, rom_path);
+
 	std::string file_name = extract_filename(app_path);
 	GuiMain* guimain = new GuiMain(&cpu, extract_filename(app_path));
 	
 	emu.cpu.swi_callback = [&](u32 number) {
 		auto logger = spdlog::get("console");
-		logger->info("SWI {:x}", number);
+		logger->info("SWI1 {:x}", number);
 		Kernel::Executive_Call(number, emu.cpu, guimain);
+	};
+
+	emu2.cpu.swi_callback = [&](u32 number) {
+		auto logger = spdlog::get("console");
+		logger->info("SWI2 {:x}", number);
+		Kernel::Executive_Call(number, emu2.cpu, nullptr);
 	};
 
 
@@ -44,7 +54,7 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 	logger->info("Loading Symbols");
 	Symbols::load(symbols_folder_path);
 
-	std::vector<u32> breakpoints = { /*0x503aa384*/ };
+	std::vector<u32> breakpoints = { 1348724304 };
 
 	//emulation loop
 
@@ -64,8 +74,14 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 			emu.cpu.state = CPUState::Stopped;
 		}
 
+		if (emu.cpu.state == CPUState::Step) {
+			std::cout << emu.cpu.GetPC() << " " << emu2.cpu.GetPC() << "\n";
+		}
 		//Stepping
+		emu2.cpu.state = emu.cpu.state;
 		emu.Step();
+		emu2.Step();
+
 		
 		next_game_tick += SKIP_TICKS;
 
