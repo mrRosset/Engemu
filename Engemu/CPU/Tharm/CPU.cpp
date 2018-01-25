@@ -11,7 +11,8 @@ Not tested in any other compiler,
 
 CPU::CPU(Memory& mem_) : cpsr{}, spsr{}, gprs(cpsr), CPU_Interface(mem_) {
 	//TODO: Seriously think about initialization values
-	cpsr.flag_N = cpsr.flag_Z = cpsr.flag_C = cpsr.flag_V = cpsr.flag_inter_I = cpsr.flag_inter_F = cpsr.flag_T = false;
+	cpsr.flag_N = cpsr.flag_C = cpsr.flag_V = cpsr.flag_T = false;
+	cpsr.flag_Z = cpsr.flag_inter_I = cpsr.flag_inter_F = true;
 	cpsr.reserved = 0;
 	cpsr.mode = CpuMode::User;
 	cpsr.flag_inter_I = true;

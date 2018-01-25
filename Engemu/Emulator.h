@@ -68,6 +68,34 @@ public:
 	}
 
 
+	bool Equals(Emulator& that) {
+		CPU_Interface& cpu2 = that.cpu;
+		PSR& one = cpu.GetCPSR();
+		PSR& two = that.cpu.GetCPSR();
+
+		return cpu.GetReg(0) == cpu2.GetReg(0) &&
+			cpu.GetReg(1) == cpu2.GetReg(1) &&
+			cpu.GetReg(2) == cpu2.GetReg(2) &&
+			cpu.GetReg(3) == cpu2.GetReg(3) &&
+			cpu.GetReg(4) == cpu2.GetReg(4) &&
+			cpu.GetReg(5) == cpu2.GetReg(5) &&
+			cpu.GetReg(6) == cpu2.GetReg(6) &&
+			cpu.GetReg(7) == cpu2.GetReg(7) &&
+			cpu.GetReg(8) == cpu2.GetReg(8) &&
+			cpu.GetReg(9) == cpu2.GetReg(9) &&
+			cpu.GetReg(10) == cpu2.GetReg(10) &&
+			cpu.GetReg(11) == cpu2.GetReg(11) &&
+			cpu.GetReg(12) == cpu2.GetReg(12) &&
+			cpu.GetReg(13) == cpu2.GetReg(13) &&
+			cpu.GetReg(14) == cpu2.GetReg(14) &&
+			cpu.GetPC() == cpu2.GetPC() &&
+			one.flag_C == two.flag_C &&
+			one.flag_N == two.flag_N &&
+			one.flag_T == two.flag_T &&
+			one.flag_V == two.flag_V &&
+			one.flag_Z == two.flag_Z;
+	}
+
 	CPU_Interface& cpu;
 	Memory& mem;
 	E32Image image;

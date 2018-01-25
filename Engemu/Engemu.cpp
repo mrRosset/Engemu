@@ -76,9 +76,9 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 
 		emu2.cpu.state = emu.cpu.state;
 		
-		if (emu.cpu.state == CPUState::Step) {
+		/*if (emu.cpu.state == CPUState::Step) {
 			std::cout << emu.cpu.GetPC() << " " << emu2.cpu.GetPC() << "\n";
-		}
+		}*/
 		
 		//Stepping
 
@@ -96,6 +96,9 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 		emu.Step();
 		emu2.Step();
 
+		if (!emu.Equals(emu2)) {
+			throw std::string("Emu not equals");
+		}
 		
 		next_game_tick += SKIP_TICKS;
 
