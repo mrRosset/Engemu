@@ -74,11 +74,25 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 			emu.cpu.state = CPUState::Stopped;
 		}
 
+		emu2.cpu.state = emu.cpu.state;
+		
 		if (emu.cpu.state == CPUState::Step) {
 			std::cout << emu.cpu.GetPC() << " " << emu2.cpu.GetPC() << "\n";
 		}
+		
 		//Stepping
-		emu2.cpu.state = emu.cpu.state;
+
+		//Note: for thumb bl instructions are separated into 2 parts. Tharm execute one after the other while
+		//unicorn execute both at once so we need to step a second time to avoid a desynchronization
+		if (emu.cpu.GetCPSR().flag_T && (emu.cpu.state == CPUState::Step || emu.cpu.state == CPUState::Step)) {
+			IR_Thumb ir;
+			Decoder::Decode(ir, emu.mem.read16(emu.cpu.GetPC()));
+			if (ir.instr == TInstructions::BL_high) {
+				emu2.Step();
+				emu2.cpu.state = CPUState::Step;
+			}
+		}
+		
 		emu.Step();
 		emu2.Step();
 
