@@ -16,6 +16,7 @@ namespace Kernel {
 void Kernel::Executive_Call(u32 number, CPU_Interface& cpu, GuiMain* gui) {
 
 	switch (number) {
+	case 0x4D: User__WaitForAnyRequest(cpu); break;
 	case 0x6C: User_Heap(cpu, gui); break;
 	case 0x8D: User_LockedInc(cpu); break;
 	case 0x8E: User_LockedDec(cpu); break;
@@ -25,6 +26,7 @@ void Kernel::Executive_Call(u32 number, CPU_Interface& cpu, GuiMain* gui) {
 	case 0x82: User_SetTrapHandler(cpu); break;
 
 	case 0x8000C0: RProcess_CommandLineLength(cpu); break;
+	case 0xC00076: UserSvr__InitRegisterCallback(cpu); break;
 
 	default:
 
@@ -65,35 +67,6 @@ void Kernel::User_Heap(CPU_Interface& cpu, GuiMain* gui) {
 	//get the return value
 	cpu.SetReg(0, ker_cpu.gprs[0]);
 
-	/*
-	//save all registers
-	u32 saved_gprs[16];
-	for (int i = 0; i < 16; i++) {
-		saved_gprs[i] = cpu.gprs[i];
-	}
-
-	//Call RHeap::RHeap(TInt aMaxLength)
-	cpu.gprs[0] = RHeap_ptr;
-	cpu.gprs[1] = 1052672;
-
-	cpu.gprs[Regs::PC] = 0x503B0DAC; //TODO: not hardcode this.
-	cpu.gprs[Regs::LR] = 0;
-
-	//Don't fuck up the original call stack
-	cpu.call_stack.push_back("0x503B0DAC");
-
-	while (cpu.gprs.RealPC() != 0) {
-		cpu.Step();
-		gui->render();
-		std::this_thread::sleep_for(std::chrono::milliseconds(40));
-	}
-
-	//restore all registers except return value in r0
-	for (int i = 1; i < 16; i++) {
-		cpu.gprs[i] = saved_gprs[i];
-	}
-
-	gui->render();*/
 }
 
 void Kernel::User_LockedDec(CPU_Interface& cpu) {
@@ -126,4 +99,12 @@ void Kernel::User_SetTrapHandler(CPU_Interface& cpu) {
 	vir_add oldHandler = TrapHandler_ptr;
 	TrapHandler_ptr = cpu.GetReg(0);
 	cpu.SetReg(0, oldHandler);
+}
+
+void Kernel::UserSvr__InitRegisterCallback(CPU_Interface& cpu) {
+	//TODO
+}
+
+void Kernel::User__WaitForAnyRequest(CPU_Interface& cpu) {
+	//TODO: Should wait until a request complete and execution can resume.
 }

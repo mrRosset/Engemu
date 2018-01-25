@@ -20,4 +20,6 @@ namespace Kernel {
 	void TChar_GetCategory(CPU_Interface& cpu);
 	void TChar_GetUpperCase(CPU_Interface& cpu);
 	void User_SetTrapHandler(CPU_Interface& cpu);
+	void UserSvr__InitRegisterCallback(CPU_Interface& cpu);
+	void User__WaitForAnyRequest(CPU_Interface& cpu);
 }

@@ -44,7 +44,7 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 	logger->info("Loading Symbols");
 	Symbols::load(symbols_folder_path);
 
-	std::vector<u32> breakpoints = { /*0x503aa384*/ };
+	std::vector<u32> breakpoints = { 0x503AD440 };
 
 	//emulation loop
 
