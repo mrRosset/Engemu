@@ -34,10 +34,10 @@ void Kernel::Executive_Call(u32 number, CPU_Interface& cpu, GuiMain* gui) {
 }
 
 void Kernel::User_Heap(CPU_Interface& cpu, GuiMain* gui) {
-	if (RHeap_ptr) {
+	/*if (RHeap_ptr) {
 		cpu.SetReg(0, RHeap_ptr);
 		return;
-	}
+	}*/
 	
 	RHeap_ptr = cpu.mem.allocateRam(sizeof(RHeap));
 
@@ -58,7 +58,9 @@ void Kernel::User_Heap(CPU_Interface& cpu, GuiMain* gui) {
 
 	while (ker_cpu.gprs.RealPC() != 0) {
 		ker_cpu.Step();
-		gui->render();
+		if (gui) {
+			gui->render();
+		}
 		std::this_thread::sleep_for(std::chrono::milliseconds(40));
 	}
 
