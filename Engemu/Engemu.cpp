@@ -23,6 +23,14 @@
 #define CATCH_CONFIG_RUNNER
 #include <catch\catch.hpp>
 
+std::string extract_filename(const std::string& filepath)
+{
+	auto pos = filepath.rfind("\\");
+	if (pos == std::string::npos)
+		pos = -1;
+	return std::string(filepath.begin() + pos + 1, filepath.end());
+}
+
 void emulate(std::string& app_path, std::string& lib_folder_path, std::string& rom_path, std::string& symbols_folder_path) {
 	auto logger = spdlog::get("console");
 	

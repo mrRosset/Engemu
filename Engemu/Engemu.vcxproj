@@ -219,6 +219,7 @@
     <ClCompile Include="CPU\Tharm\Disassembler\Disassembler_Thumb.cpp" />
     <ClCompile Include="CPU\Unicorn\CPUnicorn.cpp" />
     <ClCompile Include="deps\gl3w.c" />
+    <ClCompile Include="Emulator.cpp" />
     <ClCompile Include="Engemu.cpp" />
     <ClCompile Include="Gui\Gui.cpp" />
     <ClCompile Include="Gui\GuiMain.cpp" />
