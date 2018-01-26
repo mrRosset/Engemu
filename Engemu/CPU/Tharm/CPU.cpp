@@ -27,15 +27,10 @@ void CPU::ExecuteNextInstruction() {
 		IR_Thumb ir;
 		Decoder::Decode(ir, instr);
 
-		//Find where and how pc is incremented
-		u32 old_pc = gprs.RealPC();
+		gprs.RealPC() += 2;
 
 		if (Check_Condition(ir.cond)) {
 			Execute(ir);
-		}
-
-		if (gprs.RealPC() == old_pc) {
-			gprs.RealPC() += 2;
 		}
 
 	}
@@ -44,18 +39,12 @@ void CPU::ExecuteNextInstruction() {
 		IR_ARM ir;
 		Decoder::Decode(ir, instr);
 
-		//Find where and how pc is incremented
-		
-		//This is to simlate the 2 stage pipeline
-		u32 old_pc = gprs.RealPC();
+		gprs.RealPC() += 4;
 
 		if (Check_Condition(ir.cond)) {
 			Execute(ir);
 		}
 
-		if (gprs[Regs::PC] - 8 == old_pc) {
-			gprs.RealPC() += 4;
-		}
 	}
 	
 

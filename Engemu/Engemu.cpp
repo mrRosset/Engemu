@@ -92,7 +92,7 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 
 		//Note: for thumb bl instructions are separated into 2 parts. Tharm execute one after the other while
 		//unicorn execute both at once so we need to step a second time to avoid a desynchronization
-		if (emu.cpu.GetCPSR().flag_T && (emu.cpu.state == CPUState::Step || emu.cpu.state == CPUState::Step)) {
+		if (emu.cpu.GetCPSR().flag_T && (emu.cpu.state == CPUState::Running || emu.cpu.state == CPUState::Step)) {
 			IR_Thumb ir;
 			Decoder::Decode(ir, emu.mem.read16(emu.cpu.GetPC()));
 			if (ir.instr == TInstructions::BL_high) {

@@ -196,7 +196,7 @@ inline void CPU::Load_Store(IR_ARM& ir) {
 	case AInstructions::LDRT:
 	case AInstructions::LDR:
 		gprs[Rd] = mem.read32(ror32(address, 8 * (address & 0b11)));
-		if (Rd == Regs::PC) gprs[Rd] = gprs[Rd] & 0xFFFFFFFC;
+		if (Rd == Regs::PC) gprs[Rd] = gprs.RealPC() & 0xFFFFFFFC;
 		if (Rd == Regs::PC && (address & 0b11) != 0b00) throw std::string("unpredictable instructions are not emulated");
 		break;
 
