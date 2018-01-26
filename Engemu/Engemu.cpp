@@ -27,7 +27,7 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 	auto logger = spdlog::get("console");
 	
 	GageMemory mem;
-	CPU_Interface& cpu = CPUnicorn(mem);
+	CPU_Interface& cpu = CPU(mem);
 	Emulator emu(mem, cpu, app_path, lib_folder_path, rom_path);
 
 	std::string file_name = extract_filename(app_path);
@@ -44,7 +44,7 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 	logger->info("Loading Symbols");
 	Symbols::load(symbols_folder_path);
 
-	std::vector<u32> breakpoints = { 0x503AD440 };
+	std::vector<u32> breakpoints = { 0x503A9404 };
 
 	//emulation loop
 

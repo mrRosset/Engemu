@@ -102,9 +102,11 @@ void Kernel::User_SetTrapHandler(CPU_Interface& cpu) {
 }
 
 void Kernel::UserSvr__InitRegisterCallback(CPU_Interface& cpu) {
-	//TODO
+	//TODO understand when the callback should be sent
+	throw std::string("lol");
 }
 
 void Kernel::User__WaitForAnyRequest(CPU_Interface& cpu) {
 	//TODO: Should wait until a request complete and execution can resume.
+	throw std::string("lol");
 }

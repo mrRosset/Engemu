@@ -9,8 +9,12 @@ Documentation:
 	https://www.openrce.org/articles/full_view/23
 */
 
-
 const u32 KRequestPending = 80000001;
+
+struct TCallBack {
+	s32(*iFunction)(void* aPtr);
+	void* iPtr;
+};
 
 //sizeof(RHeap) = 116
 struct RHeap {
