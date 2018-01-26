@@ -47,7 +47,7 @@ public:
 	u32 operator[] (int idx) const {
 		if (idx == Regs::PC) {
 			//TODO: check bit 1 for non-branch thumb instr;
-			return cpsr.flag_T ? gprs[idx] + 4 : gprs[idx] + 8;
+			return cpsr.flag_T ? gprs[idx] + 2 : gprs[idx] + 4;
 		}
 		else {
 			return gprs[idx];
@@ -64,7 +64,7 @@ private:
 		Reg(u32 &a, bool pc_, bool flagT_) : el(a) { pc = pc_; flagT = flagT_; }
 		
 		operator u32() const { 
-			if (pc) return flagT ? el + 4 : el + 8;
+			if (pc) return flagT ? el + 2 : el + 4;
 			else return el;
 		}
 		

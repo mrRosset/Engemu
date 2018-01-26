@@ -6,6 +6,7 @@
 #include "../CPU/Tharm/Utils.h"
 #include "../CPU/Tharm/Decoder/Decoder.h"
 #include "../CPU/Tharm/Disassembler/Disassembler.h"
+#include "../CPU/Unicorn/CPUnicorn.h"
 
 #include <catch/catch.hpp>
 
@@ -391,4 +392,18 @@ TEST_CASE("CPU test 1 350", "[ARM]") {
 	REQUIRE(cpu.gprs[3] == 0x3);
 	REQUIRE(cpu.gprs[4] == 0x18);
 
+}
+
+TEST_CASE("LDR PC PC LS", "[ARM]") {
+	TestMemory mem;
+	CPU cpu(mem);
+
+	//ldr pc, [pc, r0, lsl #2]
+	mem.write32(0, 0xE79FF100);
+	cpu.SetReg(0, 0x10);
+	cpu.SetPC(0);
+
+	cpu.Step();
+	
+	REQUIRE(cpu.GetPC() == 0);
 }

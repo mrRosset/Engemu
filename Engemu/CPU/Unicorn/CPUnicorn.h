@@ -3,12 +3,15 @@
 #include <unicorn/unicorn.h>
 #include <spdlog/spdlog.h>
 #include "../CPU_Interface.h"
+#include "../../Tests/TestMemory.h"
 
 class CPUnicorn : public CPU_Interface {
 public:
 	std::shared_ptr<spdlog::logger> logger;
 
 	CPUnicorn(GageMemory& mem);
+	CPUnicorn(TestMemory& mem);
+
 	~CPUnicorn();
 	void ExecuteNextInstruction() override;
 	u32 GetPC() override;
