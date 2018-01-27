@@ -92,6 +92,12 @@ bool CPU::Check_Condition(Conditions& cond) {
 }
 
 void CPU::DP_Instr1(bool S, unsigned Rd, u32 result, std::function<bool()> N, std::function<bool()> Z, std::function<bool()> C, std::function<bool()> V) {
+	if (S && Rd != Regs::PC) {
+		//Assigning those before Rd because of the cases where Rn == Rd.
+		//Since those depends on the value of Rn, it might get overwritten afterward.
+		cpsr.flag_C = C();
+		cpsr.flag_V = V();
+	}
 	gprs[Rd] = result;
 	if (S && Rd == Regs::PC) {
 		throw("no sprs in user/system mode, other mode not implemented yet");
@@ -99,17 +105,17 @@ void CPU::DP_Instr1(bool S, unsigned Rd, u32 result, std::function<bool()> N, st
 	else if (S) {
 		cpsr.flag_N = N();
 		cpsr.flag_Z = Z();
-		cpsr.flag_C = C();
-		cpsr.flag_V = V();
 	}
 }
 
 void CPU::DP_Instr1(unsigned Rd, u32 result, std::function<bool()> N, std::function<bool()> Z, std::function<bool()> C, std::function<bool()> V) {
+	//Assigning those before Rd because of the cases where Rn == Rd.
+	//Since those depends on the value of Rn, it might get overwritten afterward.
+	cpsr.flag_C = C();
+	cpsr.flag_V = V();
 	gprs[Rd] = result;
 	cpsr.flag_N = N();
 	cpsr.flag_Z = Z();
-	cpsr.flag_C = C();
-	cpsr.flag_V = V();
 }
 
 void CPU::DP_Instr2(u32 result, std::function<bool(u32)> N, std::function<bool(u32)> Z, std::function<bool(u32)> C, std::function<bool(u32)> V) {
