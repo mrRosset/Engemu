@@ -394,7 +394,7 @@ TEST_CASE("CPU test 1 350", "[ARM]") {
 
 }
 
-TEST_CASE("LDR PC PC LS", "[ARM]") {
+TEST_CASE("LDR PC PC", "[ARM]") {
 	TestMemory mem;
 	CPU cpu(mem);
 
@@ -407,3 +407,37 @@ TEST_CASE("LDR PC PC LS", "[ARM]") {
 	
 	REQUIRE(cpu.GetPC() == 0);
 }
+
+TEST_CASE("Subs C Flag", "[ARM]") {
+	TestMemory mem;
+	CPUnicorn cpu(mem);
+
+	//subs r0, r0, r2, lsl #1
+	mem.write32(0, 0xE0500082);
+	cpu.SetPC(0);
+
+	cpu.SetReg(0, 0x7FFFFFF5);
+	cpu.SetReg(1, 0xA);
+	cpu.SetReg(2, 0x3FFFFFFC);
+
+	cpu.Step();
+
+	std::cout << cpu.GetCPSR().flag_C << std::endl;
+}
+
+/*TEST_CASE("Subs C Flag 2", "[ARM]") {
+	TestMemory mem;
+	CPUnicorn cpu(mem);
+
+	//subs r0, r1, r2, lsl #1
+	mem.write32(0, 0xE0510082);
+	cpu.SetPC(0);
+
+	cpu.SetReg(0, 0xA);
+	cpu.SetReg(1, 0x4294967293);
+	cpu.SetReg(2, 0x3FFFFFFC);
+
+	cpu.Step();
+
+	std::cout << cpu.GetCPSR().flag_C << std::endl;
+}*/
