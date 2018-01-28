@@ -316,29 +316,29 @@ inline void CPU::Multiply(IR_ARM& ir) {
 	// instructions
 
 	switch (ir.instr) {
-	case AInstructions::MUL: MUL_Instr1(ir.s, Rd, getLo(static_cast<u64>(Rm) * static_cast<u64>(Rs))); break;
-	case AInstructions::MLA: MUL_Instr1(ir.s, Rd, getLo(static_cast<u64>(Rm) * static_cast<u64>(Rs)) + Rn); break;
+	case AInstructions::MUL: MUL_Instr1(ir.s, Rd, getLo(static_cast<u64>(gprs[Rm]) * static_cast<u64>(gprs[Rs]))); break;
+	case AInstructions::MLA: MUL_Instr1(ir.s, Rd, getLo(static_cast<u64>(gprs[Rm]) * static_cast<u64>(gprs[Rs])) + gprs[Rn]); break;
 
 	case AInstructions::UMULL: {
-		u64 result = static_cast<u64>(Rm) * static_cast<u64>(Rs);
+		u64 result = static_cast<u64>(gprs[Rm]) * static_cast<u64>(gprs[Rs]);
 		MUL_Instr2(ir.s, RdHi, RdLo, getHi(result), getLo(result));
 		break;
 	}
 
 	case AInstructions::UMLAL: {
-		u64 result = static_cast<u64>(Rm) * static_cast<u64>(Rs);
+		u64 result = static_cast<u64>(gprs[Rm]) * static_cast<u64>(gprs[Rs]);
 		MUL_Instr2(ir.s, RdHi, RdLo, getHi(result) + gprs[RdHi] + CarryFrom(getLo(result), gprs[RdLo]), getLo(result) + gprs[RdLo]);
 		break;
 	}
 
 	case AInstructions::SMULL: {
-		s64 result = static_cast<s64>(Rm) * static_cast<s64>(Rs);
+		s64 result = static_cast<s64>(gprs[Rm]) * static_cast<s64>(gprs[Rs]);
 		MUL_Instr2(ir.s, RdHi, RdLo, getHi(result), getLo(result));
 		break;
 	}
 
 	case AInstructions::SMLAL: {
-		s64 result = static_cast<s64>(Rm) * static_cast<s64>(Rs);
+		s64 result = static_cast<s64>(gprs[Rm]) * static_cast<s64>(gprs[Rs]);
 		MUL_Instr2(ir.s, RdHi, RdLo, getHi(result) + gprs[RdHi] + CarryFrom(getLo(result), gprs[RdLo]), getLo(result) + gprs[RdLo]);
 		break;
 	}
