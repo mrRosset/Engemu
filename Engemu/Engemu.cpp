@@ -55,7 +55,7 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 
 	//emulation loop
 
-	const int FRAMES_PER_SECOND = 25;
+	const int FRAMES_PER_SECOND = 30;
 	const uint64_t SKIP_TICKS = 1000 / FRAMES_PER_SECOND;
 	auto clock = std::chrono::high_resolution_clock::now().time_since_epoch();
 	auto next_game_tick = std::chrono::duration_cast<std::chrono::milliseconds>(clock).count();

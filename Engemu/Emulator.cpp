@@ -46,16 +46,10 @@ void Emulator::Step() {
 	catch (std::string& error_message) {
 		std::cout << "Uncaught exception:\n" << error_message << std::endl;
 		state = CPUState::Stopped;
-		for (int i = 0; i < cpu->function_trace.size(); i++) {
-			std::cout << i << " " << cpu->function_trace[i] << "\n";
-		}
 	}
 	catch (const char* error_message) {
 		std::cout << "Uncaught exception:\n" << error_message << std::endl;
 		state = CPUState::Stopped;
-		for (int i = 0; i < cpu->function_trace.size(); i++) {
-			std::cout << i << " " << cpu->function_trace[i] << "\n";
-		}
 	}
 }
 
