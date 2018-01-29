@@ -26,16 +26,16 @@ Emulator::Emulator(Memory & mem_, CPU_Interface & cpu_, std::string & app_path, 
 	//cpu->gprs[Regs::SP] = 0x7FFF'FFFF; //start of the ram section
 	cpu->SetReg(Regs::SP, 0x7FFFFFFC); //start of the ram section aligned with last 2 bit 0
 
-
+	state = CPUState::Stopped;
 }
 
 void Emulator::Step() {
 	try {
-		switch (cpu->state) {
+		switch (state) {
 
 		case CPUState::Step:
 			cpu->Step();
-			cpu->state = CPUState::Stopped;
+			state = CPUState::Stopped;
 			break;
 
 		case CPUState::Running:
@@ -45,14 +45,14 @@ void Emulator::Step() {
 	}
 	catch (std::string& error_message) {
 		std::cout << "Uncaught exception:\n" << error_message << std::endl;
-		cpu->state = CPUState::Stopped;
+		state = CPUState::Stopped;
 		for (int i = 0; i < cpu->function_trace.size(); i++) {
 			std::cout << i << " " << cpu->function_trace[i] << "\n";
 		}
 	}
 	catch (const char* error_message) {
 		std::cout << "Uncaught exception:\n" << error_message << std::endl;
-		cpu->state = CPUState::Stopped;
+		state = CPUState::Stopped;
 		for (int i = 0; i < cpu->function_trace.size(); i++) {
 			std::cout << i << " " << cpu->function_trace[i] << "\n";
 		}

@@ -115,24 +115,24 @@ void GuiMain::render_memoryNav() {
 }
 
 bool GuiMain::render_controls() {
-	auto& cpu = emu.getCPU();
+
 	if (ImGui::Button("Run"))
 	{
-		cpu.state = CPUState::Running;
+		emu.state = CPUState::Running;
 	}
 
 	ImGui::SameLine();
 
 	if (ImGui::Button("Pause"))
 	{
-		cpu.state = CPUState::Stopped;
+		emu.state = CPUState::Stopped;
 	}
 
 	ImGui::SameLine();
 
 	if (ImGui::Button("Step"))
 	{
-		cpu.state = CPUState::Step;
+		emu.state = CPUState::Step;
 	}
 
 	ImGui::SameLine();

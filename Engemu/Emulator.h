@@ -1,11 +1,11 @@
 #pragma once
 
 #include <spdlog/spdlog.h>
-#include "CPU/CPU_Interface.h"
 #include "Memory.h"
 #include "E32Image.h"
+#include "HLE/Kernel.h"
+#include "CPU/CPU_Interface.h"
 #include "Loader/E32ImageLoader.h"
-#include "HLE\Kernel.h"
 
 class Emulator {
 public:
@@ -16,6 +16,7 @@ public:
 	CPU_Interface& getCPU();
 	void setCPU(CPU_Interface& cpu);
 
+	CPUState state;
 private:
 	CPU_Interface* cpu;
 	Memory& mem;

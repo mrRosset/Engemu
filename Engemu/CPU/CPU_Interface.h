@@ -10,7 +10,6 @@ enum class CPUState { Stopped, Running, Step };
 
 class CPU_Interface {
 public:
-	CPUState state;
 	Memory& mem;
 	std::vector<std::string> call_stack;
 	std::vector<std::string> function_trace;

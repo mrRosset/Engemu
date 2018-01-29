@@ -67,8 +67,8 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 		running = guimain->render();
 
 		//Breakpoints
-		if (std::find(breakpoints.begin(), breakpoints.end(), cpu.GetPC()) != breakpoints.end() && emu.getCPU().state == CPUState::Running) {
-			emu.getCPU().state = CPUState::Stopped;
+		if (std::find(breakpoints.begin(), breakpoints.end(), cpu.GetPC()) != breakpoints.end() && emu.state == CPUState::Running) {
+			emu.state = CPUState::Stopped;
 		}
 
 		//Stepping

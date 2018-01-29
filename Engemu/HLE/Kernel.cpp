@@ -62,7 +62,7 @@ void Kernel::User_Heap(Emulator& emu, GuiMain* gui) {
 	emu.setCPU(ker_cpu);
 
 	while (ker_cpu.gprs.RealPC() != 0) {
-		ker_cpu.Step();
+		emu.Step();
 		gui->render();
 		std::this_thread::sleep_for(std::chrono::milliseconds(40));
 	}

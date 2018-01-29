@@ -16,8 +16,6 @@ CPU::CPU(Memory& mem_) : cpsr{}, spsr{}, gprs(cpsr), CPU_Interface(mem_) {
 	cpsr.mode = CpuMode::User;
 	cpsr.flag_inter_I = true;
 	cpsr.flag_inter_F = true;
-	
-	state = CPUState::Stopped;
 }
 
 void CPU::ExecuteNextInstruction() {
