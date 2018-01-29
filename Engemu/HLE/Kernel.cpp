@@ -107,35 +107,30 @@ void Kernel::User_SetTrapHandler(CPU_Interface& cpu) {
 
 void Kernel::UserSvr__InitRegisterCallback(CPU_Interface& cpu, GuiMain* gui) {
 	//TODO understand how this work. If this is even correct.
-	/*CPUnicorn ker_cpu((GageMemory&)cpu.mem);
-	ker_cpu.SetPC(0x50321490);
-	ker_cpu.SetReg(Regs::LR, cpu.GetPC());
-
-	ker_cpu.state = CPUState::Stopped;
-
-	gui->cpu = &ker_cpu;
-
-	while (ker_cpu.GetPC() != 0) {
-		switch (ker_cpu.state) {
-
-		case CPUState::Step:
-			ker_cpu.Step();
-			ker_cpu.state = CPUState::Stopped;
-			break;
-
-		case CPUState::Running:
-			ker_cpu.Step();
-			break;
-		}
-		gui->render();
-
-	}
-
-	gui->cpu = &cpu;
-	cpu.state = ker_cpu.state;*/
+	throw std::string("test");
 }
 
 void Kernel::User__WaitForAnyRequest(CPU_Interface& cpu) {
 	//TODO: Should wait until a request complete and execution can resume.
 	throw std::string("lol");
+}
+
+void Kernel::CallSWIHandler(Emulator& emu, GuiMain* gui) {
+	auto& cpu = emu.getCPU();
+
+	CPUnicorn ker_cpu((GageMemory&)cpu.mem);
+	ker_cpu.SetPC(0x50321490);
+	ker_cpu.SetReg(Regs::LR, cpu.GetPC());
+	ker_cpu.SetReg(Regs::SP, cpu.GetReg(Regs::SP));
+
+	emu.state = CPUState::Stopped;
+
+	emu.setCPU(ker_cpu);
+
+	while (ker_cpu.GetPC() != 0) {
+		emu.Step();
+		gui->render();
+	}
+
+	emu.setCPU(cpu);
 }

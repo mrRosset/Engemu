@@ -4,7 +4,7 @@
 void Kernel::TChar_GetCategory(CPU_Interface& cpu) {
 	//TODO: Properly deal with utf-16 code points
 	u32 character = cpu.GetReg(0);
-
+	
 	switch (character) {
 
 	case 0: cpu.SetReg(0, 128); break;
@@ -269,7 +269,8 @@ void Kernel::TChar_GetCategory(CPU_Interface& cpu) {
 
 }
 
-void Kernel::TChar_GetUpperCase(CPU_Interface & cpu) {
+
+void Kernel::TChar_GetUpperCase(CPU_Interface& cpu) {
 	//TODO: Properly deal with utf-16 code points
 	u32 character = cpu.GetReg(0);
 

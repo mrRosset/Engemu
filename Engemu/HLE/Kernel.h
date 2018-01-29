@@ -23,4 +23,5 @@ namespace Kernel {
 	void User_SetTrapHandler(CPU_Interface& cpu);
 	void UserSvr__InitRegisterCallback(CPU_Interface& cpu, GuiMain* gui);
 	void User__WaitForAnyRequest(CPU_Interface& cpu);
+	void CallSWIHandler(Emulator& emu, GuiMain* gui);
 }
