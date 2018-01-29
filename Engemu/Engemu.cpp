@@ -5,7 +5,7 @@
 #include <spdlog/spdlog.h>
 #include "Common.h"
 #include "E32Image.h"
-#include "Emulateur.h"
+#include "Emulator.h"
 #include "Loader/E32ImageLoader.h"
 #include "CPU/CPU_Interface.h"
 #include "CPU/Tharm/CPU.h"
@@ -23,20 +23,27 @@
 #define CATCH_CONFIG_RUNNER
 #include <catch\catch.hpp>
 
+std::string extract_filename(const std::string& filepath) {
+	auto pos = filepath.rfind("\\");
+	if (pos == std::string::npos)
+		pos = -1;
+	return std::string(filepath.begin() + pos + 1, filepath.end());
+}
+
 void emulate(std::string& app_path, std::string& lib_folder_path, std::string& rom_path, std::string& symbols_folder_path) {
 	auto logger = spdlog::get("console");
 	
 	GageMemory mem;
-	CPU_Interface& cpu = CPU(mem);
+	CPU_Interface& cpu = CPUnicorn(mem);
 	Emulator emu(mem, cpu, app_path, lib_folder_path, rom_path);
 
 	std::string file_name = extract_filename(app_path);
-	GuiMain* guimain = new GuiMain(&cpu, extract_filename(app_path));
+	GuiMain* guimain = new GuiMain(emu, extract_filename(app_path));
 	
-	emu.cpu.swi_callback = [&](u32 number) {
+	emu.getCPU().swi_callback = [&](u32 number) {
 		auto logger = spdlog::get("console");
 		logger->info("SWI {:x}", number);
-		Kernel::Executive_Call(number, emu.cpu, guimain);
+		Kernel::Executive_Call(number, emu, guimain);
 	};
 
 
@@ -44,7 +51,7 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 	logger->info("Loading Symbols");
 	Symbols::load(symbols_folder_path);
 
-	std::vector<u32> breakpoints = { 0x503A9404 };
+	std::vector<u32> breakpoints = { /*0x503A76DC*/ };
 
 	//emulation loop
 
@@ -60,8 +67,8 @@ void emulate(std::string& app_path, std::string& lib_folder_path, std::string& r
 		running = guimain->render();
 
 		//Breakpoints
-		if (std::find(breakpoints.begin(), breakpoints.end(), cpu.GetPC()) != breakpoints.end() && emu.cpu.state == CPUState::Running) {
-			emu.cpu.state = CPUState::Stopped;
+		if (std::find(breakpoints.begin(), breakpoints.end(), cpu.GetPC()) != breakpoints.end() && emu.getCPU().state == CPUState::Running) {
+			emu.getCPU().state = CPUState::Stopped;
 		}
 
 		//Stepping

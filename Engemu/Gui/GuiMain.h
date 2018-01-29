@@ -3,7 +3,7 @@
 #include "Gui.h"
 #include "../Common.h"
 
-class CPU_Interface;
+class Emulator;
 
 class GuiMain : public Gui
 {
@@ -20,7 +20,7 @@ private:
 	void render_function_trace();
 
 public:
-	CPU_Interface* cpu;
-	GuiMain(CPU_Interface* cpu, std::string& additional_title);
+	Emulator& emu;
+	GuiMain(Emulator& emu, std::string& additional_title);
 	bool render();
 };

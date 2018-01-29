@@ -5,19 +5,22 @@
 
 #include "Kernel.h"
 #include "E32std.h"
+#include "../Emulator.h"
 #include "../CPU/Tharm/CPU.h"
 #include "../CPU/Tharm/Decoder/IR.h"
+#include "../CPU/Unicorn/CPUnicorn.h"
 
 namespace Kernel {
 	vir_add RHeap_ptr = 0;
 	vir_add TrapHandler_ptr = 0;
 }
 
-void Kernel::Executive_Call(u32 number, CPU_Interface& cpu, GuiMain* gui) {
+void Kernel::Executive_Call(u32 number, Emulator& emu, GuiMain* gui) {
+	auto& cpu = emu.getCPU();
 
 	switch (number) {
 	case 0x4D: User__WaitForAnyRequest(cpu); break;
-	case 0x6C: User_Heap(cpu, gui); break;
+	case 0x6C: User_Heap(emu, gui); break;
 	case 0x8D: User_LockedInc(cpu); break;
 	case 0x8E: User_LockedDec(cpu); break;
 	case 0x2A: RSemaphore_Wait(cpu); break;
@@ -26,7 +29,7 @@ void Kernel::Executive_Call(u32 number, CPU_Interface& cpu, GuiMain* gui) {
 	case 0x82: User_SetTrapHandler(cpu); break;
 
 	case 0x8000C0: RProcess_CommandLineLength(cpu); break;
-	case 0xC00076: UserSvr__InitRegisterCallback(cpu); break;
+	case 0xC00076: UserSvr__InitRegisterCallback(cpu, gui); break;
 
 	default:
 
@@ -35,7 +38,9 @@ void Kernel::Executive_Call(u32 number, CPU_Interface& cpu, GuiMain* gui) {
 
 }
 
-void Kernel::User_Heap(CPU_Interface& cpu, GuiMain* gui) {
+void Kernel::User_Heap(Emulator& emu, GuiMain* gui) {
+	auto& cpu = emu.getCPU();
+
 	if (RHeap_ptr) {
 		cpu.SetReg(0, RHeap_ptr);
 		return;
@@ -54,7 +59,7 @@ void Kernel::User_Heap(CPU_Interface& cpu, GuiMain* gui) {
 	
 	ker_cpu.call_stack.push_back("0x503B0DAC");
 
-	gui->cpu = &ker_cpu;
+	emu.setCPU(ker_cpu);
 
 	while (ker_cpu.gprs.RealPC() != 0) {
 		ker_cpu.Step();
@@ -62,11 +67,10 @@ void Kernel::User_Heap(CPU_Interface& cpu, GuiMain* gui) {
 		std::this_thread::sleep_for(std::chrono::milliseconds(40));
 	}
 
-	gui->cpu = &cpu;
+	emu.setCPU(cpu);
 
 	//get the return value
 	cpu.SetReg(0, ker_cpu.gprs[0]);
-
 }
 
 void Kernel::User_LockedDec(CPU_Interface& cpu) {
@@ -101,9 +105,34 @@ void Kernel::User_SetTrapHandler(CPU_Interface& cpu) {
 	cpu.SetReg(0, oldHandler);
 }
 
-void Kernel::UserSvr__InitRegisterCallback(CPU_Interface& cpu) {
-	//TODO understand when the callback should be sent
-	throw std::string("lol");
+void Kernel::UserSvr__InitRegisterCallback(CPU_Interface& cpu, GuiMain* gui) {
+	//TODO understand how this work. If this is even correct.
+	/*CPUnicorn ker_cpu((GageMemory&)cpu.mem);
+	ker_cpu.SetPC(0x50321490);
+	ker_cpu.SetReg(Regs::LR, cpu.GetPC());
+
+	ker_cpu.state = CPUState::Stopped;
+
+	gui->cpu = &ker_cpu;
+
+	while (ker_cpu.GetPC() != 0) {
+		switch (ker_cpu.state) {
+
+		case CPUState::Step:
+			ker_cpu.Step();
+			ker_cpu.state = CPUState::Stopped;
+			break;
+
+		case CPUState::Running:
+			ker_cpu.Step();
+			break;
+		}
+		gui->render();
+
+	}
+
+	gui->cpu = &cpu;
+	cpu.state = ker_cpu.state;*/
 }
 
 void Kernel::User__WaitForAnyRequest(CPU_Interface& cpu) {
