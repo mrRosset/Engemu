@@ -30,6 +30,7 @@ public:
 	virtual u32 GetReg(int index) = 0;
 	virtual void SetReg(int index, u32 value) = 0;
 	virtual PSR& GetCPSR() = 0;
+	virtual void SetCPSR(PSR& cpsr) = 0;
 
 	//Callbacks
 	std::function<void(u32 number)> swi_callback = nullptr;

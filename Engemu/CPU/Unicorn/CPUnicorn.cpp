@@ -148,3 +148,8 @@ PSR& CPUnicorn::GetCPSR() {
 	u32_to_PSR(cpsr, temp);
 	return temp;
 }
+
+void CPUnicorn::SetCPSR(PSR& cpsr_) {
+	u32 cpsr = PSR_to_u32(cpsr_);
+	CHECKED(uc_reg_write(uc, UC_ARM_REG_CPSR, &cpsr));
+}

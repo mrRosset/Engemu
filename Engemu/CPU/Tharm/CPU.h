@@ -29,6 +29,7 @@ public:
 	u32 GetReg(int index) override;
 	void SetReg(int index, u32 value) override;
 	PSR& GetCPSR() override;
+	void SetCPSR(PSR& cpsr) override;
 	
 	bool Check_Condition(Conditions& cond);
 

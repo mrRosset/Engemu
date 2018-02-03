@@ -67,6 +67,17 @@ PSR& CPU::GetCPSR() {
 	return cpsr;
 }
 
+void CPU::SetCPSR(PSR& cpsr_) {
+	cpsr.flag_C = cpsr_.flag_C;
+	cpsr.flag_inter_F = cpsr_.flag_inter_F;
+	cpsr.flag_inter_I = cpsr_.flag_inter_I;
+	cpsr.flag_N = cpsr_.flag_N;
+	cpsr.flag_T = cpsr_.flag_T;
+	cpsr.flag_V = cpsr_.flag_V;
+	cpsr.flag_Z = cpsr_.flag_Z;
+	cpsr.reserved = cpsr_.reserved;
+}
+
 bool CPU::Check_Condition(Conditions& cond) {
 	switch (cond) {
 	case Conditions::EQ: return cpsr.flag_Z;
