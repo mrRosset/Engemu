@@ -234,10 +234,10 @@
     <ClCompile Include="Loader\TRomImageLoader.cpp" />
     <ClCompile Include="Loader\Utils.cpp" />
     <ClCompile Include="Symbols\SymbolsManager.cpp" />
-    <ClCompile Include="Tests\CPU_Tests.cpp" />
-    <ClCompile Include="Tests\Decoder_Tests.cpp" />
-    <ClCompile Include="Tests\Disassembler_ARM_Tests.cpp" />
-    <ClCompile Include="Tests\Disassembler_Thumb_Tests.cpp" />
+    <ClCompile Include="Tests\CPU_Tests.cpp" Condition=" '$(Configuration)' == 'Testing'" />
+    <ClCompile Include="Tests\Decoder_Tests.cpp" Condition=" '$(Configuration)' == 'Testing'" />
+    <ClCompile Include="Tests\Disassembler_ARM_Tests.cpp" Condition=" '$(Configuration)' == 'Testing'" />
+    <ClCompile Include="Tests\Disassembler_Thumb_Tests.cpp" Condition=" '$(Configuration)' == 'Testing'" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h" />
