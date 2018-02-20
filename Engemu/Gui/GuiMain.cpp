@@ -143,6 +143,7 @@ bool GuiMain::render_controls() {
 	if (ImGui::Button("Go to PC"))
 	{
 		scroll_to_pc = true;
+		emu.getCPU().SetPC(emu.getCPU().GetPC() + 4);
 	}
 
 	ImGui::SameLine();
@@ -346,11 +347,11 @@ void GuiMain::render_call_stack() {
 	ImGui::Text("Address"); ImGui::NextColumn();
 	ImGui::Separator();
 
-	ImGuiListClipper clipper(cpu.call_stack.size(), ImGui::GetTextLineHeight());
+	ImGuiListClipper clipper(static_cast<int>(cpu.call_stack.size()), ImGui::GetTextLineHeight());
 
 	for (int i = clipper.DisplayStart ; i < clipper.DisplayEnd; i++)
 	{
-		int ci = cpu.call_stack.size() - i - 1;
+		int ci = static_cast<int>(cpu.call_stack.size()) - i - 1;
 
 		ImGui::Selectable(std::to_string(ci).c_str(), false, ImGuiSelectableFlags_SpanAllColumns | ImGuiSelectableFlags_AllowDoubleClick);
 		ImGui::NextColumn();
@@ -376,11 +377,11 @@ void GuiMain::render_function_trace() {
 	ImGui::Text("function name"); ImGui::NextColumn();
 	ImGui::Separator();
 
-	ImGuiListClipper clipper(cpu.function_trace.size(), ImGui::GetTextLineHeight());
+	ImGuiListClipper clipper(static_cast<int>(cpu.function_trace.size()), ImGui::GetTextLineHeight());
 
 	for (int i = clipper.DisplayStart; i < clipper.DisplayEnd; i++)
 	{
-		int ci = cpu.function_trace.size() - i - 1;
+		int ci = static_cast<int>(cpu.function_trace.size()) - i - 1;
 
 		ImGui::Selectable(std::to_string(ci).c_str(), false, ImGuiSelectableFlags_SpanAllColumns | ImGuiSelectableFlags_AllowDoubleClick);
 		ImGui::NextColumn();
