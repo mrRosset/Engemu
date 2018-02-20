@@ -19,8 +19,11 @@ Emulator::Emulator(Memory & mem_, CPU_Interface & cpu_, std::string & app_path, 
 
 	cpu->SetPC(image.header->code_base_address + image.header->entry_point_offset); // 0x50392D54 <- entry of Euser.dll;
 	//cpu->SetPC(image.header->code_base_address + image.code_section.export_directory[0]);
-	//cpu->gprs[Regs::PC] = 0x5063D444; //Main of AppRun
-	//cpu->cpsr.flag_T = true;
+	//cpu->SetPC(0x5063D444); //Main of AppRun
+
+	//PSR& cpsr = cpu->GetCPSR();
+	//cpsr.flag_T = true;
+	//cpu->SetCPSR(cpsr);
 
 	//TODO: find the correct place where the SP is initialized
 	//cpu->gprs[Regs::SP] = 0x7FFF'FFFF; //start of the ram section
