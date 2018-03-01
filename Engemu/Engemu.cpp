@@ -12,6 +12,7 @@
 #include "CPU/Tharm/Decoder/Decoder.h"
 #include "CPU/Tharm/Disassembler/Disassembler.h"
 #include "CPU/Unicorn/CPUnicorn.h"
+#include "Memory/GageMemory.h"
 #include "Gui/Gui.h"
 #include "Gui/GuiMain.h"
 #include "Gui/GuiMemory.h"

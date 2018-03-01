@@ -1,9 +1,10 @@
 #pragma once
 
-#include "../Memory.h"
+#include "Memory_Interface.h"
+#include <vector>
 
 
-class TestMemory : public Memory {
+class TestMemory : public Memory_Interface {
 public:
 	std::vector<u8> ram;
 	u32 ram_cursor;

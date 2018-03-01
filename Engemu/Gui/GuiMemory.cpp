@@ -1,5 +1,5 @@
 #include "GuiMemory.h"
-#include "../Memory.h"
+#include "../Memory/GageMemory.h"
 
 GuiMemory::GuiMemory(GageMemory& mem_, std::string& additional_title) : mem(mem_), Gui(additional_title, 600, 600) {}
 

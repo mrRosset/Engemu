@@ -19,10 +19,6 @@
     <ClCompile Include="Symbols\SymbolsManager.cpp" />
     <ClCompile Include="Gui\GuiMemory.cpp" />
     <ClCompile Include="HLE\TChar.cpp" />
-    <ClCompile Include="Tests\CPU_Tests.cpp" />
-    <ClCompile Include="Tests\Disassembler_ARM_Tests.cpp" />
-    <ClCompile Include="Tests\Decoder_Tests.cpp" />
-    <ClCompile Include="Tests\Disassembler_Thumb_Tests.cpp" />
     <ClCompile Include="CPU\Tharm\CPU.cpp" />
     <ClCompile Include="CPU\Tharm\CPU_ARM.cpp" />
     <ClCompile Include="CPU\Tharm\CPU_Thumb.cpp" />
@@ -55,8 +51,6 @@
     <ClInclude Include="HLE\E32std.h" />
     <ClInclude Include="Symbols\SymbolsManager.h" />
     <ClInclude Include="Gui\GuiMemory.h" />
-    <ClInclude Include="Memory.h" />
-    <ClInclude Include="Tests\TestMemory.h" />
     <ClInclude Include="CPU\Tharm\CPU.h" />
     <ClInclude Include="CPU\Tharm\Registers.h" />
     <ClInclude Include="CPU\Tharm\Utils.h" />
@@ -66,6 +60,9 @@
     <ClInclude Include="CPU\CPU_Interface.h" />
     <ClInclude Include="CPU\Unicorn\CPUnicorn.h" />
     <ClInclude Include="Emulator.h" />
+    <ClInclude Include="Memory\Memory_Interface.h" />
+    <ClInclude Include="Memory\GageMemory.h" />
+    <ClInclude Include="Memory\TestMemory.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Tests\simple_adc_tests.inc" />

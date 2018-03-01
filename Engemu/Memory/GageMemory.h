@@ -1,10 +1,10 @@
 #pragma once
 
+#include "Memory_Interface.h"
 #include <vector>
-#include <string>
 #include <iostream>
 #include <fstream>
-#include "Common.h"
+#include <spdlog/spdlog.h>
 
 /*
 From THC
@@ -31,38 +31,7 @@ From THC
 +----------------------------+------------------------------------------------+
 */
 
-class Memory {
-public:
-	inline virtual u8 read8(u32 address) = 0;
-	inline virtual void write8(u32 address, u8 value) = 0;
-	inline virtual u32 allocateRam(u32 size) = 0;
-	virtual void loadRom(std::string& rom_path) {}
-
-	inline u16 read16(u32 address)
-	{
-		return (read8(address + 1) << 8) | read8(address);
-	}
-
-	inline u32 read32(u32 address)
-	{
-		return (read16(address + 2) << 16) | read16(address);
-	}
-
-	inline void write16(u32 address, u16 value)
-	{
-		write8(address + 1, value >> 8);
-		write8(address, value & 0xFF);
-	}
-
-	inline void write32(u32 address, u32 value)
-	{
-		write16(address + 2, value >> 16);
-		write16(address, value & 0xFFFF);
-	}
-
-};
-
-class GageMemory : public Memory {
+class GageMemory : public Memory_Interface {
 public:
 
 	std::vector<u8> user_data;
@@ -70,7 +39,7 @@ public:
 	std::vector<u8> ram;
 	u32 ram_cursor;
 
-	GageMemory() : user_data(0x2FFF'FFFF - 0x0040'0000 +1), rom(0x57FF'FFFF - 0x5000'0000 +1), ram(0x7FFF'FFFF - 0x6000'0000 +1) {
+	GageMemory() : user_data(0x2FFF'FFFF - 0x0040'0000 + 1), rom(0x57FF'FFFF - 0x5000'0000 + 1), ram(0x7FFF'FFFF - 0x6000'0000 + 1) {
 		ram_cursor = 15'0000;
 	}
 
@@ -109,13 +78,12 @@ public:
 		}
 
 		stream.seekg(0, std::ios::beg);
-		
+
 		if (!stream.read((char*)rom.data(), length))
 		{
 			throw std::string("Error reading bytes from file");
 		}
 		stream.close();
 	}
-
 
 };

@@ -3,7 +3,7 @@
 #include <functional>
 #include <vector>
 #include "../../Common.h"
-#include "../../Memory.h"
+#include "../../Memory/Memory_Interface.h"
 #include "../CPU_Interface.h"
 #include "Registers.h"
 
@@ -21,7 +21,7 @@ public:
 	PSR spsr;
 	Registers gprs;
 
-	CPU(Memory& mem);
+	CPU(Memory_Interface& mem);
 
 	void ExecuteNextInstruction() override;
 	u32 GetPC() override;

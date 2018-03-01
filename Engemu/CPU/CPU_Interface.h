@@ -1,8 +1,9 @@
 #pragma once
 
 #include <functional>
+#include <vector>
 #include "../Common.h"
-#include "../Memory.h"
+#include "../Memory/Memory_Interface.h"
 #include "Tharm/Registers.h"
 #include "../../Symbols/SymbolsManager.h"
 
@@ -10,12 +11,12 @@ enum class CPUState { Stopped, Running, Step };
 
 class CPU_Interface {
 public:
-	Memory& mem;
+	Memory_Interface& mem;
 	std::vector<std::string> call_stack;
 	std::vector<std::string> function_trace;
 
 
-	CPU_Interface(Memory& _mem) : mem(_mem), call_stack(), function_trace() {}
+	CPU_Interface(Memory_Interface& _mem) : mem(_mem), call_stack(), function_trace() {}
 	virtual ~CPU_Interface() {}
 	
 	virtual void Step() {

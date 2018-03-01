@@ -5,7 +5,7 @@
 #include "E32ImageLoader.h"
 #include "TRomImageLoader.h"
 #include "Utils.h"
-#include "../Memory.h"
+#include "../Memory/Memory_Interface.h"
 #include "../TRomImage.h"
 #include "../E32Image.h"
 #include "../Gui/GuiMain.h"
@@ -20,7 +20,7 @@ std::string locateLibrary(std::string& lib_entry, std::string& lib_folder_path) 
 	return lib_folder_path + lib_entry;
 }
 
-void E32ImageLoader::load(E32Image& image, std::string& file_name,  Memory& mem, std::string& lib_folder_path) {
+void E32ImageLoader::load(E32Image& image, std::string& file_name, Memory_Interface& mem, std::string& lib_folder_path) {
 
 	auto logger = spdlog::get("console");
 	logger->info("Loading E32Image {}", file_name);

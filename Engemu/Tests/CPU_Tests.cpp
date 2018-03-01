@@ -1,6 +1,6 @@
 #include <iostream>
 #include <bitset>
-#include "TestMemory.h"
+#include "../Memory/TestMemory.h"
 #include "../Common.h"
 #include "../CPU/Tharm/CPU.h"
 #include "../CPU/Tharm/Utils.h"

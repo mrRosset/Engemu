@@ -9,6 +9,7 @@
 #include "../CPU/Tharm/Disassembler/Disassembler.h"
 #include "../CPU/Tharm/Decoder/IR.h"
 #include "../CPU/Tharm/Utils.h"
+#include "../Memory/Memory_Interface.h"
 #include "../Symbols/SymbolsManager.h"
 
 

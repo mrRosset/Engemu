@@ -3,7 +3,8 @@
 #include <unicorn/unicorn.h>
 #include <spdlog/spdlog.h>
 #include "../CPU_Interface.h"
-#include "../../Tests/TestMemory.h"
+#include "../../Memory/GageMemory.h"
+#include "../../Memory/TestMemory.h"
 
 class CPUnicorn : public CPU_Interface {
 public:

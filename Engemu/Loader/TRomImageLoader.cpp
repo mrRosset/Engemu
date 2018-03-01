@@ -4,8 +4,9 @@
 #include "TRomImageLoader.h"
 #include "Utils.h"
 #include "../TRomImage.h"
+#include "../Memory/Memory_Interface.h"
 
-void TRomImageLoader::load(TRomImage& image, Memory& mem, std::string& lib_folder_path) {
+void TRomImageLoader::load(TRomImage& image, Memory_Interface& mem, std::string& lib_folder_path) {
 	//What is there to do here ?
 }
 

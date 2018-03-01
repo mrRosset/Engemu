@@ -1,5 +1,7 @@
 #include "Emulator.h"
 
+#include <iostream>
+
 
 std::string extract_appname(const std::string& filepath) {
 	auto pos = filepath.rfind("\\");
@@ -9,7 +11,7 @@ std::string extract_appname(const std::string& filepath) {
 }
 
 
-Emulator::Emulator(Memory & mem_, CPU_Interface & cpu_, std::string & app_path, std::string & lib_folder_path, std::string & rom_path):
+Emulator::Emulator(Memory_Interface & mem_, CPU_Interface & cpu_, std::string & app_path, std::string & lib_folder_path, std::string & rom_path):
 	mem(mem_), cpu(&cpu_) {
 
 	E32ImageLoader::parse(app_path, image);
