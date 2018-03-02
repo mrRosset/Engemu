@@ -13,6 +13,7 @@
 #include "CPU/Tharm/Disassembler/Disassembler.h"
 #include "CPU/Unicorn/CPUnicorn.h"
 #include "Memory/GageMemory.h"
+#include "Memory/BootMemory.h"
 #include "Gui/Gui.h"
 #include "Gui/GuiMain.h"
 #include "Gui/GuiMemory.h"
@@ -34,7 +35,7 @@ std::string extract_filename(const std::string& filepath) {
 void emulate(std::string& app_path, std::string& lib_folder_path, std::string& rom_path, std::string& symbols_folder_path) {
 	auto logger = spdlog::get("console");
 	
-	GageMemory mem;
+	BootMemory mem;
 	CPU_Interface& cpu = CPUnicorn(mem);
 	Emulator emu(mem, cpu, app_path, lib_folder_path, rom_path);
 

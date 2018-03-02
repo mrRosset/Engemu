@@ -5,6 +5,7 @@
 #include "../CPU_Interface.h"
 #include "../../Memory/GageMemory.h"
 #include "../../Memory/TestMemory.h"
+#include "../../Memory/BootMemory.h"
 
 class CPUnicorn : public CPU_Interface {
 public:
@@ -12,6 +13,7 @@ public:
 
 	CPUnicorn(GageMemory& mem);
 	CPUnicorn(TestMemory& mem);
+	CPUnicorn(BootMemory& mem);
 
 	~CPUnicorn();
 	void ExecuteNextInstruction() override;

@@ -17,11 +17,13 @@ Emulator::Emulator(Memory_Interface & mem_, CPU_Interface & cpu_, std::string & 
 	E32ImageLoader::parse(app_path, image);
 
 	mem.loadRom(rom_path);
-	E32ImageLoader::load(image, extract_appname(app_path), mem, lib_folder_path);
+	//E32ImageLoader::load(image, extract_appname(app_path), mem, lib_folder_path);
 
-	cpu->SetPC(image.header->code_base_address + image.header->entry_point_offset); // 0x50392D54 <- entry of Euser.dll;
+
+	//cpu->SetPC(image.header->code_base_address + image.header->entry_point_offset); // 0x50392D54 <- entry of Euser.dll;
 	//cpu->SetPC(image.header->code_base_address + image.code_section.export_directory[0]);
 	//cpu->SetPC(0x5063D444); //Main of AppRun
+	cpu->SetPC(0x0);
 
 	//PSR& cpsr = cpu->GetCPSR();
 	//cpsr.flag_T = true;

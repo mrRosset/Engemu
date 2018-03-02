@@ -68,6 +68,17 @@ CPUnicorn::CPUnicorn(TestMemory & mem_) : CPU_Interface(mem_) {
 	CHECKED(uc_mem_map_ptr(uc, 0x0000'0000, mem_.ram.size(), UC_PROT_READ | UC_PROT_WRITE | UC_PROT_EXEC, mem_.ram.data()));
 }
 
+CPUnicorn::CPUnicorn(BootMemory & mem_) : CPU_Interface(mem_) {
+	logger = spdlog::get("console");
+	CHECKED(uc_open(UC_ARCH_ARM, UC_MODE_ARM, &uc));
+
+	uc_hook hook{};
+	CHECKED(uc_hook_add(uc, &hook, UC_HOOK_INTR, (void*)InterruptHook, this, 0, -1));
+	CHECKED(uc_hook_add(uc, &hook, UC_HOOK_MEM_INVALID, (void*)UnmappedMemoryHook, this, 0, -1));
+
+	CHECKED(uc_mem_map_ptr(uc, 0x0000'0000, mem_.rom.size(), UC_PROT_READ | UC_PROT_WRITE | UC_PROT_EXEC, mem_.rom.data()));
+}
+
 CPUnicorn::~CPUnicorn() {
 	uc_close(uc);
 }

@@ -267,6 +267,7 @@
     <ClInclude Include="imgui\stb_truetype.h" />
     <ClInclude Include="Loader\E32ImageLoader.h" />
     <ClInclude Include="Loader\TRomImageLoader.h" />
+    <ClInclude Include="Memory\BootMemory.h" />
     <ClInclude Include="Memory\GageMemory.h" />
     <ClInclude Include="Memory\Memory_Interface.h" />
     <ClInclude Include="Symbols\SymbolsManager.h" />

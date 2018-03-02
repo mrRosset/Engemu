@@ -63,6 +63,7 @@
     <ClInclude Include="Memory\Memory_Interface.h" />
     <ClInclude Include="Memory\GageMemory.h" />
     <ClInclude Include="Memory\TestMemory.h" />
+    <ClInclude Include="Memory\BootMemory.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Tests\simple_adc_tests.inc" />
