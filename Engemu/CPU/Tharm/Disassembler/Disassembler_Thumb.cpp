@@ -87,7 +87,7 @@ std::string Disassembler::Disassemble(IR_Thumb& ir) {
 	case TInstructions::SWI: return "swi #" + std::to_string(ir.operand1);
 	}
 
-	throw std::string("Could not disassemble Thumb instruction");
+	throw std::runtime_error("Could not disassemble Thumb instruction");
 }
 
 std::string Disassembler::Disassemble_Branch_Signed_Offset(s32 offset) {

@@ -2,6 +2,8 @@
 #include "Utils.h"
 #include "Decoder/Decoder.h"
 
+#include <stdexcept>
+
 /*
 Code in this file is compiler-specific.
 the operator >> is used. This operator is can be logical or arithmetic
@@ -95,9 +97,9 @@ bool CPU::Check_Condition(Conditions& cond) {
 	case Conditions::GT: return !cpsr.flag_Z && cpsr.flag_N == cpsr.flag_V;
 	case Conditions::LE: return cpsr.flag_Z || cpsr.flag_N != cpsr.flag_V;
 	case Conditions::AL: return true;
-	case Conditions::NV: throw std::string("Unpredictable instructions are not emulated");
+	case Conditions::NV: throw std::runtime_error("Unpredictable instructions are not emulated");
 	}
-	throw "Invalid condition";
+	throw std::invalid_argument("Invalid ARM condition");
 }
 
 void CPU::DP_Instr1(bool S, unsigned Rd, u32 result, std::function<bool()> N, std::function<bool()> Z, std::function<bool()> C, std::function<bool()> V) {
@@ -109,7 +111,7 @@ void CPU::DP_Instr1(bool S, unsigned Rd, u32 result, std::function<bool()> N, st
 	}
 	gprs[Rd] = result;
 	if (S && Rd == Regs::PC) {
-		throw("no sprs in user/system mode, other mode not implemented yet");
+		throw std::runtime_error("no sprs in user/system mode, other mode not implemented yet");
 	}
 	else if (S) {
 		cpsr.flag_N = N();

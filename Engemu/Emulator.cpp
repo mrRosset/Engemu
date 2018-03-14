@@ -50,14 +50,11 @@ void Emulator::Step() {
 			break;
 		}
 	}
-	catch (std::string& error_message) {
-		std::cout << "Uncaught exception:\n" << error_message << std::endl;
+	catch (std::exception const& ex) {
+		std::cout << "Uncaught exception:\n" << ex.what() << std::endl;
 		state = CPUState::Stopped;
 	}
-	catch (const char* error_message) {
-		std::cout << "Uncaught exception:\n" << error_message << std::endl;
-		state = CPUState::Stopped;
-	}
+
 }
 
 CPU_Interface& Emulator::getCPU() {

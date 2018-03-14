@@ -7,7 +7,7 @@ void Decoder::Decode(IR_ARM & ir, u32 instr) {
 	ir.cond = static_cast<Conditions>((instr >> 28) & 0b1111);
 	
 	if (ir.cond == Conditions::NV) {
-		throw std::string("undefined or unpredictable instrutions are not emulated");
+		throw std::runtime_error("undefined or unpredictable instrutions are not emulated");
 	}
 
 	unsigned bits27_25 = (instr >> 25) & 0b111;
@@ -25,13 +25,13 @@ void Decoder::Decode(IR_ARM & ir, u32 instr) {
 			switch (bit7_4) {
 			case 0b0000: Decode_Status_Register(ir, instr); break;
 			case 0b0001: if(bit22 == 0) Decode_Branch(ir, instr);
-						 else throw "3-3 not done"; break;
+						 else throw std::runtime_error("3-3 not done"); break;
 			case 0b0011:
 			case 0b0101:
 			case 0b0111:
 			//case 0b1xy0:
 			default:
-				throw "3-3 not done";
+				throw std::runtime_error("3-3 not done");
 			}
 		}
 		else if (bit7 == 1 && bit4 == 1) {
@@ -58,7 +58,7 @@ void Decoder::Decode(IR_ARM & ir, u32 instr) {
 		unsigned bit21_20 = (instr >> 20) & 0b11;
 		unsigned bit24_23 = (instr >> 23) & 0b11;
 		if (bit24_23 == 0b10 && bit21_20 == 0b00) {
-			throw "Undefined instruction are not emulated";
+			throw std::runtime_error("Undefined instruction are not emulated");
 		}
 		else if (bit24_23 == 0b10 && bit21_20 == 0b10) {
 			Decode_Status_Register(ir, instr);
@@ -72,16 +72,16 @@ void Decoder::Decode(IR_ARM & ir, u32 instr) {
 	case 0b010: Decode_Load_Store_W_UB(ir, instr); break; // Load / store immediate offset
 	
 	case 0b011: if (getBit(instr, 4) == 0) Decode_Load_Store_W_UB(ir, instr); 
-				else throw std::string("Undefined instruction");  break; // Load / store register offset
+				else throw std::runtime_error("Undefined instruction");  break; // Load / store register offset
 	
 	case 0b100: Decode_Load_Store_Multiple(ir, instr); break; // Load/store multiple
 	
 	case 0b101: Decode_Branch(ir, instr); break; // Branch and branch with link
-	case 0b110: throw std::string("Unimplemented opcode"); break; // Coprocessor load/store and double register transfers[<- does it exist without the DSP extension ?
+	case 0b110: throw std::runtime_error("Unimplemented opcode"); break; // Coprocessor load/store and double register transfers[<- does it exist without the DSP extension ?
 	case 0b111: if (getBit(instr, 24) == 1) Decode_Exception_Generating(ir, instr);
-		else throw std::string("Unimplemented opcode"); // Coprocessor
+		else throw std::runtime_error("Unimplemented opcode"); // Coprocessor
 		break; 
-	default: throw std::string("Unimplemented opcode");
+	default: throw std::runtime_error("Unimplemented opcode");
 	}
 
 }
@@ -232,10 +232,10 @@ void Decoder::Decode_Load_Store_H_SB(IR_ARM& ir, u32 instr) {
 	ir.type = AInstructionType::Load_Store;
 	//LSH
 	switch ((getBit(instr, 20) << 2) | ((instr >> 5) & 0b11)) {
-	case 0b000: throw std::string("Not a valid str instruction should be SWP or multiply");;
+	case 0b000: throw std::runtime_error("Not a valid str instruction should be SWP or multiply");;
 	case 0b001: ir.instr = AInstructions::STRH; break;
-	case 0b010: throw std::string("UNPREDICTABLE instructions are not supported");
-	case 0b011: throw std::string("UNPREDICTABLE instructions are not supported");
+	case 0b010: throw std::runtime_error("UNPREDICTABLE instructions are not supported");
+	case 0b011: throw std::runtime_error("UNPREDICTABLE instructions are not supported");
 	case 0b100: ir.instr = AInstructions::LDRSB; break;
 	case 0b101: ir.instr = AInstructions::LDRH; break;
 	case 0b110: ir.instr = AInstructions::LDRSB; break; //TODO: verify. Normaly S = 1 means signed, but byte is always signed
@@ -280,7 +280,7 @@ void Decoder::Decode_Load_Store_Multiple(IR_ARM& ir, u32 instr) {
 	}
 
 	if (ir.operand1 == 0) {
-		throw std::string("Unpredictable instructions are not emulated");
+		throw std::runtime_error("Unpredictable instructions are not emulated");
 	}
 
 }

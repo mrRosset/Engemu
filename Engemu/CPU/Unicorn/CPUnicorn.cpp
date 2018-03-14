@@ -1,5 +1,6 @@
 #include "CPUnicorn.h"
 #include <unicorn/arm.h>
+#include <stdexcept>
 #include "../../Common.h"
 #include "../Tharm/Utils.h"
 #include "../Tharm/Decoder/Decoder.h"
@@ -7,7 +8,7 @@
 #define CHECKED(expr)                                                                              \
     do {                                                                                           \
         if (auto _cerr = (expr)) {                                                                 \
-			throw std::string("Failure with error: ") + std::string(uc_strerror(_cerr));           \
+			throw std::runtime_error(std::string("Failure with error: ") + std::string(uc_strerror(_cerr)));           \
         }                                                                                          \
     } while (0)
 
@@ -38,7 +39,7 @@ static void InterruptHook(uc_engine* uc, u32 intNo, void* user_data) {
 }
 
 static bool UnmappedMemoryHook(uc_engine* uc, uc_mem_type type, u64 addr, int size, u64 value,	void* user_data) {
-	throw std::string("Attempted to read from unmapped memory") + std::to_string(addr);
+	throw std::runtime_error(std::string("Attempted to read from unmapped memory") + std::to_string(addr));
 	return false;
 }
 

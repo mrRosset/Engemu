@@ -12,10 +12,10 @@ void CPU::Execute(IR_ARM& ir) {
 	case AInstructionType::Status_Regsiter_Access: Status_Register_Access(ir); break;
 	case AInstructionType::Load_Store: Load_Store(ir); break;
 	case AInstructionType::Load_Store_Multiple: Load_Store_Multiple(ir); break;
-	case AInstructionType::Semaphore: throw std::string("Unimplemented opcode"); break;
+	case AInstructionType::Semaphore: throw std::runtime_error("Unimplemented opcode"); break;
 	case AInstructionType::Exception_Generating: Exception_Generating(ir); break;
-	case AInstructionType::Coprocessor: throw std::string("Unimplemented opcode"); break;
-	case AInstructionType::Extensions: throw std::string("Unimplemented opcode"); break;
+	case AInstructionType::Coprocessor: throw std::runtime_error("Unimplemented opcode"); break;
+	case AInstructionType::Extensions: throw std::runtime_error("Unimplemented opcode"); break;
 	}
 }
 
@@ -34,7 +34,7 @@ inline void CPU::Exception_Generating(IR_ARM& ir) {
 			}
 		}
 		else {
-			throw std::string("callback not set for swi");
+			throw std::runtime_error("callback not set for swi");
 		}
 		break;
 	}
@@ -130,7 +130,7 @@ inline void CPU::Load_Store_Multiple(IR_ARM& ir) {
 			address = address + 4;
 		}
 		if (!(end_address == address - 4)) {
-			throw std::string("Something went wrong in Load multiple");
+			throw std::runtime_error("Something went wrong in Load multiple");
 		}
 		break;
 	}
@@ -148,7 +148,7 @@ inline void CPU::Load_Store_Multiple(IR_ARM& ir) {
 			}
 		}
 		if (!(end_address == address - 4)) {
-			throw std::string("Something went wrong in Store multiple");
+			throw std::runtime_error("Something went wrong in Store multiple");
 		}
 
 		break;
@@ -197,44 +197,44 @@ inline void CPU::Load_Store(IR_ARM& ir) {
 	case AInstructions::LDR:
 		gprs[Rd] = mem.read32(ror32(address, 8 * (address & 0b11)));
 		if (Rd == Regs::PC) gprs[Rd] = gprs.RealPC() & 0xFFFFFFFC;
-		if (Rd == Regs::PC && (address & 0b11) != 0b00) throw std::string("unpredictable instructions are not emulated");
+		if (Rd == Regs::PC && (address & 0b11) != 0b00) throw std::runtime_error("unpredictable instructions are not emulated");
 		break;
 
 	case AInstructions::LDRBT:
 	case AInstructions::LDRB:
-		if (Rd == Regs::PC) throw std::string("unpredictable instructions are not emulated");
+		if (Rd == Regs::PC) throw std::runtime_error("unpredictable instructions are not emulated");
 		gprs[Rd] = mem.read8(address);
 		break;
 
 	case AInstructions::STRT:
 	case AInstructions::STR:
-		if (Rd == Regs::PC) throw std::string("implementation defined instructions are not emulated");
+		if (Rd == Regs::PC) throw std::runtime_error("implementation defined instructions are not emulated");
 		mem.write32(address, gprs[Rd]);
 		break;
 
 	case AInstructions::STRBT:
 	case AInstructions::STRB:
-		if (Rd == Regs::PC) throw std::string("unpredictable instructions are not emulated");
+		if (Rd == Regs::PC) throw std::runtime_error("unpredictable instructions are not emulated");
 		mem.write8(address, gprs[Rd] & 0xFF);
 		break;
 
 	case AInstructions::LDRH:
-		if (Rd == Regs::PC || (address & 0b1) == 1) throw std::string("unpredictable instructions are not emulated");
+		if (Rd == Regs::PC || (address & 0b1) == 1) throw std::runtime_error("unpredictable instructions are not emulated");
 		gprs[Rd] = mem.read16(address);
 		break;
 
 	case AInstructions::STRH:
-		if (Rd == Regs::PC || (address & 0b1) == 1) throw std::string("unpredictable instructions are not emulated");
+		if (Rd == Regs::PC || (address & 0b1) == 1) throw std::runtime_error("unpredictable instructions are not emulated");
 		mem.write16(address, gprs[Rd] & 0xFFFF);
 		break;
 
 	case AInstructions::LDRSB:
-		if (Rd == Regs::PC) throw std::string("unpredictable instructions are not emulated");
+		if (Rd == Regs::PC) throw std::runtime_error("unpredictable instructions are not emulated");
 		gprs[Rd] = SignExtend<s32>(mem.read8(address), 8);
 		break;
 
 	case AInstructions::LDRSH:
-		if (Rd == Regs::PC || (address & 0b1) == 1) throw std::string("unpredictable instructions are not emulated");
+		if (Rd == Regs::PC || (address & 0b1) == 1) throw std::runtime_error("unpredictable instructions are not emulated");
 		gprs[Rd] = SignExtend<s32>(mem.read16(address), 16);
 		break;
 	}
@@ -247,12 +247,12 @@ inline void CPU::Status_Register_Access(IR_ARM& ir) {
 		u32 Rd = ir.operand2;
 
 		if (Rd == Regs::PC) {
-			throw std::string("Unpredictable instructions are not emulated");
+			throw std::runtime_error("Unpredictable instructions are not emulated");
 		}
 
 		if (R) {
 			if (cpsr.mode == CpuMode::User || cpsr.mode == CpuMode::System) {
-				throw std::string("Unpredictable, there is no spsr");
+				throw std::runtime_error("Unpredictable, there is no spsr");
 			}
 			gprs[Rd] = PSR_to_u32(spsr);
 		}
@@ -268,9 +268,9 @@ inline void CPU::Status_Register_Access(IR_ARM& ir) {
 
 		if (R) {
 			if (cpsr.mode == CpuMode::User || cpsr.mode == CpuMode::System) {
-				throw std::string("Unpredictable, there is no spsr");
+				throw std::runtime_error("Unpredictable, there is no spsr");
 			}
-			throw std::string("MSR for priviledged modes not implemented yet.");
+			throw std::runtime_error("MSR for priviledged modes not implemented yet.");
 		}
 		else {
 			u32 new_CPSR = PSR_to_u32(cpsr);
@@ -301,7 +301,7 @@ inline void CPU::Multiply(IR_ARM& ir) {
 
 
 	if (Rm == Regs::PC || Rs == Regs::PC || Rd == Regs::PC || Rn == Regs::PC) {
-		throw std::string("Unpredictable instructions are not emulated");
+		throw std::runtime_error("Unpredictable instructions are not emulated");
 	}
 
 	/*
@@ -436,11 +436,11 @@ std::tuple<u32, bool> CPU::shifter_operand(Shifter_op& so, bool negatif) {
 	//TODO take care of PC as Rm, Rn, Rd, Rs
 	
 	if (Rs == Regs::PC && so.type != Shifter_type::Immediate && so.type != Shifter_type::Register && so.type != Shifter_type::LSL_imm && so.type != Shifter_type::LSR_imm && so.type != Shifter_type::ASR_imm && so.type != Shifter_type::ROR_imm && so.type != Shifter_type::RRX) {
-		throw std::string("PC as Rs is unpredictable");
+		throw std::runtime_error("PC as Rs is unpredictable");
 	}
 
 	if (Rm == Regs::PC && so.type != Shifter_type::Immediate && so.type != Shifter_type::Register && so.type != Shifter_type::LSL_imm && so.type != Shifter_type::LSR_imm && so.type != Shifter_type::ASR_imm && so.type != Shifter_type::ROR_imm && so.type != Shifter_type::RRX) {
-		throw std::string("PC as Rm is unpredictable");
+		throw std::runtime_error("PC as Rm is unpredictable");
 	}
 
 	unsigned vRs7_0 = vRs & 0xFF;
@@ -492,7 +492,7 @@ std::tuple<u32, bool> CPU::shifter_operand(Shifter_op& so, bool negatif) {
 
 	case Shifter_type::RRX: return std::make_tuple((cpsr.flag_C << 31) | (vRm >> 1), (vRm & 0b1) == 1);
 
-	default: throw "invalid shifter operand";
+	default: throw std::invalid_argument("invalid shifter operand");
 	}
 
 }

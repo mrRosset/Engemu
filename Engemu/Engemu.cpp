@@ -115,7 +115,12 @@ int main(int argc, char* argv[])
 	catch (const spdlog::spdlog_ex& ex)
 	{
 		std::cout << "Log init failed: " << ex.what() << std::endl;
+		std::cin.get();
 		return 1;
+	}
+	catch (std::exception const& ex) {
+		std::cout << "Uncaught exception:\n" << ex.what() << std::endl;
+		std::cin.get();
 	}
 	catch (std::string& error_message) {
 		std::cout << "Uncaught exception:\n" << error_message << std::endl;

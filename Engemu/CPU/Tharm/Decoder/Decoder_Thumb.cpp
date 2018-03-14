@@ -52,21 +52,21 @@ void Decoder::Decode(IR_Thumb& ir, u16 instr){
 	case 0b1011: 
 		switch ((instr >> 8) & 0xF) {
 		case 0b0000: Decode_Adjust_SP(ir, instr); break;
-		case 0b1110: throw std::string("Could not decode Thumb instruction"); break;
+		case 0b1110: throw std::runtime_error("Could not decode Thumb instruction"); break;
 		default: Decode_Push_Pop(ir, instr); break;
 		}
 		return;
 	case 0b1100: Decode_Load_Store_Multiple(ir, instr); return;
 	case 0b1101: 
 		switch ((instr >> 8) & 0xF) {
-		case 0b1110: throw std::string("Undefined instruction"); break;
+		case 0b1110: throw std::runtime_error("Undefined instruction"); break;
 		case 0b1111: Decode_Exception_Generating(ir, instr); break;
 		default: Decode_Conditional_Branch(ir, instr); break;
 		}
 		return;
 	}
 
-	throw std::string("Could not decode Thumb instruction");
+	throw std::runtime_error("Could not decode Thumb instruction");
 }
 
 void Decoder::Decode_Conditional_Branch(IR_Thumb& ir, u16 instr) {
