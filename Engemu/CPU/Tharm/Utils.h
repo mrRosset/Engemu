@@ -151,5 +151,4 @@ inline void u32_to_PSR(u32 input, PSR& psr) {
 	psr.flag_C = !!getBit(input, 29);
 	psr.flag_Z = !!getBit(input, 30);
 	psr.flag_N = !!getBit(input, 31);
-
 }

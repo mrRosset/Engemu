@@ -28,6 +28,7 @@
     <ClCompile Include="CPU\Tharm\Disassembler\Disassembler_Thumb.cpp" />
     <ClCompile Include="CPU\Unicorn\CPUnicorn.cpp" />
     <ClCompile Include="Emulator.cpp" />
+    <ClCompile Include="Tests\Random_Tests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h" />

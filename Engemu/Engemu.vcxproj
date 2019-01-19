@@ -238,6 +238,7 @@
     <ClCompile Include="Tests\Decoder_Tests.cpp" Condition=" '$(Configuration)' == 'Testing'" />
     <ClCompile Include="Tests\Disassembler_ARM_Tests.cpp" Condition=" '$(Configuration)' == 'Testing'" />
     <ClCompile Include="Tests\Disassembler_Thumb_Tests.cpp" Condition=" '$(Configuration)' == 'Testing'" />
+    <ClCompile Include="Tests\Random_Tests.cpp" Condition=" '$(Configuration)' == 'Testing'" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common.h" />
