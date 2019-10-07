@@ -1,6 +1,6 @@
 # Engemu
 
-An attempt to create an HLE N-Gage Emulator. The project is written C++ (despite github sometimews showing PHP code strange reasons).
+An attempt to create an HLE N-Gage Emulator. The project is written C++ (despite github sometimews showing PHP code for strange reasons).
 
 ## Status
 
